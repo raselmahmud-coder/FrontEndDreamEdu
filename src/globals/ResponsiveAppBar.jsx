@@ -14,8 +14,17 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { GetFilterSpaceNLowerCase } from "../utils/FilterSpaceNCapital";
+import logo from "../assets/logo.png";
+import { ImageList, ImageListItem } from "@mui/material";
+import ToggleColorMode from "../components/ToggleColorMode";
 
-const pages = ["Home", "About Us", "Blogs", "Success Story", "Free consultancy"];
+const pages = [
+  "Home",
+  "About Us",
+  "Blogs",
+  "Success Story",
+  "Free consultation",
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -41,12 +50,7 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+          <ImageList
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -56,9 +60,19 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}>
-            LOGO
-          </Typography>
-
+            <ImageListItem>
+              <img
+                src={logo}
+                alt={"logo"}
+                loading="lazy"
+                style={{
+                  width: "70px",
+                  height: "50px",
+                }}
+              />
+            </ImageListItem>
+          </ImageList>
+          {/* for mobile device code start here */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -103,15 +117,20 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}>
-            LOGO
+            LOGO mobile
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          {/* for desktop view */}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+            }}>
+
             {pages.map((page) => (
               <Link
                 key={page}
@@ -127,8 +146,8 @@ function ResponsiveAppBar() {
                 </Button>
               </Link>
             ))}
+            <ToggleColorMode/>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

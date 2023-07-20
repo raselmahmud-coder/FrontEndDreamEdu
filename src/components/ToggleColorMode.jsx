@@ -18,8 +18,6 @@ function GetModeChange() {
         justifyContent: "center",
         bgcolor: "background.default",
         color: "text.primary",
-        borderRadius: 1,
-        p: 4,
       }}>
       {theme.palette.mode} mode
       <IconButton
