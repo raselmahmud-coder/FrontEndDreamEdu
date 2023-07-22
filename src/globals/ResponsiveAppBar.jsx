@@ -1,22 +1,26 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+  ImageList,
+  ImageListItem,
+  IconButton,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { GetFilterSpaceNLowerCase } from "../utils/FilterSpaceNCapital";
+import MenuIcon from "@mui/icons-material/Menu";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import logo from "../assets/logo.png";
-import { ImageList, ImageListItem } from "@mui/material";
-import ToggleColorMode from "../components/ToggleColorMode";
+import logo1 from "../assets/🇪🇸.png";
 
 const pages = [
   "Home",
@@ -27,7 +31,7 @@ const pages = [
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ mode, onClick }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -105,32 +109,39 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+              <IconButton
+                sx={{ ml: 1 }}
+                onClick={() => onClick()}
+                color="inherit">
+                {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            LOGO mobile
-          </Typography>
-          {/* for desktop view */}
+          <Box sx={{ flexGrow: 0.5, display: { xs: "flex", md: "none" } }}>
+            <ImageList
+              sx={{
+                color: "inherit",
+              }}>
+              <ImageListItem>
+                <img
+                  src={logo}
+                  alt={"logo"}
+                  loading="lazy"
+                  style={{
+                    width: "70px",
+                    height: "50px",
+                  }}
+                />
+              </ImageListItem>
+            </ImageList>
+          </Box>
+          {/* ========= for desktop view ==========*/}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: "center",
             }}>
-
             {pages.map((page) => (
               <Link
                 key={page}
@@ -146,7 +157,9 @@ function ResponsiveAppBar() {
                 </Button>
               </Link>
             ))}
-            <ToggleColorMode/>
+            <IconButton onClick={() => onClick()} color="inherit">
+              {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
