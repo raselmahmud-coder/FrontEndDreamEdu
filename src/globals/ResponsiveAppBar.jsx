@@ -25,7 +25,8 @@ import logo1 from "../assets/🇪🇸.png";
 const pages = [
   "Home",
   "About Us",
-  "Blogs",
+  "Important Tips",
+  "Why China",
   "Success Story",
   "Free consultation",
 ];
