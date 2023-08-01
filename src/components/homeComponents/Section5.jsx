@@ -105,7 +105,7 @@ const Section5 = () => {
               sx={{
                 borderStyle: "solid",
                 borderWidth: "0 0 0 5px",
-                borderColor: "#2537ff",
+                borderColor: "#e9ecf0",
                 borderRadius: "20px",
               }}>
               <CardContent>
