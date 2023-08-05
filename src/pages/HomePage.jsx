@@ -1,5 +1,5 @@
-import { Container, Button } from "@mui/material";
 import React from "react";
+import { Container } from "@mui/material";
 import BannerCarousel from "../components/homeComponents/Banner";
 import FacebookFeeds from "../components/homeComponents/FacebookFeeds";
 import Section1 from "../components/homeComponents/Section1";
