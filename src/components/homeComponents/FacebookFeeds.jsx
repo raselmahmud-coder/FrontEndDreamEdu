@@ -7,7 +7,7 @@ const FacebookPosts = () => {
 
   useEffect(() => {
     const accessToken =
-      "EAAY0zPZC0HxoBOxVyLuNJZCc03oAMciZCXVIZAPu8aKR8YIhAhI7eaGb2Dbxzd1h6EVkMhavCBXJD8G2zpqHB42EgrfsEDZA4ECqfJnsUuSIzPaLGH3p3WfkJHqgu5SPyoWo4Sz5favJ8GLQzrj52ksuqJxeefPOHrhV1l3ewLyLQWtSo00j56UEIZC1Iaj9Ho7nkLtPM1uZB19YZCSeZCzrSxqTyj3pO"; // Replace with the generated user access token
+      "EAAY0zPZC0HxoBOwN3stXZBxE1mIo5xfWuiZCuusCXscqsuE6nHlslbpSZAL4CFOENCDp4s0ncZC15ZCLvZAvwJ1GyGIg9D9ryTaUsKZCZBwuDrijn8uWcPABYhtbjG8GvYUZBgTq4rCn69WbEEAWLe12TR6lDYGfj64nWAPjPwao6TKrrP1TZCrUNOpNcdAbZC2lxOnfRnFbZB4fVJab46SkP8LZBFdlS77QgZD"; // Replace with the generated user access token
     const pageId = "1012236045619075"; // Replace with the ID of the Facebook page
     fetch(
       `https://graph.facebook.com/v17.0/${pageId}/posts?fields=permalink_url&limit=3&access_token=${accessToken}`,
@@ -20,7 +20,7 @@ const FacebookPosts = () => {
         console.error("Error fetching Facebook posts:", error);
       });
   }, []);
-
+console.log(postsUrl, "postsUrl")
   return (
     <>
       <Typography
@@ -41,17 +41,15 @@ const FacebookPosts = () => {
           alignItems: "center",
           my: "80px",
         }}>
-        {postsUrl.map((post) => (
+        {postsUrl && postsUrl.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
             <iframe
               src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(
                 post.permalink_url,
               )}&show_text=false`}
               style={{
-                border: "none",
-                overflow: "hidden",
                 width: "100%",
-                height: "315px",
+                height: "215px",
               }}
               data-lazy
               scrolling="no"

@@ -22,7 +22,6 @@ import {
 } from "@mui/material";
 import styled from "@emotion/styled";
 
-
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -98,6 +97,9 @@ export default function Section3() {
             slidesPerView: 4,
             spaceBetween: 50,
           },
+        }}
+        style={{
+          zIndex: 0,
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}

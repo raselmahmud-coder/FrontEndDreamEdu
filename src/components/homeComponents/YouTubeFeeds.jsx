@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 const YouTubeFeeds = () => {
@@ -10,12 +9,12 @@ const YouTubeFeeds = () => {
     const channelId = "UCZQLU9dg9Lrv67RBIItGeUA"; // Replace with your YouTube channel ID
     const maxResults = 3;
 
-    axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
-      )
+    fetch(
+      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
+    )
+      .then((res) => res.json())
       .then((response) => {
-        setVideos(response.data.items);
+        setVideos(response.items);
       })
       .catch((error) => {
         console.error("Error fetching YouTube videos:", error);
@@ -44,9 +43,9 @@ const YouTubeFeeds = () => {
         {videos.map((video) => (
           <Grid item xs={12} sm={6} md={4} key={video.id.videoId}>
             <iframe
-            //   width="560"
-                    style={{width: "100%", height: "315px"}}
-            //   height="315"
+              //   width="560"
+              style={{ width: "100%", height: "315px" }}
+              //   height="315"
               src={`https://www.youtube.com/embed/${video.id.videoId}`}
               title="YouTube video player"
               frameBorder="0"

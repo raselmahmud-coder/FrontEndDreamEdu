@@ -5,6 +5,7 @@ import AboutUs from "./pages/AboutUs";
 import HomePage from "./pages/HomePage";
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import Footer from "./globals/Footer";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -22,7 +23,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUs />} />
-      </Routes>
+        </Routes>
+        <Footer/>
       </ThemeProvider>
     </>
   );

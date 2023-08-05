@@ -13,6 +13,9 @@ import {
   ImageList,
   ImageListItem,
   IconButton,
+  Slide,
+  useScrollTrigger,
+  Fade,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GetFilterSpaceNLowerCase } from "../utils/FilterSpaceNCapital";
@@ -31,6 +34,15 @@ const pages = [
   "Free consultation",
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+function HideOnScroll({ children }) {
+  const trigger = useScrollTrigger();
+  return (
+    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
+      {children}
+    </Slide>
+  );
+}
 
 function ResponsiveAppBar({ mode, onClick }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -52,147 +64,158 @@ function ResponsiveAppBar({ mode, onClick }) {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <ImageList
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            <ImageListItem>
-              <img
-                src={logo}
-                alt={"logo"}
-                loading="lazy"
-                style={{
-                  width: "70px",
-                  height: "50px",
-                }}
-              />
-            </ImageListItem>
-          </ImageList>
-          {/* for mobile device code start here */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit">
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}>
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-              <IconButton
-                sx={{ ml: 1 }}
-                onClick={() => onClick()}
-                color="inherit">
-                {mode ? <Brightness7Icon /> : <Brightness4Icon />}
-              </IconButton>
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 0.5, display: { xs: "flex", md: "none" } }}>
-            <ImageList
-              sx={{
-                color: "inherit",
-              }}>
-              <ImageListItem>
-                <img
-                  src={logo}
-                  alt={"logo"}
-                  loading="lazy"
-                  style={{
-                    width: "70px",
-                    height: "50px",
+    <>
+      <HideOnScroll>
+        <AppBar
+          sx={{
+            zIndex: 99990,
+          }}>
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+              <ImageList
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}>
+                <ImageListItem>
+                  <img
+                    src={logo}
+                    alt={"logo"}
+                    loading="lazy"
+                    style={{
+                      width: "70px",
+                      height: "50px",
+                    }}
+                  />
+                </ImageListItem>
+              </ImageList>
+              {/* for mobile device code start here */}
+              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit">
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
                   }}
-                />
-              </ImageListItem>
-            </ImageList>
-          </Box>
-          {/* ========= for desktop view ==========*/}
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "center",
-            }}>
-            {pages.map((page) => (
-              <Link
-                key={page}
-                to={`/${
-                  GetFilterSpaceNLowerCase(page) == "home"
-                    ? ""
-                    : GetFilterSpaceNLowerCase(page)
-                }`}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}>
-                  {page}
-                </Button>
-              </Link>
-            ))}
-            <IconButton onClick={() => onClick()} color="inherit">
-              {mode ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}>
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
+                  ))}
+                  <IconButton
+                    sx={{ ml: 1 }}
+                    onClick={() => onClick()}
+                    color="inherit">
+                    {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+                  </IconButton>
+                </Menu>
+              </Box>
+              <Box sx={{ flexGrow: 0.5, display: { xs: "flex", md: "none" } }}>
+                <ImageList
+                  sx={{
+                    color: "inherit",
+                  }}>
+                  <ImageListItem>
+                    <img
+                      src={logo}
+                      alt={"logo"}
+                      loading="lazy"
+                      style={{
+                        width: "70px",
+                        height: "50px",
+                      }}
+                    />
+                  </ImageListItem>
+                </ImageList>
+              </Box>
+              {/* ========= for desktop view ==========*/}
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "center",
+                }}>
+                {pages.map((page) => (
+                  <Link
+                    key={page}
+                    to={`/${
+                      GetFilterSpaceNLowerCase(page) == "home"
+                        ? ""
+                        : GetFilterSpaceNLowerCase(page)
+                    }`}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}>
+                      {page}
+                    </Button>
+                  </Link>
+                ))}
+                <IconButton onClick={() => onClick()} color="inherit">
+                  {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+                </IconButton>
+              </Box>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </HideOnScroll>
+        <Toolbar id="back-to-top-anchor" />
+    </>
   );
 }
 export default ResponsiveAppBar;
