@@ -29,7 +29,6 @@ const pages = [
   "Home",
   "About Us",
   "Important Tips",
-  "Why China",
   "Success Story",
   "Free consultation",
 ];

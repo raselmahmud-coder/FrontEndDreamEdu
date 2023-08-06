@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import ResponsiveAppBar from "./globals/ResponsiveAppBar";
-import AboutUs from "./pages/AboutUs";
 import HomePage from "./pages/HomePage";
 import {
   ThemeProvider,
@@ -11,6 +10,9 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./globals/Footer";
 import { useMediaQuery } from "@mui/material";
+import AboutUsPage from "./pages/AboutUsPage";
+import NotFoundPage from "./globals/NotFoundPage";
+import ImportantTipsPage from "./pages/ImportantTipsPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -39,7 +41,9 @@ const App = () => {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
+          <Route path="/importanttips" element={<ImportantTipsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </ThemeProvider>

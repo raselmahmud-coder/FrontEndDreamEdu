@@ -12,11 +12,7 @@ import {
 import React from "react";
 
 const AboutUsSection2 = () => {
-  const SmallAvatar = styled(Avatar)(({ theme }) => ({
-    width: 42,
-    height: 42,
-    border: `2px solid ${theme.palette.background.paper}`,
-  }));
+
   return (
     <Box
       component={"section"}
@@ -39,7 +35,7 @@ const AboutUsSection2 = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {Array.from(new Array(3)).map((item, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
+          <Grid item xs={12} sm={4} md={4} key={index}>
             <Card>
               <CardContent
                 sx={{

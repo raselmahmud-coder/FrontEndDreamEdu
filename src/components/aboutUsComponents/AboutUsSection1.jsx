@@ -20,7 +20,7 @@ const AboutUsSection1 = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2 }}>
-        <Grid item xs={2} sm={6} md={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <Typography
             variant="h1"
             sx={{ fontWeight: "bold", textAlign: "center", mt: "22px" }}>
@@ -76,7 +76,7 @@ const AboutUsSection1 = () => {
             </ListItem>
           </List>
         </Grid>
-        <Grid item xs={2} sm={6} md={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <CardMedia
             sx={{ width: "100%", height: 470 }}
             image={"https://themeim.com/demo/eduplan/assets/img/about/01.jpg"}
