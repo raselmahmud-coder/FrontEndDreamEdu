@@ -4,7 +4,7 @@ import BannerCarousel from "../components/homeComponents/Banner";
 import FacebookFeeds from "../components/homeComponents/FacebookFeeds";
 import Section1 from "../components/homeComponents/Section1";
 import Section2 from "../components/homeComponents/Section2";
-import Section3 from "../components/homeComponents/Section3";
+import StudentFeedbacks from "../components/homeComponents/StudentFeedbacks";
 import Section4 from "../components/homeComponents/Section4";
 import Section5 from "../components/homeComponents/Section5";
 import Section6 from "../components/homeComponents/Section6";
@@ -18,7 +18,7 @@ const HomePage = () => {
       <Container maxWidth="xl">
         <Section1 />
         <Section2 />
-        <Section3 />
+        <StudentFeedbacks />
         <Section4 />
         <Section5 />
         <Section6 />

@@ -66,7 +66,7 @@ const labels = {
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
 }
-export default function Section3() {
+export default function StudentFeedbacks() {
   const [value, setValue] = React.useState(4);
   const [hover, setHover] = React.useState(-1);
   return (

@@ -14,6 +14,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./globals/NotFoundPage";
 import ImportantTipsPage from "./pages/ImportantTipsPage";
 import SuccessStoryPage from "./pages/SuccessStoryPage";
+import ContactUsPage from "./pages/ContactUsPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/important-tips" element={<ImportantTipsPage />} />
           <Route path="/success-story" element={<SuccessStoryPage />} />
+          <Route path="/free-consultation" element={<ContactUsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

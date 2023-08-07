@@ -12,7 +12,6 @@ import {
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
-import EditIcon from "@mui/icons-material/Edit";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 
 const actions = [
