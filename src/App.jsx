@@ -13,6 +13,7 @@ import { useMediaQuery } from "@mui/material";
 import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./globals/NotFoundPage";
 import ImportantTipsPage from "./pages/ImportantTipsPage";
+import SuccessStoryPage from "./pages/SuccessStoryPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -41,8 +42,9 @@ const App = () => {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/importanttips" element={<ImportantTipsPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/important-tips" element={<ImportantTipsPage />} />
+          <Route path="/success-story" element={<SuccessStoryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

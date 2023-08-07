@@ -1,15 +1,15 @@
 import { Container } from "@mui/material";
 import React from "react";
-import Tips1 from "../components/ImportantTipsComponents/Tips1";
+import SSComp from "../components/successStoryComponents/SSComp";
 
-const ImportantTipsPage = () => {
+const SuccessStoryPage = () => {
   return (
     <>
       <Container maxWidth="xl">
-        <Tips1 />
+        <SSComp />
       </Container>
     </>
   );
 };
 
-export default ImportantTipsPage;
+export default SuccessStoryPage;
