@@ -13,6 +13,7 @@ import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
@@ -22,18 +23,19 @@ const Tips1 = () => {
   return (
     <>
       <Typography
-        variant="h1"
+        variant="h2"
         sx={{
           textAlign: "center",
+          fontWeight: "bold",
           my: 5,
         }}>
-        Dream Edu Blogs
+        Important Tips for newbie's
       </Typography>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2, mb:8 }}>
+        sx={{ p: 2, mb: 8 }}>
         {Array.from(new Array(3)).map((_, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card>
@@ -77,6 +79,7 @@ const Tips1 = () => {
                   justifyContent: "space-around",
                 }}>
                 <SpeedDial
+                  title="Share it"
                   ariaLabel="SpeedDial openIcon example"
                   direction="right"
                   sx={{ position: "relative" }}
@@ -89,7 +92,9 @@ const Tips1 = () => {
                     />
                   ))}
                 </SpeedDial>
-                <Button size="small">Learn More</Button>
+                <Link to={`/important-tips/${index}`}>
+                  <Button size="small">Learn More</Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
