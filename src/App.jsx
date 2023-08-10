@@ -14,8 +14,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./globals/NotFoundPage";
 import ImportantTipsPage from "./pages/ImportantTipsPage";
 import SuccessStoryPage from "./pages/SuccessStoryPage";
-import ContactUsPage from "./pages/ContactUsPage";
 import SingleBlogPostPage from "./pages/SingleBlogPostPage";
+import FreeConsultation from "./pages/FreeConsultation";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -48,7 +48,7 @@ const App = () => {
           <Route path="/important-tips" element={<ImportantTipsPage />} />
           <Route path="/important-tips/:id" element={<SingleBlogPostPage />} />
           <Route path="/success-story" element={<SuccessStoryPage />} />
-          <Route path="/free-consultation" element={<ContactUsPage />} />
+          <Route path="/free-consultation" element={<FreeConsultation />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
