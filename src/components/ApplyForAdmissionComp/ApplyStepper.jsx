@@ -165,7 +165,7 @@ ColorlibStepIcon.propTypes = {
 
 const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 
-export default function ApplyForAdmission() {
+export default function ApplyStepper() {
   return (
     <Stack sx={{ width: '100%' }} spacing={4}>
       
