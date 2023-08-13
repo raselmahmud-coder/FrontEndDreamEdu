@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import ContactUs from "../components/FreeConsultantComponent/ContactUs";
 
-const FreeConsultation = () => {
+const FreeConsultationPage = () => {
   return (
     <>
       <Container maxWidth="xl">
@@ -12,4 +12,4 @@ const FreeConsultation = () => {
   );
 };
 
-export default FreeConsultation;
+export default FreeConsultationPage;

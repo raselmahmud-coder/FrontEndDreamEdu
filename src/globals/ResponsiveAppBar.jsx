@@ -67,7 +67,7 @@ function ResponsiveAppBar({ mode, onClick }) {
       <HideOnScroll>
         <AppBar
           sx={{
-            zIndex: 99990,
+            // zIndex: 99990,
           }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>

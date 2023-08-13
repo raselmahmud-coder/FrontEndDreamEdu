@@ -15,7 +15,8 @@ import NotFoundPage from "./globals/NotFoundPage";
 import ImportantTipsPage from "./pages/ImportantTipsPage";
 import SuccessStoryPage from "./pages/SuccessStoryPage";
 import SingleBlogPostPage from "./pages/SingleBlogPostPage";
-import FreeConsultation from "./pages/FreeConsultation";
+import ApplyForAdmissionPage from "./pages/ApplyForAdmissionPage";
+import FreeConsultationPage from "./pages/FreeConsultationPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -48,7 +49,8 @@ const App = () => {
           <Route path="/important-tips" element={<ImportantTipsPage />} />
           <Route path="/important-tips/:id" element={<SingleBlogPostPage />} />
           <Route path="/success-story" element={<SuccessStoryPage />} />
-          <Route path="/free-consultation" element={<FreeConsultation />} />
+          <Route path="/free-consultation" element={<FreeConsultationPage />} />
+          <Route path="/apply-for-admission" element={<ApplyForAdmissionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

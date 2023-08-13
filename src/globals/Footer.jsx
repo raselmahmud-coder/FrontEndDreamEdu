@@ -50,7 +50,7 @@ const Footer = () => {
     <Box
       component="section"
       sx={{
-        my:4,
+        mt:8,
       }}>
       <Grid
         container
@@ -59,6 +59,7 @@ const Footer = () => {
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
+          mb:5
         }}>
         <Grid item xs={12} sm={6} md={6}>
           <Box
@@ -139,6 +140,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Terms and conditions
@@ -153,6 +155,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Privacy policy
@@ -167,6 +170,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Disclaimer and copyrights
@@ -191,6 +195,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Counselling
@@ -205,6 +210,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Admission
@@ -219,6 +225,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Visa processing
@@ -243,6 +250,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               No 933 Dongli International Plaza, Chenghua District, Chengdu,
@@ -258,6 +266,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               E-mail: official@dreameduinfo.com
@@ -272,6 +281,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                my:1,
                 fontWeight: "bold",
               }}>
               Phone: +86-19150064373

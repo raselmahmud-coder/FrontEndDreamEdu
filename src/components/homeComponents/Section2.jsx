@@ -15,6 +15,7 @@ import headerImg from "../../assets/header-img.png";
 import ellipse1 from "../../assets/Ellipse-01.png";
 import planImg from "../../assets/plane.png";
 import ellipse2 from "../../assets/Ellipse-02.png";
+import { Link } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -63,6 +64,7 @@ export default function Section2() {
               display: "flex",
               justifyContent: "space-between",
             }}>
+            <Link to={'/apply-for-admission'}>
             <Button
               sx={{
                 py: 3,
@@ -72,6 +74,7 @@ export default function Section2() {
               size="large">
               Apply Now
             </Button>
+                </Link>
             <Button
               sx={{
                 py: 3,
