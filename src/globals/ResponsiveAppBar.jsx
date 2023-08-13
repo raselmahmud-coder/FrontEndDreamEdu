@@ -32,7 +32,7 @@ const pages = [
   "Success Story",
   "Free consultation",
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Dashboard", "Profile", "Logout"];
 
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger();
@@ -66,9 +66,11 @@ function ResponsiveAppBar({ mode, onClick }) {
     <>
       <HideOnScroll>
         <AppBar
-          sx={{
-            // zIndex: 99990,
-          }}>
+          sx={
+            {
+              // zIndex: 99990,
+            }
+          }>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <ImageList
@@ -183,7 +185,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                       alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
+                      src="https://mui.com/static/images/avatar/2.jpg"
                     />
                   </IconButton>
                 </Tooltip>
@@ -203,9 +205,11 @@ function ResponsiveAppBar({ mode, onClick }) {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}>
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Link to={`/${GetFilterSpaceNLowerCase(setting)}`} key={setting}>
+                    <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
+                    </Link>
                   ))}
                 </Menu>
               </Box>
@@ -213,7 +217,7 @@ function ResponsiveAppBar({ mode, onClick }) {
           </Container>
         </AppBar>
       </HideOnScroll>
-        <Toolbar id="back-to-top-anchor" />
+      <Toolbar id="back-to-top-anchor" />
     </>
   );
 }

@@ -17,6 +17,7 @@ import SuccessStoryPage from "./pages/SuccessStoryPage";
 import SingleBlogPostPage from "./pages/SingleBlogPostPage";
 import ApplyForAdmissionPage from "./pages/ApplyForAdmissionPage";
 import FreeConsultationPage from "./pages/FreeConsultationPage";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -51,6 +52,11 @@ const App = () => {
           <Route path="/success-story" element={<SuccessStoryPage />} />
           <Route path="/free-consultation" element={<FreeConsultationPage />} />
           <Route path="/apply-for-admission" element={<ApplyForAdmissionPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          {/* Private route start */}
+          {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
+          {/* Private route end */}
+          
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
