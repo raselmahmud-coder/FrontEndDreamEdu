@@ -1,15 +1,24 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import {
+  Typography,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  Radio,
+} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { admissionProfileCreate } from "../../features/userAdmissionProfile/userAdmissionProfileSlice";
 
-export default function AddressForm() {
+export default function Initialization() {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Program information
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -35,23 +44,44 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <FormControl
             required
+            onChange={(e) => {
+              dispatch(admissionProfileCreate({ program: e.target.value, name:"Rasel Mahmud"}))
+            }}
+          >
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              Select you program
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group">
+              <FormControlLabel
+                value="chinese language/diploma"
+                control={<Radio />}
+                label="Chinese language/Diploma"
+              />
+              <FormControlLabel
+                value="bachelor"
+                control={<Radio />}
+                label="Bachelor"
+              />
+              <FormControlLabel
+                value="master's/ph.d."
+                control={<Radio />}
+                label="Master's/Ph.D."
+              />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
             id="address1"
             name="address1"
             label="Address line 1"
             fullWidth
             autoComplete="shipping address-line1"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
             variant="standard"
           />
         </Grid>
@@ -62,7 +92,7 @@ export default function AddressForm() {
             name="city"
             label="City"
             fullWidth
-            autoComplete="shipping address-level2"
+            autoComplete="shipping address-level1"
             variant="standard"
           />
         </Grid>
@@ -99,8 +129,10 @@ export default function AddressForm() {
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
+            control={
+              <Checkbox color="secondary" name="saveAddress" value="yes" />
+            }
+            label="Use this address for documents collection"
           />
         </Grid>
       </Grid>

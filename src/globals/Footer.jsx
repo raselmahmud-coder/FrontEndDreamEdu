@@ -253,7 +253,7 @@ const Footer = () => {
                 my:1,
                 fontWeight: "bold",
               }}>
-              No 933 Dongli International Plaza, Chenghua District, Chengdu,
+               933 Dongli International Plaza, Chenghua District, Chengdu,
               Sichuan, China.
             </Typography>
           </Box>
