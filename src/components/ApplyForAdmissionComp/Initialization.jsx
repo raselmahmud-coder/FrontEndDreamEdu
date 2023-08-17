@@ -68,9 +68,14 @@ export default function Initialization() {
                 label="Bachelor"
               />
               <FormControlLabel
-                value="master's/ph.d."
+                value="masters"
                 control={<Radio />}
-                label="Master's/Ph.D."
+                label="Master's"
+              />
+              <FormControlLabel
+                value="ph.d."
+                control={<Radio />}
+                label="Ph.D."
               />
             </RadioGroup>
           </FormControl>
