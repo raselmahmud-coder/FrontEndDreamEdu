@@ -19,8 +19,9 @@ import ApplyForAdmissionPage from "./pages/ApplyForAdmissionPage";
 import FreeConsultationPage from "./pages/FreeConsultationPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/admin/DashboardPage";
-import CreateBlog from "./pages/admin/CreateBlog";
+import Blogs from "./pages/admin/blogs/Blogs";
 import DashboardOverview from "./pages/admin/dashboard/DashboardOverview";
+import Users from "./pages/admin/users/Users";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -54,16 +55,19 @@ const App = () => {
           <Route path="/important-tips/:id" element={<SingleBlogPostPage />} />
           <Route path="/success-story" element={<SuccessStoryPage />} />
           <Route path="/free-consultation" element={<FreeConsultationPage />} />
-          <Route path="/apply-for-admission" element={<ApplyForAdmissionPage />} />
+          <Route
+            path="/apply-for-admission"
+            element={<ApplyForAdmissionPage />}
+          />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard1" element={<DashboardOverview />} />
           {/* Private route start */}
-          <Route path="/admin" element={<DashboardPage />} >
+          <Route path="/admin" element={<DashboardPage />}>
             <Route index path="dashboard" element={<DashboardOverview />} />
-            <Route path="create-blog" element={<CreateBlog />} />
+            <Route path="users" element={<Users />} />
+            <Route path="blogs" element={<Blogs />} />
           </Route>
           {/* Private route end */}
-          
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
