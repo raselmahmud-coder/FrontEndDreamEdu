@@ -11,16 +11,33 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../features/userAuth/userAuthSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { accessToken, user } = useSelector((state) => state.auth || {});
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    dispatch(
+      login({
+        accessToken: "123",
+        user: {
+          email: data.get("email"),
+          password: data.get("password"),
+        },
+      }),
+    );
   };
+  React.useEffect(() => {
+    if (accessToken && user.email) {
+      navigate("/admin/dashboard");
+    }
+  }, [accessToken, user]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -38,7 +55,7 @@ export default function LoginPage() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required

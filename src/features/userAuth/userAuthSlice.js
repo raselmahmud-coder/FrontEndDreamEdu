@@ -10,7 +10,7 @@ const userAuthSlice = createSlice({
     login: (state, action) => {
       // console.log(action.payload?.token);
       // console.log(action.payload?.user);
-      state.accessToken = action.payload.token;
+      state.accessToken = action.payload.accessToken;
       state.user = action.payload.user;
     },
     logout: (state) => {
