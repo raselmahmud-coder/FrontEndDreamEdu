@@ -8,6 +8,7 @@ import {
   Divider,
   IconButton,
   Badge,
+  Box,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
@@ -71,8 +72,9 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Grid container spacing={{ xs: 2, md: 3 }}>
-        <Grid item xs={12} sm={6} md={2}>
+      <Box sx={{ display: 'flex' }}>
+
+      
           <AppBar position="absolute" open={open}>
             <Toolbar
               sx={{
@@ -119,11 +121,9 @@ const DashboardPage = () => {
             <Divider />
             <List component="nav">{mainListItems}</List>
           </Drawer>
-        </Grid>
-        <Grid item xs={12} sm={6} md={10}>
+        
           <Outlet />
-        </Grid>
-      </Grid>
+          </Box>
     </>
   );
 };

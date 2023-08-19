@@ -10,7 +10,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { GetFilterSpaceNLowerCase } from "../../../utils/FilterSpaceNCapital";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const listItems = [
   { itemText: "Dashboard", itemIcon: <DashboardIcon /> },
@@ -21,15 +21,27 @@ const listItems = [
 export const mainListItems = (
   <React.Fragment>
     {listItems.map((item) => (
-      <Link
-        style={{ textDecoration: "none", }}
+      <NavLink
+        style={({ isActive }) => {
+          return {
+            color: isActive ? "#85f5b8" : "inherit",
+            textDecoration: "none",
+          };
+        }}
         key={item.itemText}
         to={`/admin/${GetFilterSpaceNLowerCase(item.itemText)}`}>
         <ListItemButton>
-          <ListItemIcon>{item.itemIcon}</ListItemIcon>
+          <ListItemIcon
+            sx={({ isActive }) => {
+              return {
+                color: isActive ? "#85f5b8" : "inherit",
+              };
+            }}>
+            {item.itemIcon}
+          </ListItemIcon>
           <ListItemText primary={item.itemText} />
         </ListItemButton>
-      </Link>
+      </NavLink>
     ))}
   </React.Fragment>
 );

@@ -39,6 +39,21 @@ export default function LoginPage() {
     }
   }, [accessToken, user]);
 
+ React.useEffect(() => {
+  fetch("https://dream-edu-git-master-mehedihasan555552.vercel.app/token/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: "test",
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));//expected output: [{userEmail: "hello@gmail.com"},{message:"success"}]
+ }, [])
+ 
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

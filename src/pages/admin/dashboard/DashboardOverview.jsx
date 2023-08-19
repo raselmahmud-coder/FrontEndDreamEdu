@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Container, Toolbar, Grid, Paper } from "@mui/material/Box";
+import { Box, Container, Toolbar, Grid, Paper } from "@mui/material";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
