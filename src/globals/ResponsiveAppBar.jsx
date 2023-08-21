@@ -167,6 +167,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                     }}>
                     {pages.map((page) => (
                       <Link
+                        style={{ textDecoration: "none" }}
                         key={page}
                         to={`/${
                           GetFilterSpaceNLowerCase(page) == "home"
@@ -184,17 +185,8 @@ function ResponsiveAppBar({ mode, onClick }) {
                       {mode ? <Brightness7Icon /> : <Brightness4Icon />}
                     </IconButton>
                   </Box>
-                  <Box sx={{ flexGrow: 0 }}>
-                    {user?.email && accessToken ? (
-                      <Tooltip title="Open settings">
-                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                          <Avatar
-                            alt="Remy Sharp"
-                            src="https://mui.com/static/images/avatar/2.jpg"
-                          />
-                        </IconButton>
-                      </Tooltip>
-                    ) : (
+                  {/* <Box sx={{ flexGrow: 0 }}>
+                    {user?.email && accessToken  (
                       <Button
                         onClick={handleAdminLogin}
                         sx={{ my: 2, color: "white", display: "block" }}>
@@ -228,7 +220,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                         </Link>
                       ))}
                     </Menu>
-                  </Box>
+                  </Box> */}
                 </Toolbar>
               </Container>
             </AppBar>

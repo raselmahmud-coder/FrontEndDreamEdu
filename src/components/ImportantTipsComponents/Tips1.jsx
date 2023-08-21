@@ -14,6 +14,7 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import PaginationSS from "../successStoryComponents/PaginationSS";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
@@ -27,7 +28,7 @@ const Tips1 = () => {
         sx={{
           textAlign: "center",
           fontWeight: "bold",
-          my: 5,
+          my: 7,
         }}>
         Important Tips for newbie's
       </Typography>
@@ -100,6 +101,14 @@ const Tips1 = () => {
           </Grid>
         ))}
       </Grid>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mb: 18,
+        }}>
+        <PaginationSS />
+      </Box>
     </>
   );
 };

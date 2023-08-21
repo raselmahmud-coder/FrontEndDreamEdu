@@ -24,6 +24,23 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ContactUs = () => {
+  const handleConsultationForm = (even) => {
+    even.preventDefault();
+    const name = even.target[0].value;
+    const email = even.target[1].value;
+    const phone = even.target[2].value;
+    const major = even.target[3].value;
+    const message = even.target[4].value;
+    const data = {
+      name,
+      email,
+      phone,
+      major,
+      message,
+    };
+    console.log(data, "free consultation form");
+    
+  }
   return (
     <>
       <Typography
@@ -50,8 +67,9 @@ const ContactUs = () => {
         sx={{ p: 2, mb:15, }}>
         <Grid item xs={12} sm={6} md={6}>
           <Item>
-            <Box component="form">
+            <Box component="form" onSubmit={handleConsultationForm}>
               <TextField
+              required
                 sx={style}
                 id="standard-basic"
                 label="Name"
@@ -59,6 +77,7 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
+              required
                 sx={style}
                 id="standard-basic"
                 label="Email"
@@ -66,6 +85,7 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
+              required
                 sx={style}
                 id="standard-basic"
                 label="Phone"
@@ -73,6 +93,7 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
+              required
                 sx={style}
                 id="standard-basic"
                 label="Your Major"
@@ -80,13 +101,14 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
+              required
                 sx={style}
                 id="standard-basic"
                 label="Your Message"
                 variant="standard"
                 fullWidth
               />
-              <Button variant="contained">Submit</Button>
+              <Button type="submit" variant="contained">Submit</Button>
             </Box>
           </Item>
         </Grid>

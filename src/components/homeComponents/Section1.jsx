@@ -71,10 +71,7 @@ export default function Section1() {
                         spending, deta keep tab subscription lorem ipsum text.
                       </Typography>
                     </CardContent>
-                    <CardActions>
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
-                    </CardActions>
+                    
                   </Item>
                 </Card>
               </Grid>
