@@ -1,29 +1,27 @@
 import {
+  Alert,
+  AlertTitle,
   Avatar,
   Box,
   Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
   Grid,
-  ImageList,
-  ImageListItem,
   Skeleton,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
-import sichuanLogo from "../../assets/sichuan.png";
 import airplane from "../../assets/plane left side.png";
 import mountain from "../../assets/mountant.png";
 import { useGetUniversitiesQuery } from "../../features/Universities/universitiesAPI";
-import YouTubeSkeleton from "../../globals/YouTubeSkeleton";
+import { Link } from "react-router-dom";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
-  console.log(getUniversities, "from section 4");
-
+  const handleSeeMore = (id) => {
+    console.log(id, "from section 4");
+  };
   return (
     <>
       <Typography
@@ -50,9 +48,72 @@ const Section4 = () => {
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
-        {isLoading
-          ? Array.from(new Array(3)).map((_, index) => (
-              <Grid item xs={2} sm={4} md={4} key={index}>
+        {isLoading &&
+          Array.from(new Array(3)).map((_, index) => (
+            <Grid item xs={2} sm={4} md={4} key={index}>
+              <Card
+                sx={{
+                  p: 1,
+                }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}>
+                  <Skeleton variant="circular">
+                    <Avatar sx={{ width: 90, height: 90 }} />
+                  </Skeleton>
+                </Box>
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    <Skeleton width="100%" height={50}>
+                      <Typography gutterBottom variant="h6"></Typography>
+                    </Skeleton>
+                  </Box>
+                  <Skeleton variant="text" width={"100%"} height={30}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"></Typography>
+                  </Skeleton>
+                  <Skeleton variant="text" width={"100%"} height={30}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"></Typography>
+                  </Skeleton>
+                  <Skeleton variant="text" width={"100%"} height={30}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"></Typography>
+                  </Skeleton>
+                </CardContent>
+                <CardActions
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}>
+                  <Skeleton variant="rectangular" width={200} height={70}>
+                    <Button variant="contained" size="large"></Button>
+                  </Skeleton>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        {error ? (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            There is something went wrong —{" "}
+            <strong>please try again later!</strong>
+          </Alert>
+        ) : (
+          getUniversities?.universitys.map(
+            ({ id, name, description, logo }) => (
+              <Grid item xs={2} sm={4} md={4} key={id}>
                 <Card
                   sx={{
                     p: 1,
@@ -63,9 +124,11 @@ const Section4 = () => {
                       justifyContent: "center",
                       alignItems: "center",
                     }}>
-                    <Skeleton variant="circular">
-                      <Avatar sx={{ width: 90, height: 90 }} />
-                    </Skeleton>
+                    <Avatar
+                      sx={{ width: 90, height: 90 }}
+                      alt={name}
+                      src={logo}
+                    />
                   </Box>
                   <CardContent>
                     <Box
@@ -74,85 +137,33 @@ const Section4 = () => {
                         justifyContent: "center",
                         alignItems: "center",
                       }}>
-                      <Skeleton width="100%" height={50}>
-                        <Typography gutterBottom variant="h6"></Typography>
-                      </Skeleton>
+                      <Typography gutterBottom variant="h6">
+                        {name}
+                      </Typography>
                     </Box>
-                    <Skeleton variant="text" width={"100%"} height={30}>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"></Typography>
-                    </Skeleton>
-                    <Skeleton variant="text" width={"100%"} height={30}>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"></Typography>
-                    </Skeleton>
-                    <Skeleton variant="text" width={"100%"} height={30}>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"></Typography>
-                    </Skeleton>
+                    <Typography variant="body2" color="text.secondary">
+                      {description.slice(0, 100)}...
+                    </Typography>
                   </CardContent>
                   <CardActions
                     sx={{
                       display: "flex",
                       justifyContent: "center",
                     }}>
-                    <Skeleton variant="rectangular" width={200} height={70}>
-                      <Button variant="contained" size="large"></Button>
-                    </Skeleton>
+                    <Link to={`/university/${id}`}>
+                      <Button
+                        variant="contained"
+                        size="large"
+                       >
+                        See More
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>
-            ))
-          : getUniversities?.universitys.map(
-              ({ id, name, description, logo }) => (
-                <Grid item xs={2} sm={4} md={4} key={id}>
-                  <Card
-                    sx={{
-                      p: 1,
-                    }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}>
-                      <Avatar
-                        sx={{ width: 90, height: 90 }}
-                        alt={name}
-                        src={logo}
-                      />
-                    </Box>
-                    <CardContent>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}>
-                        <Typography gutterBottom variant="h6">
-                          {name}
-                        </Typography>
-                      </Box>
-                      <Typography variant="body2" color="text.secondary">
-                        {description}
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}>
-                      <Button variant="contained" size="large">
-                        See More
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ),
-            )}
+            ),
+          )
+        )}
         <Button
           variant="contained"
           size="large"

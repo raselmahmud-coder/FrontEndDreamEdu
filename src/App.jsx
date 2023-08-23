@@ -22,6 +22,7 @@ import DashboardPage from "./pages/admin/DashboardPage";
 import Blogs from "./pages/admin/blogs/Blogs";
 import DashboardOverview from "./pages/admin/dashboard/DashboardOverview";
 import Users from "./pages/admin/users/Users";
+import UniversityDetailPage from "./pages/detailsPages/UniversityDetailPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -59,7 +60,7 @@ const App = () => {
             path="/apply-for-admission"
             element={<ApplyForAdmissionPage />}
           />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/university/:id" element={<UniversityDetailPage />} />
           {/* Private route start */}
           <Route path="/admin" element={<DashboardPage />}>
             <Route index path="dashboard" element={<DashboardOverview />} />

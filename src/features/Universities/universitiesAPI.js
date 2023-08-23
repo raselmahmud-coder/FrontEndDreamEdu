@@ -17,7 +17,13 @@ export const universitiesAPI = APISlice.injectEndpoints({
       //   }
       // },
     }),
-   
+    getUniversity: builder.query({
+      query: ({ id }) => ({
+        url: `/api/universitys/${id}/`,
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useGetUniversitiesQuery } = universitiesAPI;
+export const { useGetUniversitiesQuery, useGetUniversityQuery } =
+  universitiesAPI;
