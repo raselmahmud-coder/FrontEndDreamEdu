@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,7 +13,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardMedia,
   Badge,
   Typography,
   Rating,
@@ -100,6 +99,7 @@ export default function StudentFeedbacks() {
         }}
         style={{
           zIndex: 0,
+          height: "60vh",
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}

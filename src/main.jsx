@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./globals/index.css";
+import "./styles/index.css";
 import "@fontsource/titillium-web/200.css";
 import "@fontsource/titillium-web/300.css";
 import "@fontsource/titillium-web/400.css";

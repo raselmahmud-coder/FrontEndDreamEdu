@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import ResponsiveAppBar from "./globals/ResponsiveAppBar";
+import ResponsiveAppBar from "./globalsComponents/ResponsiveAppBar";
 import HomePage from "./pages/HomePage";
 import {
   ThemeProvider,
@@ -8,21 +8,21 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Footer from "./globals/Footer";
+import Footer from "./globalsComponents/Footer";
 import { useMediaQuery } from "@mui/material";
-import AboutUsPage from "./pages/AboutUsPage";
-import NotFoundPage from "./globals/NotFoundPage";
-import ImportantTipsPage from "./pages/ImportantTipsPage";
-import SuccessStoryPage from "./pages/SuccessStoryPage";
-import SingleBlogPostPage from "./pages/SingleBlogPostPage";
-import ApplyForAdmissionPage from "./pages/ApplyForAdmissionPage";
-import FreeConsultationPage from "./pages/FreeConsultationPage";
-import LoginPage from "./pages/LoginPage";
-import DashboardPage from "./pages/admin/DashboardPage";
-import Blogs from "./pages/admin/blogs/Blogs";
-import DashboardOverview from "./pages/admin/dashboard/DashboardOverview";
-import Users from "./pages/admin/users/Users";
-import UniversityDetailPage from "./pages/detailsPages/UniversityDetailPage";
+import LazyLoading from "./globalsComponents/LazyLoading";
+const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
+const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
+const ImportantTipsPage = lazy(() => import("./pages/ImportantTipsPage"));
+const SuccessStoryPage = lazy(() => import("./pages/SuccessStoryPage"));
+const SingleBlogPostPage = lazy(() => import("./pages/SingleBlogPostPage"));
+const ApplyForAdmissionPage = lazy(() =>
+  import("./pages/ApplyForAdmissionPage"),
+);
+const FreeConsultationPage = lazy(() => import("./pages/FreeConsultationPage"));
+const UniversityDetailPage = lazy(() =>
+  import("./pages/detailsPages/UniversityDetailPage"),
+);
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -38,7 +38,6 @@ const App = () => {
       mode: isDarkMode ? "dark" : "light",
     },
   });
-
   const responsiveTheme = responsiveFontSizes(darkTheme);
 
   return (
@@ -49,6 +48,7 @@ const App = () => {
           mode={isDarkMode}
           onClick={() => setIsDarkMode(!isDarkMode)}
         />
+        <Suspense fallback={<LazyLoading />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
@@ -61,17 +61,11 @@ const App = () => {
             element={<ApplyForAdmissionPage />}
           />
           <Route path="/university/:id" element={<UniversityDetailPage />} />
-          {/* Private route start */}
-          <Route path="/admin" element={<DashboardPage />}>
-            <Route index path="dashboard" element={<DashboardOverview />} />
-            <Route path="users" element={<Users />} />
-            <Route path="blogs" element={<Blogs />} />
-          </Route>
-          {/* Private route end */}
-
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
+          </Routes>
+          
+          </Suspense>
+          <Footer />
       </ThemeProvider>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetUniversityQuery } from "../../features/Universities/universitiesAPI";
 import MainFeaturedPost from "../../components/universityComponents/MainFeaturePost";
-import ErrorShow from "../../globals/ErrorShow";
+import ErrorShow from "../../globalsComponents/ErrorShow";
 import { Box, CircularProgress } from "@mui/material";
 
 const UniversityDetailPage = () => {
