@@ -7,49 +7,161 @@ import {
   CardActionArea,
   CardContent,
   Grid,
-  Rating,
   Typography,
+  Rating,
+  Button,
+  Skeleton,
 } from "@mui/material";
-import { styled } from "@mui/styles";
 import StarIcon from "@mui/icons-material/Star";
+import styled from "@emotion/styled";
+import { useGetFeedbacksQuery } from "../../features/Studentfeedbak/StudentFeedbackAPI";
 import PaginationSS from "./PaginationSS";
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: "#44b700",
+    color: "#44b700",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    "&::after": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      animation: "ripple 1.2s infinite ease-in-out",
+      border: "1px solid currentColor",
+      content: '""',
+    },
+  },
+  "@keyframes ripple": {
+    "0%": {
+      transform: "scale(.8)",
+      opacity: 1,
+    },
+    "100%": {
+      transform: "scale(2.4)",
+      opacity: 0,
+    },
+  },
+}));
 const labels = {
-  0.5: "Useless",
   1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
+  2: "Poor",
   3: "Ok+",
-  3.5: "Good",
   4: "Good+",
-  4.5: "Excellent",
   5: "Excellent+",
 };
-
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
-}
 const SSComp = () => {
   const [value, setValue] = React.useState(4);
-  const [hover, setHover] = React.useState(-1);
-  return (
-    <>
-      <Typography
-        variant="h1"
-        sx={{
-          textAlign: "center",
-          my: 5,
-        }}>
-        Our Success story
-      </Typography>
+  const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
+
+  // render the loading state
+  let content;
+  if (isLoading) {
+    content = (
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2, mb: 8 }}>
-        {Array.from(new Array(3)).map((_, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+        sx={{ p: 2 }}>
+        {Array.from(new Array(4)).map((_, index) => (
+          <Grid item xs={12} sm={6} md={6}>
+            <Card key={index}>
+              <CardActionArea
+                sx={{
+                  p: 1,
+                }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "20px",
+                  }}>
+                  <StyledBadge
+                    overlap="circular"
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    variant="dot">
+                    <Skeleton variant="circular">
+                      <Avatar
+                        sx={{ width: 90, height: 90 }}
+                        alt="Remy Sharp"
+                        src="https://mui.com/static/images/avatar/1.jpg"
+                      />
+                    </Skeleton>
+                  </StyledBadge>
+                  <Box>
+                    <Skeleton
+                      variant="rounded"
+                      width={"100%"}
+                      height={30}
+                      animation="wave">
+                      <Rating
+                        name="read-only"
+                        readOnly
+                        value={value}
+                        emptyIcon={
+                          <StarIcon
+                            style={{ opacity: 0.55 }}
+                            fontSize="inherit"
+                          />
+                        }
+                      />
+                    </Skeleton>
+                    <Skeleton
+                      sx={{ mt: 2 }}
+                      width={"100%"}
+                      variant="text"
+                      animation="wave"
+                      height={25}></Skeleton>
+                  </Box>
+                </Box>
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}>
+                    <Skeleton
+                      variant="text"
+                      width="50%"
+                      height={20}
+                      animation="wave"></Skeleton>
+                    <Skeleton
+                      variant="text"
+                      width="50%"
+                      height={20}
+                      animation="wave"></Skeleton>
+                  </Box>
+                  <Skeleton width="100%" height={90} variant="text">
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"></Typography>
+                  </Skeleton>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    );
+  } else if (isError) {
+    content = <ErrorShow errorData={"Something went wrong"} />;
+  } else if (!isLoading && !isError && feedbacks.feedback.length) {
+    content = (
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        sx={{ p: 2 }}>
+        {feedbacks.feedback.map((feedback) => (
+          <Grid item xs={12} sm={6} md={6} key={feedback.id}>
             <Card>
               <CardActionArea
                 sx={{
@@ -61,24 +173,24 @@ const SSComp = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                   }}>
-                  <Avatar
-                    sx={{ width: 90, height: 90 }}
-                    alt="Remy Sharp"
-                    src="https://mui.com/static/images/avatar/1.jpg"
-                  />
-
+                  <StyledBadge
+                    overlap="circular"
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    variant="dot">
+                    <Avatar
+                      sx={{ width: 90, height: 90 }}
+                      alt="Remy Sharp"
+                      src="https://mui.com/static/images/avatar/1.jpg"
+                    />
+                  </StyledBadge>
                   <Box>
                     <Rating
-                      name="hover-feedback"
-                      value={value}
-                      precision={0.5}
-                      getLabelText={getLabelText}
-                      onChange={(event, newValue) => {
-                        setValue(newValue);
-                      }}
-                      onChangeActive={(event, newHover) => {
-                        setHover(newHover);
-                      }}
+                      name="read-only"
+                      readOnly
+                      value={feedback.rating}
                       emptyIcon={
                         <StarIcon
                           style={{ opacity: 0.55 }}
@@ -86,10 +198,8 @@ const SSComp = () => {
                         />
                       }
                     />
-                    {value !== null && (
-                      <Box sx={{ mt: 1 }}>
-                        {labels[hover !== -1 ? hover : value]}
-                      </Box>
+                    {feedback.rating && (
+                      <Box sx={{ mt: 1 }}>{labels[feedback.rating]}</Box>
                     )}
                   </Box>
                 </Box>
@@ -100,17 +210,15 @@ const SSComp = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                     }}>
-                    <Typography gutterBottom variant="h6">
-                      McDonald
+                    <Typography gutterBottom variant="subtitle1">
+                      {feedback.name}
                     </Typography>
-                    <Typography gutterBottom variant="h6">
-                      from Italy
+                    <Typography gutterBottom variant="subtitle1">
+                      {feedback.country}
                     </Typography>
                   </Box>
                   <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
+                    {feedback.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -118,6 +226,20 @@ const SSComp = () => {
           </Grid>
         ))}
       </Grid>
+    );
+  }
+
+  return (
+    <>
+      <Typography
+        variant="h1"
+        sx={{
+          textAlign: "center",
+          my: 5,
+        }}>
+        Our Success story
+      </Typography>
+      {content}
       <Box
         sx={{
           display: "flex",

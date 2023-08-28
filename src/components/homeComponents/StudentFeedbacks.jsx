@@ -18,8 +18,12 @@ import {
   Rating,
   Box,
   Button,
+  Skeleton,
 } from "@mui/material";
 import styled from "@emotion/styled";
+import { useGetFeedbacksQuery } from "../../features/Studentfeedbak/StudentFeedbackAPI";
+import ErrorShow from "../../globalsComponents/ErrorShow";
+import { Link } from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -50,24 +54,100 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 const labels = {
-  0.5: "Useless",
   1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
+  2: "Poor",
   3: "Ok+",
-  3.5: "Good",
   4: "Good+",
-  4.5: "Excellent",
   5: "Excellent+",
 };
 
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
-}
 export default function StudentFeedbacks() {
-  const [value, setValue] = React.useState(4);
-  const [hover, setHover] = React.useState(-1);
+  const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
+  const [value, setValue] = React.useState(5);
+  // render the loading state
+  let content;
+  if (isLoading) {
+    content = Array.from(new Array(4)).map((_, index) => (
+      <SwiperSlide key={index}>
+        <Card>
+          <CardActionArea
+            sx={{
+              p: 1,
+            }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}>
+              <StyledBadge
+                overlap="circular"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                variant="dot">
+                <Skeleton variant="circular">
+                  <Avatar
+                    sx={{ width: 90, height: 90 }}
+                    alt="Remy Sharp"
+                    src="https://mui.com/static/images/avatar/1.jpg"
+                  />
+                </Skeleton>
+              </StyledBadge>
+              <Box>
+                <Skeleton
+                  variant="rounded"
+                  width={"100%"}
+                  height={30}
+                  animation="wave">
+                  <Rating
+                    name="read-only"
+                    readOnly
+                    value={value}
+                    emptyIcon={
+                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                    }
+                  />
+                </Skeleton>
+                <Skeleton
+                  sx={{ mt: 1 }}
+                  variant="text"
+                  animation="wave"
+                  height={20}>
+                  <Box></Box>
+                </Skeleton>
+              </Box>
+            </Box>
+            <CardContent>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}>
+                <Skeleton variant="text" height={20} animation="wave">
+                  <Typography gutterBottom variant="h6"></Typography>
+                </Skeleton>
+
+                <Skeleton variant="text" height={20} animation="wave">
+                  <Typography gutterBottom variant="h6">
+                    from Italy
+                  </Typography>
+                </Skeleton>
+              </Box>
+              <Skeleton width="100%" height={50} variant="text">
+                <Typography variant="body2" color="text.secondary"></Typography>
+              </Skeleton>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </SwiperSlide>
+    ));
+  } else if (isError) {
+    content = <ErrorShow errorData={"Something went wrong"} />;
+  }
+  console.log(feedbacks, "hello feedback");
   return (
     <>
       <Typography
@@ -99,99 +179,179 @@ export default function StudentFeedbacks() {
         }}
         style={{
           zIndex: 0,
-          height: "60vh",
+          height: "50vh",
+          margin: "30px 0px",
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}
         className="mySwiper">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <SwiperSlide key={i}>
-            <Card>
-              <CardActionArea
-                sx={{
-                  p: 1,
-                }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}>
-                  <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    variant="dot">
-                    <Avatar
-                      sx={{ width: 90, height: 90 }}
-                      alt="Remy Sharp"
-                      src="https://mui.com/static/images/avatar/1.jpg"
-                    />
-                  </StyledBadge>
-                  <Box>
-                    <Rating
-                      name="hover-feedback"
-                      value={value}
-                      precision={0.5}
-                      getLabelText={getLabelText}
-                      onChange={(event, newValue) => {
-                        setValue(newValue);
-                      }}
-                      onChangeActive={(event, newHover) => {
-                        setHover(newHover);
-                      }}
-                      emptyIcon={
-                        <StarIcon
-                          style={{ opacity: 0.55 }}
-                          fontSize="inherit"
-                        />
-                      }
-                    />
-                    {value !== null && (
-                      <Box sx={{ mt: 1 }}>
-                        {labels[hover !== -1 ? hover : value]}
-                      </Box>
-                    )}
-                  </Box>
-                </Box>
-                <CardContent>
-                  <Box
+        {isLoading
+          ? Array.from(new Array(4)).map((_, index) => (
+              <SwiperSlide key={index}>
+                <Card>
+                  <CardActionArea
                     sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      p: 1,
                     }}>
-                    <Typography gutterBottom variant="h6">
-                      McDonald
-                    </Typography>
-                    <Typography gutterBottom variant="h6">
-                      from Italy
-                    </Typography>
-                  </Box>
-                  <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </SwiperSlide>
-        ))}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        gap: "20px",
+                      }}>
+                      <StyledBadge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        variant="dot">
+                        <Skeleton variant="circular">
+                          <Avatar
+                            sx={{ width: 90, height: 90 }}
+                            alt="Remy Sharp"
+                            src="https://mui.com/static/images/avatar/1.jpg"
+                          />
+                        </Skeleton>
+                      </StyledBadge>
+                      <Box>
+                        <Skeleton
+                          variant="rounded"
+                          width={"100%"}
+                          height={30}
+                          animation="wave">
+                          <Rating
+                            name="read-only"
+                            readOnly
+                            value={value}
+                            emptyIcon={
+                              <StarIcon
+                                style={{ opacity: 0.55 }}
+                                fontSize="inherit"
+                              />
+                            }
+                          />
+                        </Skeleton>
+                        <Skeleton
+                          sx={{ mt: 2 }}
+                          width={"100%"}
+                          variant="text"
+                          animation="wave"
+                          height={25}></Skeleton>
+                      </Box>
+                    </Box>
+                    <CardContent>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: "20px",
+                        }}>
+                        <Skeleton
+                          variant="text"
+                          width="50%"
+                          height={20}
+                          animation="wave"></Skeleton>
+                        <Skeleton
+                          variant="text"
+                          width="50%"
+                          height={20}
+                          animation="wave"></Skeleton>
+                      </Box>
+                      <Skeleton width="100%" height={90} variant="text">
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"></Typography>
+                      </Skeleton>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </SwiperSlide>
+            ))
+          : feedbacks.feedback.map((feedback) => (
+              <SwiperSlide key={feedback.id}>
+                <Card>
+                  <CardActionArea
+                    sx={{
+                      p: 1,
+                    }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}>
+                      <StyledBadge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        variant="dot">
+                        <Avatar
+                          sx={{ width: 90, height: 90 }}
+                          alt="Remy Sharp"
+                          src="https://mui.com/static/images/avatar/1.jpg"
+                        />
+                      </StyledBadge>
+                      <Box>
+                        <Rating
+                          name="read-only"
+                          readOnly
+                          value={feedback.rating}
+                          emptyIcon={
+                            <StarIcon
+                              style={{ opacity: 0.55 }}
+                              fontSize="inherit"
+                            />
+                          }
+                        />
+                        {feedback.rating && (
+                          <Box sx={{ mt: 1 }}>{labels[feedback.rating]}</Box>
+                        )}
+                      </Box>
+                    </Box>
+                    <CardContent>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}>
+                        <Typography gutterBottom variant="subtitle1">
+                          {feedback.name}
+                        </Typography>
+                        <Typography gutterBottom variant="subtitle1">
+                          {feedback.country}
+                        </Typography>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary">
+                        {feedback.description.slice(0, 100)}...
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </SwiperSlide>
+            ))}
       </Swiper>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
         }}>
-        <Button
-          sx={{
-            py: 3,
-            px: 6,
-          }}
-          variant="contained"
-          size="large">
-          See More
-        </Button>
+        <Link to="/success-story">
+          <Button
+            sx={{
+              py: 3,
+              px: 6,
+            }}
+            variant="contained"
+            size="large">
+            See More
+          </Button>
+        </Link>
       </Box>
     </>
   );
