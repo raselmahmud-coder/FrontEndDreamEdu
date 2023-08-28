@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import FrequentlyAskQuestion from "./FrequentlyAskQuestion";
+import { Link } from "react-router-dom";
 
 const Section7 = () => {
   return (
@@ -45,16 +46,18 @@ const Section7 = () => {
               justifyContent: "center",
               marginTop: 34,
             }}>
-            <Button
-              variant="contained"
-              sx={{
-                py: 3,
-                px: 5,
-                borderRadius: "50px",
-              }}
-              size="large">
-              Ask your question
-            </Button>
+            <Link to="/free-consultation">
+              <Button
+                variant="contained"
+                sx={{
+                  py: 3,
+                  px: 5,
+                  borderRadius: "50px",
+                }}
+                size="large">
+                Ask your question
+              </Button>
+            </Link>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>

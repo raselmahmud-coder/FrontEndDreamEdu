@@ -10,6 +10,8 @@ import {
 import AutoModeIcon from "@mui/icons-material/AutoMode";
 import gridImg from "../../assets/student-in-library.png";
 import { AvTimer, Diversity3, School } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
 
 const Section5 = () => {
   return (
@@ -52,7 +54,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    5+
+                    <AnimatedNumber value={5} />+
                   </Typography>
                   <AutoModeIcon
                     sx={{
@@ -80,7 +82,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    576+
+                    <AnimatedNumber value={576} />+
                   </Typography>
                   <AvTimer
                     sx={{
@@ -115,7 +117,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    225+
+                    <AnimatedNumber value={226} />+
                   </Typography>
                   <Diversity3
                     sx={{
@@ -143,7 +145,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    125+
+                    <AnimatedNumber value={126} />+
                   </Typography>
                   <School
                     sx={{
@@ -163,16 +165,18 @@ const Section5 = () => {
               justifyContent: "center",
               marginTop: 34,
             }}>
-            <Button
-              variant="contained"
-              sx={{
-                py: 3,
-                px: 5,
-                borderRadius: "50px",
-              }}
-              size="large">
-              Get Free Consultation
-            </Button>
+            <Link to="/free-consultation">
+              <Button
+                variant="contained"
+                sx={{
+                  py: 3,
+                  px: 5,
+                  borderRadius: "50px",
+                }}
+                size="large">
+                Get Free Consultation
+              </Button>
+            </Link>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>

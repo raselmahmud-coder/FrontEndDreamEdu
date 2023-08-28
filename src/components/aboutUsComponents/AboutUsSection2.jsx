@@ -36,7 +36,7 @@ const AboutUsSection2 = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {Array.from(new Array(3)).map((item, index) => (
           <Grid item xs={12} sm={4} md={4} key={index}>
-            <Card>
+            <Card sx={{py:3}}>
               <CardContent
                 sx={{
                   display: "flex",

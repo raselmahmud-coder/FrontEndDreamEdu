@@ -64,26 +64,28 @@ export default function Section2() {
               display: "flex",
               justifyContent: "space-between",
             }}>
-            <Link to={'/apply-for-admission'}>
-            <Button
-              sx={{
-                py: 3,
-                px: 6,
-              }}
-              variant="contained"
-              size="large">
-              Apply Now
-            </Button>
-                </Link>
-            <Button
-              sx={{
-                py: 3,
-                px: 6,
-              }}
-              variant="outlined"
-              size="large">
-              Learn More
-            </Button>
+            <Link to={"/apply-for-admission"}>
+              <Button
+                sx={{
+                  py: 3,
+                  px: 6,
+                }}
+                variant="contained"
+                size="large">
+                Apply Now
+              </Button>
+            </Link>
+            <Link to={"/important-tips"}>
+              <Button
+                sx={{
+                  py: 3,
+                  px: 6,
+                }}
+                variant="outlined"
+                size="large">
+                Learn More
+              </Button>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
