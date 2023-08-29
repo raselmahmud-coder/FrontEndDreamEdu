@@ -20,9 +20,7 @@ import SlidingCard from "../../globalsComponents/SlidingCard";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
-  const handleSeeMore = (id) => {
-    console.log(id, "from section 4");
-  };
+  
   return (
     <>
       <Typography
@@ -59,6 +57,7 @@ const Section4 = () => {
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
+        {/* Loading components */}
         {isLoading &&
           Array.from(new Array(3)).map((_, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
@@ -124,7 +123,7 @@ const Section4 = () => {
         ) : (
           getUniversities?.universitys.map(
             ({ id, name, description, logo }) => (
-              <Grid item xs={2} sm={4} md={4} key={id}>
+              <Grid item xs={12} sm={4} md={4} key={id}>
                 <Card
                   sx={{
                     p: 1,

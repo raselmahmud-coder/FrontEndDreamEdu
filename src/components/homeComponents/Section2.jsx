@@ -16,6 +16,7 @@ import ellipse1 from "../../assets/Ellipse-01.png";
 import planImg from "../../assets/plane.png";
 import ellipse2 from "../../assets/Ellipse-02.png";
 import { Link } from "react-router-dom";
+import SlidingCard from "../../globalsComponents/SlidingCard";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -90,31 +91,36 @@ export default function Section2() {
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <CardMedia
-              sx={{
-                position: "relative",
-                top: "-65px",
-                left: "375px",
-                // zIndex: "1",
-                maxWidth: "100%",
-                maxHeight: "120px",
-              }}
-              component="img"
-              alt="green iguana"
-              image={planImg}
-            />
+            <SlidingCard
+              animationA={"translateX(0)"}
+              animationB={"translateX(-200%)"}>
+              <CardMedia
+                sx={{
+                  position: "relative",
+                  top: "-65px",
+                  left: "375px",
+                  maxWidth: "100%",
+                  maxHeight: "120px",
+                }}
+                component="img"
+                alt="green iguana"
+                image={planImg}
+              />
             <CardMedia
               sx={{
                 // position: "relative",
                 // top: "-65px",
                 // left: "375px",
                 maxWidth: "100%",
-                maxHeight: "100px",
+                maxHeight: "160px",
               }}
               component="img"
               alt="Ellipse"
               image={ellipse2}
-            />
+              />
+              </SlidingCard>
+              <SlidingCard animationA={"translateY(0)"}
+              animationB={"translateY(100%)"}>
             <CardMedia
               sx={{
                 maxWidth: "420px",
@@ -125,7 +131,8 @@ export default function Section2() {
               component="img"
               alt="green iguana"
               image={headerImg}
-            />
+              />
+              </SlidingCard>
           </Box>
         </Grid>
       </Grid>

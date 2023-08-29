@@ -10,10 +10,12 @@ import Section5 from "../components/homeComponents/Section5";
 import Section6 from "../components/homeComponents/Section6";
 import Section7 from "../components/homeComponents/Section7";
 import YouTubeFeeds from "../components/homeComponents/YouTubeFeeds";
+import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 
 const HomePage = () => {
   return (
     <>
+      <DynamicPageTitle pageTitle="Home Page" />
       <BannerCarousel />
       <Container maxWidth="xl">
         <Section1 />
@@ -23,7 +25,7 @@ const HomePage = () => {
         <Section5 />
         <Section6 />
         <Section7 />
-        <YouTubeFeeds/>
+        <YouTubeFeeds />
         <FacebookFeeds />
       </Container>
     </>

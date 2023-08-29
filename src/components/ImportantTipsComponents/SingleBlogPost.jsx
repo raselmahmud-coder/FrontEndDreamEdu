@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn, Twitter, CopyAll } from "@mui/icons-material";
 
@@ -20,9 +19,7 @@ const actions = [
   { icon: <CopyAll />, name: "Copy URL" },
 ];
 
-const SingleBlogPost = () => {
-  const { id } = useParams();
-  console.log(id, "hello from single blog post");
+const SingleBlogPost = ({img, category, author, title, description}) => {
   return (
     <>
       <Card>
