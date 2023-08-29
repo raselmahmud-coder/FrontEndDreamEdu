@@ -12,20 +12,23 @@ import gridImg from "../../assets/student-in-library.png";
 import { AvTimer, Diversity3, School } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
+import SlidingCard from "../../globalsComponents/SlidingCard";
 
 const Section5 = () => {
   return (
     <>
-      <Typography
-        variant="h3"
-        sx={{
-          fontWeight: "bold",
-          textAlign: "center",
-          mt: "132px",
-          mb: "40px",
-        }}>
-        CORE STRENGTH
-      </Typography>
+      <SlidingCard animationA={"translateY(0)"} animationB={"translateY(100%)"}>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: "bold",
+            textAlign: "center",
+            mt: "132px",
+            mb: "40px",
+          }}>
+          CORE STRENGTH
+        </Typography>
+      </SlidingCard>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}

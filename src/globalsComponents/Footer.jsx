@@ -12,7 +12,7 @@ import {
 import MailLockIcon from "@mui/icons-material/MailLock";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -50,7 +50,7 @@ const Footer = () => {
     <Box
       component="section"
       sx={{
-        mt:8,
+        mt: 8,
       }}>
       <Grid
         container
@@ -59,7 +59,7 @@ const Footer = () => {
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
-          mb:5
+          mb: 5,
         }}>
         <Grid item xs={12} sm={6} md={6}>
           <Box
@@ -109,7 +109,7 @@ const Footer = () => {
                 borderRadius: "50px",
               }}
               size="large">
-              <NotificationsActiveIcon/>
+              <NotificationsActiveIcon />
               Subscribe Now
             </Button>
           </Box>
@@ -140,7 +140,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Terms and conditions
@@ -155,7 +155,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Privacy policy
@@ -170,7 +170,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Disclaimer and copyrights
@@ -195,7 +195,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Counselling
@@ -210,7 +210,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Admission
@@ -225,7 +225,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Visa processing
@@ -250,10 +250,10 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
-               933 Dongli International Plaza, Chenghua District, Chengdu,
+              933 Dongli International Plaza, Chenghua District, Chengdu,
               Sichuan, China.
             </Typography>
           </Box>
@@ -266,7 +266,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               E-mail: official@dreameduinfo.com
@@ -281,7 +281,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{
-                my:1,
+                my: 1,
                 fontWeight: "bold",
               }}>
               Phone: +86-19150064373
@@ -293,11 +293,17 @@ const Footer = () => {
         component="h6"
         variant={"body2"}
         sx={{
-          my:3,
+          my: 3,
           textAlign: "center",
         }}>
         © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights reserved.
-        Powered by Programming Dude
+        Powered by{" "}
+        <a
+          href="https://facebook.com/raselmahmud.coder"
+          target="_blank"
+          rel="noopener noreferrer">
+          Programming Dude
+        </a>
       </Typography>
       <ScrollTop
         sx={{

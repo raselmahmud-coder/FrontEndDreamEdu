@@ -2,14 +2,17 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 
-const SlidingCard = ({ children }) => {
+const SlidingCard = ({ children, animationA, animationB }) => {
   const { inView, ref } = useInView({ triggerOnce: true });
-
+console.log(children, "from sliding card children");
   const slideAnimation = useSpring({
-    transform: inView ? "translateX(0)" : "translateX(-100%)",
+    transform: inView ? `${animationA}` : `${animationB}`,
+    transition: "transform 2s ease-in-out",
     opacity: inView ? 1 : 0,
-    delay: 500,
-    duration:5000,
+    delay: 400,
+    duration: 5000,
+    tension: 170,
+    friction: 26,
   });
 
   return (

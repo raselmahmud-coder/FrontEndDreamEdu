@@ -33,13 +33,21 @@ const Section4 = () => {
       <Typography variant="body1" sx={{ textAlign: "center", mt: "12px" }}>
         We have quality partners in variety of destinations around the globe.
       </Typography>
-      <SlidingCard>
-      <CardMedia
-        sx={{ width: 240, height: 140, mx: "auto", mt: "12px" }}
-        image={airplane}
-        title="green"
+      <SlidingCard
+        animationA={"translateX(0px)"}
+        animationB={"translateX(80%)"}>
+        <CardMedia
+          sx={{
+            width: 240,
+            height: 140,
+            mx: "auto",
+            mt: "12px",
+            overflow: "hidden",
+          }}
+          image={airplane}
+          title="green"
         />
-        </SlidingCard>
+      </SlidingCard>
       <img
         width="100%"
         height="100px"
@@ -154,10 +162,7 @@ const Section4 = () => {
                       justifyContent: "center",
                     }}>
                     <Link to={`/university/${id}`}>
-                      <Button
-                        variant="contained"
-                        size="large"
-                       >
+                      <Button variant="contained" size="large">
                         See More
                       </Button>
                     </Link>
