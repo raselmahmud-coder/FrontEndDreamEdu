@@ -16,6 +16,7 @@ import airplane from "../../assets/plane left side.png";
 import mountain from "../../assets/mountant.png";
 import { useGetUniversitiesQuery } from "../../features/Universities/universitiesAPI";
 import { Link } from "react-router-dom";
+import SlidingCard from "../../globalsComponents/SlidingCard";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
@@ -32,11 +33,13 @@ const Section4 = () => {
       <Typography variant="body1" sx={{ textAlign: "center", mt: "12px" }}>
         We have quality partners in variety of destinations around the globe.
       </Typography>
+      <SlidingCard>
       <CardMedia
         sx={{ width: 240, height: 140, mx: "auto", mt: "12px" }}
         image={airplane}
         title="green"
-      />
+        />
+        </SlidingCard>
       <img
         width="100%"
         height="100px"

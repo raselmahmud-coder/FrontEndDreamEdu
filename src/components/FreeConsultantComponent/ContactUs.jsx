@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   TextField,
@@ -12,6 +13,8 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import { useAddFreeConsultationMutation } from "../../features/FreeConsultation/FreeConsultationAPI";
+import PositionedSnackbar from "../../globalsComponents/PositionSnakBar";
 const style = {
   my: 2,
 };
@@ -24,23 +27,30 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ContactUs = () => {
-  const handleConsultationForm = (even) => {
+  const [
+    addFreeConsultation,
+    { isError, isLoading, data: consultationData, isSuccess },
+  ] = useAddFreeConsultationMutation();
+
+  const handleConsultationForm = async (even) => {
     even.preventDefault();
     const name = even.target[0].value;
     const email = even.target[1].value;
     const phone = even.target[2].value;
-    const major = even.target[3].value;
-    const message = even.target[4].value;
+    const message = even.target[3].value;
     const data = {
       name,
       email,
       phone,
-      major,
       message,
     };
-    console.log(data, "free consultation form");
-    
-  }
+    await addFreeConsultation(data);
+    even.target[0].value = "";
+    even.target[1].value = "";
+    even.target[2].value = "";
+    even.target[3].value = "";
+  };
+
   return (
     <>
       <Typography
@@ -59,17 +69,19 @@ const ContactUs = () => {
         }}>
         For free consultation
       </Typography>
-
+      {consultationData?.id && isSuccess && (
+        <PositionedSnackbar isOpen={true} />
+      )}
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2, mb:15, }}>
+        sx={{ p: 2, mb: 15 }}>
         <Grid item xs={12} sm={6} md={6}>
           <Item>
             <Box component="form" onSubmit={handleConsultationForm}>
               <TextField
-              required
+                required
                 sx={style}
                 id="standard-basic"
                 label="Name"
@@ -77,7 +89,7 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
-              required
+                required
                 sx={style}
                 id="standard-basic"
                 label="Email"
@@ -85,7 +97,7 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
-              required
+                required
                 sx={style}
                 id="standard-basic"
                 label="Phone"
@@ -93,22 +105,16 @@ const ContactUs = () => {
                 variant="standard"
               />
               <TextField
-              required
-                sx={style}
-                id="standard-basic"
-                label="Your Major"
-                fullWidth
-                variant="standard"
-              />
-              <TextField
-              required
+                required
                 sx={style}
                 id="standard-basic"
                 label="Your Message"
                 variant="standard"
                 fullWidth
               />
-              <Button type="submit" variant="contained">Submit</Button>
+              <Button disabled={isLoading} type="submit" variant="contained">
+                {isLoading ? <CircularProgress color="success" /> : "Submit"}
+              </Button>
             </Box>
           </Item>
         </Grid>
@@ -146,7 +152,7 @@ const ContactUs = () => {
                 Sichuan, China.
               </Typography>
             </Box>
-           
+
             <Box
               sx={{
                 display: "flex",
@@ -206,6 +212,7 @@ const ContactUs = () => {
           </Item>
         </Grid>
       </Grid>
+      {/* <PositionedSnackbar/> */}
     </>
   );
 };

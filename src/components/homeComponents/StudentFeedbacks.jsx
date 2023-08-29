@@ -147,7 +147,6 @@ export default function StudentFeedbacks() {
   } else if (isError) {
     content = <ErrorShow errorData={"Something went wrong"} />;
   }
-  console.log(feedbacks, "hello feedback");
   return (
     <>
       <Typography
