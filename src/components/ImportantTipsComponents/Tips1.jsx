@@ -15,12 +15,15 @@ import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import PaginationSS from "../successStoryComponents/PaginationSS";
+import { useGetBlogsQuery } from "../../features/Blogs/BlogsAPI";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
 ];
 const Tips1 = () => {
+  const { data, isError, isLoading } = useGetBlogsQuery();
+  console.log(data, "blog data");
   return (
     <>
       <Typography

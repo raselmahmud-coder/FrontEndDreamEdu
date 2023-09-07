@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import ResponsiveAppBar from "./globalsComponents/ResponsiveAppBar";
-import HomePage from "./pages/HomePage";
 import {
   ThemeProvider,
   createTheme,
@@ -11,6 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./globalsComponents/Footer";
 import { useMediaQuery } from "@mui/material";
 import LazyLoading from "./globalsComponents/LazyLoading";
+const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
 const ImportantTipsPage = lazy(() => import("./pages/ImportantTipsPage"));
@@ -49,23 +49,28 @@ const App = () => {
           onClick={() => setIsDarkMode(!isDarkMode)}
         />
         <Suspense fallback={<LazyLoading />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/important-tips" element={<ImportantTipsPage />} />
-          <Route path="/important-tips/:id" element={<SingleBlogPostPage />} />
-          <Route path="/success-story" element={<SuccessStoryPage />} />
-          <Route path="/free-consultation" element={<FreeConsultationPage />} />
-          <Route
-            path="/apply-for-admission"
-            element={<ApplyForAdmissionPage />}
-          />
-          <Route path="/university/:id" element={<UniversityDetailPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/important-tips" element={<ImportantTipsPage />} />
+            <Route
+              path="/important-tips/:id"
+              element={<SingleBlogPostPage />}
+            />
+            <Route path="/success-story" element={<SuccessStoryPage />} />
+            <Route
+              path="/free-consultation"
+              element={<FreeConsultationPage />}
+            />
+            <Route
+              path="/apply-for-admission"
+              element={<ApplyForAdmissionPage />}
+            />
+            <Route path="/university/:id" element={<UniversityDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
-          
-          </Suspense>
-          <Footer />
+        </Suspense>
+        <Footer />
       </ThemeProvider>
     </>
   );

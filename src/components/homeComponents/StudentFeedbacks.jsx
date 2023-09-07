@@ -63,89 +63,9 @@ const labels = {
 
 export default function StudentFeedbacks() {
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
-  const [value, setValue] = React.useState(5);
   // render the loading state
-  let content;
-  if (isLoading) {
-    content = Array.from(new Array(4)).map((_, index) => (
-      <SwiperSlide key={index}>
-        <Card>
-          <CardActionArea
-            sx={{
-              p: 1,
-            }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                variant="dot">
-                <Skeleton variant="circular">
-                  <Avatar
-                    sx={{ width: 90, height: 90 }}
-                    alt="Remy Sharp"
-                    src="https://mui.com/static/images/avatar/1.jpg"
-                  />
-                </Skeleton>
-              </StyledBadge>
-              <Box>
-                <Skeleton
-                  variant="rounded"
-                  width={"100%"}
-                  height={30}
-                  animation="wave">
-                  <Rating
-                    name="read-only"
-                    readOnly
-                    value={value}
-                    emptyIcon={
-                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                    }
-                  />
-                </Skeleton>
-                <Skeleton
-                  sx={{ mt: 1 }}
-                  variant="text"
-                  animation="wave"
-                  height={20}>
-                  <Box></Box>
-                </Skeleton>
-              </Box>
-            </Box>
-            <CardContent>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}>
-                <Skeleton variant="text" height={20} animation="wave">
-                  <Typography gutterBottom variant="h6"></Typography>
-                </Skeleton>
-
-                <Skeleton variant="text" height={20} animation="wave">
-                  <Typography gutterBottom variant="h6">
-                    from Italy
-                  </Typography>
-                </Skeleton>
-              </Box>
-              <Skeleton width="100%" height={50} variant="text">
-                <Typography variant="body2" color="text.secondary"></Typography>
-              </Skeleton>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </SwiperSlide>
-    ));
-  } else if (isError) {
-    content = <ErrorShow errorData={"Something went wrong"} />;
+   if (isError) {
+   return <ErrorShow errorData={"Something went wrong"} />;
   }
   return (
     <>
@@ -223,7 +143,7 @@ export default function StudentFeedbacks() {
                           <Rating
                             name="read-only"
                             readOnly
-                            value={value}
+                            value={5}
                             emptyIcon={
                               <StarIcon
                                 style={{ opacity: 0.55 }}
