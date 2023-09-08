@@ -13,7 +13,7 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { useAddFreeConsultationMutation } from "../../features/FreeConsultation/FreeConsultationAPI";
+import { useAddFreeConsultationMutation } from "../../redux/feature/FreeConsultation/FreeConsultationAPI";
 import PositionedSnackbar from "../../globalsComponents/PositionSnakBar";
 const style = {
   my: 2,

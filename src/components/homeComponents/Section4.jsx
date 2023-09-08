@@ -14,13 +14,14 @@ import {
 } from "@mui/material";
 import airplane from "../../assets/plane left side.png";
 import mountain from "../../assets/mountant.png";
-import { useGetUniversitiesQuery } from "../../features/Universities/universitiesAPI";
+import { useGetUniversitiesQuery } from "../../redux/feature/Universities/universitiesAPI";
 import { Link } from "react-router-dom";
 import SlidingCard from "../../globalsComponents/SlidingCard";
+import ErrorShow from "../../globalsComponents/ErrorShow";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
-  
+
   return (
     <>
       <Typography
@@ -115,11 +116,7 @@ const Section4 = () => {
             </Grid>
           ))}
         {error ? (
-          <Alert severity="error">
-            <AlertTitle>Error</AlertTitle>
-            There is something went wrong —{" "}
-            <strong>please try again later!</strong>
-          </Alert>
+          <ErrorShow />
         ) : (
           getUniversities?.universitys.map(
             ({ id, name, description, logo }) => (
@@ -176,7 +173,7 @@ const Section4 = () => {
           size="large"
           sx={{
             mx: "auto",
-            my: "29px",
+            mt: 9,
           }}>
           Load more
         </Button>

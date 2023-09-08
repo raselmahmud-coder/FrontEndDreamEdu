@@ -11,7 +11,7 @@ import {
   Radio,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { admissionProfileCreate } from "../../features/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 
 export default function Initialization() {
   const dispatch = useDispatch();

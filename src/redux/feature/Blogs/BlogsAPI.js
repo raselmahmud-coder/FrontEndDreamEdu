@@ -4,10 +4,16 @@ export const BlogsAPI = APISlice.injectEndpoints({
   endpoints: (builder) => ({
     getBlogs: builder.query({
       query: () => ({
-        url: `/api/contact/`,
+        url: `/api/blogs/`,
+        method: "GET",
+      }),
+    }),
+    getBlog: builder.query({
+      query: ({ id }) => ({
+        url: `/api/blogs/${id}/`,
         method: "GET",
       }),
     }),
   }),
 });
-export const { useGetBlogsQuery } = BlogsAPI;
+export const { useGetBlogsQuery, useGetBlogQuery } = BlogsAPI;

@@ -21,7 +21,7 @@ import {
   Skeleton,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import { useGetFeedbacksQuery } from "../../features/Studentfeedbak/StudentFeedbackAPI";
+import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import { Link } from "react-router-dom";
 

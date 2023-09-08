@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import styled from "@emotion/styled";
-import { useGetFeedbacksQuery } from "../../features/Studentfeedbak/StudentFeedbackAPI";
+import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import PaginationSS from "./PaginationSS";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({

@@ -9,8 +9,8 @@ import "@fontsource/titillium-web/600.css";
 import "@fontsource/titillium-web/700.css";
 import "@fontsource/titillium-web/900.css";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "./appStore/store.js";
 import { Provider } from "react-redux";
+import { store } from "./redux/appStore/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
