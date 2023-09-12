@@ -15,7 +15,7 @@ import {
 import StarIcon from "@mui/icons-material/Star";
 import styled from "@emotion/styled";
 import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
-import PaginationSS from "./PaginationSS";
+import ErrorShow from "../../globalsComponents/ErrorShow";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -53,9 +53,7 @@ const labels = {
   5: "Excellent+",
 };
 const SSComp = () => {
-  const [value, setValue] = React.useState(4);
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
-
   // render the loading state
   let content;
   if (isLoading) {
@@ -66,8 +64,8 @@ const SSComp = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2 }}>
         {Array.from(new Array(4)).map((_, index) => (
-          <Grid item xs={12} sm={6} md={6}>
-            <Card key={index}>
+          <Grid item xs={12} sm={6} md={6} key={index}>
+            <Card >
               <CardActionArea
                 sx={{
                   p: 1,
@@ -103,7 +101,7 @@ const SSComp = () => {
                       <Rating
                         name="read-only"
                         readOnly
-                        value={value}
+                       
                         emptyIcon={
                           <StarIcon
                             style={{ opacity: 0.55 }}
@@ -245,7 +243,6 @@ const SSComp = () => {
           display: "flex",
           justifyContent: "center",
         }}>
-        <PaginationSS />
       </Box>
     </>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { Container } from "@mui/material";
 import BannerCarousel from "../components/homeComponents/Banner";
-import FacebookFeeds from "../components/homeComponents/FacebookFeeds";
 import Section1 from "../components/homeComponents/Section1";
 import Section2 from "../components/homeComponents/Section2";
 import StudentFeedbacks from "../components/homeComponents/StudentFeedbacks";
@@ -26,7 +25,6 @@ const HomePage = () => {
         <Section6 />
         <Section7 />
         <YouTubeFeeds />
-        <FacebookFeeds />
       </Container>
     </>
   );

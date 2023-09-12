@@ -16,9 +16,9 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import PaginationSS from "../successStoryComponents/PaginationSS";
 import { useGetBlogsQuery } from "../../redux/feature/Blogs/BlogsAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
+import PaginationSS from "./PaginationSS";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },

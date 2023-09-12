@@ -13,6 +13,8 @@ import MailLockIcon from "@mui/icons-material/MailLock";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -165,16 +167,23 @@ const Footer = () => {
             sx={{
               display: "flex",
               alignItems: "center",
+              ml: 1,
+              gap: 5,
             }}>
-            <PlayArrowIcon />
-            <Typography
-              variant="subtitle1"
-              sx={{
-                my: 1,
-                fontWeight: "bold",
-              }}>
-              Disclaimer and copyrights
-            </Typography>
+            <a
+              title="Facebook Page"
+              href="https://facebook.com/DreamEduChina"
+              target="_blank"
+              rel="noopener noreferrer">
+              <FacebookRoundedIcon color="primary" fontSize={"large"} />
+            </a>
+            <a
+              title="YouTube Channel"
+              href="https://www.youtube.com/@dreameduchina5640"
+              target="_blank"
+              rel="noopener noreferrer">
+              <YouTubeIcon color="primary" fontSize={"large"} />
+            </a>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -293,7 +302,8 @@ const Footer = () => {
         component="h6"
         variant={"body2"}
         sx={{
-          my: 3,
+          mt: 5,
+          mb: 1,
           textAlign: "center",
         }}>
         © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights reserved.
