@@ -1,6 +1,4 @@
 import {
-  Alert,
-  AlertTitle,
   Avatar,
   Box,
   Button,
@@ -134,7 +132,7 @@ const Section4 = () => {
                     <Avatar
                       sx={{ width: 90, height: 90 }}
                       alt={name}
-                      src={logo}
+                      src={`https://dreameduinfo.com${logo}`}
                     />
                   </Box>
                   <CardContent>
@@ -168,15 +166,6 @@ const Section4 = () => {
             ),
           )
         )}
-        <Button
-          variant="contained"
-          size="large"
-          sx={{
-            mx: "auto",
-            mt: 9,
-          }}>
-          Load more
-        </Button>
       </Grid>
     </>
   );

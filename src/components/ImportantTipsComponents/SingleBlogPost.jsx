@@ -19,15 +19,17 @@ const actions = [
   { icon: <CopyAll />, name: "Copy URL" },
 ];
 
-const SingleBlogPost = ({img, category, author, title, description}) => {
+const SingleBlogPost = (props) => {
+  const { blog_pic, category, author, title, description } = props.blog || {};
   return (
     <>
       <Card>
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt={title}
           height="350"
-          image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+          image={`https://dreameduinfo.com${blog_pic}`}
+          loading="lazy"
         />
         <Box
           sx={{
@@ -41,7 +43,7 @@ const SingleBlogPost = ({img, category, author, title, description}) => {
               p: 1,
               borderRadius: "15px",
             }}>
-            Education
+            Category: {category}
           </Typography>
           <Typography
             sx={{
@@ -49,29 +51,21 @@ const SingleBlogPost = ({img, category, author, title, description}) => {
               p: 1,
               borderRadius: "15px",
             }}>
-            Author Name
+            Author:{" "}
+            <span
+              style={{
+                textTransform: "capitalize",
+              }}>
+              {author}
+            </span>
           </Typography>
         </Box>
         <CardContent>
           <Typography gutterBottom variant="h5">
-            Study Bachelor's or Master's in China
+            {title}
           </Typography>
           <Typography gutterBottom variant="p">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum odio
-            saepe iste esse excepturi, dolore nam! Nulla ducimus rem facilis qui
-            consequatur, et, voluptates facere unde quod itaque beatae aut,
-            cupiditate rerum quis. Obcaecati aliquid corrupti eum sed. Eaque,
-            cupiditate error ratione nostrum aperiam veritatis beatae magnam ut
-            id totam?
-          </Typography>
-          <br />
-          <Typography gutterBottom variant="p">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum odio
-            saepe iste esse excepturi, dolore nam! Nulla ducimus rem facilis qui
-            consequatur, et, voluptates facere unde quod itaque beatae aut,
-            cupiditate rerum quis. Obcaecati aliquid corrupti eum sed. Eaque,
-            cupiditate error ratione nostrum aperiam veritatis beatae magnam ut
-            id totam?
+            {description}
           </Typography>
         </CardContent>
         <CardActions

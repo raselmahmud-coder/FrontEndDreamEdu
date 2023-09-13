@@ -16,7 +16,10 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useGetBlogsQuery } from "../../redux/feature/Blogs/BlogsAPI";
+import {
+  useGetBlogByCategoryQuery,
+  useGetBlogsQuery,
+} from "../../redux/feature/Blogs/BlogsAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import PaginationSS from "./PaginationSS";
 
@@ -24,10 +27,19 @@ const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
 ];
-const Tips1 = () => {
+const Tips1 = ({ category }) => {
+  const {
+    data: categoryData,
+    isError: isErrorCategory,
+    isLoading: isLoadingCategory,
+  } = useGetBlogByCategoryQuery(
+    { category: category },
+    { refetchOnMountOrArgChange: true, skip: !category },
+  );
   const { data, isError, isLoading } = useGetBlogsQuery();
+
   let content;
-  if (isLoading) {
+  if (isLoading || isLoadingCategory) {
     content = Array.from(new Array(3)).map((_, index) => (
       <Grid item xs={12} sm={4} md={4} key={index}>
         <Card
@@ -77,18 +89,18 @@ const Tips1 = () => {
         </Card>
       </Grid>
     ));
-  } else if (!isLoading && isError) {
+  } else if (isErrorCategory || isError) {
     content = <ErrorShow errorData="Something went wrong" />;
-  } else {
-    content = data?.blogs.map(
-      ({ id, Category, author, blog_pic, title }) => (
+  } else if (categoryData?.blogs.length || data?.blogs.length) {
+    content = (categoryData?.blogs || data?.blogs).map(
+      ({ id, category, author, blog_pic, title }) => (
         <Grid item xs={12} sm={6} md={4} key={id}>
           <Card>
             <CardMedia
               component="img"
-              alt="green iguana"
+              alt={title}
               height="140"
-              image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+              image={`https://dreameduinfo.com${blog_pic}`}
             />
             <Box
               sx={{
@@ -102,7 +114,7 @@ const Tips1 = () => {
                   p: 1,
                   borderRadius: "15px",
                 }}>
-                Category: {Category}
+                Category: {category}
               </Typography>
               <Typography
                 sx={{

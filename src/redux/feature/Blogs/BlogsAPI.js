@@ -14,6 +14,12 @@ export const BlogsAPI = APISlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getBlogByCategory: builder.query({
+      query: ({ category }) => ({
+        url: `/api/blogs/?category=${category}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useGetBlogsQuery, useGetBlogQuery } = BlogsAPI;
+export const { useGetBlogsQuery, useGetBlogQuery, useGetBlogByCategoryQuery } = BlogsAPI;

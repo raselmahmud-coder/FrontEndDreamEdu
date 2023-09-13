@@ -64,8 +64,8 @@ const labels = {
 export default function StudentFeedbacks() {
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
   // render the loading state
-   if (isError) {
-   return <ErrorShow errorData={"Something went wrong"} />;
+  if (isError) {
+    return <ErrorShow errorData={"Something went wrong"} />;
   }
   return (
     <>
@@ -129,7 +129,6 @@ export default function StudentFeedbacks() {
                         <Skeleton variant="circular">
                           <Avatar
                             sx={{ width: 90, height: 90 }}
-                            alt="Remy Sharp"
                             src="https://mui.com/static/images/avatar/1.jpg"
                           />
                         </Skeleton>
@@ -211,8 +210,8 @@ export default function StudentFeedbacks() {
                         variant="dot">
                         <Avatar
                           sx={{ width: 90, height: 90 }}
-                          alt="Remy Sharp"
-                          src="https://mui.com/static/images/avatar/1.jpg"
+                          alt={feedback.name}
+                          src={`https://dreameduinfo.com${feedback.Picture}`}
                         />
                       </StyledBadge>
                       <Box>

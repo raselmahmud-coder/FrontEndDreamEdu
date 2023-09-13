@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import ResponsiveAppBar from "./globalsComponents/ResponsiveAppBar";
 import {
   ThemeProvider,
@@ -39,7 +39,8 @@ const App = () => {
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);
-
+  const location = useLocation();
+  console.log(location.pathname, "hello location")
   return (
     <>
       <ThemeProvider theme={responsiveTheme}>
@@ -57,6 +58,7 @@ const App = () => {
               path="/important-tips/:id"
               element={<SingleBlogPostPage />}
             />
+            <Route path="/important-tips/category/:category" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
             <Route
               path="/free-consultation"
