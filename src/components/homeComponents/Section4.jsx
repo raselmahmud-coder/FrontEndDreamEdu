@@ -132,7 +132,7 @@ const Section4 = () => {
                     <Avatar
                       sx={{ width: 90, height: 90 }}
                       alt={name}
-                      src={`https://dreameduinfo.com${logo}`}
+                      src={`https://dreameduapiv1.dreameduinfo.com${logo}`}
                     />
                   </Box>
                   <CardContent>

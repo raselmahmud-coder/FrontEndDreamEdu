@@ -100,7 +100,7 @@ const Tips1 = ({ category }) => {
               component="img"
               alt={title}
               height="140"
-              image={`https://dreameduinfo.com${blog_pic}`}
+              image={`https://dreameduapiv1.dreameduinfo.com${blog_pic}`}
             />
             <Box
               sx={{

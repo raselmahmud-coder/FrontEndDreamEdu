@@ -211,7 +211,7 @@ export default function StudentFeedbacks() {
                         <Avatar
                           sx={{ width: 90, height: 90 }}
                           alt={feedback.name}
-                          src={`https://dreameduinfo.com${feedback.Picture}`}
+                          src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
                         />
                       </StyledBadge>
                       <Box>

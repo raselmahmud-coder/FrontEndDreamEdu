@@ -28,7 +28,7 @@ const SingleBlogPost = (props) => {
           component="img"
           alt={title}
           height="350"
-          image={`https://dreameduinfo.com${blog_pic}`}
+          image={`https://dreameduapiv1.dreameduinfo.com${blog_pic}`}
           loading="lazy"
         />
         <Box

@@ -89,7 +89,7 @@ const navigate = useNavigate();
               height: "100%",
               borderRadius: "15px",
             }}
-            image={`https://dreameduinfo.com${blog_pic}`}
+            image={`https://dreameduapiv1.dreameduinfo.com${blog_pic}`}
           />
         </Grid>
         <Grid item xs={8} sm={6} md={8}>
