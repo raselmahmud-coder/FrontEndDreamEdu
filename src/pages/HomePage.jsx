@@ -15,8 +15,8 @@ const HomePage = () => {
   return (
     <>
       <DynamicPageTitle pageTitle="Home Page" />
-      <BannerCarousel />
       <Container maxWidth="xl">
+      <BannerCarousel />
         <Section1 />
         <Section2 />
         <StudentFeedbacks />

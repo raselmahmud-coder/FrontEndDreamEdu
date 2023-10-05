@@ -22,6 +22,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import logo from "../assets/logo.png";
+import whiteLogo from "../assets/Logo-White.png";
 import { useSelector } from "react-redux";
 
 const pages = [
@@ -29,6 +30,7 @@ const pages = [
   "About Us",
   "Important Tips",
   "Success Story",
+  "Apply for Admission",
   "Free consultation",
 ];
 const settings = ["Dashboard", "Profile", "Logout"];
@@ -86,7 +88,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                     <ImageListItem>
                       <Link to="/">
                         <img
-                          src={logo}
+                          src={mode ? whiteLogo : logo}
                           alt={"logo"}
                           loading="lazy"
                           style={{
