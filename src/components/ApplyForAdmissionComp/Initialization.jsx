@@ -9,47 +9,74 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  Box,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 
 export default function Initialization() {
   const dispatch = useDispatch();
+  const previousData = useSelector((state) => state.admission);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Program information
       </Typography>
+
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="firstName"
-            name="firstName"
-            label="First name"
+            id="sureName"
+            name="sureName"
+            label="Sure name"
+            placeholder="Enter your sure name as in passport"
             fullWidth
-            autoComplete="given-name"
+            autoComplete="sure-name"
             variant="standard"
+            value={previousData.sureName}
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  sureName: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="lastName"
-            name="lastName"
-            label="Last name"
+            id="givenName"
+            name="givenName"
+            label="Given name"
             fullWidth
-            autoComplete="family-name"
+            autoComplete="given-name"
+            placeholder="Enter your given name as in passport"
+            value={previousData.givenName}
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  givenName: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControl
             required
             onChange={(e) => {
-              dispatch(admissionProfileCreate({ program: e.target.value, name:"Rasel Mahmud"}))
-            }}
-          >
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  program: e.target.value,
+                }),
+              );
+            }}>
             <FormLabel id="demo-row-radio-buttons-group-label">
               Select you program
             </FormLabel>
@@ -61,18 +88,22 @@ export default function Initialization() {
                 value="chinese language/diploma"
                 control={<Radio />}
                 label="Chinese language/Diploma"
+                checked={previousData.program === "chinese language/diploma"}
               />
               <FormControlLabel
                 value="bachelor"
                 control={<Radio />}
                 label="Bachelor"
+                checked={previousData.program === "bachelor"}
               />
               <FormControlLabel
                 value="masters"
                 control={<Radio />}
                 label="Master's"
+                checked={previousData.program === "masters"}
               />
               <FormControlLabel
+                checked={previousData.program === "ph.d."}
                 value="ph.d."
                 control={<Radio />}
                 label="Ph.D."
@@ -82,23 +113,41 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            value={previousData.addressLine}
             id="address1"
             name="address1"
             label="Address line 1"
             fullWidth
-            autoComplete="shipping address-line1"
+            autoComplete="address-line1"
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  addressLine: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
             id="city"
+            value={previousData.city}
             name="city"
             label="City"
             fullWidth
-            autoComplete="shipping address-level1"
+            autoComplete="address-level1"
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  city: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -106,8 +155,17 @@ export default function Initialization() {
             id="state"
             name="state"
             label="State/Province/Region"
+            value={previousData.province}
             fullWidth
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  province: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -116,9 +174,18 @@ export default function Initialization() {
             id="zip"
             name="zip"
             label="Zip / Postal code"
+            value={previousData.postCode}
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  postCode: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -127,9 +194,18 @@ export default function Initialization() {
             id="country"
             name="country"
             label="Country"
+            value={previousData.country}
             fullWidth
             autoComplete="shipping country"
             variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  country: e.target.value,
+                }),
+              );
+            }}
           />
         </Grid>
         <Grid item xs={12}>

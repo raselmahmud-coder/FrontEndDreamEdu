@@ -10,6 +10,7 @@ import Section6 from "../components/homeComponents/Section6";
 import Section7 from "../components/homeComponents/Section7";
 import YouTubeFeeds from "../components/homeComponents/YouTubeFeeds";
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
+import FbMessenger from "../components/chatingWidgets/FbMessenger";
 
 const HomePage = () => {
   return (
@@ -26,6 +27,7 @@ const HomePage = () => {
         <Section7 />
         <YouTubeFeeds />
       </Container>
+      <FbMessenger/>
     </>
   );
 };

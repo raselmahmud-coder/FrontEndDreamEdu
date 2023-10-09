@@ -7,7 +7,7 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Footer from "./globalsComponents/Footer";
+import Footer from "./globalsComponents/footer/Footer";
 import { useMediaQuery } from "@mui/material";
 import LazyLoading from "./globalsComponents/LazyLoading";
 const HomePage = lazy(() => import("./pages/HomePage"));

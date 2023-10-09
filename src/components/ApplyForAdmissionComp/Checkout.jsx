@@ -28,8 +28,17 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const { program } = useSelector((state) => state.admission);
-  console.log(program, "selector");
+  const {
+    program,
+    sureName,
+    givenName,
+    addressLine,
+    city,
+    province,
+    postCode,
+    country,
+  } = useSelector((state) => state.admission);
+  console.log(program, "selector", country);
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -75,7 +84,19 @@ export default function Checkout() {
               )}
 
               <Button
-                disabled={!program ? true : false}
+                type=""
+                disabled={
+                  program &&
+                  sureName &&
+                  givenName &&
+                  addressLine &&
+                  city &&
+                  province &&
+                  postCode &&
+                  country
+                    ? false
+                    : true
+                }
                 variant="contained"
                 onClick={handleNext}
                 sx={{ mt: 3, ml: 1 }}>
