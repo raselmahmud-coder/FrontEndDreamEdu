@@ -27,7 +27,6 @@ export default function Documents() {
     englishProficiencyTest,
   } = initialData;
   const dispatch = useDispatch();
-  console.log(initialData, "all initial Data");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -39,7 +38,7 @@ export default function Documents() {
             Passport*
           </Typography>
           {passport && (
-            <img src={passport.dataURL} width={"20%"} alt="Preview" />
+            <img src={passport} width={"20%"} alt="Preview" />
           )}
           <Box>
             <Button variant="contained" component="label">
@@ -67,7 +66,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate({
                           ...initialData,
-                          passport: fileData,
+                          passport: fileData.dataURL,
                         }),
                       );
                     };
@@ -85,7 +84,7 @@ export default function Documents() {
             Photo 48/33 mm (White background)*
           </Typography>
           {passportSizePhoto && (
-            <img src={passportSizePhoto.dataURL} width={"20%"} />
+            <img src={passportSizePhoto} width={"20%"} />
           )}
           <Box>
             <Button variant="contained" component="label">
@@ -99,7 +98,7 @@ export default function Documents() {
                 onChange={(e) => {
                   const selectedFile = validateAndRenameFile(
                     e.target.files[0],
-                    "photo",
+                    "passport size photo",
                   );
                   if (selectedFile) {
                     const reader = new FileReader();
@@ -111,7 +110,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate({
                           ...initialData,
-                          passportSizePhoto: fileData,
+                          passportSizePhoto: fileData.dataURL,
                         }),
                       );
                     };
@@ -131,7 +130,7 @@ export default function Documents() {
             <Typography variant="subtitle1" gutterBottom>
               Secondary school certificate & transcript*
             </Typography>
-            {ssc && <img src={ssc.dataURL} width={"20%"} alt="Preview" />}
+            {ssc && <img src={ssc} width={"20%"} alt="Preview" />}
             <Box>
               <Button variant="contained" component="label">
                 <DriveFileMoveIcon
@@ -156,7 +155,7 @@ export default function Documents() {
                         dispatch(
                           admissionProfileCreate({
                             ...initialData,
-                            ssc: fileData,
+                            ssc: fileData.dataURL,
                           }),
                         );
                       };
@@ -178,7 +177,7 @@ export default function Documents() {
           </Typography>
           {nonCriminalCertificate && (
             <img
-              src={nonCriminalCertificate.dataURL}
+              src={nonCriminalCertificate}
               width={"20%"}
               alt="Preview"
             />
@@ -207,7 +206,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate({
                           ...initialData,
-                          nonCriminalCertificate: fileData,
+                          nonCriminalCertificate: fileData.dataURL,
                         }),
                       );
                     };
@@ -227,7 +226,7 @@ export default function Documents() {
             Bank statement (last 6 months)*
           </Typography>
           {bankStatement && (
-            <img src={bankStatement.dataURL} width={"20%"} alt="Preview" />
+            <img src={bankStatement} width={"20%"} alt="Preview" />
           )}
           <Box>
             <Button variant="contained" component="label">
@@ -253,7 +252,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate({
                           ...initialData,
-                          bankStatement: fileData,
+                          bankStatement: fileData.dataURL,
                         }),
                       );
                     };
@@ -273,7 +272,7 @@ export default function Documents() {
             Study plan (800 - 1000 words)*
           </Typography>
           {studyPlan && (
-            <img src={studyPlan.dataURL} width={"20%"} alt="Preview" />
+            <img src={studyPlan} width={"20%"} alt="Preview" />
           )}
           <Box>
             <Button variant="contained" component="label">
@@ -299,7 +298,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate({
                           ...initialData,
-                          studyPlan: fileData,
+                          studyPlan: fileData.dataURL,
                         }),
                       );
                     };
@@ -322,7 +321,7 @@ export default function Documents() {
               <Typography variant="subtitle1" gutterBottom>
                 Higher Secondary/Diploma certificate & transcript*
               </Typography>
-              {hsc && <img src={hsc.dataURL} width={"20%"} alt="Preview" />}
+              {hsc && <img src={hsc} width={"20%"} alt="Preview" />}
               <Box>
                 <Button variant="contained" component="label">
                   <DriveFileMoveIcon
@@ -347,7 +346,7 @@ export default function Documents() {
                           dispatch(
                             admissionProfileCreate({
                               ...initialData,
-                              hsc: fileData,
+                              hsc: fileData.dataURL,
                             }),
                           );
                         };
@@ -368,7 +367,7 @@ export default function Documents() {
               </Typography>
               {englishProficiencyTest && (
                 <img
-                  src={englishProficiencyTest.dataURL}
+                  src={englishProficiencyTest}
                   width={"20%"}
                   alt="Preview"
                 />
@@ -397,7 +396,7 @@ export default function Documents() {
                           dispatch(
                             admissionProfileCreate({
                               ...initialData,
-                              englishProficiencyTest: fileData,
+                              englishProficiencyTest: fileData.dataURL,
                             }),
                           );
                         };
@@ -421,7 +420,7 @@ export default function Documents() {
                 Bachelor's degree certificate & transcript*
               </Typography>
               {bachelor && (
-                <img src={bachelor.dataURL} width={"20%"} alt="Preview" />
+                <img src={bachelor} width={"20%"} alt="Preview" />
               )}
               <Box>
                 <Button variant="contained" component="label">
@@ -447,7 +446,7 @@ export default function Documents() {
                           dispatch(
                             admissionProfileCreate({
                               ...initialData,
-                              bachelor: fileData,
+                              bachelor: fileData.dataURL,
                             }),
                           );
                         };
@@ -468,7 +467,7 @@ export default function Documents() {
               </Typography>
               {recommendationLetters && (
                 <img
-                  src={recommendationLetters.dataURL}
+                  src={recommendationLetters}
                   width={"20%"}
                   alt="Preview"
                 />
@@ -497,7 +496,7 @@ export default function Documents() {
                           dispatch(
                             admissionProfileCreate({
                               ...initialData,
-                              recommendationLetters: fileData,
+                              recommendationLetters: fileData.dataURL,
                             }),
                           );
                         };
@@ -521,7 +520,7 @@ export default function Documents() {
                 Master's degree certificate & transcript*
               </Typography>
               {masters && (
-                <img src={masters.dataURL} width={"20%"} alt="Preview" />
+                <img src={masters} width={"20%"} alt="Preview" />
               )}
               <Box>
                 <Button variant="contained" component="label">
@@ -547,7 +546,7 @@ export default function Documents() {
                           dispatch(
                             admissionProfileCreate({
                               ...initialData,
-                              masters: fileData,
+                              masters: fileData.dataURL,
                             }),
                           );
                         };

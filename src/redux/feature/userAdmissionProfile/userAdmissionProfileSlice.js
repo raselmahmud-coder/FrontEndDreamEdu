@@ -19,6 +19,8 @@ const initialState = {
   studyPlan: "",
   recommendationLetters: "",
   englishProficiencyTest: "",
+  phone: "",
+  email: "",
 };
 const userAdmissionProfileAPISlice = createSlice({
   name: "admission",
@@ -45,6 +47,8 @@ const userAdmissionProfileAPISlice = createSlice({
       state.studyPlan = action.payload.studyPlan;
       state.recommendationLetters = action.payload.recommendationLetters;
       state.englishProficiencyTest = action.payload.englishProficiencyTest;
+      state.phone = action.payload.phone;
+      state.email = action.payload.email;
     },
   },
 });

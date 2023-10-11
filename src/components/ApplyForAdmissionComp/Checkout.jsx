@@ -64,12 +64,10 @@ export default function Checkout() {
         {activeStep === steps.length ? (
           <React.Fragment>
             <Typography variant="h5" gutterBottom>
-              Thank you for your order.
+              Your profile is successfully submitted
             </Typography>
             <Typography variant="subtitle1">
-              Your order number is #2001539. We have emailed your order
-              confirmation, and will send you an update when your order has
-              shipped.
+              Please check your email for further instructions.
             </Typography>
           </React.Fragment>
         ) : (

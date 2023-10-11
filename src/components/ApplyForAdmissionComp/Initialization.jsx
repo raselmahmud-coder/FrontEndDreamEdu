@@ -191,9 +191,9 @@ export default function Initialization() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="country"
-            name="country"
-            label="Country"
+            id="nationality"
+            name="nationality"
+            label="Nationality"
             value={previousData.country}
             fullWidth
             autoComplete="shipping country"
@@ -203,6 +203,46 @@ export default function Initialization() {
                 admissionProfileCreate({
                   ...previousData,
                   country: e.target.value,
+                }),
+              );
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="phone"
+            name="phone"
+            label="Phone"
+            value={previousData.phone}
+            fullWidth
+            autoComplete="phone"
+            variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  phone: e.target.value,
+                }),
+              );
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="email"
+            name="email"
+            label="Email"
+            value={previousData.email}
+            fullWidth
+            autoComplete="email"
+            variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  email: e.target.value,
                 }),
               );
             }}
