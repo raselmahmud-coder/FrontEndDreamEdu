@@ -38,7 +38,6 @@ export default function Checkout() {
     postCode,
     country,
   } = useSelector((state) => state.admission);
-  console.log(program, "selector", country);
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -82,18 +81,18 @@ export default function Checkout() {
                   Back
                 </Button>
               )}
-
               <Button
                 type=""
                 disabled={
-                  program &&
-                  sureName &&
-                  givenName &&
-                  addressLine &&
-                  city &&
-                  province &&
-                  postCode &&
-                  country
+                  program
+                  //   &&
+                  // sureName &&
+                  // givenName &&
+                  // addressLine &&
+                  // city &&
+                  // province &&
+                  // postCode &&
+                  // country
                     ? false
                     : true
                 }

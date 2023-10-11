@@ -4,12 +4,30 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import validateAndRenameFile from "../../utils/fileValidationNRename";
 
 export default function Documents() {
-  const { program } = useSelector((state) => state.admission);
+  const initialData = useSelector((state) => state.admission);
+  const {
+    program,
+    passport,
+    masters,
+    bachelor,
+    hsc,
+    ssc,
+    bankStatement,
+    passportSizePhoto,
+    nonCriminalCertificate,
+    studyPlan,
+    recommendationLetters,
+    englishProficiencyTest,
+  } = initialData;
+  const dispatch = useDispatch();
+  console.log(initialData, "all initial Data");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -18,37 +36,12 @@ export default function Documents() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Passport
+            Passport*
           </Typography>
-          <Button variant="contained" component="label">
-            <DriveFileMoveIcon
-              sx={{
-                fontSize: "30px",
-              }}
-            />
-            Upload File
-            <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-          </Button>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="subtitle1" gutterBottom>
-            Photo 48/33 mm (White background)
-          </Typography>
-          <Button variant="contained" component="label">
-            <DriveFileMoveIcon
-              sx={{
-                fontSize: "30px",
-              }}
-            />
-            Upload File
-            <input type="file" hidden accept=".jpg, .jpeg, .png" />
-          </Button>
-        </Grid>
-        {(program === "chinese language/diploma" || program === "bachelor") && (
-          <Grid item xs={12} md={6}>
-            <Typography variant="subtitle1" gutterBottom>
-              Secondary school certificate & transcript
-            </Typography>
+          {passport && (
+            <img src={passport.dataURL} width={"20%"} alt="Preview" />
+          )}
+          <Box>
             <Button variant="contained" component="label">
               <DriveFileMoveIcon
                 sx={{
@@ -56,51 +49,270 @@ export default function Documents() {
                 }}
               />
               Upload File
-              <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
+              <input
+                required
+                type="file"
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "passport",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          passport: fileData,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
             </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography variant="subtitle1" gutterBottom>
+            Photo 48/33 mm (White background)*
+          </Typography>
+          {passportSizePhoto && (
+            <img src={passportSizePhoto.dataURL} width={"20%"} />
+          )}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "photo",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          passportSizePhoto: fileData,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                required
+                type="file"
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
+            </Button>
+          </Box>
+        </Grid>
+        {(program === "chinese language/diploma" || program === "bachelor") && (
+          <Grid item xs={12} md={6}>
+            <Typography variant="subtitle1" gutterBottom>
+              Secondary school certificate & transcript*
+            </Typography>
+            {ssc && <img src={ssc.dataURL} width={"20%"} alt="Preview" />}
+            <Box>
+              <Button variant="contained" component="label">
+                <DriveFileMoveIcon
+                  sx={{
+                    fontSize: "30px",
+                  }}
+                />
+                Upload File
+                <input
+                  onChange={(e) => {
+                    const selectedFile = validateAndRenameFile(
+                      e.target.files[0],
+                      "ssc",
+                    );
+                    if (selectedFile) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        const fileData = {
+                          name: selectedFile.name,
+                          dataURL: event.target.result,
+                        };
+                        dispatch(
+                          admissionProfileCreate({
+                            ...initialData,
+                            ssc: fileData,
+                          }),
+                        );
+                      };
+                      reader.readAsDataURL(selectedFile);
+                    }
+                  }}
+                  required
+                  type="file"
+                  hidden
+                  accept=".jpg, .jpeg, .png"
+                />
+              </Button>
+            </Box>
           </Grid>
         )}
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Police clearance certificate
+            Police clearance certificate*
           </Typography>
-          <Button variant="contained" component="label">
-            <DriveFileMoveIcon
-              sx={{
-                fontSize: "30px",
-              }}
+          {nonCriminalCertificate && (
+            <img
+              src={nonCriminalCertificate.dataURL}
+              width={"20%"}
+              alt="Preview"
             />
-            Upload File
-            <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-          </Button>
+          )}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "non criminal certificate",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          nonCriminalCertificate: fileData,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                required
+                type="file"
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
+            </Button>
+          </Box>
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Bank statement (last 6 months)
+            Bank statement (last 6 months)*
           </Typography>
-          <Button variant="contained" component="label">
-            <DriveFileMoveIcon
-              sx={{
-                fontSize: "30px",
-              }}
-            />
-            Upload File
-            <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-          </Button>
+          {bankStatement && (
+            <img src={bankStatement.dataURL} width={"20%"} alt="Preview" />
+          )}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "bank statement",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          bankStatement: fileData,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                required
+                type="file"
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
+            </Button>
+          </Box>
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Study plan (800 - 1000 words)
+            Study plan (800 - 1000 words)*
           </Typography>
-          <Button variant="contained" component="label">
-            <DriveFileMoveIcon
-              sx={{
-                fontSize: "30px",
-              }}
-            />
-            Upload File
-            <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-          </Button>
+          {studyPlan && (
+            <img src={studyPlan.dataURL} width={"20%"} alt="Preview" />
+          )}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "study plan",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          studyPlan: fileData,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                required
+                type="file"
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
+            </Button>
+          </Box>
         </Grid>
         {(program === "bachelor" ||
           program === "masters" ||
@@ -108,31 +320,97 @@ export default function Documents() {
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Higher Secondary/Diploma certificate & transcript
+                Higher Secondary/Diploma certificate & transcript*
               </Typography>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
-                />
-                Upload File
-                <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-              </Button>
+              {hsc && <img src={hsc.dataURL} width={"20%"} alt="Preview" />}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "higher secondary",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              hsc: fileData,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                IELTS/Any other English proficiency certificate
+                IELTS/Any other English proficiency certificate*
               </Typography>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
+              {englishProficiencyTest && (
+                <img
+                  src={englishProficiencyTest.dataURL}
+                  width={"20%"}
+                  alt="Preview"
                 />
-                Upload File
-                <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-              </Button>
+              )}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "english proficiency test",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              englishProficiencyTest: fileData,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
             </Grid>
           </>
         )}
@@ -140,31 +418,99 @@ export default function Documents() {
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Bachelor's degree certificate & transcript
+                Bachelor's degree certificate & transcript*
               </Typography>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
-                />
-                Upload File
-                <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-              </Button>
+              {bachelor && (
+                <img src={bachelor.dataURL} width={"20%"} alt="Preview" />
+              )}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "bachelor",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              bachelor: fileData,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Two Recommendation Letters
+                Two Recommendation Letters*
               </Typography>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
+              {recommendationLetters && (
+                <img
+                  src={recommendationLetters.dataURL}
+                  width={"20%"}
+                  alt="Preview"
                 />
-                Upload File
-                <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-              </Button>
+              )}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "recommendationLetters",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              recommendationLetters: fileData,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
             </Grid>
           </>
         )}
@@ -172,19 +518,50 @@ export default function Documents() {
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Master's degree certificate & transcript
+                Master's degree certificate & transcript*
               </Typography>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
-                />
-                Upload File
-                <input type="file" hidden accept=".jpg, .jpeg, .png, .pdf" />
-              </Button>
+              {masters && (
+                <img src={masters.dataURL} width={"20%"} alt="Preview" />
+              )}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "masters",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              masters: fileData,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
             </Grid>
-           
           </>
         )}
       </Grid>

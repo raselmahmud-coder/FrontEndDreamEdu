@@ -8,6 +8,17 @@ const initialState = {
   province: "",
   postCode: "",
   country: "",
+  passport: "",
+  masters:"",
+  bachelor:"",
+  hsc: "",
+  ssc: "",
+  bankStatement: "",
+  passportSizePhoto: "",
+  nonCriminalCertificate: "",
+  studyPlan: "",
+  recommendationLetters: "",
+  englishProficiencyTest: "",
 };
 const userAdmissionProfileAPISlice = createSlice({
   name: "admission",
@@ -22,6 +33,18 @@ const userAdmissionProfileAPISlice = createSlice({
       state.province = action.payload.province;
       state.postCode = action.payload.postCode;
       state.country = action.payload.country;
+      state.passport = action.payload.passport;
+      state.masters = action.payload.masters;
+      state.bachelor = action.payload.bachelor;
+      state.hsc = action.payload.hsc;
+      state.ssc = action.payload.ssc;
+      state.ssc = action.payload.ssc;
+      state.bankStatement = action.payload.bankStatement;
+      state.passportSizePhoto = action.payload.passportSizePhoto;
+      state.nonCriminalCertificate = action.payload.nonCriminalCertificate;
+      state.studyPlan = action.payload.studyPlan;
+      state.recommendationLetters = action.payload.recommendationLetters;
+      state.englishProficiencyTest = action.payload.englishProficiencyTest;
     },
   },
 });
