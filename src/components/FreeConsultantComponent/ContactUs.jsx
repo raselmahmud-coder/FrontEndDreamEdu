@@ -134,7 +134,7 @@ const ContactUs = () => {
                 alignItems: "center",
                 my: 4,
               }}>
-              <LocationOnIcon
+              <PhoneForwardedIcon
                 sx={{
                   fontSize: "3rem",
                   color: "primary.main",
@@ -148,11 +148,33 @@ const ContactUs = () => {
                 sx={{
                   fontWeight: "bold",
                 }}>
-                933 Dongli International Plaza, Chenghua District, Chengdu,
-                Sichuan, China.
+                Phone Number Bangladesh Office: +8801711111111
               </Typography>
             </Box>
-
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                my: 4,
+              }}>
+              <PhoneForwardedIcon
+                sx={{
+                  fontSize: "3rem",
+                  color: "primary.main",
+                  border: 1,
+                  borderRadius: "50%",
+                  mr: 2,
+                }}
+              />
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontWeight: "bold",
+                }}>
+                Phone Number China Office: +861688220123
+              </Typography>
+              
+            </Box>
             <Box
               sx={{
                 display: "flex",
@@ -176,39 +198,7 @@ const ContactUs = () => {
                 Email Us: official@dreameduinfo.com
               </Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                my: 4,
-              }}>
-              <PhoneForwardedIcon
-                sx={{
-                  fontSize: "3rem",
-                  color: "primary.main",
-                  border: 1,
-                  borderRadius: "50%",
-                  mr: 2,
-                }}
-              />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  fontWeight: "bold",
-                }}>
-                +861688220123
-              </Typography>
-              <Divider orientation="vertical" flexItem>
-                OR
-              </Divider>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  fontWeight: "bold",
-                }}>
-                +861688220123
-              </Typography>
-            </Box>
+            
           </Item>
         </Grid>
       </Grid>

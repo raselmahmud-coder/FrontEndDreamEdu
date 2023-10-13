@@ -10,9 +10,7 @@ import Initialization from "./Initialization";
 import Documents from "./Documents";
 import Review from "./Review";
 import { useSelector } from "react-redux";
-
 const steps = ["Initialization", "Documents", "Review your profile"];
-
 function getStepContent(step) {
   switch (step) {
     case 0:
@@ -37,13 +35,26 @@ export default function Checkout() {
     province,
     postCode,
     country,
+    phone,
+    email,
+    passport,
+    masters,
+    bachelor,
+    hsc,
+    ssc,
+    bankStatement,
+    passportSizePhoto,
+    nonCriminalCertificate,
+    studyPlan,
+    recommendationLetters,
+    englishProficiencyTest,
   } = useSelector((state) => state.admission);
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+  };
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
   };
 
   return (
@@ -82,15 +93,37 @@ export default function Checkout() {
               <Button
                 type=""
                 disabled={
-                  program
-                  //   &&
-                  // sureName &&
-                  // givenName &&
-                  // addressLine &&
-                  // city &&
-                  // province &&
-                  // postCode &&
-                  // country
+                  (activeStep == 0 &&
+                    program &&
+                    sureName &&
+                    givenName &&
+                    addressLine &&
+                    city &&
+                    province &&
+                    postCode &&
+                    country &&
+                    phone &&
+                    email) ||
+                  (activeStep == 1 &&
+                    passport &&
+                    passportSizePhoto &&
+                    bankStatement &&
+                    nonCriminalCertificate &&
+                    studyPlan &&
+                    program == "chinese language/diploma" &&
+                    ssc) ||
+                  (program == "bachelor" &&
+                    ssc &&
+                    hsc &&
+                    englishProficiencyTest) ||
+                  (program == "masters" &&
+                    hsc &&
+                    bachelor &&
+                    recommendationLetters) ||
+                  (program == "ph.d." &&
+                    bachelor &&
+                    masters &&
+                    recommendationLetters)
                     ? false
                     : true
                 }
