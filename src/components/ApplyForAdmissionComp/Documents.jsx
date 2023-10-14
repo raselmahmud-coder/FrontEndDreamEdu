@@ -30,16 +30,15 @@ export default function Documents() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Documents list
+        Documents list for{" "}
+        <span style={{ textTransform: "uppercase" }}>{program}</span>
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
             Passport*
           </Typography>
-          {passport && (
-            <img src={passport} width={"20%"} alt="Preview" />
-          )}
+          {passport && <img src={passport} width={"20%"} alt="Preview" />}
           <Box>
             <Button variant="contained" component="label">
               <DriveFileMoveIcon
@@ -83,9 +82,7 @@ export default function Documents() {
           <Typography variant="subtitle1" gutterBottom>
             Photo 48/33 mm (White background)*
           </Typography>
-          {passportSizePhoto && (
-            <img src={passportSizePhoto} width={"20%"} />
-          )}
+          {passportSizePhoto && <img src={passportSizePhoto} width={"20%"} />}
           <Box>
             <Button variant="contained" component="label">
               <DriveFileMoveIcon
@@ -128,7 +125,7 @@ export default function Documents() {
         {(program === "chinese language/diploma" || program === "bachelor") && (
           <Grid item xs={12} md={6}>
             <Typography variant="subtitle1" gutterBottom>
-              Secondary school certificate & transcript*
+              Secondary school certificate (SSC) & transcript*
             </Typography>
             {ssc && <img src={ssc} width={"20%"} alt="Preview" />}
             <Box>
@@ -176,11 +173,7 @@ export default function Documents() {
             Police clearance certificate*
           </Typography>
           {nonCriminalCertificate && (
-            <img
-              src={nonCriminalCertificate}
-              width={"20%"}
-              alt="Preview"
-            />
+            <img src={nonCriminalCertificate} width={"20%"} alt="Preview" />
           )}
           <Box>
             <Button variant="contained" component="label">
@@ -271,9 +264,7 @@ export default function Documents() {
           <Typography variant="subtitle1" gutterBottom>
             Study plan (800 - 1000 words)*
           </Typography>
-          {studyPlan && (
-            <img src={studyPlan} width={"20%"} alt="Preview" />
-          )}
+          {studyPlan && <img src={studyPlan} width={"20%"} alt="Preview" />}
           <Box>
             <Button variant="contained" component="label">
               <DriveFileMoveIcon
@@ -313,13 +304,57 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        {(program === "bachelor" ||
-          program === "masters" ||
-          program === "ph.d.") && (
+        <Grid item xs={12} md={6}>
+              <Typography variant="subtitle1" gutterBottom>
+                IELTS/Any other English proficiency certificate*
+              </Typography>
+              {englishProficiencyTest && (
+                <img src={englishProficiencyTest} width={"20%"} alt="Preview" />
+              )}
+              <Box>
+                <Button variant="contained" component="label">
+                  <DriveFileMoveIcon
+                    sx={{
+                      fontSize: "30px",
+                    }}
+                  />
+                  Upload File
+                  <input
+                    onChange={(e) => {
+                      const selectedFile = validateAndRenameFile(
+                        e.target.files[0],
+                        "english proficiency test",
+                      );
+                      if (selectedFile) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const fileData = {
+                            name: selectedFile.name,
+                            dataURL: event.target.result,
+                          };
+                          dispatch(
+                            admissionProfileCreate({
+                              ...initialData,
+                              englishProficiencyTest: fileData.dataURL,
+                            }),
+                          );
+                        };
+                        reader.readAsDataURL(selectedFile);
+                      }
+                    }}
+                    required
+                    type="file"
+                    hidden
+                    accept=".jpg, .jpeg, .png"
+                  />
+                </Button>
+              </Box>
+            </Grid>
+        {(program === "bachelor" || program === "masters") && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Higher Secondary/Diploma certificate & transcript*
+                Higher Secondary (HSC)/Diploma certificate & transcript*
               </Typography>
               {hsc && <img src={hsc} width={"20%"} alt="Preview" />}
               <Box>
@@ -361,56 +396,7 @@ export default function Documents() {
                 </Button>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="subtitle1" gutterBottom>
-                IELTS/Any other English proficiency certificate*
-              </Typography>
-              {englishProficiencyTest && (
-                <img
-                  src={englishProficiencyTest}
-                  width={"20%"}
-                  alt="Preview"
-                />
-              )}
-              <Box>
-                <Button variant="contained" component="label">
-                  <DriveFileMoveIcon
-                    sx={{
-                      fontSize: "30px",
-                    }}
-                  />
-                  Upload File
-                  <input
-                    onChange={(e) => {
-                      const selectedFile = validateAndRenameFile(
-                        e.target.files[0],
-                        "english proficiency test",
-                      );
-                      if (selectedFile) {
-                        const reader = new FileReader();
-                        reader.onload = (event) => {
-                          const fileData = {
-                            name: selectedFile.name,
-                            dataURL: event.target.result,
-                          };
-                          dispatch(
-                            admissionProfileCreate({
-                              ...initialData,
-                              englishProficiencyTest: fileData.dataURL,
-                            }),
-                          );
-                        };
-                        reader.readAsDataURL(selectedFile);
-                      }
-                    }}
-                    required
-                    type="file"
-                    hidden
-                    accept=".jpg, .jpeg, .png"
-                  />
-                </Button>
-              </Box>
-            </Grid>
+            
           </>
         )}
         {(program === "masters" || program === "ph.d.") && (
@@ -419,9 +405,7 @@ export default function Documents() {
               <Typography variant="subtitle1" gutterBottom>
                 Bachelor's degree certificate & transcript*
               </Typography>
-              {bachelor && (
-                <img src={bachelor} width={"20%"} alt="Preview" />
-              )}
+              {bachelor && <img src={bachelor} width={"20%"} alt="Preview" />}
               <Box>
                 <Button variant="contained" component="label">
                   <DriveFileMoveIcon
@@ -466,11 +450,7 @@ export default function Documents() {
                 Two Recommendation Letters*
               </Typography>
               {recommendationLetters && (
-                <img
-                  src={recommendationLetters}
-                  width={"20%"}
-                  alt="Preview"
-                />
+                <img src={recommendationLetters} width={"20%"} alt="Preview" />
               )}
               <Box>
                 <Button variant="contained" component="label">
@@ -519,9 +499,7 @@ export default function Documents() {
               <Typography variant="subtitle1" gutterBottom>
                 Master's degree certificate & transcript*
               </Typography>
-              {masters && (
-                <img src={masters} width={"20%"} alt="Preview" />
-              )}
+              {masters && <img src={masters} width={"20%"} alt="Preview" />}
               <Box>
                 <Button variant="contained" component="label">
                   <DriveFileMoveIcon

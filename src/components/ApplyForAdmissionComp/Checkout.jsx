@@ -26,6 +26,7 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [whatProgram, setWhatProgram] = React.useState("");
   const {
     program,
     sureName,
@@ -52,9 +53,77 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    if (activeStep == 0) {
+      if (
+        program &&
+        sureName &&
+        givenName &&
+        addressLine &&
+        city &&
+        province &&
+        postCode &&
+        country &&
+        phone &&
+        email
+      ) {
+        setActiveStep(activeStep + 1);
+      } else {
+        return alert("Please fill all the required fields");
+      }
+    } else if (activeStep == 1) {
+      if (
+        passport &&
+        passportSizePhoto &&
+        bankStatement &&
+        nonCriminalCertificate &&
+        studyPlan
+      ) {
+        
+        switch (program) {
+          case "chinese language/diploma":
+            if (ssc) {
+              return setActiveStep(activeStep + 1);
+            } else {
+              return alert("Please fill all the required fields");
+            }
+          case "bachelor":
+            if (ssc && hsc && englishProficiencyTest) {
+              return setActiveStep(activeStep + 1);
+            } else {
+              return alert("Please fill all the required fields");
+            }
+          case "masters":
+            if (
+              hsc &&
+              bachelor &&
+              englishProficiencyTest &&
+              recommendationLetters
+            ) {
+              return setActiveStep(activeStep + 1);
+            } else {
+              return alert("Please fill all the required fields");
+            }
+            case "ph.d.":
+            console.log(activeStep, program, "how step");
+            if (
+              bachelor &&
+              masters &&
+              englishProficiencyTest &&
+              recommendationLetters
+            ) {
+              console.log(englishProficiencyTest, "eerr");
+              return setActiveStep(activeStep + 1);
+            } else {
+              return alert("Please fill all the required fields");
+            }
+          default:
+            throw new Error("Unknown values");
+        }
+      } else {
+        return alert("Please fill all the required fields");
+      }
+    } else if (activeStep === 2) setActiveStep(activeStep + 1);
   };
 
   return (
@@ -92,7 +161,7 @@ export default function Checkout() {
               )}
               <Button
                 type=""
-                disabled={
+                /*   disabled={
                   (activeStep == 0 &&
                     program &&
                     sureName &&
@@ -110,23 +179,10 @@ export default function Checkout() {
                     bankStatement &&
                     nonCriminalCertificate &&
                     studyPlan &&
-                    program == "chinese language/diploma" &&
-                    ssc) ||
-                  (program == "bachelor" &&
-                    ssc &&
-                    hsc &&
-                    englishProficiencyTest) ||
-                  (program == "masters" &&
-                    hsc &&
-                    bachelor &&
-                    recommendationLetters) ||
-                  (program == "ph.d." &&
-                    bachelor &&
-                    masters &&
-                    recommendationLetters)
+                    whatProgram)
                     ? false
                     : true
-                }
+                } */
                 variant="contained"
                 onClick={handleNext}
                 sx={{ mt: 3, ml: 1 }}>
