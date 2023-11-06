@@ -122,7 +122,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        {(program === "chinese language/diploma" || program === "bachelor") && (
+        {(program === "Language" || program === "Bachelor") && (
           <Grid item xs={12} md={6}>
             <Typography variant="subtitle1" gutterBottom>
               Secondary school certificate (SSC) & transcript*
@@ -350,7 +350,7 @@ export default function Documents() {
                 </Button>
               </Box>
             </Grid>
-        {(program === "bachelor" || program === "masters") && (
+        {(program === "Bachelor" || program === "Masters") && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -399,7 +399,7 @@ export default function Documents() {
             
           </>
         )}
-        {(program === "masters" || program === "ph.d.") && (
+        {(program === "Masters" || program === "Phd") && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -418,7 +418,7 @@ export default function Documents() {
                     onChange={(e) => {
                       const selectedFile = validateAndRenameFile(
                         e.target.files[0],
-                        "bachelor",
+                        "Bachelor",
                       );
                       if (selectedFile) {
                         const reader = new FileReader();
@@ -493,7 +493,7 @@ export default function Documents() {
             </Grid>
           </>
         )}
-        {program === "ph.d." && (
+        {program === "Phd" && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -512,7 +512,7 @@ export default function Documents() {
                     onChange={(e) => {
                       const selectedFile = validateAndRenameFile(
                         e.target.files[0],
-                        "masters",
+                        "Masters",
                       );
                       if (selectedFile) {
                         const reader = new FileReader();

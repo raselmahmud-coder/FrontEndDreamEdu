@@ -10,6 +10,10 @@ import Initialization from "./Initialization";
 import Documents from "./Documents";
 import Review from "./Review";
 import { useSelector } from "react-redux";
+import { useAddApplicantProfileMutation } from "../../redux/feature/applyForAdmission/applyForAdmissionDocsAPI";
+import axios from "axios";
+import ssc from "../../assets/changzhou.jpg";
+import base64ToBlob from "../../utils/base64ToBlob";
 const steps = ["Initialization", "Documents", "Review your profile"];
 function getStepContent(step) {
   switch (step) {
@@ -26,7 +30,9 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [whatProgram, setWhatProgram] = React.useState("");
+  const [addApplicantProfile, { isError, isLoading, error, data }] =
+    useAddApplicantProfileMutation();
+  const allStoreData = useSelector((state) => state.admission);
   const {
     program,
     sureName,
@@ -49,12 +55,13 @@ export default function Checkout() {
     studyPlan,
     recommendationLetters,
     englishProficiencyTest,
-  } = useSelector((state) => state.admission);
+  } = allStoreData;
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
   const handleNext = () => {
-    if (activeStep == 0) {
+    setActiveStep(activeStep + 1);
+    /* if (activeStep == 0) {
       if (
         program &&
         sureName &&
@@ -79,7 +86,6 @@ export default function Checkout() {
         nonCriminalCertificate &&
         studyPlan
       ) {
-        
         switch (program) {
           case "chinese language/diploma":
             if (ssc) {
@@ -104,7 +110,7 @@ export default function Checkout() {
             } else {
               return alert("Please fill all the required fields");
             }
-            case "ph.d.":
+          case "ph.d.":
             console.log(activeStep, program, "how step");
             if (
               bachelor &&
@@ -123,9 +129,84 @@ export default function Checkout() {
       } else {
         return alert("Please fill all the required fields");
       }
-    } else if (activeStep === 2) setActiveStep(activeStep + 1);
+    } else if (activeStep === 2) setActiveStep(activeStep + 1); */
   };
+  // sent data to the backend
+  React.useEffect(() => {
+    const sendData = async () => {
+      if (activeStep === steps.length) {
+        const formData = new FormData();
+        formData.append("sureName", sureName);
+        formData.append("givenName", givenName);
+        formData.append("program", "Bachelor");
+        formData.append("addressLine", addressLine);
+        formData.append("city", city);
+        formData.append("province", province);
+        formData.append("postCode", postCode);
+        formData.append("country", country);
+        formData.append("phone", phone);
+        formData.append("email", email);
+        formData.append("passport", base64ToBlob(passport), "passport.jpg");
+        formData.append(
+          "passportSizePhoto",
+          base64ToBlob(passportSizePhoto),
+          "passportSizePhoto.jpg",
+        );
+        formData.append(
+          "nonCriminalCertificate",
+          base64ToBlob(nonCriminalCertificate),
+          "nonCriminalCertificate.jpg",
+        );
+        formData.append(
+          "bankStatement",
+          base64ToBlob(bankStatement),
+          "bankStatement.jpg",
+        );
+        formData.append("studyPlan", base64ToBlob(studyPlan), "studyPlan.jpg");
+        // Based on Program selection from user these fields will be added
+        formData.append("ssc", base64ToBlob(englishProficiencyTest), "ssc.jpg");
+        // formData.append("hsc", base64ToBlob(englishProficiencyTest), "hsc.jpg");
+        // formData.append("masters", base64ToBlob(englishProficiencyTest), "masters.jpg");
+        // formData.append("bachelor", base64ToBlob(englishProficiencyTest), "bachelor.jpg");
+        // formData.append("recommendationLetters", base64ToBlob(englishProficiencyTest), "recommendationLetters.jpg");
+        // formData.append(
+        //   "englishProficiencyTest",
+        //   base64ToBlob(englishProficiencyTest),
+        //   "english_proficiencyTest.jpg",
+        // );
+        const res = await axios.post(
+          "https://dreameduapiv1.dreameduinfo.com/api/apply/",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          },
+        );
+        console.log(res, "hello res");
 
+        /* for (const key in bodyObj) {
+        if (Object.hasOwnProperty.call(bodyObj, key)) {
+          if (bodyObj[key]) {
+            console.log(bodyObj[key], "body");
+            body.append(key, bodyObj[key]);
+          }
+        }
+        } */
+        // body.append("first_name", "Rasel");
+        // await addApplicantProfile(body);
+        // }
+      }
+    };
+    sendData();
+  }, [activeStep]);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return console.log(error, "error");
+  if (data) {
+    console.log(data, "data");
+  }
+
+  // console.log("Error Response:", showError);
   return (
     <React.Fragment>
       <Paper

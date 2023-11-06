@@ -8,7 +8,6 @@ const YouTubeFeeds = () => {
     const apiKey = "AIzaSyBrmXzF-DorCHR7r01mowYgc3widZ2mj34"; // Replace with your Google API key
     const channelId = "UCZQLU9dg9Lrv67RBIItGeUA"; // Replace with your YouTube channel ID
     const maxResults = 3;
-
     fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
     )

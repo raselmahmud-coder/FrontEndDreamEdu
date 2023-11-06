@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   program: null,
+  chineseName: "",
+  dateOfBirth: "",
+  gender: "",
   sureName: "",
   givenName: "",
   addressLine: "",
@@ -9,8 +12,8 @@ const initialState = {
   postCode: "",
   country: "",
   passport: "",
-  masters:"",
-  bachelor:"",
+  masters: "",
+  bachelor: "",
   hsc: "",
   ssc: "",
   bankStatement: "",
@@ -28,6 +31,9 @@ const userAdmissionProfileAPISlice = createSlice({
   reducers: {
     admissionProfileCreate: (state, action) => {
       state.program = action.payload.program;
+      state.chineseName = action.payload.chineseName;
+      state.dateOfBirth = action.payload.dateOfBirth;
+      state.gender = action.payload.gender;
       state.sureName = action.payload.sureName;
       state.givenName = action.payload.givenName;
       state.addressLine = action.payload.addressLine;
