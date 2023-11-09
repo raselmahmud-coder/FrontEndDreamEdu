@@ -72,28 +72,30 @@ function ResponsiveAppBar({ mode, onClick }) {
       {!accessToken && (
         <>
           <HideOnScroll>
-            <AppBar>
+            <AppBar sx={{
+              // backgroundColor: mode ? "#000" : "#f9f9f9",
+            }}>
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
                   <ImageList
                     sx={{
-                      mr: 2,
-                      display: { xs: "none", md: "flex" },
-                      fontFamily: "monospace",
-                      fontWeight: 700,
-                      letterSpacing: ".3rem",
-                      color: "inherit",
-                      textDecoration: "none",
+                      // mr: 2,
+                      // display: { xs: "none", md: "flex" },
+                      // fontFamily: "monospace",
+                      // fontWeight: 700,
+                      // letterSpacing: ".3rem",
+                      // color: "inherit",
+                      // textDecoration: "none",
                     }}>
                     <ImageListItem>
                       <Link to="/">
                         <img
-                          src={mode ? whiteLogo : logo}
+                          src={ whiteLogo}
                           alt={"logo"}
                           loading="lazy"
                           style={{
-                            width: "70px",
-                            height: "50px",
+                            width: "140px",
+                            height: "80px",
                           }}
                         />
                       </Link>

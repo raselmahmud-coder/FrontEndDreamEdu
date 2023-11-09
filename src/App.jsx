@@ -36,6 +36,12 @@ const App = () => {
   const darkTheme = createTheme({
     palette: {
       mode: isDarkMode ? "dark" : "light",
+      primary: {
+        main: '#3f51b5',
+      },
+      secondary: {
+        main: '#f50057',
+      },
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);

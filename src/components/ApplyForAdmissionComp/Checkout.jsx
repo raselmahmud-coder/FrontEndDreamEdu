@@ -14,14 +14,17 @@ import { useAddApplicantProfileMutation } from "../../redux/feature/applyForAdmi
 import axios from "axios";
 import ssc from "../../assets/changzhou.jpg";
 import base64ToBlob from "../../utils/base64ToBlob";
-const steps = ["Initialization", "Documents", "Review your profile"];
+import EducationBackground from "./EducationBackground";
+const steps = ["Initialization", "Education Background", "Documents", "Review your profile"];
 function getStepContent(step) {
   switch (step) {
     case 0:
       return <Initialization />;
     case 1:
-      return <Documents />;
+      return <EducationBackground />;
     case 2:
+      return <Documents />;
+    case 3:
       return <Review />;
     default:
       throw new Error("Unknown step");

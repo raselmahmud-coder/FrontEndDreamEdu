@@ -80,6 +80,50 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
+            Others/Extra-curricular*
+          </Typography>
+          {passport && <img src={passport} width={"20%"} alt="Preview" />}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                required
+                type="file"
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "extra_curricular",
+                  );
+                  if (selectedFile) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile.name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate({
+                          ...initialData,
+                          extraCurricular: fileData.dataURL,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile);
+                  }
+                }}
+                hidden
+                accept=".jpg, .jpeg, .png"
+              />
+            </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography variant="subtitle1" gutterBottom>
             Photo 48/33 mm (White background)*
           </Typography>
           {passportSizePhoto && <img src={passportSizePhoto} width={"20%"} />}

@@ -10,6 +10,9 @@ import {
   RadioGroup,
   Radio,
   Box,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
@@ -21,6 +24,11 @@ import { DateField } from "@mui/x-date-pickers/DateField";
 export default function Initialization() {
   const dispatch = useDispatch();
   const previousData = useSelector((state) => state.admission);
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -29,61 +37,33 @@ export default function Initialization() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <FormControl
-            required
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate({
-                  ...previousData,
-                  program: e.target.value,
-                }),
-              );
-            }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              Select you program
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group">
-              <FormControlLabel
-                value="Language"
-                control={<Radio />}
-                label="Chinese language"
-                checked={previousData.program === "Language"}
-              />
-              <FormControlLabel
-                value="Diploma"
-                control={<Radio />}
-                label="Diploma"
-                checked={previousData.program === "Diploma"}
-              />
-              <FormControlLabel
-                value="Bachelor"
-                control={<Radio />}
-                label="Bachelor"
-                checked={previousData.program === "Bachelor"}
-              />
-              <FormControlLabel
-                value="Masters"
-                control={<Radio />}
-                label="Master's"
-                checked={previousData.program === "Masters"}
-              />
-              <FormControlLabel
-                checked={previousData.program === "Phd"}
-                value="Phd"
-                control={<Radio />}
-                label="Ph.D."
-              />
-            </RadioGroup>
+          <FormControl required variant="standard" fullWidth>
+            <InputLabel id="select-program">Select you program</InputLabel>
+            <Select
+              labelId="select-program"
+              id="select-program"
+              value={previousData.program}
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    program: e.target.value,
+                  }),
+                );
+              }}
+              label="Select Your Program">
+              <MenuItem value={"Language"}>Chinese Language</MenuItem>
+              <MenuItem value={"Diploma"}>Diploma</MenuItem>
+              <MenuItem value={"Bachelor"}>Bachelor</MenuItem>
+              <MenuItem value={"Masters"}>Masters</MenuItem>
+              <MenuItem value={"Phd"}>Ph.D.</MenuItem>
+            </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={3}>
           <FormControl
             required
             onChange={(e) => {
-              console.log(e.target.value, "hello js")
               dispatch(
                 admissionProfileCreate({
                   ...previousData,
@@ -108,6 +88,40 @@ export default function Initialization() {
             </RadioGroup>
           </FormControl>
         </Grid>
+        <Grid item xs={12} sm={3}>
+          <FormControl
+            required
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  mediumOfInstruction: e.target.value,
+                }),
+              );
+            }}>
+            <FormLabel id="mediumOfInstruction">
+              Medium Of Instruction
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="mediumOfInstruction"
+              name="mediumOfInstruction">
+              <FormControlLabel
+                value="English"
+                control={<Radio />}
+                label="English"
+                checked={previousData.gender === "English"}
+              />
+              <FormControlLabel
+                value="Chinese"
+                control={<Radio />}
+                label="Chinese"
+                checked={previousData.gender === "Chinese"}
+              />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -240,9 +254,114 @@ export default function Initialization() {
             />
           </LocalizationProvider>
         </Grid>
-
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
+            required
+            id="Religion"
+            name="Religion"
+            label="Religion"
+            placeholder="Type your Religion"
+            fullWidth
+            autoComplete="Religion"
+            variant="standard"
+            value={previousData.religion}
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  religion: e.target.value,
+                }),
+              );
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
+            <DateField
+              required
+              fullWidth
+              value={previousData.maritalStatus}
+              variant="standard"
+              onChange={(e) => {
+                const convertDate = new Date(e).toLocaleDateString("en-US", {
+                  month: "numeric",
+                  day: "numeric",
+                  year: "numeric",
+                });
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    maritalStatus: convertDate,
+                  }),
+                );
+              }}
+              label="Marital status"
+            />
+          </LocalizationProvider>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+          {/* <TextField
+          required
+            value={previousData.addressLine}
+            id="bloodType"
+            name="Blood Type"
+            label="Blood Type"
+            fullWidth
+            autoComplete="Blood Type"
+            variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  bloodType: e.target.value,
+                }),
+              );
+            }}
+          /> */}
+
+          <FormControl required variant="standard" fullWidth>
+            <InputLabel id="blood-group">Blood Group</InputLabel>
+            <Select
+              labelId="blood-group"
+              id="blood-group"
+              value={age}
+              onChange={handleChange}
+              label="Blood Group">
+              <MenuItem value={"a+"}>A+</MenuItem>
+              <MenuItem value={"a-"}>A-</MenuItem>
+              <MenuItem value={"b+"}>B+</MenuItem>
+              <MenuItem value={"b-"}>B-</MenuItem>
+              <MenuItem value={"ab+"}>AB+</MenuItem>
+              <MenuItem value={"ab-"}>AB-</MenuItem>
+              <MenuItem value={"o+"}>O+</MenuItem>
+              <MenuItem value={"o-"}>O-</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <TextField
+            required
+            value={previousData.addressLine}
+            id="Height"
+            name="Height"
+            label="Height"
+            fullWidth
+            autoComplete="Height"
+            variant="standard"
+            onChange={(e) => {
+              dispatch(
+                admissionProfileCreate({
+                  ...previousData,
+                  height: e.target.value,
+                }),
+              );
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
             value={previousData.addressLine}
             id="address"
             name="address"
@@ -378,6 +497,189 @@ export default function Initialization() {
             }}
           />
         </Grid>
+
+        
+    
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="fatherName"
+              name="fatherName"
+              label="Father's Name"
+              placeholder="Type here"
+              fullWidth
+              autoComplete="fatherName"
+              variant="standard"
+              value={previousData.fatherName}
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    fatherName: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
+              <DateField
+                required
+                fullWidth
+                value={previousData.FatherDateOfBirth}
+                variant="standard"
+                onChange={(e) => {
+                  const convertDate = new Date(e).toLocaleDateString("en-US", {
+                    month: "numeric",
+                    day: "numeric",
+                    year: "numeric",
+                  });
+                  dispatch(
+                    admissionProfileCreate({
+                      ...previousData,
+                      FatherDateOfBirth: convertDate,
+                    }),
+                  );
+                }}
+                label="Date of Birth"
+              />
+            </LocalizationProvider>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="occupation"
+              name="occupation"
+              label="Occupation"
+              fullWidth
+              autoComplete="occupation"
+              placeholder="Type here"
+              value={previousData.occupation}
+              variant="standard"
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    occupation: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="fatherPhone"
+              name="fatherPhone"
+              label="Father's Phone"
+              fullWidth
+              type="number"
+              autoComplete="fatherPhone"
+              placeholder="Type here"
+              value={previousData.phone}
+              variant="standard"
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    phone: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="motherName"
+              name="motherName"
+              label="Mother's Name"
+              placeholder="Type here"
+              fullWidth
+              autoComplete="motherName"
+              variant="standard"
+              value={previousData.motherName}
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    motherName: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
+              <DateField
+                required
+                fullWidth
+                value={previousData.motherDateOfBirth}
+                variant="standard"
+                onChange={(e) => {
+                  const convertDate = new Date(e).toLocaleDateString("en-US", {
+                    month: "numeric",
+                    day: "numeric",
+                    year: "numeric",
+                  });
+                  dispatch(
+                    admissionProfileCreate({
+                      ...previousData,
+                      motherDateOfBirth: convertDate,
+                    }),
+                  );
+                }}
+                label="Date of Birth"
+              />
+            </LocalizationProvider>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="occupation"
+              name="occupation"
+              label="Occupation"
+              fullWidth
+              autoComplete="occupation"
+              placeholder="Type here"
+              value={previousData.occupation}
+              variant="standard"
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    occupation: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              required
+              id="motherPhone"
+              name="motherPhone"
+              label="Mother's Phone"
+              fullWidth
+              type="number"
+              autoComplete="motherPhone"
+              placeholder="Type here"
+              value={previousData.phone}
+              variant="standard"
+              onChange={(e) => {
+                dispatch(
+                  admissionProfileCreate({
+                    ...previousData,
+                    phone: e.target.value,
+                  }),
+                );
+              }}
+            />
+          </Grid>
+      
+
+        
+      
       </Grid>
     </React.Fragment>
   );

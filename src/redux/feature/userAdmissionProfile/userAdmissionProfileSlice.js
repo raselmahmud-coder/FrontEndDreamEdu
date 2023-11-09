@@ -24,6 +24,8 @@ const initialState = {
   englishProficiencyTest: "",
   phone: "",
   email: "",
+  isVisitedChina: null,
+  visaExpiry: "",
 };
 const userAdmissionProfileAPISlice = createSlice({
   name: "admission",
@@ -55,6 +57,8 @@ const userAdmissionProfileAPISlice = createSlice({
       state.englishProficiencyTest = action.payload.englishProficiencyTest;
       state.phone = action.payload.phone;
       state.email = action.payload.email;
+      state.isVisitedChina = action.payload.isVisitedChina;
+      state.visaExpiry = action.payload.visaExpiry;
     },
   },
 });
