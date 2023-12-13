@@ -39,7 +39,10 @@ export default function Section2() {
         columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid item xs={12} sm={12} md={6}>
           <Typography variant="h6" gutterBottom>
-            SPECIAL OFFER FIRST CUSTOMER
+            SPECIAL OFFER FOR YOU <span style={{
+              color: "red",
+              fontSize: "35px",
+              }}>🎉</span>
           </Typography>
           <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
             Your{" "}
@@ -47,13 +50,12 @@ export default function Section2() {
               style={{
                 color: "red",
               }}>
-              success
+              successful
             </span>{" "}
             journey start with us!
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
-            Eduplan Education Can Fulfil Your International Education Dream As
-            Per Your Best Fit with world top universities
+          DreamEdu offers a comprehensive range of services designed to assist students at every stage of their educational journey
           </Typography>
           <Typography
             component={"div"}

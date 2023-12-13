@@ -11,8 +11,8 @@ export default function AboutUsPage() {
       <DynamicPageTitle pageTitle="About Us Page" />
       <Container maxWidth="xl">
         <AboutUsSection1 />
-        <AboutUsSection2 />
         <AboutUsSection3 />
+        <AboutUsSection2 />
       </Container>
     </>
   );

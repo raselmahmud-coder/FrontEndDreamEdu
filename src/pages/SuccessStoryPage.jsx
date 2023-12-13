@@ -7,7 +7,11 @@ const SuccessStoryPage = () => {
   return (
     <>
       <DynamicPageTitle pageTitle="Success Story Page" />
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 9,
+        }}>
         <SSComp />
       </Container>
     </>

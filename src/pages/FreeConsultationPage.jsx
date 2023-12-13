@@ -6,8 +6,12 @@ import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 const FreeConsultationPage = () => {
   return (
     <>
-    <DynamicPageTitle pageTitle="Free Consultation Page" />
-      <Container maxWidth="xl">
+      <DynamicPageTitle pageTitle="Free Consultation Page" />
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 9,
+        }}>
         <ContactUs />
       </Container>
     </>

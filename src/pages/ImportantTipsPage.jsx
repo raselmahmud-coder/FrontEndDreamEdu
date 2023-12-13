@@ -10,7 +10,11 @@ const ImportantTipsPage = () => {
   return (
     <>
       <DynamicPageTitle pageTitle="Important Tips Page" />
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: 9,
+        }}>
         <Tips1 category={category} />
       </Container>
     </>

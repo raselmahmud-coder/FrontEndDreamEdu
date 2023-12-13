@@ -11,15 +11,21 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
 import { CheckCircleOutline, SwapCalls } from "@mui/icons-material";
+import aboutUsImage from "../../assets/aboutUs.png";
 
 const AboutUsSection1 = () => {
   return (
     <>
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 1, md: 2 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2, justifyContent: "space-between", alignItems: "center" }}>
+        sx={{
+          py: 8,
+          px: 1,
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}>
         <Grid item xs={12} sm={6} md={6}>
           <Typography
             variant="h1"
@@ -27,14 +33,20 @@ const AboutUsSection1 = () => {
             About us
           </Typography>
           <Typography variant="body1" sx={{}}>
-            Eduplan student consultancy is one of the renowned international
-            education consultancy firms which assisting overseas students
+            DreamEdu is a leading education consultancy established in 2018,
+            dedicated to guiding and empowering students on their journey
+            towards academic and career success.
             <br />
-            The head office of Eduplan is located in India which helps all
-            Indian students to get admission into top-ranked universities from
-            the United Kingdom, USA, Australia, Canada,Germany and Sweden. At
-            the same time, we have a very strong relationship with our partner
-            Malaysian, Cyprus and Chinese Universities.
+            <br />
+            We understand that each student is unique, with distinct aspirations
+            and goals, and we strive to provide personalized solutions that
+            cater to their specific needs. Our team at DreamEdu consists of
+            highly qualified and experienced education experts, counselors, and
+            mentors who are passionate about helping students unlock their true
+            potential. With a deep understanding of the ever-evolving
+            educational landscape, we stay abreast of the latest trends,
+            courses, and opportunities worldwide to offer the most up-to-date
+            advice and recommendations.
           </Typography>
 
           <List>
@@ -78,9 +90,9 @@ const AboutUsSection1 = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
           <CardMedia
-            sx={{ width: "100%", height: 470 }}
-            image={"https://themeim.com/demo/eduplan/assets/img/about/01.jpg"}
-            title="green"
+            sx={{ width: "100%", height: "100vh" }}
+            image={aboutUsImage}
+            title="about us"
           />
         </Grid>
       </Grid>

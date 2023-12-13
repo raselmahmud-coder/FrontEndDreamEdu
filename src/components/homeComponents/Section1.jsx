@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box, Paper, styled } from "@mui/material";
+import { serviceOfferData } from "../../utils/fakeData";
 
 const cards = [1, 2, 3];
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,10 +21,10 @@ export default function Section1() {
         <Box sx={{ py: 8 }} component="section">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {serviceOfferData.map(({title, description, img}) => (
               <Grid
                 item
-                key={card}
+                key={title}
                 xs={12}
                 sm={6}
                 md={4}
@@ -64,11 +65,10 @@ export default function Section1() {
                   <Item sx={{ borderRadius: 0 }}>
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        One Stop Study Solution
+                      {title}
                       </Typography>
                       <Typography>
-                        Get a full view so you know where to save. Track
-                        spending, deta keep tab subscription lorem ipsum text.
+                        {description}
                       </Typography>
                     </CardContent>
                     

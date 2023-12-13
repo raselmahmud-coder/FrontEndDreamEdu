@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   Grid,
-  Stack,
   Typography,
 } from "@mui/material";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
@@ -15,7 +14,7 @@ const AboutUsSection3 = () => {
   return (
     <>
       <Typography variant="h1" sx={{ fontWeight: "bold", textAlign: "center" }} gutterBottom>
-        Why chose us
+        Why choose us?
       </Typography>
       <Grid
         container

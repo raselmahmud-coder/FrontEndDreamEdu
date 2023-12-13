@@ -22,8 +22,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import logo from "../assets/logo.png";
-import whiteLogo from "../assets/Logo-White.png";
+import whiteLogo from "../assets/logo2.png";
 import { useSelector } from "react-redux";
+import NewsTicker from "./NewsTicker/NewsTicker";
 
 const pages = [
   "Home",
@@ -75,17 +76,18 @@ function ResponsiveAppBar({ mode, onClick }) {
             <AppBar sx={{
               // backgroundColor: mode ? "#000" : "#f9f9f9",
             }}>
+              <NewsTicker/>
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
                   <ImageList
                     sx={{
-                      // mr: 2,
-                      // display: { xs: "none", md: "flex" },
-                      // fontFamily: "monospace",
-                      // fontWeight: 700,
-                      // letterSpacing: ".3rem",
-                      // color: "inherit",
-                      // textDecoration: "none",
+                      mr: 2,
+                      display: { xs: "none", md: "flex" },
+                      fontFamily: "monospace",
+                      fontWeight: 700,
+                      letterSpacing: ".3rem",
+                      color: "inherit",
+                      textDecoration: "none",
                     }}>
                     <ImageListItem>
                       <Link to="/">
@@ -94,8 +96,8 @@ function ResponsiveAppBar({ mode, onClick }) {
                           alt={"logo"}
                           loading="lazy"
                           style={{
-                            width: "140px",
-                            height: "80px",
+                            // width: "140px",
+                            height: "8vh",
                           }}
                         />
                       </Link>
