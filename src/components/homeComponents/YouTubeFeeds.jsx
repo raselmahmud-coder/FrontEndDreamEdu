@@ -5,11 +5,15 @@ const YouTubeFeeds = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    const apiKey = "AIzaSyBrmXzF-DorCHR7r01mowYgc3widZ2mj34"; // Replace with your Google API key
-    const channelId = "UCZQLU9dg9Lrv67RBIItGeUA"; // Replace with your YouTube channel ID
+    // const apiKey = "AIzaSyBrmXzF-DorCHR7r01mowYgc3widZ2mj34"; // Replace with your Google API key
+    // const channelId = "UCZQLU9dg9Lrv67RBIItGeUA"; // Replace with your YouTube channel ID
+    // const apiKey = "AIzaSyAExnkXzlg3KjgJKpjT1WqtBZsA7CjsnXg"; // Replace with your Google API key
+    const channelId = "UC-0b4o2xGWcM5qhCmvnhZ8g"; // Replace with your YouTube channel ID
     const maxResults = 3;
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
+      `https://www.googleapis.com/youtube/v3/search?key=${
+        import.meta.env.VITE_API_KEY
+      }&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
     )
       .then((res) => res.json())
       .then((response) => {
@@ -19,7 +23,6 @@ const YouTubeFeeds = () => {
         console.error("Error fetching YouTube videos:", error);
       });
   }, []);
-
   return (
     <>
       <Typography
@@ -39,7 +42,7 @@ const YouTubeFeeds = () => {
         sx={{
           alignItems: "center",
         }}>
-        {videos.map((video) => (
+        {videos?.map((video) => (
           <Grid item xs={12} sm={6} md={4} key={video.id.videoId}>
             <iframe
               //   width="560"

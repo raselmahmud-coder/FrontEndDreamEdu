@@ -92,12 +92,12 @@ function ResponsiveAppBar({ mode, onClick }) {
                     <ImageListItem>
                       <Link to="/">
                         <img
-                          src={ whiteLogo}
+                          src={mode ? whiteLogo : logo}
                           alt={"logo"}
                           loading="lazy"
                           style={{
-                            // width: "140px",
-                            height: "8vh",
+                            // width: "130px",
+                            height: "9vh",
                           }}
                         />
                       </Link>
@@ -169,7 +169,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                     sx={{
                       flexGrow: 1,
                       display: { xs: "none", md: "flex" },
-                      justifyContent: "center",
+                      justifyContent: "end",
                     }}>
                     {pages.map((page) => (
                       <Link

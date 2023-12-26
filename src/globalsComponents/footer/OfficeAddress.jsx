@@ -85,9 +85,8 @@ const OfficeAddress = () => {
               }}>
               House 191 (2nd floor), Block - D, Road - 8, EHL Mohanagar Project R/A, Dhaka - 1219, Bangladesh
             </Typography>
-
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.06397525303!2d90.25487334875977!3d23.780753027183962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c743f3addd41%3A0x78eb7e274e8e2072!2sMohanagar%20Project!5e0!3m2!1sen!2ssg!4v1696608711539!5m2!1sen!2ssg"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29211.981807669024!2d90.41281649999999!3d23.7652842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x29d57af324a737db%3A0xe20d43dbb90f786e!2sDreamEdu%20Consultancy!5e0!3m2!1sen!2s!4v1703606464041!5m2!1sen!2s"
               width="100%"
               height="300"
               style={{ border: "0" }}

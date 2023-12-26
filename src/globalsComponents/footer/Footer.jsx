@@ -197,12 +197,12 @@ const Footer = () => {
                 alignItems: "center",
               }}>
               <a
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center", color:"inherit" }}
                 title="Facebook Page"
                 href="https://facebook.com/DreamEduChina"
                 target="_blank"
                 rel="noopener noreferrer">
-                <FacebookRoundedIcon color="primary" fontSize={"medium"} />
+                <FacebookRoundedIcon fontSize={"medium"} />
                 <Typography
                   variant="subtitle1"
                   sx={{
@@ -219,12 +219,12 @@ const Footer = () => {
                 alignItems: "center",
               }}>
               <a
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center", color:"inherit" }}
                 title="YouTube Channel"
                 href="https://www.youtube.com/@dreameduchina5640"
                 target="_blank"
                 rel="noopener noreferrer">
-                <YouTubeIcon color="primary" fontSize={"medium"} />
+                <YouTubeIcon fontSize={"medium"} />
                 <Typography
                   variant="subtitle1"
                   sx={{
@@ -241,12 +241,12 @@ const Footer = () => {
                 alignItems: "center",
               }}>
               <a
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center", color:"inherit" }}
                 title="WhatsApp"
                 href="https://api.whatsapp.com/send/?phone=8619150064373&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer">
-                <WhatsApp color="primary" fontSize={"medium"} />
+                <WhatsApp fontSize={"medium"} />
                 <Typography
                   variant="subtitle1"
                   sx={{
@@ -270,6 +270,7 @@ const Footer = () => {
           © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights
           reserved. Powered by{" "}
           <a
+            style={{color:"inherit"}}
             href="https://facebook.com/raselmahmud.coder"
             target="_blank"
             rel="noopener noreferrer">

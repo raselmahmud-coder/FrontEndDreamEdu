@@ -73,7 +73,7 @@ export default function Documents() {
                   }
                 }}
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -117,7 +117,7 @@ export default function Documents() {
                   }
                 }}
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -161,7 +161,7 @@ export default function Documents() {
                 required
                 type="file"
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -206,7 +206,7 @@ export default function Documents() {
                   required
                   type="file"
                   hidden
-                  accept=".jpg, .jpeg, .png"
+                  accept=".jpg, .jpeg, .png, .pdf"
                 />
               </Button>
             </Box>
@@ -253,7 +253,7 @@ export default function Documents() {
                 required
                 type="file"
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -299,7 +299,7 @@ export default function Documents() {
                 required
                 type="file"
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -343,7 +343,7 @@ export default function Documents() {
                 required
                 type="file"
                 hidden
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
               />
             </Button>
           </Box>
@@ -389,7 +389,7 @@ export default function Documents() {
                     required
                     type="file"
                     hidden
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .png, .pdf"
                   />
                 </Button>
               </Box>
@@ -435,7 +435,7 @@ export default function Documents() {
                     required
                     type="file"
                     hidden
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .png, .pdf"
                   />
                 </Button>
               </Box>
@@ -484,7 +484,7 @@ export default function Documents() {
                     required
                     type="file"
                     hidden
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .png, .pdf"
                   />
                 </Button>
               </Box>
@@ -530,7 +530,7 @@ export default function Documents() {
                     required
                     type="file"
                     hidden
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .png, .pdf"
                   />
                 </Button>
               </Box>
@@ -578,7 +578,7 @@ export default function Documents() {
                     required
                     type="file"
                     hidden
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .png, .pdf"
                   />
                 </Button>
               </Box>
