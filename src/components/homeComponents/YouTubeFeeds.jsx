@@ -5,9 +5,6 @@ const YouTubeFeeds = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // const apiKey = "AIzaSyBrmXzF-DorCHR7r01mowYgc3widZ2mj34"; // Replace with your Google API key
-    // const channelId = "UCZQLU9dg9Lrv67RBIItGeUA"; // Replace with your YouTube channel ID
-    // const apiKey = "AIzaSyAExnkXzlg3KjgJKpjT1WqtBZsA7CjsnXg"; // Replace with your Google API key
     const channelId = "UC-0b4o2xGWcM5qhCmvnhZ8g"; // Replace with your YouTube channel ID
     const maxResults = 3;
     fetch(

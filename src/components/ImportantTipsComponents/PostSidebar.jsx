@@ -129,7 +129,7 @@ const navigate = useNavigate();
             <Box key={id}>
               <ListItem sx={{
                 cursor: "pointer"
-              }} onClick={()=> navigate(`/important-tips/category/Education`)}>
+              }} onClick={()=> navigate(`/study-in-china/category/Education`)}>
                 <ListItemText primary={category} />
                 <Typography variant="h5">({id})</Typography>
               </ListItem>

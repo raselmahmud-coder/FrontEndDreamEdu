@@ -149,7 +149,7 @@ const Tips1 = ({ category }) => {
                   />
                 ))}
               </SpeedDial>
-              <Link to={`/important-tips/${id}`}>
+              <Link to={`/study-in-china/${id}`}>
                 <Button size="small">Learn More</Button>
               </Link>
             </CardActions>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ResponsiveAppBar from "./globalsComponents/ResponsiveAppBar";
+import ResponsiveAppBar from "./globalsComponents/NavBar/ResponsiveAppBar";
 import {
   ThemeProvider,
   createTheme,
@@ -37,7 +37,7 @@ const App = () => {
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
-        main: '#3f51b5',
+        main: '#f0f0f0',
       },
       secondary: {
         main: '#f50057',
@@ -46,7 +46,7 @@ const App = () => {
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);
   const location = useLocation();
-  console.log(location.pathname, "hello location")
+  // console.log(location.pathname, "hello location")
   return (
     <>
       <ThemeProvider theme={responsiveTheme}>
@@ -59,12 +59,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/important-tips" element={<ImportantTipsPage />} />
+            <Route path="/study-in-china" element={<ImportantTipsPage />} />
             <Route
-              path="/important-tips/:id"
+              path="/study-in-china/:id"
               element={<SingleBlogPostPage />}
             />
-            <Route path="/important-tips/category/:category" element={<ImportantTipsPage />} />
+            <Route path="/study-in-china/category/:category" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
             <Route
               path="/free-consultation"
