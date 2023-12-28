@@ -37,6 +37,15 @@ const App = () => {
       secondary: {
         main: '#f50057',
       },
+      accent: {
+        main: '#004808',
+      },
+      black: {
+        main: '#000',
+      },
+      whiteCustom: {
+        main: '#fff',
+      },
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);

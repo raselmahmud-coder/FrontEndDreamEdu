@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   CircularProgress,
-  Divider,
   Grid,
   TextField,
   Typography,
@@ -15,22 +14,23 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { useAddFreeConsultationMutation } from "../../redux/feature/FreeConsultation/FreeConsultationAPI";
 import PositionedSnackbar from "../../globalsComponents/PositionSnakBar";
-const style = {
-  my: 2,
-};
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  color: theme.palette.text.secondary,
-}));
+import { useSelector } from "react-redux";
 
 const ContactUs = () => {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   const [
     addFreeConsultation,
     { isError, isLoading, data: consultationData, isSuccess },
   ] = useAddFreeConsultationMutation();
+
+  const style = {
+    my: 2,
+    color: isDarkMode ? "white" : "black",
+
+    "& .MuiInputLabel-root": {
+      color: isDarkMode ? "white" : "black",
+    },
+  };
 
   const handleConsultationForm = async (even) => {
     even.preventDefault();
@@ -78,128 +78,134 @@ const ContactUs = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2, mb: 15 }}>
         <Grid item xs={12} sm={6} md={6}>
-          <Item>
-            <Box component="form" onSubmit={handleConsultationForm}>
-              <TextField
-                required
-                sx={style}
-                id="standard-basic"
-                label="Name"
-                fullWidth
-                variant="standard"
-              />
-              <TextField
-                required
-                sx={style}
-                id="standard-basic"
-                label="Email"
-                fullWidth
-                variant="standard"
-              />
-              <TextField
-                required
-                sx={style}
-                id="standard-basic"
-                label="Phone"
-                fullWidth
-                variant="standard"
-              />
-              <TextField
-                required
-                sx={style}
-                id="standard-basic"
-                label="Your Message"
-                variant="standard"
-                fullWidth
-              />
-              <Button disabled={isLoading} type="submit" variant="contained">
-                {isLoading ? <CircularProgress color="success" /> : "Submit"}
-              </Button>
-            </Box>
-          </Item>
+          <Box component="form" onSubmit={handleConsultationForm}>
+            <TextField
+              required
+              sx={{
+                my: 2,
+              }}
+              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
+              id="standard-basic"
+              label="Name"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              required
+              sx={{
+                my: 2,
+              }}
+              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
+              id="standard-basic"
+              label="Email"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              required
+              sx={{
+                my: 2,
+              }}
+              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
+              id="standard-basic"
+              label="Phone"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              required
+              sx={{
+                my: 2,
+              }}
+              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
+              id="standard-basic"
+              label="Your Message"
+              variant="standard"
+              fullWidth
+            />
+            <Button disabled={isLoading} type="submit" variant="contained">
+              {isLoading ? <CircularProgress color="success" /> : "Submit"}
+            </Button>
+          </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <Item>
+          <Typography
+            variant="h4"
+            sx={{
+              textAlign: "center",
+              my: 2,
+            }}>
+            Get in touch
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              my: 4,
+            }}>
+            <PhoneForwardedIcon
+              sx={{
+                fontSize: "3rem",
+                color: isDarkMode ? "accent.main" : "secondary.main",
+                border: 1,
+                borderRadius: "50%",
+                mr: 2,
+              }}
+            />
             <Typography
-              variant="h4"
+              variant="subtitle1"
               sx={{
-                textAlign: "center",
-                my: 2,
+                fontWeight: "bold",
               }}>
-              Get in touch
+              Phone Number Bangladesh Office: +8801760680960
             </Typography>
-            <Box
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              my: 4,
+            }}>
+            <PhoneForwardedIcon
               sx={{
-                display: "flex",
-                alignItems: "center",
-                my: 4,
-              }}>
-              <PhoneForwardedIcon
-                sx={{
-                  fontSize: "3rem",
-                  color: "primary.main",
-                  border: 1,
-                  borderRadius: "50%",
-                  mr: 2,
-                }}
-              />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  fontWeight: "bold",
-                }}>
-                Phone Number Bangladesh Office: +8801711111111
-              </Typography>
-            </Box>
-            <Box
+                fontSize: "3rem",
+                color: isDarkMode ? "accent.main" : "secondary.main",
+                border: 1,
+                borderRadius: "50%",
+                mr: 2,
+              }}
+            />
+            <Typography
+              variant="subtitle1"
               sx={{
-                display: "flex",
-                alignItems: "center",
-                my: 4,
+                fontWeight: "bold",
               }}>
-              <PhoneForwardedIcon
-                sx={{
-                  fontSize: "3rem",
-                  color: "primary.main",
-                  border: 1,
-                  borderRadius: "50%",
-                  mr: 2,
-                }}
-              />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  fontWeight: "bold",
-                }}>
-                Phone Number China Office: +861688220123
-              </Typography>
-              
-            </Box>
-            <Box
+              Phone Number China Office: +861688220123
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              my: 4,
+            }}>
+            <DraftsIcon
               sx={{
-                display: "flex",
-                alignItems: "center",
-                my: 4,
+                fontSize: "3rem",
+                color: isDarkMode ? "accent.main" : "secondary.main",
+                border: 1,
+                borderRadius: "50%",
+                mr: 2,
+              }}
+            />
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: "bold",
               }}>
-              <DraftsIcon
-                sx={{
-                  fontSize: "3rem",
-                  color: "primary.main",
-                  border: 1,
-                  borderRadius: "50%",
-                  mr: 2,
-                }}
-              />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  fontWeight: "bold",
-                }}>
-                Email Us: official@dreameduinfo.com
-              </Typography>
-            </Box>
-            
-          </Item>
+              Email Us: official@dreameduinfo.com
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
       {/* <PositionedSnackbar/> */}

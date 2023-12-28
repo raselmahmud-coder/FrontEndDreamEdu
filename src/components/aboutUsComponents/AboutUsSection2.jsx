@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { useSelector } from "react-redux";
 import { useGetEmployeeInfoQuery } from "../../redux/feature/employee/EmployeeAPI";
+import LazyLoading from "../../globalsComponents/LazyLoading";
 
 const AboutUsSection2 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -19,7 +20,7 @@ const AboutUsSection2 = () => {
   console.log(teammember, "employee");
   let content;
   if (isLoading) {
-    content = <div>Loading...</div>;
+    content = <LazyLoading />;
   } else if (error) {
     content = <div>{error}</div>;
   } else if (teammember.length) {
