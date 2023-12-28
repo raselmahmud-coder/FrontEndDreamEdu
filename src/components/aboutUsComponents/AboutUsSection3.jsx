@@ -9,8 +9,10 @@ import {
 } from "@mui/material";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
 import { totalPortfolioData, whyChooseUsData } from "../../utils/fakeData";
+import { useSelector } from "react-redux";
 
 const AboutUsSection3 = () => {
+  const {isDarkMode} = useSelector((state) => state.colorMode);
   return (
     <>
       <Typography variant="h1" sx={{ fontWeight: "bold", textAlign: "center" }} gutterBottom>
@@ -33,7 +35,7 @@ const AboutUsSection3 = () => {
                 {React.createElement(item.icon, {
                   sx: {
                     fontSize: "4rem",
-                    color: "primary.main",
+                    color: isDarkMode ? "primary.main" : "#000",
                     transition: "color 0.3s",
                     "&:hover": {
                       color: "secondary.main",
@@ -43,7 +45,7 @@ const AboutUsSection3 = () => {
                 <Typography variant="h4">{item.title}</Typography>
               </Box>
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body1" color="text.secondary">
                   {item.description}
                 </Typography>
               </CardContent>

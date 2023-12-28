@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
 import { CheckCircleOutline, SwapCalls } from "@mui/icons-material";
-import aboutUsImage from "../../assets/aboutUs.png";
+import aboutUsImage from "../../assets/dream edu about us.jpg";
 
 const AboutUsSection1 = () => {
   return (
@@ -90,7 +90,7 @@ const AboutUsSection1 = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
           <CardMedia
-            sx={{ width: "100%", height: "100vh" }}
+            sx={{ width: "100%", height: "65vh" }}
             image={aboutUsImage}
             title="about us"
           />

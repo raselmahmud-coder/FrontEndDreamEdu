@@ -8,8 +8,8 @@ import {
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./globalsComponents/footer/Footer";
-import { useMediaQuery } from "@mui/material";
 import LazyLoading from "./globalsComponents/LazyLoading";
+import { useSelector } from "react-redux";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
@@ -25,13 +25,8 @@ const UniversityDetailPage = lazy(() =>
 );
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const { isDarkMode } = useSelector((state) => state.colorMode);
 
-  // Automatically set dark mode based on OS preference
-  useEffect(() => {
-    setIsDarkMode(prefersDarkMode);
-  }, [prefersDarkMode]);
 
   const darkTheme = createTheme({
     palette: {
@@ -53,7 +48,7 @@ const App = () => {
         <CssBaseline />
         <ResponsiveAppBar
           mode={isDarkMode}
-          onClick={() => setIsDarkMode(!isDarkMode)}
+          // onClick={() => setIsDarkMode(!isDarkMode)}
         />
         <Suspense fallback={<LazyLoading />}>
           <Routes>

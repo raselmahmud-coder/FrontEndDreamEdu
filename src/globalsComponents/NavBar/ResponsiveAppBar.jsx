@@ -23,6 +23,8 @@ import logo from "../../assets/logo.png";
 import whiteLogo from "../../assets/logo2.png";
 import NewsTicker from "../NewsTicker/NewsTicker";
 import "./navBar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setModeChange } from "../../redux/feature/userColorMode/userColorModeSlice";
 
 const pages = [
   "Home",
@@ -42,16 +44,15 @@ function HideOnScroll({ children }) {
   );
 }
 
-function ResponsiveAppBar({ mode, onClick }) {
+function ResponsiveAppBar() {
+  const dispatch = useDispatch();
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -73,7 +74,7 @@ function ResponsiveAppBar({ mode, onClick }) {
         <AppBar
           sx={
             {
-              // backgroundColor: mode ? "#000" : "#f9f9f9",
+              // backgroundColor: isDarkMode ? "#000" : "#f9f9f9",
             }
           }>
           <NewsTicker news={news} />
@@ -92,7 +93,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                 <ImageListItem>
                   <Link to="/">
                     <img
-                      src={mode ? whiteLogo : logo}
+                      src={isDarkMode ? whiteLogo : logo}
                       alt={"logo"}
                       loading="lazy"
                       style={{
@@ -140,7 +141,7 @@ function ResponsiveAppBar({ mode, onClick }) {
                     sx={{ ml: 1 }}
                     onClick={() => onClick()}
                     color="inherit">
-                    {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+                    {isDarkMode ? <Brightness4Icon /> : <Brightness7Icon />}
                   </IconButton>
                 </Menu>
               </Box>
@@ -174,10 +175,14 @@ function ResponsiveAppBar({ mode, onClick }) {
                   <NavLink
                     onClick={handleCloseNavMenu}
                     className={({ isActive }) =>
-                       isActive ? mode ? "activeDark" : "activeLight" :""
+                      isActive
+                        ? isDarkMode
+                          ? "activeDark"
+                          : "activeLight"
+                        : ""
                     }
                     style={{
-                      color: mode ? "#fff" : "#000",
+                      color: isDarkMode ? "#fff" : "#000",
                       textDecoration: "none",
                       padding: "8px",
                       borderRadius: "50% 20% / 10% 40%",
@@ -194,8 +199,12 @@ function ResponsiveAppBar({ mode, onClick }) {
                     {page}
                   </NavLink>
                 ))}
-                <IconButton onClick={() => onClick()} color="inherit">
-                  {mode ? <Brightness7Icon /> : <Brightness4Icon />}
+                <IconButton
+                  onClick={() =>
+                    dispatch(setModeChange({ isDarkMode: !isDarkMode }))
+                  }
+                  color="inherit">
+                  {isDarkMode ? <Brightness4Icon /> : <Brightness7Icon />}
                 </IconButton>
               </Box>
             </Toolbar>
