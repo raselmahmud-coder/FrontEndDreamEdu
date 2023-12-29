@@ -21,7 +21,7 @@ const AboutUsSection1 = () => {
         spacing={{ xs: 1, md: 2 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{
-          py: 8,
+          py: 18,
           px: 1,
           justifyContent: "space-between",
           alignItems: "center",

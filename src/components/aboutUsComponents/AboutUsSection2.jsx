@@ -17,7 +17,6 @@ const AboutUsSection2 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   const { data: employee, error, isLoading } = useGetEmployeeInfoQuery();
   const { teammember } = employee || {};
-  console.log(teammember, "employee");
   let content;
   if (isLoading) {
     content = <LazyLoading />;

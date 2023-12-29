@@ -15,6 +15,7 @@ import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { Link } from "react-router-dom";
 import {
   useGetBlogByCategoryQuery,
@@ -22,12 +23,14 @@ import {
 } from "../../redux/feature/Blogs/BlogsAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import PaginationSS from "./PaginationSS";
+import { useSelector } from "react-redux";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
 ];
 const Tips1 = ({ category }) => {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   const {
     data: categoryData,
     isError: isErrorCategory,
@@ -110,7 +113,7 @@ const Tips1 = ({ category }) => {
               }}>
               <Typography
                 sx={{
-                  bgcolor: "primary.main",
+                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
                   p: 1,
                   borderRadius: "15px",
                 }}>
@@ -118,7 +121,7 @@ const Tips1 = ({ category }) => {
               </Typography>
               <Typography
                 sx={{
-                  bgcolor: "primary.main",
+                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
                   p: 1,
                   borderRadius: "15px",
                 }}>
@@ -150,7 +153,16 @@ const Tips1 = ({ category }) => {
                 ))}
               </SpeedDial>
               <Link to={`/study-in-china/${id}`}>
-                <Button size="small">Learn More</Button>
+                <Button
+                  sx={{ color: isDarkMode ? "white.main" : "black.main" }}
+                  size="medium">
+                  Learn More{" "}
+                  <DoubleArrowIcon
+                    sx={{
+                      fontSize: "1.1rem",
+                    }}
+                  />{" "}
+                </Button>
               </Link>
             </CardActions>
           </Card>
@@ -182,7 +194,7 @@ const Tips1 = ({ category }) => {
           justifyContent: "center",
           mb: 18,
         }}>
-        <PaginationSS />
+        {/* <PaginationSS /> */}
       </Box>
     </>
   );

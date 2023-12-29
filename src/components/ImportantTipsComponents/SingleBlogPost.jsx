@@ -10,17 +10,20 @@ import {
 } from "@mui/material";
 import React from "react";
 import ShareIcon from "@mui/icons-material/Share";
-import { Facebook, LinkedIn, Twitter, CopyAll } from "@mui/icons-material";
+import { Facebook, LinkedIn, Twitter, CopyAll, WhatsApp } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
-  { icon: <Twitter />, name: "Twitter" },
+  { icon: <WhatsApp />, name: "WhatsApp" },
   { icon: <CopyAll />, name: "Copy URL" },
 ];
 
 const SingleBlogPost = (props) => {
   const { blog_pic, category, author, title, description } = props.blog || {};
+  const { isDarkMode } = useSelector((state) => state.colorMode);
+
   return (
     <>
       <Card>
@@ -39,7 +42,7 @@ const SingleBlogPost = (props) => {
           }}>
           <Typography
             sx={{
-              bgcolor: "primary.main",
+              bgcolor: isDarkMode ? "accent.main" : "primary.main",
               p: 1,
               borderRadius: "15px",
             }}>
@@ -47,7 +50,7 @@ const SingleBlogPost = (props) => {
           </Typography>
           <Typography
             sx={{
-              bgcolor: "primary.main",
+              bgcolor: isDarkMode ? "accent.main" : "primary.main",
               p: 1,
               borderRadius: "15px",
             }}>
@@ -75,7 +78,7 @@ const SingleBlogPost = (props) => {
           }}>
           <SpeedDial
             title="Share it"
-            ariaLabel="SpeedDial openIcon example"
+            ariaLabel="SpeedDial openIcon"
             direction="right"
             sx={{ position: "relative" }}
             icon={<ShareIcon />}>

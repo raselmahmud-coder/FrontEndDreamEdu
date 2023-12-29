@@ -12,17 +12,48 @@ import {
   Avatar,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
-import { useGetBlogsQuery } from "../../redux/feature/Blogs/BlogsAPI";
+import React, { useEffect, useState } from "react";
+import {
+  useGetBlogsQuery,
+  useGetLatestBlogsQuery,
+} from "../../redux/feature/Blogs/BlogsAPI";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PostSidebar = () => {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   const {
     data: latestBlogs,
     isError: blogError,
     isLoading: blogLoading,
-  } = useGetBlogsQuery();
-const navigate = useNavigate();
+  } = useGetLatestBlogsQuery();
+  const { data: backendData } = useGetBlogsQuery();
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const organizeData = () => {
+      const categoryMap = {};
+      backendData?.blogs?.forEach((blog) => {
+        const { category } = blog;
+        if (!categoryMap[category]) {
+          categoryMap[category] = 1;
+        } else {
+          categoryMap[category]++;
+        }
+      });
+      const organizedCategories = Object.entries(categoryMap).map(
+        ([category, totalPost]) => ({
+          category,
+          totalPost,
+        }),
+      );
+      setCategories(organizedCategories);
+    };
+
+    organizeData();
+  }, [backendData]);
+  console.log(categories, "hello vlog");
+  const navigate = useNavigate();
   // render the loading state
   let content;
   if (blogLoading) {
@@ -73,12 +104,18 @@ const navigate = useNavigate();
   } else {
     content = latestBlogs?.blogs.map(({ id, blog_pic, title }) => (
       <Box
+        onClick={() => navigate(`/study-in-china/${id}`)}
         key={id}
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           p: 2,
+          transition: "background-color 0.9s",
+          "&:hover": {
+            backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
+            cursor: "pointer",
+          },
         }}>
         <Grid item xs={4} sm={6} md={4}>
           <CardMedia
@@ -124,14 +161,23 @@ const navigate = useNavigate();
         Categories
       </Typography>
       <List component="div" aria-label="category name">
-        {latestBlogs?.blogs.length &&
-          latestBlogs?.blogs.map(({ id, category }) => (
-            <Box key={id}>
-              <ListItem sx={{
-                cursor: "pointer"
-              }} onClick={()=> navigate(`/study-in-china/category/Education`)}>
+        {categories?.length &&
+          categories?.map(({ category, totalPost }) => (
+            <Box key={category}>
+              <ListItem
+                sx={{
+                  cursor: "pointer",
+                  transition: "background-color 0.9s",
+                  "&:hover": {
+                    backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
+                    cursor: "pointer",
+                  },
+                }}
+                onClick={() =>
+                  navigate(`/study-in-china/category/${category}`)
+                }>
                 <ListItemText primary={category} />
-                <Typography variant="h5">({id})</Typography>
+                <Typography variant="h5">({totalPost})</Typography>
               </ListItem>
               <Divider />
             </Box>

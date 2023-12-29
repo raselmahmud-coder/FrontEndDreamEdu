@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
-import gridImg from "../../assets/student-in-library.png";
+import gridImg from "../../assets/front img.jpg";
 import { AvTimer, Diversity3, School } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
@@ -183,7 +183,7 @@ const Section5 = () => {
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <img src={gridImg} height="580" width={"100%"} alt="" />
+          <img src={gridImg} height="440" width={"100%"} alt="" />
         </Grid>
       </Grid>
     </>

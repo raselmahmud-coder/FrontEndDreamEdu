@@ -105,7 +105,7 @@ const SingleBlogPostPage = () => {
           container
           spacing={{ xs: 1, md: 2 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
-          sx={{ p: 2, mb: 8 }}>
+          sx={{ px: 2, pt:15, mb: 8 }}>
           <Grid
             item
             xs={12}

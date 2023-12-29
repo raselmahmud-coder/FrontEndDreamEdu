@@ -75,7 +75,7 @@ const App = () => {
               element={<FreeConsultationPage />}
             />
             <Route
-              path="/apply-for-admission"
+              path="/apply-now"
               element={<ApplyForAdmissionPage />}
             />
             <Route path="/university/:id" element={<UniversityDetailPage />} />

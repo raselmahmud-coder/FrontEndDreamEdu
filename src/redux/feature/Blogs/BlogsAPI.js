@@ -20,6 +20,17 @@ export const BlogsAPI = APISlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getLatestBlogs: builder.query({
+      query: () => ({
+        url: `/api/latest-blogs`,
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useGetBlogsQuery, useGetBlogQuery, useGetBlogByCategoryQuery } = BlogsAPI;
+export const {
+  useGetBlogsQuery,
+  useGetBlogQuery,
+  useGetBlogByCategoryQuery,
+  useGetLatestBlogsQuery,
+} = BlogsAPI;

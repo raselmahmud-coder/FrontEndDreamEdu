@@ -180,8 +180,8 @@ const SSComp = () => {
                     variant="dot">
                     <Avatar
                       sx={{ width: 90, height: 90 }}
-                      alt="Remy Sharp"
-                      src="https://mui.com/static/images/avatar/1.jpg"
+                      alt={feedback.name}
+                      src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
                     />
                   </StyledBadge>
                   <Box>

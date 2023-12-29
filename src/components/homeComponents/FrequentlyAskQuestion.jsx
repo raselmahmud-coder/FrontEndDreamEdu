@@ -55,14 +55,17 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>How is get admission in abroad university?</Typography>
+          <Typography>
+            How do I apply for a student visa to study in China?
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            To apply for a student visa (X visa) for China, you typically need
+            to first receive an acceptance letter from a Chinese university.
+            Once you have the letter, you can submit your visa application to
+            the Chinese embassy or consulate in your home country. Make sure to
+            check the specific requirements and procedures, as they may vary.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -70,14 +73,18 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Do you offer complete solution for students?</Typography>
+          <Typography>
+            What are the popular universities in China for international
+            students?
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            China has many reputable universities for international students.
+            Some popular choices include Peking University, Tsinghua University,
+            Fudan University, Zhejiang University, and Shanghai Jiao Tong
+            University. However, the best university for you depends on your
+            field of study and personal preferences.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -86,15 +93,17 @@ export default function FrequentlyAskQuestion() {
         onChange={handleChange("panel3")}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>
-            Which country is safe and better for higher study?
+            Are there scholarships available for international students in
+            China?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            Yes, China offers various scholarships to international students,
+            such as the Chinese Government Scholarship, Confucius Institute
+            Scholarship, and scholarships provided by individual universities.
+            Eligibility criteria and application procedures vary, so it's
+            important to research and apply for scholarships well in advance.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -102,14 +111,37 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}>
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography>Can I get scholarship with my low CGPA?</Typography>
+          <Typography>
+            What is the cost of living for international students in China?
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            The cost of living in China for international students can vary
+            depending on the city and lifestyle. Generally, it is more
+            affordable than in many Western countries. Expenses include
+            accommodation, food, transportation, and miscellaneous items. Tier 1
+            cities like Beijing and Shanghai tend to have higher living costs
+            compared to smaller cities.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel4"}
+        onChange={handleChange("panel4")}>
+        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+          <Typography>
+            Is it necessary to learn Mandarin before studying in China?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            While many universities offer programs in English, learning Mandarin
+            can enhance your overall experience and communication with locals.
+            It's not always a strict requirement, but having basic Mandarin
+            language skills can be beneficial for daily life, cultural
+            integration, and navigating your surroundings. Some degree programs
+            may also have language prerequisites.
           </Typography>
         </AccordionDetails>
       </Accordion>
