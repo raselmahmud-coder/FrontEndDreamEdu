@@ -84,7 +84,7 @@ export default function Section2() {
                   py: 3,
                   px: 6,
                 }}
-                variant="outlined"
+                variant="contained"
                 size="large">
                 Learn More
               </Button>

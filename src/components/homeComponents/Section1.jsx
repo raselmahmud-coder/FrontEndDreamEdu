@@ -8,77 +8,77 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box, Paper, styled } from "@mui/material";
 import { serviceOfferData } from "../../utils/fakeData";
-
-const cards = [1, 2, 3];
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-}));
+import imga from "../../assets/dream edu home page.svg";
+import { useSelector } from "react-redux";
 
 export default function Section1() {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
     <>
-      
-        <Box sx={{ py: 8 }} component="section">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {serviceOfferData.map(({title, description, img}) => (
-              <Grid
-                item
-                key={title}
-                xs={12}
-                sm={6}
-                md={4}
-                sx={{
-                  perspective: "1000px",
-                  transition: "transform 0.4s",
-                  "& > div, & > div > div": {
-                    transition: "inherit",
-                  },
-                  "&:hover": {
-                    "& > div": {
-                      transform: "rotateY(30deg)",
-                      "& > div:nth-of-type(2)": {
-                        transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
-                      },
-                      "& > div:nth-of-type(3)": {
-                        transform: "translate3d(45px, 50px, 40px)",
-                      },
+      <Box sx={{ py: 8 }} component="section">
+        <Typography
+          gutterBottom
+          variant="h2"
+          sx={{ textAlign: "center", py:4 }}
+          component="h2">
+          Go Abroad with DreamEdu
+        </Typography>
+        <Grid container spacing={4}>
+          {serviceOfferData.map(({ title, description, img }) => (
+            <Grid
+              item
+              key={title}
+              xs={12}
+              sm={6}
+              md={4}
+              sx={{
+                perspective: "1000px",
+                transition: "transform 0.4s",
+                "& > div, & > div > div": {
+                  transition: "inherit",
+                },
+                "&:hover": {
+                  "& > div": {
+                    transform: "rotateY(30deg)",
+                    "& > div:nth-of-type(2)": {
+                      transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
+                    },
+                    "& > div:nth-of-type(3)": {
+                      transform: "translate3d(45px, 50px, 40px)",
                     },
                   },
+                },
+              }}>
+              <Card
+                variant="outlined"
+                sx={{
+                  minHeight: "368px",
+                  backgroundColor: isDarkMode ? "black.main" : "primary.main",
+                  borderColor: isDarkMode ? "accent.main" : "secondary.main",
                 }}>
-                <Card
-                  variant="outlined"
+                <Box
                   sx={{
-                    minHeight: "280px",
-                    //  width: 320,
-                    backgroundColor: "#fff",
-                    borderColor: "#000",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}>
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      // 16:9
-                      pt: "56.25%",
-                    }}
-                    image="https://source.unsplash.com/random?wallpapers"
-                  />
-                  <Item sx={{ borderRadius: 0 }}>
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                      {title}
-                      </Typography>
-                      <Typography>
-                        {description}
-                      </Typography>
-                    </CardContent>
-                    
-                  </Item>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-     
+                  <img src={img} width={"35%"} alt="" />
+                </Box>
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    sx={{ textAlign: "center" }}
+                    component="h2">
+                    {title}
+                  </Typography>
+                  <Typography>{description}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }

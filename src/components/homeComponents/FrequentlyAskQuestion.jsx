@@ -5,11 +5,12 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import { Link } from "@mui/material";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
+  border: `1px solid ${theme.palette.ider}`,
   "&:not(:last-child)": {
     borderBottom: 0,
   },
@@ -50,11 +51,96 @@ export default function FrequentlyAskQuestion() {
   };
 
   return (
-    <div>
+    <>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography>How can I contact Dream Edu Consultancy?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Without hesitation feel free to message on{" "}
+            <Link
+              sx={{
+                fontWeight: "bold",
+                color: "inherit",
+                "&:hover": {
+                  color: "tertiaryRed.main",
+                },
+              }}
+              href="https://facebook.com/DreamEduChina"
+              target="_blank"
+              rel="noopener noreferrer">
+              {" "}
+              Dream Edu's official Facebook page
+            </Link>
+            . Either you can contact with us by filling up the form on{" "}
+            <Link
+              sx={{
+                fontWeight: "bold",
+                color: "inherit",
+                "&:hover": {
+                  color: "tertiaryRed.main",
+                },
+              }}
+              href="/free-consultation"
+              target="_blank"
+              rel="noopener noreferrer">
+              {" "}
+              our website
+            </Link>{" "}
+            or you can directly call us at our phone number{" "}
+            <Link
+              sx={{
+                fontWeight: "bold",
+                color: "inherit",
+                "&:hover": {
+                  color: "tertiaryRed.main",
+                },
+              }}
+              href="tel:+8801760680960">
+              {" "}
+              +8801760680960
+            </Link>{" "}
+            or
+            <Link
+              sx={{
+                fontWeight: "bold",
+                color: "inherit",
+                "&:hover": {
+                  color: "tertiaryRed.main",
+                },
+              }}
+              href="tel:+861688220123"
+              target="_blank"
+              rel="noopener noreferrer">
+              {" "}
+              +861688220123
+            </Link>
+            . We are always ready to help you, even you can reach us on
+            <Link
+              sx={{
+                fontWeight: "bold",
+                color: "inherit",
+                "&:hover": {
+                  color: "tertiaryRed.main",
+                },
+              }}
+              href="https://api.whatsapp.com/send/?phone=8619150064373&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer">
+              {" "}
+              WhatsApp
+            </Link>
+            .
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel0"}
+        onChange={handleChange("panel0")}>
+        <AccordionSummary aria-controls="panel0d-content" id="panel0d-header">
           <Typography>
             How do I apply for a student visa to study in China?
           </Typography>
@@ -101,7 +187,7 @@ export default function FrequentlyAskQuestion() {
           <Typography>
             Yes, China offers various scholarships to international students,
             such as the Chinese Government Scholarship, Confucius Institute
-            Scholarship, and scholarships provided by individual universities.
+            Scholarship, and scholarships provided by inidual universities.
             Eligibility criteria and application procedures vary, so it's
             important to research and apply for scholarships well in advance.
           </Typography>
@@ -127,9 +213,9 @@ export default function FrequentlyAskQuestion() {
         </AccordionDetails>
       </Accordion>
       <Accordion
-        expanded={expanded === "panel4"}
-        onChange={handleChange("panel4")}>
-        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+        expanded={expanded === "panel5"}
+        onChange={handleChange("panel5")}>
+        <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
           <Typography>
             Is it necessary to learn Mandarin before studying in China?
           </Typography>
@@ -145,6 +231,6 @@ export default function FrequentlyAskQuestion() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-    </div>
+    </>
   );
 }

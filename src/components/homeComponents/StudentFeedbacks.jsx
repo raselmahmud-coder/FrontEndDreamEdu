@@ -96,9 +96,10 @@ export default function StudentFeedbacks() {
             spaceBetween: 50,
           },
         }}
+        autoHeight={true}
         style={{
           zIndex: 0,
-          height: "50vh",
+          height: "30vh",
           margin: "30px 0px",
         }}
         navigation={true}
@@ -189,8 +190,13 @@ export default function StudentFeedbacks() {
               </SwiperSlide>
             ))
           : feedbacks.feedback.map((feedback) => (
-              <SwiperSlide key={feedback.id}>
-                <Card>
+            <SwiperSlide key={feedback.id} style={{
+              borderRadius: "4px",
+                // maxHeight:"233px"
+              }}>
+              <Card sx={{
+                  // minHeight:"355px"
+                }}>
                   <CardActionArea
                     sx={{
                       p: 1,

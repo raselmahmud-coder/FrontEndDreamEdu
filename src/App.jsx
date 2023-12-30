@@ -37,6 +37,9 @@ const App = () => {
       secondary: {
         main: '#f50057',
       },
+      tertiaryRed: {
+        main: '#d7132d',
+      },
       accent: {
         main: '#004808',
       },

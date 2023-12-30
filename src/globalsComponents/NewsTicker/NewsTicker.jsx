@@ -7,7 +7,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Button, Typography } from "@mui/material";
 import { useSpring, animated, useTransition } from "react-spring";
 import "./newsTicker.css";
+import { useSelector } from "react-redux";
 export default function NewsTicker({ news }) {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   const [open, setOpen] = React.useState(true);
   const options = {
     weekday: "long",
@@ -41,7 +43,6 @@ export default function NewsTicker({ news }) {
         display: open ? "flex" : "none",
         justifyContent: "center",
         alignItems: "center",
-        // backgroundColor: "#72d372",
       }}>
       <IconButton
         aria-label="close"
@@ -70,11 +71,20 @@ export default function NewsTicker({ news }) {
         {/* <Typography component="h6" sx={{ px: 3 }}>
           Sichuan University is one of the top 10 universities in China.
         </Typography> */}
-        <Box sx={{pl: 3 }}>
-
-        <Button sx={{ color: "#ffffff", backgroundColor: "#72d372"}}>
-          Apply Now
-        </Button>
+        <Box sx={{ pl: 3 }}>
+          <Button
+            size="small"
+            sx={{
+              color: "inherit",
+              backgroundColor: isDarkMode ? "accent.main" : "secondary.main",
+              transition: "background-color 0.5s, color 0.5s",
+              "&:hover": {
+                color: isDarkMode ? "white" : "black.main",
+                backgroundColor: isDarkMode ? "black.main" : "white",
+              },
+            }}>
+            Apply Now
+          </Button>
         </Box>
       </Box>
     </Box>
