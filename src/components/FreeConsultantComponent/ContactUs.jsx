@@ -180,7 +180,7 @@ const ContactUs = () => {
               sx={{
                 fontWeight: "bold",
               }}>
-              Phone Number China Office: +861688220123
+              Phone Number China Office: +8619150064373
             </Typography>
           </Box>
           <Box

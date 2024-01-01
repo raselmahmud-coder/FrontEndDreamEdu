@@ -12,28 +12,28 @@ const dataForSection6 = [
     id: 1,
     title: "Identify your course",
     description:
-      "In this section we will select your major what you want to pursue.",
+      "To secure admission in China through our consultancy, follow these streamlined steps. First, identify your desired course to align with your academic and career goals.",
     icon: <Flag color="action" sx={{ fontSize: 80, p: 0.5 }} />,
   },
   {
     id: 2,
     title: "Select University",
     description:
-      "In this section we will select your major what you want to pursue.",
+      "Once you've determined your course, select a reputable university in China that offers the program of your choice and considerable scholarship.",
     icon: <Whatshot color="action" sx={{ fontSize: 80, p: 0.5 }} />,
   },
   {
     id: 3,
     title: "Admission in progress",
     description:
-      "In this section we will select your major what you want to pursue.",
+      "Our expert team will guide you through the admission process, ensuring a smooth application submission. During this phase, we will keep you informed on the progress of your admission.",
     icon: <PublishedWithChanges color="action" sx={{ fontSize: 80, p: 0.5 }} />,
   },
   {
     id: 4,
     title: "Final result release",
     description:
-      "In this section we will select your major what you want to pursue.",
+      "Finally, anticipate the exciting moment when the university releases the final admission results, marking the successful culmination of your journey towards higher education in China. Trust our consultancy to pave the way for your academic success.",
     icon: <School color="action" sx={{ fontSize: 80, p: 0.5 }} />,
   },
 ];
@@ -62,6 +62,7 @@ const Section6 = () => {
           <Grid item xs={12} sm={4} md={3} key={id}>
             <Box
               sx={{
+                minHeight: "400px",
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "column",

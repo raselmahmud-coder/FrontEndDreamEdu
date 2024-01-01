@@ -23,6 +23,13 @@ export default function Section1() {
           component="h2">
           Go Abroad with DreamEdu
         </Typography>
+        <Typography
+          gutterBottom
+          variant="body1"
+          sx={{ mb:14 }}
+          component="p">
+          At DreamEdu, we are confident in our ability to guide you towards a successful study abroad experience. That's why we offer a Study Abroad Guarantee. If you don't secure admission to at least one of your top 3 chosen universities after completing our comprehensive application package, we will provide you with a full refund of your program fees. This guarantee demonstrates our commitment to your success and gives you peace of mind as you embark on your study abroad journey.
+        </Typography>
         <Grid container spacing={4}>
           {serviceOfferData.map(({ title, description, img }) => (
             <Grid
