@@ -52,7 +52,7 @@ const PostSidebar = () => {
 
     organizeData();
   }, [backendData]);
-  console.log(categories, "hello vlog");
+  // console.log(categories, "hello vlog");
   const navigate = useNavigate();
   // render the loading state
   let content;

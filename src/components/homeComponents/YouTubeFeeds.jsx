@@ -9,7 +9,7 @@ const YouTubeFeeds = () => {
     const maxResults = 3;
     fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${
-        import.meta.env.VITE_API_KEY
+        import.meta.env.VITE_YOUTUBE_API_KEY
       }&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`,
     )
       .then((res) => res.json())

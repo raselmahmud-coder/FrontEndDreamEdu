@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Card,
@@ -16,9 +16,22 @@ import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import { useParams } from "react-router-dom";
 import { useGetBlogQuery } from "../redux/feature/Blogs/BlogsAPI";
 import ErrorShow from "../globalsComponents/ErrorShow";
+import { client, previewClient } from "../libs/contentful/client";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../redux/feature/ContentfulLib/contentfulSlice";
 
 const SingleBlogPostPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const { posts, status, error } = useSelector((state) => state.contentful);
+
+  useEffect(() => {
+    dispatch(fetchPosts({ slug: id }));
+  }, []);
+  console.log(posts, "response");
+
+  // console.log(id, "slugs");
+
   const { data, isLoading, isError } = useGetBlogQuery(
     { id: id },
     { refetchOnMountOrArgChange: true, skip: !id },
@@ -105,7 +118,7 @@ const SingleBlogPostPage = () => {
           container
           spacing={{ xs: 1, md: 2 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
-          sx={{ px: 2, pt:15, mb: 8 }}>
+          sx={{ px: 2, pt: 15, mb: 8 }}>
           <Grid
             item
             xs={12}

@@ -13,9 +13,9 @@ import {
 } from "@mui/material";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ShareIcon from "@mui/icons-material/Share";
 import { Facebook, LinkedIn } from "@mui/icons-material";
-import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { Link } from "react-router-dom";
 import {
   useGetBlogByCategoryQuery,
