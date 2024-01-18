@@ -1,7 +1,10 @@
 import { Alert, Box } from "@mui/material";
 import React from "react";
 
-const ErrorShow = ({ errorData = "Something went wrong" }) => {
+const ErrorShow = ({
+  errorData = "Something went wrong — please try it again later!",
+  severity = "error",
+}) => {
   return (
     <>
       <Box
@@ -12,7 +15,7 @@ const ErrorShow = ({ errorData = "Something went wrong" }) => {
           justifyContent: "center",
           alignItems: "center",
         }}>
-        <Alert severity="error">{errorData} — please try it again later!</Alert>
+        <Alert severity={severity}>{errorData} </Alert>
       </Box>
     </>
   );

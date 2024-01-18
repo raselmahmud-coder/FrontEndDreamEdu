@@ -14,7 +14,6 @@ import SingleBlogPost from "../components/ImportantTipsComponents/SingleBlogPost
 import PostSidebar from "../components/ImportantTipsComponents/PostSidebar";
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import { useParams } from "react-router-dom";
-import { useGetBlogQuery } from "../redux/feature/Blogs/BlogsAPI";
 import ErrorShow from "../globalsComponents/ErrorShow";
 import { client, previewClient } from "../libs/contentful/client";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,20 +23,14 @@ const SingleBlogPostPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { posts, status, error } = useSelector((state) => state.contentful);
-
+  // console.log(status, "hello status");
   useEffect(() => {
     dispatch(fetchPosts({ slug: id }));
-  }, []);
-  console.log(posts, "response");
-
-  // console.log(id, "slugs");
-
-  const { data, isLoading, isError } = useGetBlogQuery(
-    { id: id },
-    { refetchOnMountOrArgChange: true, skip: !id },
-  );
+  }, [id]);
+  // console.log(posts?.items[0], "single blog post page");
+  // let's render the posts conditionally
   let content;
-  if (isLoading) {
+  if (status === "loading") {
     content = (
       <Card>
         <Skeleton
@@ -101,18 +94,14 @@ const SingleBlogPostPage = () => {
           }}></CardActions>
       </Card>
     );
-  } else if (!isLoading && isError) {
-    content = (
-      <ErrorShow errorData="Something went wrong while retrieve blog" />
-    );
-  } else if (!isLoading && data?.blog?.id) {
-    content = <SingleBlogPost blog={data.blog} />;
+  } else if (status === "failed") {
+    content = <ErrorShow errorData={error.toString()} />;
+  } else if (status === "succeeded") {
+    content = <SingleBlogPost blog={posts?.total && posts?.items[0]?.fields} />;
   }
   return (
     <>
-      <DynamicPageTitle
-        pageTitle={data?.blog?.id ? `${data.blog.title}` : "Blog Details Page"}
-      />
+      <DynamicPageTitle pageTitle={id || "Blog Details Page"} />
       <Container maxWidth="xl">
         <Grid
           container
@@ -130,7 +119,7 @@ const SingleBlogPostPage = () => {
             {content}
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <PostSidebar />
+            <PostSidebar postId={posts?.total && posts?.items[0]?.sys?.id} />
           </Grid>
         </Grid>
       </Container>

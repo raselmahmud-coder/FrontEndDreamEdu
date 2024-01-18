@@ -271,10 +271,10 @@ const Footer = () => {
           reserved. Powered by{" "}
           <a
             style={{color:"inherit"}}
-            href="https://facebook.com/raselmahmud.coder"
+            href="https://github.com/raselmahmud-coder"
             target="_blank"
             rel="noopener noreferrer">
-            Programming Dude
+            Rasel Mahmud
           </a>
         </Typography>
         <ScrollTop

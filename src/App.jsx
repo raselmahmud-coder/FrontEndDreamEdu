@@ -71,7 +71,7 @@ const App = () => {
               path="/study-in-china/:id"
               element={<SingleBlogPostPage />}
             />
-            <Route path="/study-in-china/category/:category" element={<ImportantTipsPage />} />
+            <Route path="/study-in-china/category/:categoryId" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
             <Route
               path="/free-consultation"

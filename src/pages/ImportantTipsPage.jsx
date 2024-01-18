@@ -8,9 +8,10 @@ import {
   Container,
   SpeedDial,
   SpeedDialAction,
+  StyledEngineProvider,
+  TablePagination,
   Typography,
 } from "@mui/material";
-import Tips1 from "../components/ImportantTipsComponents/Tips1";
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import { Link, useParams } from "react-router-dom";
 import { Grid, Box } from "@mui/material";
@@ -29,23 +30,40 @@ const actions = [
 ];
 
 const ImportantTipsPage = () => {
-  const { category } = useParams();
+  const { categoryId } = useParams();
   const { isDarkMode } = useSelector((state) => state.colorMode);
   const dispatch = useDispatch();
   const { posts, status, error } = useSelector((state) => state.contentful);
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
-  console.log(error, "error");
+    if (categoryId) dispatch(fetchPosts({ categoryId }));
+  }, [categoryId]);
+  // console.log(categoryId, " hello impo post");
+  const [page, setPage] = React.useState(0);
+  const [postsPerPage, setPostsPerPage] = React.useState(10);
+
+  useEffect(() => {
+    if (!categoryId) {
+      dispatch(fetchPosts({ page: page + 1, limit: postsPerPage }));
+    }
+  }, [postsPerPage, page]);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setPostsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
   // let's render the posts conditionally
   let content;
   if (status === "loading") {
     content = <BlogsCardsSkeleton />;
   } else if (status === "failed") {
-    content = <ErrorShow error={error} />;
+    content = <ErrorShow errorData={error} />;
+  } else if (posts?.total === 0) {
+    content = <ErrorShow severity="warning" errorData={"No post is available."} />;
   } else if (status === "succeeded") {
-    content = posts.map((post) => {
-      const { postTitle, coverImage, author, excerpt, slug } =
+    content = posts?.items?.map((post) => {
+      const { postTitle, coverImage, author, excerpt, slug, categories } =
         post.fields || {};
       return (
         <Grid item xs={12} sm={6} md={4} key={slug}>
@@ -68,7 +86,7 @@ const ImportantTipsPage = () => {
                   p: 1,
                   borderRadius: "15px",
                 }}>
-                Category:
+                Category: {categories.fields.categories}
               </Typography>
               <Typography
                 sx={{
@@ -80,7 +98,7 @@ const ImportantTipsPage = () => {
               </Typography>
             </Box>
             <CardContent>
-              <Typography gutterBottom variant="h5" align="center">
+              <Typography gutterBottom marginY={4} variant="h5" align="center">
                 {postTitle}
               </Typography>
               <Typography gutterBottom variant="body1">
@@ -161,6 +179,21 @@ const ImportantTipsPage = () => {
           sx={{ p: 2, mb: 8 }}>
           {content}
         </Grid>
+        <StyledEngineProvider injectFirst>
+          <TablePagination
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            component="div"
+            count={100}
+            page={page}
+            onPageChange={handleChangePage}
+            rowsPerPage={postsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </StyledEngineProvider>
       </Container>
     </>
   );

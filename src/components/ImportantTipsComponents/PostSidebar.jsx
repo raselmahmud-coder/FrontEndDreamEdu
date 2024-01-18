@@ -4,59 +4,31 @@ import {
   CardContent,
   Typography,
   Grid,
-  List,
-  ListItem,
-  Divider,
-  ListItemText,
   Skeleton,
   Avatar,
+  Button,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import {
-  useGetBlogsQuery,
-  useGetLatestBlogsQuery,
-} from "../../redux/feature/Blogs/BlogsAPI";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSidebarPosts } from "../../redux/feature/ContentfulLib/contentfulSlice";
+import ErrorShow from "../../globalsComponents/ErrorShow";
 
-const PostSidebar = () => {
+const PostSidebar = ({ postId }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
-  const {
-    data: latestBlogs,
-    isError: blogError,
-    isLoading: blogLoading,
-  } = useGetLatestBlogsQuery();
-  const { data: backendData } = useGetBlogsQuery();
-
-  const [categories, setCategories] = useState([]);
+  // console.log(postId, "hello post id");
+  const { sidebarPosts, status, error } = useSelector(
+    (state) => state.contentful,
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
-    const organizeData = () => {
-      const categoryMap = {};
-      backendData?.blogs?.forEach((blog) => {
-        const { category } = blog;
-        if (!categoryMap[category]) {
-          categoryMap[category] = 1;
-        } else {
-          categoryMap[category]++;
-        }
-      });
-      const organizedCategories = Object.entries(categoryMap).map(
-        ([category, totalPost]) => ({
-          category,
-          totalPost,
-        }),
-      );
-      setCategories(organizedCategories);
-    };
-
-    organizeData();
-  }, [backendData]);
-  // console.log(categories, "hello vlog");
+    dispatch(fetchSidebarPosts({ limit: 3, currentPostId: postId }));
+  }, [postId]);
   const navigate = useNavigate();
   // render the loading state
   let content;
-  if (blogLoading) {
+  if (status === "loading") {
     content = Array.from(new Array(3)).map((_, index) => (
       <Box
         key={index}
@@ -99,47 +71,67 @@ const PostSidebar = () => {
         </Grid>
       </Box>
     ));
-  } else if (!blogLoading && blogError) {
-    content = <ErrorShow errorData="Something went wrong" />;
-  } else {
-    content = latestBlogs?.blogs.map(({ id, blog_pic, title }) => (
-      <Box
-        onClick={() => navigate(`/study-in-china/${id}`)}
-        key={id}
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          p: 2,
-          transition: "background-color 0.9s",
-          "&:hover": {
-            backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
-            cursor: "pointer",
-          },
-        }}>
-        <Grid item xs={4} sm={6} md={4}>
-          <CardMedia
-            component="img"
-            alt={title}
-            sx={{
-              width: "100%",
-              height: "100%",
-              borderRadius: "15px",
-            }}
-            image={`https://dreameduapiv1.dreameduinfo.com${blog_pic}`}
-          />
-        </Grid>
-        <Grid item xs={8} sm={6} md={8}>
-          <CardContent
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}>
-            <Typography variant="h6">{title}</Typography>
-          </CardContent>
-        </Grid>
-      </Box>
-    ));
+  } else if (status === "failed") {
+    content = <ErrorShow errorData={error} />;
+  } else if (status === "succeeded") {
+    content = sidebarPosts?.map((sidebarPosts) => {
+      const { slug, postTitle, coverImage, excerpt, categories } =
+        sidebarPosts.fields || {};
+      return (
+        <Box
+          onClick={() => navigate(`/study-in-china/${slug}`)}
+          key={slug}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            p: 2,
+            transition: "background-color 0.9s",
+            "&:hover": {
+              backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
+              cursor: "pointer",
+            },
+          }}>
+          <Grid item xs={4} sm={6} md={4}>
+            <CardMedia
+              component="img"
+              alt={coverImage.fields.title}
+              sx={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "15px",
+              }}
+              image={coverImage.fields.file.url}
+            />
+          </Grid>
+          <Grid item xs={8} sm={6} md={8}>
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}>
+              <Typography variant="subtitle1">{postTitle}</Typography>
+              <Typography variant="body2">{excerpt}</Typography>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  navigate(`/study-in-china/category/${categories.sys.id}`);
+                }}
+                sx={{
+                  mt: 1,
+                  textTransform: "capitalize",
+                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
+                  color: isDarkMode ? "white" : "black",
+                }}
+                variant="button">
+                Category: #{categories.fields.categories}
+              </Button>
+            </CardContent>
+          </Grid>
+        </Box>
+      );
+    });
   }
   return (
     <>
@@ -152,51 +144,6 @@ const PostSidebar = () => {
         Recent Post
       </Typography>
       <Card>{content}</Card>
-      <Typography
-        variant="h3"
-        sx={{
-          textAlign: "center",
-          my: 3,
-        }}>
-        Categories
-      </Typography>
-      <List component="div" aria-label="category name">
-        {categories?.length &&
-          categories?.map(({ category, totalPost }) => (
-            <Box key={category}>
-              <ListItem
-                sx={{
-                  cursor: "pointer",
-                  transition: "background-color 0.9s",
-                  "&:hover": {
-                    backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
-                    cursor: "pointer",
-                  },
-                }}
-                onClick={() =>
-                  navigate(`/study-in-china/category/${category}`)
-                }>
-                <ListItemText primary={category} />
-                <Typography variant="h5">({totalPost})</Typography>
-              </ListItem>
-              <Divider />
-            </Box>
-          ))}
-        {blogLoading &&
-          Array.from({ length: 3 }).map((_, i) => (
-            <>
-              <ListItem button key={i}>
-                <Skeleton variant="text" animation="wave">
-                  <ListItemText primary={`Inbox`} />
-                </Skeleton>
-                <Skeleton variant="text" animation="wave">
-                  <Typography variant="h5">total length</Typography>
-                </Skeleton>
-              </ListItem>
-              <Divider />
-            </>
-          ))}
-      </List>
     </>
   );
 };
