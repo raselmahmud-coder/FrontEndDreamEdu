@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -54,7 +54,7 @@ export default function EducationBackground() {
             value={previousData.institute}
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   institute: e.target.value,
                 }),
@@ -76,7 +76,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1StartDate: convertDate,
                   }),
@@ -100,7 +100,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1EndDate: convertDate,
                   }),
@@ -123,7 +123,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   fieldOfStudy: e.target.value,
                 }),
@@ -144,7 +144,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   educationLevel: e.target.value,
                 }),
@@ -165,7 +165,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   gpa: e.target.value,
                 }),
@@ -193,7 +193,7 @@ export default function EducationBackground() {
             value={previousData.institute}
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   institute: e.target.value,
                 }),
@@ -215,7 +215,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1StartDate: convertDate,
                   }),
@@ -239,7 +239,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1EndDate: convertDate,
                   }),
@@ -262,7 +262,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   fieldOfStudy: e.target.value,
                 }),
@@ -283,7 +283,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   educationLevel: e.target.value,
                 }),
@@ -304,7 +304,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   gpa: e.target.value,
                 }),
@@ -332,7 +332,7 @@ export default function EducationBackground() {
             value={previousData.institute}
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   institute: e.target.value,
                 }),
@@ -354,7 +354,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1StartDate: convertDate,
                   }),
@@ -378,7 +378,7 @@ export default function EducationBackground() {
                   year: "numeric",
                 });
                 dispatch(
-                  admissionProfileCreate({
+                  admissionProfileCreate2({
                     ...previousData,
                     school1EndDate: convertDate,
                   }),
@@ -401,7 +401,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   fieldOfStudy: e.target.value,
                 }),
@@ -422,7 +422,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   educationLevel: e.target.value,
                 }),
@@ -443,7 +443,7 @@ export default function EducationBackground() {
             variant="standard"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   gpa: e.target.value,
                 }),
@@ -472,7 +472,7 @@ export default function EducationBackground() {
             placeholder="Type here"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   desireUniversity: e.target.value,
                 }),
@@ -493,7 +493,7 @@ export default function EducationBackground() {
             placeholder="Type here"
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   desireMajor: e.target.value,
                 }),
@@ -513,7 +513,7 @@ export default function EducationBackground() {
             required
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   isVisitedChina: e.target.value,
                 }),
@@ -553,7 +553,7 @@ export default function EducationBackground() {
                 variant="standard"
                 onChange={(e) => {
                   dispatch(
-                    admissionProfileCreate({
+                    admissionProfileCreate2({
                       ...previousData,
                       visaNumber: e.target.value,
                     }),
@@ -578,7 +578,7 @@ export default function EducationBackground() {
                       },
                     );
                     dispatch(
-                      admissionProfileCreate({
+                      admissionProfileCreate2({
                         ...previousData,
                         visaExpiry: convertDate,
                       }),
@@ -604,7 +604,7 @@ export default function EducationBackground() {
             required
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   jobExperience: e.target.value,
                 }),
@@ -651,7 +651,7 @@ export default function EducationBackground() {
                   variant="standard"
                   onChange={(e) => {
                     dispatch(
-                      admissionProfileCreate({
+                      admissionProfileCreate2({
                         ...previousData,
                         companyName: e.target.value,
                       }),
@@ -676,7 +676,7 @@ export default function EducationBackground() {
                         },
                       );
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate2({
                           ...previousData,
                           visaExpiry: convertDate,
                         }),
@@ -703,7 +703,7 @@ export default function EducationBackground() {
                         },
                       );
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate2({
                           ...previousData,
                           visaExpiry: convertDate,
                         }),
@@ -726,7 +726,7 @@ export default function EducationBackground() {
                   placeholder="Type here"
                   onChange={(e) => {
                     dispatch(
-                      admissionProfileCreate({
+                      admissionProfileCreate2({
                         ...previousData,
                         position: e.target.value,
                       }),
@@ -753,7 +753,7 @@ export default function EducationBackground() {
                   variant="standard"
                   onChange={(e) => {
                     dispatch(
-                      admissionProfileCreate({
+                      admissionProfileCreate2({
                         ...previousData,
                         companyName: e.target.value,
                       }),
@@ -778,7 +778,7 @@ export default function EducationBackground() {
                         },
                       );
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate2({
                           ...previousData,
                           visaExpiry: convertDate,
                         }),
@@ -805,7 +805,7 @@ export default function EducationBackground() {
                         },
                       );
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate2({
                           ...previousData,
                           visaExpiry: convertDate,
                         }),
@@ -828,7 +828,7 @@ export default function EducationBackground() {
                   placeholder="Type here"
                   onChange={(e) => {
                     dispatch(
-                      admissionProfileCreate({
+                      admissionProfileCreate2({
                         ...previousData,
                         position: e.target.value,
                       }),
@@ -857,7 +857,7 @@ export default function EducationBackground() {
             fullWidth
             onChange={(e) => {
               dispatch(
-                admissionProfileCreate({
+                admissionProfileCreate2({
                   ...previousData,
                   othersTextArea: e.target.value,
                 }),

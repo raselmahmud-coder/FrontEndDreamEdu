@@ -15,7 +15,12 @@ import axios from "axios";
 import ssc from "../../assets/changzhou.jpg";
 import base64ToBlob from "../../utils/base64ToBlob";
 import EducationBackground from "./EducationBackground";
-const steps = ["Initialization", "Education Background", "Documents", "Review your profile"];
+const steps = [
+  "Initialization",
+  "Education Background",
+  "Documents",
+  "Review your profile",
+];
 function getStepContent(step) {
   switch (step) {
     case 0:
@@ -36,6 +41,9 @@ export default function Checkout() {
   const [addApplicantProfile, { isError, isLoading, error, data }] =
     useAddApplicantProfileMutation();
   const allStoreData = useSelector((state) => state.admission);
+  const { step1 } = useSelector((state) => state.admission);
+  console.log(step1, "step1");
+  const initFormRef = React.useRef(null);
   const {
     program,
     sureName,
@@ -63,6 +71,10 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
   const handleNext = () => {
+    console.log(initFormRef.current.checkValidity(), "validity");
+    if (!initFormRef.current.checkValidity()) {
+      return;
+    }
     setActiveStep(activeStep + 1);
     /* if (activeStep == 0) {
       if (
@@ -236,16 +248,20 @@ export default function Checkout() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {getStepContent(activeStep)}
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              {activeStep !== 0 && (
-                <Button variant="contained" onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                  Back
-                </Button>
-              )}
-              <Button
-                type=""
-                /*   disabled={
+            <form ref={initFormRef}>
+              {getStepContent(activeStep)}
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                {activeStep !== 0 && (
+                  <Button
+                    variant="contained"
+                    onClick={handleBack}
+                    sx={{ mt: 3, ml: 1 }}>
+                    Back
+                  </Button>
+                )}
+                <Button
+                  type="submit"
+                  /*   disabled={
                   (activeStep == 0 &&
                     program &&
                     sureName &&
@@ -267,14 +283,15 @@ export default function Checkout() {
                     ? false
                     : true
                 } */
-                variant="contained"
-                onClick={handleNext}
-                sx={{ mt: 3, ml: 1 }}>
-                {activeStep === steps.length - 1
-                  ? "Submit your profile"
-                  : "Next"}
-              </Button>
-            </Box>
+                  variant="contained"
+                  onClick={handleNext}
+                  sx={{ mt: 3, ml: 1 }}>
+                  {activeStep === steps.length - 1
+                    ? "Submit your profile"
+                    : "Next"}
+                </Button>
+              </Box>
+            </form>
           </React.Fragment>
         )}
       </Paper>

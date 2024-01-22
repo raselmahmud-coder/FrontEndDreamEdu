@@ -7,7 +7,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { Box, Button } from "@mui/material";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate3 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 import validateAndRenameFile from "../../utils/fileValidationNRename";
 
 export default function Documents() {
@@ -63,7 +63,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           passport: fileData.dataURL,
                         }),
@@ -107,7 +107,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           extraCurricular: fileData.dataURL,
                         }),
@@ -149,7 +149,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           passportSizePhoto: fileData.dataURL,
                         }),
@@ -194,7 +194,7 @@ export default function Documents() {
                           dataURL: event.target.result,
                         };
                         dispatch(
-                          admissionProfileCreate({
+                          admissionProfileCreate3({
                             ...initialData,
                             ssc: fileData.dataURL,
                           }),
@@ -241,7 +241,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           nonCriminalCertificate: fileData.dataURL,
                         }),
@@ -287,7 +287,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           bankStatement: fileData.dataURL,
                         }),
@@ -331,7 +331,7 @@ export default function Documents() {
                         dataURL: event.target.result,
                       };
                       dispatch(
-                        admissionProfileCreate({
+                        admissionProfileCreate3({
                           ...initialData,
                           studyPlan: fileData.dataURL,
                         }),
@@ -377,7 +377,7 @@ export default function Documents() {
                             dataURL: event.target.result,
                           };
                           dispatch(
-                            admissionProfileCreate({
+                            admissionProfileCreate3({
                               ...initialData,
                               englishProficiencyTest: fileData.dataURL,
                             }),
@@ -423,7 +423,7 @@ export default function Documents() {
                             dataURL: event.target.result,
                           };
                           dispatch(
-                            admissionProfileCreate({
+                            admissionProfileCreate3({
                               ...initialData,
                               hsc: fileData.dataURL,
                             }),
@@ -472,7 +472,7 @@ export default function Documents() {
                             dataURL: event.target.result,
                           };
                           dispatch(
-                            admissionProfileCreate({
+                            admissionProfileCreate3({
                               ...initialData,
                               bachelor: fileData.dataURL,
                             }),
@@ -518,7 +518,7 @@ export default function Documents() {
                             dataURL: event.target.result,
                           };
                           dispatch(
-                            admissionProfileCreate({
+                            admissionProfileCreate3({
                               ...initialData,
                               recommendationLetters: fileData.dataURL,
                             }),
@@ -566,7 +566,7 @@ export default function Documents() {
                             dataURL: event.target.result,
                           };
                           dispatch(
-                            admissionProfileCreate({
+                            admissionProfileCreate3({
                               ...initialData,
                               masters: fileData.dataURL,
                             }),

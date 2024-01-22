@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.19.0",
+    "@date-io/dayjs": "^3.0.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/titillium-web": "^5.0.2",
@@ -23,7 +24,7 @@
     "@vitejs/plugin-react": "^4.0.4",
     "axios": "^1.5.0",
     "contentful": "^10.6.16",
-    "moment": "^2.29.4",
+    "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-facebook": "^9.0.12",
@@ -31,7 +32,6 @@
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.14.1",
     "react-spring": "^9.7.2",
-    "recharts": "^2.7.3",
     "swiper": "^10.0.4"
   },
   "devDependencies": {
