@@ -4,455 +4,71 @@ import {
   Typography,
   TextField,
   FormControlLabel,
-  Checkbox,
   FormControl,
   FormLabel,
   RadioGroup,
   Radio,
   Box,
+  Chip,
   InputLabel,
   Select,
   MenuItem,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateField } from "@mui/x-date-pickers/DateField";
+import AddDynamicSchool from "./AddDynamicSchool";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
+import AddJobExperience from "./AddJobExperience";
 
 export default function EducationBackground() {
   const dispatch = useDispatch();
-  const previousData = useSelector((state) => state.admission);
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const { step2 } = useSelector((state) => state.admission);
+  const [showAlert, setShowAlert] = React.useState("");
+  const handleDeleteField = (field, desireValue) => {
+    if ((field, desireValue)) {
+      dispatch(
+        admissionProfileCreate2({
+          ...step2,
+          [desireValue]: step2[desireValue].filter((f) => f !== field),
+        }),
+      );
+    }
+  };
+  const handleFieldChange = (fieldName, event) => {
+    const value = event.target.value;
+    if (step2[fieldName].length >= 0 && step2[fieldName].length <= 2) {
+      if (fieldName && value) {
+        dispatch(
+          admissionProfileCreate2({
+            ...step2,
+            [fieldName]: [...step2[fieldName], value],
+          }),
+        );
+        event.target.value = "";
+      }
+    } else {
+      setShowAlert(fieldName);
+      event.target.value = "";
+    }
   };
   return (
     <React.Fragment>
+      {showAlert && (
+        <AlertDialog
+          MessageTitle={"You may add only 3 items"}
+          message={showAlert}
+          setShowAlert={setShowAlert}
+        />
+      )}
       <Typography variant="h6" gutterBottom>
         Education Background Information
       </Typography>
-
-      <Grid
-        container
-        spacing={1}
-        sx={{
-          py: 2,
-        }}>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="schoolName"
-            name="schoolName"
-            label="School/Institute"
-            placeholder="Type here"
-            fullWidth
-            autoComplete="schoolName"
-            variant="standard"
-            value={previousData.institute}
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  institute: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.school1StartDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1StartDate: convertDate,
-                  }),
-                );
-              }}
-              label="School Start Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.schoolEndDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1EndDate: convertDate,
-                  }),
-                );
-              }}
-              label="School End Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="fieldOfStudy"
-            name="fieldOfStudy"
-            label="Field of Study"
-            fullWidth
-            autoComplete="fieldOfStudy"
-            placeholder="Type here"
-            value={previousData.fieldOfStudy}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  fieldOfStudy: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="educationLevel"
-            name="educationLevel"
-            label="Education level/degree"
-            fullWidth
-            autoComplete="educationLevel"
-            placeholder="Type here"
-            value={previousData.educationLevel}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  educationLevel: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="gpa"
-            name="gpa"
-            label="GPA/Result"
-            fullWidth
-            autoComplete="gpa"
-            placeholder="Type here"
-            value={previousData.gpa}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  gpa: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        spacing={1}
-        sx={{
-          py: 2,
-        }}>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="schoolName"
-            name="schoolName"
-            label="School/Institute"
-            placeholder="Type here"
-            fullWidth
-            autoComplete="schoolName"
-            variant="standard"
-            value={previousData.institute}
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  institute: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.school1StartDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1StartDate: convertDate,
-                  }),
-                );
-              }}
-              label="School Start Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.schoolEndDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1EndDate: convertDate,
-                  }),
-                );
-              }}
-              label="School End Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="fieldOfStudy"
-            name="fieldOfStudy"
-            label="Field of Study"
-            fullWidth
-            autoComplete="fieldOfStudy"
-            placeholder="Type here"
-            value={previousData.fieldOfStudy}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  fieldOfStudy: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="educationLevel"
-            name="educationLevel"
-            label="Education level/degree"
-            fullWidth
-            autoComplete="educationLevel"
-            placeholder="Type here"
-            value={previousData.educationLevel}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  educationLevel: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="gpa"
-            name="gpa"
-            label="GPA/Result"
-            fullWidth
-            autoComplete="gpa"
-            placeholder="Type here"
-            value={previousData.gpa}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  gpa: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        spacing={1}
-        sx={{
-          py: 2,
-        }}>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="schoolName"
-            name="schoolName"
-            label="School/Institute"
-            placeholder="Type here"
-            fullWidth
-            autoComplete="schoolName"
-            variant="standard"
-            value={previousData.institute}
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  institute: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.school1StartDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1StartDate: convertDate,
-                  }),
-                );
-              }}
-              label="School Start Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-            <DateField
-              required
-              fullWidth
-              value={previousData.schoolEndDate}
-              variant="standard"
-              onChange={(e) => {
-                const convertDate = new Date(e).toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                  year: "numeric",
-                });
-                dispatch(
-                  admissionProfileCreate2({
-                    ...previousData,
-                    school1EndDate: convertDate,
-                  }),
-                );
-              }}
-              label="School End Date"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="fieldOfStudy"
-            name="fieldOfStudy"
-            label="Field of Study"
-            fullWidth
-            autoComplete="fieldOfStudy"
-            placeholder="Type here"
-            value={previousData.fieldOfStudy}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  fieldOfStudy: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="educationLevel"
-            name="educationLevel"
-            label="Education level/degree"
-            fullWidth
-            autoComplete="educationLevel"
-            placeholder="Type here"
-            value={previousData.educationLevel}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  educationLevel: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-        <Grid item xs={4} sm={2}>
-          <TextField
-            required
-            id="gpa"
-            name="gpa"
-            label="GPA/Result"
-            fullWidth
-            autoComplete="gpa"
-            placeholder="Type here"
-            value={previousData.gpa}
-            variant="standard"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  gpa: e.target.value,
-                }),
-              );
-            }}
-          />
-        </Grid>
-      </Grid>
-
+      <AddDynamicSchool />
+      {/* <AddDesireUniversity /> */}
       <Grid
         container
         spacing={1}
@@ -461,45 +77,65 @@ export default function EducationBackground() {
         }}>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            required={step2?.desireUniversity.length ? false : true}
             id="desire-university"
             name="Desire University"
             label="Desire University Name"
-            value={previousData.desireUniversity}
             fullWidth
             autoComplete="Desire University"
             variant="standard"
-            placeholder="Type here"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  desireUniversity: e.target.value,
-                }),
-              );
+            placeholder="Type here and press Enter"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleFieldChange("desireUniversity", e);
+              }
             }}
           />
+          {step2?.desireUniversity && (
+            <Box sx={{ display: "flex", flexDirection: "row", gap: 0.5 }}>
+              {step2.desireUniversity.map((field, index) => (
+                <Chip
+                  key={index}
+                  label={field}
+                  onDelete={() => handleDeleteField(field, "desireUniversity")}
+                  deleteIcon={<CancelIcon />}
+                />
+              ))}
+            </Box>
+          )}
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            required={step2?.desireMajor.length ? false : true}
             id="desire-major"
             name="Desire Major"
             label="Desire Major"
-            value={previousData.desireMajor}
+            // value={educationFields}
             fullWidth
             autoComplete="Desire Major"
             variant="standard"
-            placeholder="Type here"
-            onChange={(e) => {
-              dispatch(
-                admissionProfileCreate2({
-                  ...previousData,
-                  desireMajor: e.target.value,
-                }),
-              );
+            placeholder="Type here and press Enter"
+            // onChange={(e) => handleAddField(e.target.value, "itSMajor")}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleFieldChange("desireMajor", e);
+              }
             }}
           />
+          {step2?.desireMajor && (
+            <Box sx={{ display: "flex", flexDirection: "row", gap: 0.5 }}>
+              {step2.desireMajor.map((field, index) => (
+                <Chip
+                  key={index}
+                  label={field}
+                  onDelete={() => handleDeleteField(field, "desireMajor")}
+                  deleteIcon={<CancelIcon />}
+                />
+              ))}
+            </Box>
+          )}
         </Grid>
       </Grid>
       <Grid
@@ -508,13 +144,13 @@ export default function EducationBackground() {
         sx={{
           py: 2,
         }}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={3}>
           <FormControl
             required
             onChange={(e) => {
               dispatch(
                 admissionProfileCreate2({
-                  ...previousData,
+                  ...step2,
                   isVisitedChina: e.target.value,
                 }),
               );
@@ -524,22 +160,55 @@ export default function EducationBackground() {
             </FormLabel>
             <RadioGroup row name="visitChina">
               <FormControlLabel
+                required
                 value="yes"
                 control={<Radio />}
                 label="Yes"
-                checked={previousData.isVisitedChina === "yes"}
+                checked={step2.isVisitedChina === "yes"}
               />
               <FormControlLabel
+                required
                 value="no"
                 control={<Radio />}
                 label="No"
-                checked={previousData.isVisitedChina === "no"}
+                checked={step2.isVisitedChina === "no"}
               />
             </RadioGroup>
           </FormControl>
         </Grid>
-        {previousData.isVisitedChina === "yes" && (
+        {step2.isVisitedChina === "yes" && (
           <>
+            <Grid item xs={12} sm={3}>
+              <FormControl required fullWidth>
+                <InputLabel id="visaType">Visa Type</InputLabel>
+                <Select
+                  required
+                  labelId="visaType"
+                  id="visaType"
+                  value={step2.visaType}
+                  label="Visa Type"
+                  onChange={
+                    (e) => {
+                      dispatch(
+                        admissionProfileCreate2({
+                          ...step2,
+                          visaType: e.target.value,
+                        }),
+                      );
+                    }
+                    // console.log(e.target.value, "visa type")
+                  }>
+                  <MenuItem value={"touristVisa"}>L: Tourist visa</MenuItem>
+                  <MenuItem value={"businessVisa"}>M: Business visa</MenuItem>
+                  <MenuItem value={"nonBusinessVisa"}>
+                    F: Non-business visa
+                  </MenuItem>
+                  <MenuItem value={"studyVisa"}>X: Study visa</MenuItem>
+                  <MenuItem value={"workVisa"}>Z: Work visa</MenuItem>
+                  <MenuItem value={"transitVisa"}>G: Transit visa</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
             <Grid item xs={12} sm={3}>
               <TextField
                 required
@@ -547,14 +216,14 @@ export default function EducationBackground() {
                 id="visa-number"
                 name="visa-number"
                 label="Your Visa Number"
-                value={previousData.visaNumber}
+                value={step2.visaNumber}
                 fullWidth
                 autoComplete="visa-number"
                 variant="standard"
                 onChange={(e) => {
                   dispatch(
                     admissionProfileCreate2({
-                      ...previousData,
+                      ...step2,
                       visaNumber: e.target.value,
                     }),
                   );
@@ -562,31 +231,26 @@ export default function EducationBackground() {
               />
             </Grid>
             <Grid item xs={12} sm={3}>
-              <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-                <DateField
-                  required
-                  fullWidth
-                  value={previousData.visaExpiry}
-                  variant="standard"
-                  onChange={(e) => {
-                    const convertDate = new Date(e).toLocaleDateString(
-                      "en-US",
-                      {
-                        month: "numeric",
-                        day: "numeric",
-                        year: "numeric",
-                      },
-                    );
-                    dispatch(
-                      admissionProfileCreate2({
-                        ...previousData,
-                        visaExpiry: convertDate,
-                      }),
-                    );
-                  }}
-                  label="Visa Expiry Date"
-                />
-              </LocalizationProvider>
+              <TextField
+                required
+                type="text"
+                id="visa-date"
+                name="visa-date"
+                label="Visa Issue & Expiry Date"
+                placeholder="day/month/year to day/month/year"
+                value={step2.visaDate}
+                fullWidth
+                autoComplete="visa-date"
+                variant="standard"
+                onChange={(e) => {
+                  dispatch(
+                    admissionProfileCreate2({
+                      ...step2,
+                      visaDate: e.target.value,
+                    }),
+                  );
+                }}
+              />
             </Grid>
           </>
         )}
@@ -605,8 +269,8 @@ export default function EducationBackground() {
             onChange={(e) => {
               dispatch(
                 admissionProfileCreate2({
-                  ...previousData,
-                  jobExperience: e.target.value,
+                  ...step2,
+                  haveJobExperience: e.target.value,
                 }),
               );
             }}>
@@ -615,231 +279,24 @@ export default function EducationBackground() {
             </FormLabel>
             <RadioGroup row name="jobExperience">
               <FormControlLabel
+                required
                 value="yes"
                 control={<Radio />}
                 label="Yes"
-                checked={previousData.jobExperience === "yes"}
+                checked={step2.haveJobExperience === "yes"}
               />
               <FormControlLabel
+                required
                 value="no"
                 control={<Radio />}
                 label="No"
-                checked={previousData.jobExperience === "no"}
+                checked={step2.haveJobExperience === "no"}
               />
             </RadioGroup>
           </FormControl>
         </Grid>
       </Grid>
-      {
-        /* previousData.jobExperience === "yes" */ true && (
-          <>
-            <Grid
-              container
-              spacing={1}
-              sx={{
-                py: 2,
-              }}>
-              <Grid item xs={6} sm={3}>
-                <TextField
-                  required
-                  id="companyName"
-                  name="companyName"
-                  label="Company Name"
-                  value={previousData.companyName}
-                  fullWidth
-                  autoComplete="companyName"
-                  variant="standard"
-                  onChange={(e) => {
-                    dispatch(
-                      admissionProfileCreate2({
-                        ...previousData,
-                        companyName: e.target.value,
-                      }),
-                    );
-                  }}
-                />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-                  <DateField
-                    required
-                    fullWidth
-                    value={previousData.visaExpiry}
-                    variant="standard"
-                    onChange={(e) => {
-                      const convertDate = new Date(e).toLocaleDateString(
-                        "en-US",
-                        {
-                          month: "numeric",
-                          day: "numeric",
-                          year: "numeric",
-                        },
-                      );
-                      dispatch(
-                        admissionProfileCreate2({
-                          ...previousData,
-                          visaExpiry: convertDate,
-                        }),
-                      );
-                    }}
-                    label="Start Date"
-                  />
-                </LocalizationProvider>
-              </Grid>
-              <Grid item xs={6} sm={2.4}>
-                <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-                  <DateField
-                    required
-                    fullWidth
-                    value={previousData.visaExpiry}
-                    variant="standard"
-                    onChange={(e) => {
-                      const convertDate = new Date(e).toLocaleDateString(
-                        "en-US",
-                        {
-                          month: "numeric",
-                          day: "numeric",
-                          year: "numeric",
-                        },
-                      );
-                      dispatch(
-                        admissionProfileCreate2({
-                          ...previousData,
-                          visaExpiry: convertDate,
-                        }),
-                      );
-                    }}
-                    label="End Date"
-                  />
-                </LocalizationProvider>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <TextField
-                  required
-                  id="position"
-                  name="position"
-                  label="Position"
-                  value={previousData.position}
-                  fullWidth
-                  autoComplete="position"
-                  variant="standard"
-                  placeholder="Type here"
-                  onChange={(e) => {
-                    dispatch(
-                      admissionProfileCreate2({
-                        ...previousData,
-                        position: e.target.value,
-                      }),
-                    );
-                  }}
-                />
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              spacing={1}
-              sx={{
-                py: 2,
-              }}>
-              <Grid item xs={6} sm={3}>
-                <TextField
-                  required
-                  id="companyName"
-                  name="companyName"
-                  label="Company Name"
-                  value={previousData.companyName}
-                  fullWidth
-                  autoComplete="companyName"
-                  variant="standard"
-                  onChange={(e) => {
-                    dispatch(
-                      admissionProfileCreate2({
-                        ...previousData,
-                        companyName: e.target.value,
-                      }),
-                    );
-                  }}
-                />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-                  <DateField
-                    required
-                    fullWidth
-                    value={previousData.visaExpiry}
-                    variant="standard"
-                    onChange={(e) => {
-                      const convertDate = new Date(e).toLocaleDateString(
-                        "en-US",
-                        {
-                          month: "numeric",
-                          day: "numeric",
-                          year: "numeric",
-                        },
-                      );
-                      dispatch(
-                        admissionProfileCreate2({
-                          ...previousData,
-                          visaExpiry: convertDate,
-                        }),
-                      );
-                    }}
-                    label="Start Date"
-                  />
-                </LocalizationProvider>
-              </Grid>
-              <Grid item xs={6} sm={2.4}>
-                <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
-                  <DateField
-                    required
-                    fullWidth
-                    value={previousData.visaExpiry}
-                    variant="standard"
-                    onChange={(e) => {
-                      const convertDate = new Date(e).toLocaleDateString(
-                        "en-US",
-                        {
-                          month: "numeric",
-                          day: "numeric",
-                          year: "numeric",
-                        },
-                      );
-                      dispatch(
-                        admissionProfileCreate2({
-                          ...previousData,
-                          visaExpiry: convertDate,
-                        }),
-                      );
-                    }}
-                    label="End Date"
-                  />
-                </LocalizationProvider>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <TextField
-                  required
-                  id="position"
-                  name="position"
-                  label="Position"
-                  value={previousData.position}
-                  fullWidth
-                  autoComplete="position"
-                  variant="standard"
-                  placeholder="Type here"
-                  onChange={(e) => {
-                    dispatch(
-                      admissionProfileCreate2({
-                        ...previousData,
-                        position: e.target.value,
-                      }),
-                    );
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </>
-        )
-      }
+      {step2.haveJobExperience === "yes" && <AddJobExperience />}
       <Grid
         container
         spacing={1}
@@ -858,8 +315,8 @@ export default function EducationBackground() {
             onChange={(e) => {
               dispatch(
                 admissionProfileCreate2({
-                  ...previousData,
-                  othersTextArea: e.target.value,
+                  ...step2,
+                  additionalInfo: e.target.value,
                 }),
               );
             }}

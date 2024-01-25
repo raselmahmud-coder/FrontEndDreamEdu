@@ -22,11 +22,31 @@ import { DatePicker } from "@mui/x-date-pickers";
 import "dayjs/locale/en-gb";
 
 export default function Initialization() {
+  const [dateValue, setDateValue] = React.useState([
+    {
+      dateOfBirth: "",
+      fatherDateOfBirth: "",
+      motherDateOfBirth: "",
+    },
+  ]);
   const isInCurrentYear = (date) => dayjs(date).year() === dayjs().year();
   const dispatch = useDispatch();
   const { step1 } = useSelector((state) => state.admission);
-  console.log(step1?.passportExpiry, "expire");
+  const updateDateOfBirth = (fieldName, newValue) => {
+    setDateValue((prevValues) => {
+      const lastEntryIndex = prevValues.length - 1;
+      if (lastEntryIndex >= 0) {
+        return [
+          ...prevValues.slice(0, lastEntryIndex),
+          { ...prevValues[lastEntryIndex], [fieldName]: newValue },
+        ];
+      } else {
+        return [{ [fieldName]: newValue }];
+      }
+    });
+  };
 
+  console.log(dateValue, "Hello value");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -193,15 +213,16 @@ export default function Initialization() {
             <DatePicker
               id="dateOfBirth"
               name="dateOfBirth"
-              value={step1.dateOfBirth ? dayjs(step1.dateOfBirth) : null}
+              value={dateValue.dateOfBirth || ""}
               sx={{
                 width: "100%",
               }}
               onChange={(newValue) => {
+                updateDateOfBirth("dateOfBirth", newValue);
                 dispatch(
                   admissionProfileCreate1({
                     ...step1,
-                    dateOfBirth: newValue.format("DD/MM/YYYY"),
+                    dateOfBirth: dayjs(newValue).format("DD/MM/YYYY"),
                   }),
                 );
               }}
@@ -521,13 +542,12 @@ export default function Initialization() {
             <DatePicker
               id="fatherDateOfBirth"
               name="fatherDateOfBirth"
-              value={
-                step1.fatherDateOfBirth ? dayjs(step1.fatherDateOfBirth) : null
-              }
+              value={dateValue.fatherDateOfBirth || ""}
               sx={{
                 width: "100%",
               }}
               onChange={(newValue) => {
+                updateDateOfBirth("fatherDateOfBirth", newValue);
                 dispatch(
                   admissionProfileCreate1({
                     ...step1,
@@ -613,13 +633,12 @@ export default function Initialization() {
             <DatePicker
               id="motherDateOfBirth"
               name="motherDateOfBirth"
-              value={
-                step1.motherDateOfBirth ? dayjs(step1.motherDateOfBirth) : null
-              }
+              value={dateValue.motherDateOfBirth || ""}
               sx={{
                 width: "100%",
               }}
               onChange={(newValue) => {
+                updateDateOfBirth("motherDateOfBirth", newValue);
                 dispatch(
                   admissionProfileCreate1({
                     ...step1,

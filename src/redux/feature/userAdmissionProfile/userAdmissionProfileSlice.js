@@ -31,20 +31,21 @@ const initialState = {
     motherPhone: "",
   },
   step2: {
-    instituteName: [],
-    schoolStartDate: [],
-    schoolEndDate: [],
-    fieldOfStudy: [],
-    educationLevel: [],
-    result: [],
+    instituteName: "",
+    schoolStartDate: "",
+    schoolEndDate: "",
+    fieldOfStudy: "",
+    educationLevel: "",
+    result: "",
     desireUniversity: [],
     desireMajor: [],
     isVisitedChina: null,
-    visaNo: "",
-    visaExpiry: "",
+    visaNumber: "",
+    visaDate: "",
+    visaType: "",
     haveJobExperience: null,
-    jobTitle: [],
     company: [],
+    jobTitle: [],
     jobStartDate: [],
     jobEndDate: [],
     additionalInfo: "",
@@ -69,6 +70,10 @@ const userAdmissionProfileAPISlice = createSlice({
   initialState,
   reducers: {
     admissionProfileCreate1: (state, action) => {
+      // dynamically add new field
+      /* Object.keys(action.payload).forEach(key => {
+        state.step1[key] = action.payload[key];
+      }); */
       state.step1.program = action.payload.program;
       state.step1.gender = action.payload.gender;
       state.step1.mediumOfInstruction = action.payload.mediumOfInstruction;
@@ -99,7 +104,11 @@ const userAdmissionProfileAPISlice = createSlice({
       state.step1.motherPhone = action.payload.motherPhone;
     },
     admissionProfileCreate2: (state, action) => {
-      state.step1.program = action.payload.program;
+      Object.keys(action.payload).forEach((key) => {
+        // console.log(state.step2[key], "Hello slice");
+        state.step2[key] = action.payload[key];
+      });
+      /*       state.step2.instituteName = action.payload.instituteName;
       state.step1.chineseName = action.payload.chineseName;
       state.step1.dateOfBirth = action.payload.dateOfBirth;
       state.step1.gender = action.payload.gender;
@@ -125,7 +134,7 @@ const userAdmissionProfileAPISlice = createSlice({
       state.phone = action.payload.phone;
       state.email = action.payload.email;
       state.isVisitedChina = action.payload.isVisitedChina;
-      state.visaExpiry = action.payload.visaExpiry;
+      state.visaExpiry = action.payload.visaExpiry; */
     },
     admissionProfileCreate3: (state, action) => {
       state.step1.program = action.payload.program;
@@ -158,5 +167,9 @@ const userAdmissionProfileAPISlice = createSlice({
     },
   },
 });
-export const { admissionProfileCreate1, admissionProfileCreate2, admissionProfileCreate3 } = userAdmissionProfileAPISlice.actions;
+export const {
+  admissionProfileCreate1,
+  admissionProfileCreate2,
+  admissionProfileCreate3,
+} = userAdmissionProfileAPISlice.actions;
 export default userAdmissionProfileAPISlice.reducer;

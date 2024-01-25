@@ -12,7 +12,6 @@ import Review from "./Review";
 import { useSelector } from "react-redux";
 import { useAddApplicantProfileMutation } from "../../redux/feature/applyForAdmission/applyForAdmissionDocsAPI";
 import axios from "axios";
-import ssc from "../../assets/changzhou.jpg";
 import base64ToBlob from "../../utils/base64ToBlob";
 import EducationBackground from "./EducationBackground";
 const steps = [
@@ -24,7 +23,8 @@ const steps = [
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <Initialization />;
+      return <Documents />;
+      // return <Initialization />;
     case 1:
       return <EducationBackground />;
     case 2:
@@ -42,7 +42,7 @@ export default function Checkout() {
     useAddApplicantProfileMutation();
   const allStoreData = useSelector((state) => state.admission);
   const { step1 } = useSelector((state) => state.admission);
-  console.log(step1, "step1");
+  // console.log(step1, "step1");
   const initFormRef = React.useRef(null);
   const {
     program,
@@ -70,7 +70,8 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-  const handleNext = () => {
+  const handleNext = (e) => {
+    // e.preventDefault();
     console.log(initFormRef.current.checkValidity(), "validity");
     if (!initFormRef.current.checkValidity()) {
       return;
@@ -248,7 +249,7 @@ export default function Checkout() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <form ref={initFormRef}>
+            <form onSubmit={(e) => e.preventDefault()} ref={initFormRef}>
               {getStepContent(activeStep)}
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (
