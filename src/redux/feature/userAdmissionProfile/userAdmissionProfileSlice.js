@@ -57,12 +57,12 @@ const initialState = {
     studyPlan: "",
     othersFile: "",
     ssc: "",
-    bankStatement: "",
-    englishProficiencyTest: "",
-    masters: "",
-    bachelor: "",
     hsc: "",
+    bachelor: "",
+    masters: "",
+    bankStatement: "",
     recommendationLetters: "",
+    englishProficiencyTest: "",
   },
 };
 const userAdmissionProfileAPISlice = createSlice({
@@ -105,65 +105,14 @@ const userAdmissionProfileAPISlice = createSlice({
     },
     admissionProfileCreate2: (state, action) => {
       Object.keys(action.payload).forEach((key) => {
-        // console.log(state.step2[key], "Hello slice");
         state.step2[key] = action.payload[key];
       });
-      /*       state.step2.instituteName = action.payload.instituteName;
-      state.step1.chineseName = action.payload.chineseName;
-      state.step1.dateOfBirth = action.payload.dateOfBirth;
-      state.step1.gender = action.payload.gender;
-      state.step1.sureName = action.payload.sureName;
-      state.step1.givenName = action.payload.givenName;
-      state.step1.addressLine = action.payload.addressLine;
-      state.step1.city = action.payload.city;
-      state.step1.province = action.payload.province;
-      state.step1.postCode = action.payload.postCode;
-      state.step1.country = action.payload.country;
-      state.passport = action.payload.passport;
-      state.masters = action.payload.masters;
-      state.bachelor = action.payload.bachelor;
-      state.hsc = action.payload.hsc;
-      state.ssc = action.payload.ssc;
-      state.ssc = action.payload.ssc;
-      state.bankStatement = action.payload.bankStatement;
-      state.passportSizePhoto = action.payload.passportSizePhoto;
-      state.nonCriminalCertificate = action.payload.nonCriminalCertificate;
-      state.studyPlan = action.payload.studyPlan;
-      state.recommendationLetters = action.payload.recommendationLetters;
-      state.englishProficiencyTest = action.payload.englishProficiencyTest;
-      state.phone = action.payload.phone;
-      state.email = action.payload.email;
-      state.isVisitedChina = action.payload.isVisitedChina;
-      state.visaExpiry = action.payload.visaExpiry; */
     },
     admissionProfileCreate3: (state, action) => {
-      state.step1.program = action.payload.program;
-      state.step1.chineseName = action.payload.chineseName;
-      state.step1.dateOfBirth = action.payload.dateOfBirth;
-      state.step1.gender = action.payload.gender;
-      state.step1.sureName = action.payload.sureName;
-      state.step1.givenName = action.payload.givenName;
-      state.step1.addressLine = action.payload.addressLine;
-      state.step1.city = action.payload.city;
-      state.step1.province = action.payload.province;
-      state.step1.postCode = action.payload.postCode;
-      state.step1.country = action.payload.country;
-      state.passport = action.payload.passport;
-      state.masters = action.payload.masters;
-      state.bachelor = action.payload.bachelor;
-      state.hsc = action.payload.hsc;
-      state.ssc = action.payload.ssc;
-      state.ssc = action.payload.ssc;
-      state.bankStatement = action.payload.bankStatement;
-      state.passportSizePhoto = action.payload.passportSizePhoto;
-      state.nonCriminalCertificate = action.payload.nonCriminalCertificate;
-      state.studyPlan = action.payload.studyPlan;
-      state.recommendationLetters = action.payload.recommendationLetters;
-      state.englishProficiencyTest = action.payload.englishProficiencyTest;
-      state.phone = action.payload.phone;
-      state.email = action.payload.email;
-      state.isVisitedChina = action.payload.isVisitedChina;
-      state.visaExpiry = action.payload.visaExpiry;
+      Object.keys(action.payload).forEach((key) => {
+        // console.log(state.step3[key], "Hello slice");
+        state.step3[key] = action.payload[key];
+      });
     },
   },
 });

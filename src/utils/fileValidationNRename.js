@@ -1,19 +1,20 @@
 export default function validateAndRenameFile(file, fileName) {
+  console.log(file, fileName, "Hello from functi");
   if (!file) {
-    return null;
+    return [false, "Files not found"];
   }
-  if (file.size > 5120 * 5120) {
-    return alert("File size is larger than 1MB");;
+  if (file.size > 5000000) {//max file 5MB
+    return [false, "File size too large"];
   }
-  const allowedExtensions = [".jpg", ".jpeg", ".png"];
+  const allowedExtensions = [".jpg", ".jpeg", ".png", ".pdf"];
   const originalFileName = file.name;
   const originalExtension = originalFileName.slice(
     ((originalFileName.lastIndexOf(".") - 1) >>> 0) + 2,
   );
   if (!allowedExtensions.includes(`.${originalExtension.toLowerCase()}`)) {
-   return alert("File type not supported");
+    return [false, "File type not allowed"];
   }
   const renamedFileName = `${fileName}.${originalExtension}`;
   const renamedFile = new File([file], renamedFileName, { type: file.type });
-  return renamedFile;
+  return [true, renamedFile];
 }

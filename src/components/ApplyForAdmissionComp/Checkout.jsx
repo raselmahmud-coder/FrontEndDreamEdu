@@ -24,7 +24,7 @@ function getStepContent(step) {
   switch (step) {
     case 0:
       return <Documents />;
-      // return <Initialization />;
+    // return <Initialization />;
     case 1:
       return <EducationBackground />;
     case 2:
@@ -74,7 +74,7 @@ export default function Checkout() {
     // e.preventDefault();
     console.log(initFormRef.current.checkValidity(), "validity");
     if (!initFormRef.current.checkValidity()) {
-      return;
+      return alert("Please fill all the required fields");
     }
     setActiveStep(activeStep + 1);
     /* if (activeStep == 0) {
