@@ -17,9 +17,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate1 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateField } from "@mui/x-date-pickers/DateField";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import { DatePicker } from "@mui/x-date-pickers";
 import "dayjs/locale/en-gb";
+import moment from "moment";
 
 export default function Initialization() {
   const [dateValue, setDateValue] = React.useState([
@@ -27,6 +28,7 @@ export default function Initialization() {
       dateOfBirth: "",
       fatherDateOfBirth: "",
       motherDateOfBirth: "",
+      passportExpiry: "",
     },
   ]);
   const isInCurrentYear = (date) => dayjs(date).year() === dayjs().year();
@@ -46,7 +48,7 @@ export default function Initialization() {
     });
   };
 
-  console.log(dateValue, "Hello value");
+  console.log(dayjs('24/11/2023'), "Hello value");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -93,18 +95,18 @@ export default function Initialization() {
               aria-labelledby="gender"
               name="gender">
               <FormControlLabel
-                value="male"
+                value="Male"
                 control={<Radio />}
                 label="Male"
-                checked={step1.gender === "male"}
+                checked={step1.gender === "Male"}
                 required
               />
               <FormControlLabel
                 required
-                value="female"
+                value="Female"
                 control={<Radio />}
                 label="Female"
-                checked={step1.gender === "female"}
+                checked={step1.gender === "Female"}
               />
             </RadioGroup>
           </FormControl>
@@ -262,12 +264,12 @@ export default function Initialization() {
             <DatePicker
               id="passportExpiry"
               name="passportExpiry"
-              value={step1?.passportExpiry ? dayjs(step1.passportExpiry) : null}
+              value={dateValue.passportExpiry || ""}
               sx={{
                 width: "100%",
               }}
               onChange={(newValue) => {
-                console.log(newValue.format("DD/MM/YYYY"), "new value");
+                updateDateOfBirth("passportExpiry", newValue);
                 dispatch(
                   admissionProfileCreate1({
                     ...step1,
@@ -332,7 +334,7 @@ export default function Initialization() {
             <Select
               labelId="blood-type"
               id="blood-type"
-              value={step1.bloodType || "a+"}
+              value={step1.bloodType || "A+"}
               onChange={(e) => {
                 dispatch(
                   admissionProfileCreate1({
@@ -342,14 +344,14 @@ export default function Initialization() {
                 );
               }}
               label="Blood Group">
-              <MenuItem value={"a+"}>A+</MenuItem>
-              <MenuItem value={"a-"}>A-</MenuItem>
-              <MenuItem value={"b+"}>B+</MenuItem>
-              <MenuItem value={"b-"}>B-</MenuItem>
-              <MenuItem value={"ab+"}>AB+</MenuItem>
-              <MenuItem value={"ab-"}>AB-</MenuItem>
-              <MenuItem value={"o+"}>O+</MenuItem>
-              <MenuItem value={"o-"}>O-</MenuItem>
+              <MenuItem value={"A+"}>A+</MenuItem>
+              <MenuItem value={"A-"}>A-</MenuItem>
+              <MenuItem value={"B+"}>B+</MenuItem>
+              <MenuItem value={"B-"}>B-</MenuItem>
+              <MenuItem value={"AB+"}>AB+</MenuItem>
+              <MenuItem value={"AB-"}>AB-</MenuItem>
+              <MenuItem value={"O+"}>O+</MenuItem>
+              <MenuItem value={"O-"}>O-</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -375,6 +377,12 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            error={step1.fullAddress.length > 30 ? true : false}
+            helperText={
+              step1.fullAddress.length > 30
+                ? "Address length should be 30 characters or less"
+                : ""
+            }
             required
             value={step1.fullAddress}
             id="address"
@@ -382,6 +390,7 @@ export default function Initialization() {
             label="Full Address"
             fullWidth
             autoComplete="full address"
+            placeholder="No more than 30 character"
             variant="standard"
             onChange={(e) => {
               dispatch(
@@ -494,6 +503,12 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            error={step1.email.length > 20 ? true : false}
+            helperText={
+              step1.email.length > 20
+                ? "Email length should be 20 characters or less"
+                : ""
+            }
             required
             id="email"
             name="email"
@@ -537,12 +552,12 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={6} sm={3}>
           <LocalizationProvider
-            dateAdapter={AdapterDayjs}
+            dateAdapter={AdapterMoment}
             adapterLocale={"en-gb"}>
             <DatePicker
               id="fatherDateOfBirth"
               name="fatherDateOfBirth"
-              value={dateValue.fatherDateOfBirth || ""}
+              value={dateValue.fatherDateOfBirth ? moment(dateValue.fatherDateOfBirth, 'DD/MM/YYYY') : moment(step1.fatherDateOfBirth, 'DD/MM/YYYY')}
               sx={{
                 width: "100%",
               }}

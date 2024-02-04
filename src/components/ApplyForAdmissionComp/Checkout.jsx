@@ -14,6 +14,7 @@ import { useAddApplicantProfileMutation } from "../../redux/feature/applyForAdmi
 import axios from "axios";
 import base64ToBlob from "../../utils/base64ToBlob";
 import EducationBackground from "./EducationBackground";
+import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
 const steps = [
   "Initialization",
   "Education Background",
@@ -23,8 +24,8 @@ const steps = [
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <Documents />;
-    // return <Initialization />;
+      // return <Documents />;
+      return <Initialization />;
     case 1:
       return <EducationBackground />;
     case 2:
@@ -37,36 +38,78 @@ function getStepContent(step) {
 }
 
 export default function Checkout() {
+  const [showAlert, setShowAlert] = React.useState("");
   const [activeStep, setActiveStep] = React.useState(0);
   const [addApplicantProfile, { isError, isLoading, error, data }] =
     useAddApplicantProfileMutation();
-  const allStoreData = useSelector((state) => state.admission);
-  const { step1 } = useSelector((state) => state.admission);
-  // console.log(step1, "step1");
-  const initFormRef = React.useRef(null);
+  const { step1, step2, step3 } = useSelector((state) => state.admission);
+
   const {
     program,
+    gender,
+    mediumOfInstruction,
     sureName,
     givenName,
-    addressLine,
+    chineseName,
+    dateOfBirth,
+    passport,
+    passportExpiry,
+    religion,
+    martialStatus,
+    bloodType,
+    height,
+    fullAddress,
     city,
     province,
     postCode,
-    country,
+    nationality,
     phone,
     email,
-    passport,
-    masters,
-    bachelor,
-    hsc,
-    ssc,
-    bankStatement,
-    passportSizePhoto,
+    fatherName,
+    fatherDateOfBirth,
+    fatherOccupation,
+    fatherPhone,
+    motherName,
+    motherDateOfBirth,
+    motherOccupation,
+    motherPhone,
+  } = step1;
+  const {
+    instituteName,
+    schoolStartDate,
+    schoolEndDate,
+    fieldOfStudy,
+    educationLevel,
+    result,
+    desireUniversity,
+    desireMajor,
+    isVisitedChina,
+    visaNumber,
+    visaDate,
+    visaType,
+    haveJobExperience,
+    company,
+    jobTitle,
+    jobStartDate,
+    jobEndDate,
+    additionalInfo,
+  } = step2;
+  const {
+    passportFile,
+    photo,
     nonCriminalCertificate,
     studyPlan,
+    othersFile,
+    ssc,
+    hsc,
+    bachelor,
+    masters,
+    bankStatement,
     recommendationLetters,
     englishProficiencyTest,
-  } = allStoreData;
+  } = step3;
+  const initFormRef = React.useRef(null);
+  // console.log(sureName, givenName, "all info available");
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
@@ -74,122 +117,95 @@ export default function Checkout() {
     // e.preventDefault();
     console.log(initFormRef.current.checkValidity(), "validity");
     if (!initFormRef.current.checkValidity()) {
-      return alert("Please fill all the required fields");
+      return setShowAlert("Please fill all the required fields");
     }
     setActiveStep(activeStep + 1);
-    /* if (activeStep == 0) {
-      if (
-        program &&
-        sureName &&
-        givenName &&
-        addressLine &&
-        city &&
-        province &&
-        postCode &&
-        country &&
-        phone &&
-        email
-      ) {
-        setActiveStep(activeStep + 1);
-      } else {
-        return alert("Please fill all the required fields");
-      }
-    } else if (activeStep == 1) {
-      if (
-        passport &&
-        passportSizePhoto &&
-        bankStatement &&
-        nonCriminalCertificate &&
-        studyPlan
-      ) {
-        switch (program) {
-          case "chinese language/diploma":
-            if (ssc) {
-              return setActiveStep(activeStep + 1);
-            } else {
-              return alert("Please fill all the required fields");
-            }
-          case "bachelor":
-            if (ssc && hsc && englishProficiencyTest) {
-              return setActiveStep(activeStep + 1);
-            } else {
-              return alert("Please fill all the required fields");
-            }
-          case "masters":
-            if (
-              hsc &&
-              bachelor &&
-              englishProficiencyTest &&
-              recommendationLetters
-            ) {
-              return setActiveStep(activeStep + 1);
-            } else {
-              return alert("Please fill all the required fields");
-            }
-          case "ph.d.":
-            console.log(activeStep, program, "how step");
-            if (
-              bachelor &&
-              masters &&
-              englishProficiencyTest &&
-              recommendationLetters
-            ) {
-              console.log(englishProficiencyTest, "eerr");
-              return setActiveStep(activeStep + 1);
-            } else {
-              return alert("Please fill all the required fields");
-            }
-          default:
-            throw new Error("Unknown values");
-        }
-      } else {
-        return alert("Please fill all the required fields");
-      }
-    } else if (activeStep === 2) setActiveStep(activeStep + 1); */
   };
+
   // sent data to the backend
   React.useEffect(() => {
     const sendData = async () => {
       if (activeStep === steps.length) {
+        const prepareDate = {
+          sureName,
+          givenName,
+          program: program,
+          gender: gender,
+          medium: mediumOfInstruction,
+          chinese_name: chineseName,
+          birthDate: dateOfBirth,
+          PassportNumber: passport,
+          PassportExpiryDate: passportExpiry,
+          Religion: religion,
+          MaritalStatus: martialStatus,
+          BloodGroup: bloodType,
+          height: height,
+          addressLine: fullAddress,
+          city: city,
+          province: province,
+          postCode: postCode,
+          country: nationality,
+          phone: phone,
+          email: email,
+          fathersName: fatherName,
+          fathersBirthdate: fatherDateOfBirth,
+          fathersOccupation: fatherOccupation,
+          fathersPhone: fatherPhone,
+          mothersName: motherName,
+          mothersBirthdate: motherDateOfBirth,
+          mothersOccupation: motherOccupation,
+          mothersPhone: motherPhone,
+          DesireUniversityName: desireUniversity.join(", "),
+          DesireMajor: desireMajor.join(", "),
+          ChinaComeBefore: isVisitedChina,
+          VisaNumber: visaNumber,
+          VisaExpiryDate: visaDate,
+          visaType: visaType,
+          jobExperiance: haveJobExperience,
+          tellSomething: additionalInfo,
+          passport: passportFile,
+          extracurricular: othersFile,
+          masters: masters,
+          bachelor: bachelor,
+          hsc: hsc,
+          ssc: ssc,
+          bankStatement: bankStatement,
+          passportSizePhoto: photo,
+          nonCriminalCertificate: nonCriminalCertificate,
+          studyPlan: studyPlan,
+          recommendationLetters: recommendationLetters,
+          englishProficiencyTest: englishProficiencyTest,
+        };
+        // All company info assuming
+        for (let index = 0; index < company.length; index++) {
+          prepareDate[`CompanyName${index + 1}`] = company[index];
+          prepareDate[`CompanyStartDate${index + 1}`] = jobTitle[index];
+          prepareDate[`CompanyEndDate${index + 1}`] = jobStartDate[index];
+          prepareDate[`CompanyPosition${index + 1}`] = jobEndDate[index];
+        }
+        // All school info and assuming all arrays are of the same length
+        for (let i = 0; i < instituteName.length; i++) {
+          prepareDate[`SchoolName${i + 1}`] = instituteName[i];
+          prepareDate[`SchoolStartDate${i + 1}`] = schoolStartDate[i];
+          prepareDate[`SchoolEndDate${i + 1}`] = schoolEndDate[i];
+          prepareDate[`SchoolStudyField${i + 1}`] = fieldOfStudy[i];
+          prepareDate[`SchoolEducationLevel${i + 1}`] = educationLevel[i];
+          prepareDate[`SchoolGPAResult${i + 1}`] = result[i];
+        }
+        console.log(prepareDate, "full obje");
         const formData = new FormData();
-        formData.append("sureName", sureName);
-        formData.append("givenName", givenName);
-        formData.append("program", "Bachelor");
-        formData.append("addressLine", addressLine);
-        formData.append("city", city);
-        formData.append("province", province);
-        formData.append("postCode", postCode);
-        formData.append("country", country);
-        formData.append("phone", phone);
-        formData.append("email", email);
-        formData.append("passport", base64ToBlob(passport), "passport.jpg");
-        formData.append(
-          "passportSizePhoto",
-          base64ToBlob(passportSizePhoto),
-          "passportSizePhoto.jpg",
-        );
-        formData.append(
-          "nonCriminalCertificate",
-          base64ToBlob(nonCriminalCertificate),
-          "nonCriminalCertificate.jpg",
-        );
-        formData.append(
-          "bankStatement",
-          base64ToBlob(bankStatement),
-          "bankStatement.jpg",
-        );
-        formData.append("studyPlan", base64ToBlob(studyPlan), "studyPlan.jpg");
-        // Based on Program selection from user these fields will be added
-        formData.append("ssc", base64ToBlob(englishProficiencyTest), "ssc.jpg");
-        // formData.append("hsc", base64ToBlob(englishProficiencyTest), "hsc.jpg");
-        // formData.append("masters", base64ToBlob(englishProficiencyTest), "masters.jpg");
-        // formData.append("bachelor", base64ToBlob(englishProficiencyTest), "bachelor.jpg");
-        // formData.append("recommendationLetters", base64ToBlob(englishProficiencyTest), "recommendationLetters.jpg");
-        // formData.append(
-        //   "englishProficiencyTest",
-        //   base64ToBlob(englishProficiencyTest),
-        //   "english_proficiencyTest.jpg",
-        // );
+        for (const key in prepareDate) {
+          if (Object.hasOwnProperty.call(prepareDate, key)) {
+            const element = prepareDate[key];
+            const isBlobType = base64ToBlob(key, element);
+            if (isBlobType) {
+              formData.append(key, isBlobType[0], isBlobType[1]);
+            } else {
+              formData.append(key, element);
+            }
+          }
+        }
+
         const res = await axios.post(
           "https://dreameduapiv1.dreameduinfo.com/api/apply/",
           formData,
@@ -199,7 +215,7 @@ export default function Checkout() {
             },
           },
         );
-        console.log(res, "hello res");
+        console.log(res, "hello resp");
 
         /* for (const key in bodyObj) {
         if (Object.hasOwnProperty.call(bodyObj, key)) {
@@ -225,6 +241,13 @@ export default function Checkout() {
   // console.log("Error Response:", showError);
   return (
     <React.Fragment>
+      {showAlert && (
+        <AlertDialog
+          MessageTitle={"Asterisk (*) mark Fields are required"}
+          message={showAlert}
+          setShowAlert={setShowAlert}
+        />
+      )}
       <Paper
         variant="outlined"
         sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
@@ -262,28 +285,6 @@ export default function Checkout() {
                 )}
                 <Button
                   type="submit"
-                  /*   disabled={
-                  (activeStep == 0 &&
-                    program &&
-                    sureName &&
-                    givenName &&
-                    addressLine &&
-                    city &&
-                    province &&
-                    postCode &&
-                    country &&
-                    phone &&
-                    email) ||
-                  (activeStep == 1 &&
-                    passport &&
-                    passportSizePhoto &&
-                    bankStatement &&
-                    nonCriminalCertificate &&
-                    studyPlan &&
-                    whatProgram)
-                    ? false
-                    : true
-                } */
                   variant="contained"
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}>

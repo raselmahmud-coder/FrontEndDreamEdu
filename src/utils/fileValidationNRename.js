@@ -1,5 +1,4 @@
 export default function validateAndRenameFile(file, fileName) {
-  console.log(file, fileName, "Hello from functi");
   if (!file) {
     return [false, "Files not found"];
   }

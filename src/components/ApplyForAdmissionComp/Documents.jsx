@@ -15,7 +15,7 @@ export default function Documents() {
   const { step1, step3 } = useSelector((state) => state.admission);
   const { program } = step1;
   const {
-    passport,
+    passportFile,
     photo,
     nonCriminalCertificate,
     studyPlan,
@@ -38,7 +38,7 @@ export default function Documents() {
       }),
     );
   };
-  console.log(showError, "showError");
+  // console.log(showError, "showError");
   return (
     <React.Fragment>
       {showError && (
@@ -51,9 +51,9 @@ export default function Documents() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Passport*
+            Passport File*
           </Typography>
-          {passport && (
+          {passportFile && (
             <Chip
               sx={{
                 mb: "5px",
@@ -61,7 +61,7 @@ export default function Documents() {
               size="small"
               label="File Uploaded"
               variant="outlined"
-              onDelete={() => handleDelete("passport")}
+              onDelete={() => handleDelete("passportFile")}
             />
           )}
           <Box>
@@ -73,12 +73,12 @@ export default function Documents() {
               />
               Upload File
               <input
-                required
+                required={passportFile ? false : true}
                 type="file"
                 onChange={(e) => {
                   const selectedFile = validateAndRenameFile(
                     e.target.files[0],
-                    "passport",
+                    "passportFile",
                   );
                   if (selectedFile[0]) {
                     const reader = new FileReader();
@@ -90,7 +90,7 @@ export default function Documents() {
                       dispatch(
                         admissionProfileCreate3({
                           ...step3,
-                          passport: fileData.dataURL,
+                          passportFile: fileData.dataURL,
                         }),
                       );
                     };
@@ -129,7 +129,7 @@ export default function Documents() {
               />
               Upload File
               <input
-                required
+                // required={othersFile ? false : true}
                 type="file"
                 onChange={(e) => {
                   const selectedFile = validateAndRenameFile(
@@ -209,7 +209,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required
+                // required={photo ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -217,7 +217,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        {(program === "Language" || program === "Bachelor") && (
+        {["Language", "Bachelor", "Diploma"].includes(program) && (
           <Grid item xs={12} md={6}>
             <Typography variant="subtitle1" gutterBottom>
               Secondary school certificate (SSC) & transcript*
@@ -266,7 +266,7 @@ export default function Documents() {
                       setShowError(selectedFile[1]);
                     }
                   }}
-                  required
+                  required={ssc ? false : true}
                   type="file"
                   hidden
                   accept=".jpg, .jpeg, .png, .pdf"
@@ -323,7 +323,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required
+                required={nonCriminalCertificate ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -379,7 +379,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required
+                required={bankStatement ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -435,7 +435,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required
+                required={studyPlan ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -491,7 +491,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required
+                required={englishProficiencyTest ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -499,7 +499,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        {(program === "Bachelor" || program === "Masters") && (
+        {["Bachelor", "Masters"].includes(program) && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -549,7 +549,7 @@ export default function Documents() {
                         setShowError(selectedFile[1]);
                       }
                     }}
-                    required
+                    required={hsc ? false : true}
                     type="file"
                     hidden
                     accept=".jpg, .jpeg, .png, .pdf"
@@ -559,7 +559,7 @@ export default function Documents() {
             </Grid>
           </>
         )}
-        {(program === "Masters" || program === "Phd") && (
+        {["Masters", "Phd"].includes(program) && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -609,7 +609,7 @@ export default function Documents() {
                         setShowError(selectedFile[1]);
                       }
                     }}
-                    required
+                    required={bachelor ? false : true}
                     type="file"
                     hidden
                     accept=".jpg, .jpeg, .png, .pdf"
@@ -665,7 +665,7 @@ export default function Documents() {
                         setShowError(selectedFile[1]);
                       }
                     }}
-                    required
+                    required={recommendationLetters ? false : true}
                     type="file"
                     hidden
                     accept=".jpg, .jpeg, .png, .pdf"
@@ -675,7 +675,7 @@ export default function Documents() {
             </Grid>
           </>
         )}
-        {program === "Phd" && (
+        {["Phd"].includes(program) && (
           <>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
@@ -725,7 +725,7 @@ export default function Documents() {
                         setShowError(selectedFile[1]);
                       }
                     }}
-                    required
+                    required={masters ? false : true}
                     type="file"
                     hidden
                     accept=".jpg, .jpeg, .png, .pdf"

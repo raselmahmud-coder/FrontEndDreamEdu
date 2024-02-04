@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   step1: {
-    program: null,
+    program: "Bachelor",
     gender: "",
     mediumOfInstruction: "",
     sureName: "",
@@ -51,7 +51,7 @@ const initialState = {
     additionalInfo: "",
   },
   step3: {
-    passport: "",
+    passportFile: "",
     photo: "",
     nonCriminalCertificate: "",
     studyPlan: "",

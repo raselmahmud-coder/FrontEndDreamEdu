@@ -16,9 +16,6 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateField } from "@mui/x-date-pickers/DateField";
 import AddDynamicSchool from "./AddDynamicSchool";
 import CancelIcon from "@mui/icons-material/Cancel";
 import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
@@ -161,22 +158,22 @@ export default function EducationBackground() {
             <RadioGroup row name="visitChina">
               <FormControlLabel
                 required
-                value="yes"
+                value="YES"
                 control={<Radio />}
-                label="Yes"
-                checked={step2.isVisitedChina === "yes"}
+                label="YES"
+                checked={step2.isVisitedChina === "YES"}
               />
               <FormControlLabel
                 required
-                value="no"
+                value="NO"
                 control={<Radio />}
-                label="No"
-                checked={step2.isVisitedChina === "no"}
+                label="NO"
+                checked={step2.isVisitedChina === "NO"}
               />
             </RadioGroup>
           </FormControl>
         </Grid>
-        {step2.isVisitedChina === "yes" && (
+        {step2.isVisitedChina === "YES" && (
           <>
             <Grid item xs={12} sm={3}>
               <FormControl required fullWidth>
@@ -280,23 +277,23 @@ export default function EducationBackground() {
             <RadioGroup row name="jobExperience">
               <FormControlLabel
                 required
-                value="yes"
+                value="YES"
                 control={<Radio />}
-                label="Yes"
-                checked={step2.haveJobExperience === "yes"}
+                label="YES"
+                checked={step2.haveJobExperience === "YES"}
               />
               <FormControlLabel
                 required
-                value="no"
+                value="NO"
                 control={<Radio />}
-                label="No"
-                checked={step2.haveJobExperience === "no"}
+                label="NO"
+                checked={step2.haveJobExperience === "NO"}
               />
             </RadioGroup>
           </FormControl>
         </Grid>
       </Grid>
-      {step2.haveJobExperience === "yes" && <AddJobExperience />}
+      {step2.haveJobExperience === "YES" && <AddJobExperience />}
       <Grid
         container
         spacing={1}
