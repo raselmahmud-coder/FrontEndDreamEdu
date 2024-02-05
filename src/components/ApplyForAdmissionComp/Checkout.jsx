@@ -15,6 +15,7 @@ import axios from "axios";
 import base64ToBlob from "../../utils/base64ToBlob";
 import EducationBackground from "./EducationBackground";
 import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
+import LazyLoading from "../../globalsComponents/LazyLoading";
 const steps = [
   "Initialization",
   "Education Background",
@@ -109,13 +110,12 @@ export default function Checkout() {
     englishProficiencyTest,
   } = step3;
   const initFormRef = React.useRef(null);
-  // console.log(sureName, givenName, "all info available");
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
   const handleNext = (e) => {
     // e.preventDefault();
-    console.log(initFormRef.current.checkValidity(), "validity");
+    // console.log(initFormRef.current.checkValidity(), "validity");
     if (!initFormRef.current.checkValidity()) {
       return setShowAlert("Please fill all the required fields");
     }
@@ -192,7 +192,6 @@ export default function Checkout() {
           prepareDate[`SchoolEducationLevel${i + 1}`] = educationLevel[i];
           prepareDate[`SchoolGPAResult${i + 1}`] = result[i];
         }
-        console.log(prepareDate, "full obje");
         const formData = new FormData();
         for (const key in prepareDate) {
           if (Object.hasOwnProperty.call(prepareDate, key)) {
@@ -205,38 +204,16 @@ export default function Checkout() {
             }
           }
         }
-
-        const res = await axios.post(
-          "https://dreameduapiv1.dreameduinfo.com/api/apply/",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          },
-        );
-        console.log(res, "hello resp");
-
-        /* for (const key in bodyObj) {
-        if (Object.hasOwnProperty.call(bodyObj, key)) {
-          if (bodyObj[key]) {
-            console.log(bodyObj[key], "body");
-            body.append(key, bodyObj[key]);
-          }
-        }
-        } */
-        // body.append("first_name", "Rasel");
-        // await addApplicantProfile(body);
-        // }
+        await addApplicantProfile(formData);
       }
     };
     sendData();
   }, [activeStep]);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LazyLoading />;
   if (isError) return console.log(error, "error");
-  if (data) {
+  /*   if (data) {
     console.log(data, "data");
-  }
+  } */
 
   // console.log("Error Response:", showError);
   return (
@@ -262,14 +239,20 @@ export default function Checkout() {
           ))}
         </Stepper>
         {activeStep === steps.length ? (
-          <React.Fragment>
+          <Box
+            sx={{
+              flexDirection: "column",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
             <Typography variant="h5" gutterBottom>
-              Your profile is successfully submitted
+              Your profile is successfully submitted📩
             </Typography>
             <Typography variant="subtitle1">
               Please check your email for further instructions.
             </Typography>
-          </React.Fragment>
+          </Box>
         ) : (
           <React.Fragment>
             <form onSubmit={(e) => e.preventDefault()} ref={initFormRef}>

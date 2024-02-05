@@ -16,8 +16,7 @@ import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate1 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { DatePicker } from "@mui/x-date-pickers";
 import "dayjs/locale/en-gb";
 import moment from "moment";
@@ -48,7 +47,6 @@ export default function Initialization() {
     });
   };
 
-  console.log(dayjs('24/11/2023'), "Hello value");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -210,12 +208,16 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <LocalizationProvider
-            dateAdapter={AdapterDayjs}
+            dateAdapter={AdapterMoment}
             adapterLocale={"en-gb"}>
             <DatePicker
               id="dateOfBirth"
               name="dateOfBirth"
-              value={dateValue.dateOfBirth || ""}
+              value={
+                dateValue.dateOfBirth
+                  ? moment(dateValue.dateOfBirth, "DD/MM/YYYY")
+                  : moment(step1.dateOfBirth, "DD/MM/YYYY")
+              }
               sx={{
                 width: "100%",
               }}
@@ -259,12 +261,16 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <LocalizationProvider
-            dateAdapter={AdapterDayjs}
+            dateAdapter={AdapterMoment}
             adapterLocale={"en-gb"}>
             <DatePicker
               id="passportExpiry"
               name="passportExpiry"
-              value={dateValue.passportExpiry || ""}
+              value={
+                dateValue.passportExpiry
+                  ? moment(dateValue.passportExpiry, "DD/MM/YYYY")
+                  : moment(step1.passportExpiry, "DD/MM/YYYY")
+              }
               sx={{
                 width: "100%",
               }}
@@ -383,7 +389,7 @@ export default function Initialization() {
                 ? "Address length should be 30 characters or less"
                 : ""
             }
-            required
+            required={step1.fullAddress.length > 30 ? true : false}
             value={step1.fullAddress}
             id="address"
             name="address"
@@ -509,7 +515,7 @@ export default function Initialization() {
                 ? "Email length should be 20 characters or less"
                 : ""
             }
-            required
+            required={step1.email.length > 20 ? true : false}
             id="email"
             name="email"
             label="Email"
@@ -557,7 +563,11 @@ export default function Initialization() {
             <DatePicker
               id="fatherDateOfBirth"
               name="fatherDateOfBirth"
-              value={dateValue.fatherDateOfBirth ? moment(dateValue.fatherDateOfBirth, 'DD/MM/YYYY') : moment(step1.fatherDateOfBirth, 'DD/MM/YYYY')}
+              value={
+                dateValue.fatherDateOfBirth
+                  ? moment(dateValue.fatherDateOfBirth, "DD/MM/YYYY")
+                  : moment(step1.fatherDateOfBirth, "DD/MM/YYYY")
+              }
               sx={{
                 width: "100%",
               }}
@@ -643,12 +653,16 @@ export default function Initialization() {
         </Grid>
         <Grid item xs={6} sm={3}>
           <LocalizationProvider
-            dateAdapter={AdapterDayjs}
+            dateAdapter={AdapterMoment}
             adapterLocale={"en-gb"}>
             <DatePicker
               id="motherDateOfBirth"
               name="motherDateOfBirth"
-              value={dateValue.motherDateOfBirth || ""}
+              value={
+                dateValue.motherDateOfBirth
+                  ? moment(dateValue.motherDateOfBirth, "DD/MM/YYYY")
+                  : moment(step1.motherDateOfBirth, "DD/MM/YYYY")
+              }
               sx={{
                 width: "100%",
               }}

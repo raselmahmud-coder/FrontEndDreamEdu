@@ -1,23 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
-import dayjs from "dayjs";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import moment from "moment";
 
 function AddDynamicSchool() {
   const dispatch = useDispatch();
-  const [fields, setFields] = useState([
-    {
-      institute: "",
-      schoolStartDate: null,
-      schoolEndDate: null,
-      fieldOfStudy: "",
-      educationLevel: "",
-      gpa: "",
-    },
-  ]);
+  const { step2 } = useSelector((state) => state.admission);
+  const [fields, setFields] = useState([]);
+  useEffect(() => {
+    // Initialize fields with data from Redux if available
+    if (step2 && step2.instituteName) {
+      const initialFields = step2.instituteName.map((_, index) => ({
+        institute: step2.instituteName[index] || "",
+        schoolStartDate: step2.schoolStartDate[index]
+          ? moment(step2.schoolStartDate[index], "DD/MM/YYYY")
+          : null,
+        schoolEndDate: step2.schoolEndDate[index]
+          ? moment(step2.schoolEndDate[index], "DD/MM/YYYY")
+          : null,
+        fieldOfStudy: step2.fieldOfStudy[index] || "",
+        educationLevel: step2.educationLevel[index] || "",
+        gpa: step2.result[index] || "",
+      }));
+      setFields(initialFields);
+    } else {
+      // Initialize with one empty field if Redux data is not available
+      setFields([
+        {
+          institute: "",
+          schoolStartDate: null,
+          schoolEndDate: null,
+          fieldOfStudy: "",
+          educationLevel: "",
+          gpa: "",
+        },
+      ]);
+    }
+  }, [step2]);
 
   const addFields = () => {
     const newField = {
@@ -38,10 +60,10 @@ function AddDynamicSchool() {
     const step2Data = {
       instituteName: fields.map((field) => field.institute),
       schoolStartDate: fields.map((field) =>
-        dayjs(field.schoolStartDate).format("DD/MM/YYYY"),
+        moment(field.schoolStartDate).format("DD/MM/YYYY"),
       ),
       schoolEndDate: fields.map((field) =>
-        dayjs(field.schoolEndDate).format("DD/MM/YYYY"),
+        moment(field.schoolEndDate).format("DD/MM/YYYY"),
       ),
       fieldOfStudy: fields.map((field) => field.fieldOfStudy),
       educationLevel: fields.map((field) => field.educationLevel),
@@ -51,9 +73,7 @@ function AddDynamicSchool() {
   };
   return (
     <>
-      {fields.length == 3 ? (
-        ""
-      ) : (
+      {fields.length < 3 && (
         <Button
           onClick={addFields}
           variant="contained"
@@ -83,12 +103,12 @@ function AddDynamicSchool() {
             </Grid>
             <Grid item xs={4} sm={2}>
               <LocalizationProvider
-                dateAdapter={AdapterDayjs}
+                dateAdapter={AdapterMoment}
                 adapterLocale={"en-gb"}>
                 <DatePicker
                   slotProps={{ textField: { required: true } }}
                   fullWidth
-                  value={field.schoolStartDate || null}
+                  value={field.schoolStartDate}
                   onChange={(newDate) =>
                     handleFieldChange(index, "schoolStartDate", newDate)
                   }
@@ -98,12 +118,12 @@ function AddDynamicSchool() {
             </Grid>
             <Grid item xs={4} sm={2}>
               <LocalizationProvider
-                dateAdapter={AdapterDayjs}
+                dateAdapter={AdapterMoment}
                 adapterLocale={"en-gb"}>
                 <DatePicker
                   slotProps={{ textField: { required: true } }}
                   fullWidth
-                  value={field.schoolEndDate || null}
+                  value={field.schoolEndDate}
                   onChange={(newDate) =>
                     handleFieldChange(index, "schoolEndDate", newDate)
                   }

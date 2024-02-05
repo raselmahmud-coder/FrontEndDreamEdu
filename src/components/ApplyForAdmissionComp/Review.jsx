@@ -7,7 +7,6 @@ import { Box } from "@mui/material";
 export default function Review() {
   const { step1, step2, step3 } = useSelector((state) => state.admission);
   const allProfileData = [step1, step2, step3];
-  console.log(allProfileData, "review data");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -28,7 +27,7 @@ export default function Review() {
                   <Typography
                     sx={{ textTransform: 'capitalize' }}
                     variant="body1">
-                    {key.toString()}
+                    {key.toString()}✅
                   </Typography>
                 </Box>
               </Grid>

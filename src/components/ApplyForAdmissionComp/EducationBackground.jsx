@@ -65,7 +65,6 @@ export default function EducationBackground() {
         Education Background Information
       </Typography>
       <AddDynamicSchool />
-      {/* <AddDesireUniversity /> */}
       <Grid
         container
         spacing={1}
@@ -293,7 +292,7 @@ export default function EducationBackground() {
           </FormControl>
         </Grid>
       </Grid>
-      {step2.haveJobExperience === "YES" && <AddJobExperience />}
+      {step2.haveJobExperience == "YES" && <AddJobExperience />}
       <Grid
         container
         spacing={1}

@@ -1,27 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
-import dayjs from "dayjs";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import moment from "moment";
 
 function AddJobExperience() {
   const dispatch = useDispatch();
-  const [fields, setFields] = useState([
-    {
-      company: "",
-      jobStartDate: null,
-      jobEndDate: "",
-      jobTitle: "",
-    },
-  ]);
+  const { step2 } = useSelector((state) => state.admission);
+  const [fields, setFields] = useState([]);
+  useEffect(() => {
+    if (step2 && step2.company) {
+      const initialFields = step2.company.map((_, index) => ({
+        company: step2.company[index] || "",
+        jobStartDate: step2.jobStartDate[index]
+          ? moment(step2.jobStartDate[index], "DD/MM/YYYY")
+          : null,
+        jobEndDate: step2.jobEndDate[index]
+          ? moment(step2.jobEndDate[index], "DD/MM/YYYY")
+          : null,
+        jobTitle: step2.jobTitle[index] || "",
+      }));
+      setFields(initialFields);
+    } else {
+      setFields([
+        {
+          company: "",
+          jobStartDate: null,
+          jobEndDate: null,
+          jobTitle: "",
+        },
+      ]);
+    }
+  }, [step2]);
 
   const addFields = () => {
     const newField = {
       company: "",
       jobStartDate: null,
-      jobEndDate: "",
+      jobEndDate: null,
       jobTitle: "",
     };
     setFields([...fields, newField]);
@@ -34,10 +52,10 @@ function AddJobExperience() {
     const step2Data = {
       company: fields.map((field) => field.company),
       jobStartDate: fields.map((field) =>
-        dayjs(field.jobStartDate).format("DD/MM/YYYY"),
+        moment(field.jobStartDate).format("DD/MM/YYYY"),
       ),
       jobEndDate: fields.map((field) =>
-        dayjs(field.jobEndDate).format("DD/MM/YYYY"),
+        moment(field.jobEndDate).format("DD/MM/YYYY"),
       ),
       jobTitle: fields.map((field) => field.jobTitle),
     };
@@ -45,9 +63,7 @@ function AddJobExperience() {
   };
   return (
     <>
-      {fields.length == 3 ? (
-        ""
-      ) : (
+      {fields.length < 3 && (
         <Button
           onClick={addFields}
           variant="contained"
@@ -75,11 +91,13 @@ function AddJobExperience() {
             />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider
+              adapterLocale={"en-gb"}
+              dateAdapter={AdapterMoment}>
               <DatePicker
-                required
+                slotProps={{ textField: { required: true } }}
                 fullWidth
-                value={field.jobStartDate || ""}
+                value={field.jobStartDate}
                 onChange={(newDate) =>
                   handleFieldChange(index, "jobStartDate", newDate)
                 }
@@ -88,11 +106,13 @@ function AddJobExperience() {
             </LocalizationProvider>
           </Grid>
           <Grid item xs={6} sm={3}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider
+              adapterLocale={"en-gb"}
+              dateAdapter={AdapterMoment}>
               <DatePicker
-                required
+                slotProps={{ textField: { required: true } }}
                 fullWidth
-                value={field.jobEndDate || ""}
+                value={field.jobEndDate}
                 onChange={(newDate) =>
                   handleFieldChange(index, "jobEndDate", newDate)
                 }
