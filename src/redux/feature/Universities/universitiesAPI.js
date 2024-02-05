@@ -23,7 +23,16 @@ export const universitiesAPI = APISlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getNewsTickerUniversity: builder.query({
+      query: () => ({
+        url: `/api/NewUniversityAdmission/`,
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useGetUniversitiesQuery, useGetUniversityQuery } =
-  universitiesAPI;
+export const {
+  useGetUniversitiesQuery,
+  useGetUniversityQuery,
+  useGetNewsTickerUniversityQuery,
+} = universitiesAPI;

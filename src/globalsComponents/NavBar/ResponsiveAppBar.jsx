@@ -6,7 +6,6 @@ import {
   Typography,
   Menu,
   Container,
-  Button,
   MenuItem,
   ImageList,
   ImageListItem,
@@ -25,6 +24,7 @@ import NewsTicker from "../NewsTicker/NewsTicker";
 import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setModeChange } from "../../redux/feature/userColorMode/userColorModeSlice";
+import { useGetNewsTickerUniversityQuery } from "../../redux/feature/Universities/universitiesAPI";
 
 const pages = [
   "Home",
@@ -50,7 +50,8 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
-
+  const { data: getNewUniversities } = useGetNewsTickerUniversityQuery();
+  const [newsTicker, setNewsTicker] = React.useState([]);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -62,12 +63,13 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const news = [
-    "Southwest Petroleum University Admission Open 😎",
-    "East China University of Science and Technology Admission Open 🎀",
-    "SiChuan University Admission Open 🎉",
-    // Add more news items as needed
-  ];
+  React.useEffect(() => {
+    if (getNewUniversities?.NewUniversityAdmission) {
+      getNewUniversities.NewUniversityAdmission.map((university) =>
+        setNewsTicker((prevNewsTicker) => [...prevNewsTicker, university]),
+      );
+    }
+  }, [getNewUniversities]);
   return (
     <>
       <HideOnScroll>
@@ -77,7 +79,7 @@ function ResponsiveAppBar() {
               // backgroundColor: isDarkMode ? "#000" : "#f9f9f9",
             }
           }>
-          <NewsTicker news={news} />
+          {newsTicker.length && <NewsTicker news={newsTicker} />}
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <ImageList
