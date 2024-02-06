@@ -2,7 +2,7 @@ import { Alert, Box } from "@mui/material";
 import React from "react";
 
 const ErrorShow = ({
-  errorData = "Something went wrong — please try it again later!",
+  errorData = " — please try it again later!",
   severity = "error",
 }) => {
   return (

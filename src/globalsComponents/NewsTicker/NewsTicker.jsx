@@ -57,7 +57,9 @@ export default function NewsTicker({ news }) {
           display: "flex",
           alignItems: "center",
         }}>
-        <Typography component="h6" sx={{ px: 3 }}>
+        <Typography
+          component={"h6"}
+          sx={{ px: 3, display: { xs: "none", sm: "none", md: "block" } }}>
           {currentDate}
         </Typography>
         {transitions((props, item) => (

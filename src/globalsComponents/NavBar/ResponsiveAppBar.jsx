@@ -135,13 +135,36 @@ function ResponsiveAppBar() {
                     display: { xs: "block", md: "none" },
                   }}>
                   {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
+                  <NavLink
+                    onClick={handleCloseNavMenu}
+                    className={({ isActive }) =>
+                      isActive
+                        ? isDarkMode
+                          ? "activeDark"
+                          : "activeLight"
+                        : ""
+                    }
+                    style={{
+                      color: isDarkMode ? "#fff" : "#000",
+                      textDecoration: "none",
+                      padding: "8px",
+                      borderRadius: "50% 20% / 10% 40%",
+                      margin: "0px 8px",
+                      display: "block",
+                      fontSize: "1.2rem",
+                    }}
+                    key={page}
+                    to={`/${
+                      GetFilterSpaceNLowerCase(page) == "home"
+                        ? ""
+                        : GetFilterSpaceNLowerCase(page)
+                    }`}>
+                    {page}
+                  </NavLink>
+                ))}
                   <IconButton
                     sx={{ ml: 1 }}
-                    onClick={() => onClick()}
+                    onClick={() => dispatch(setModeChange({ isDarkMode: !isDarkMode }))}
                     color="inherit">
                     {isDarkMode ? <Brightness4Icon /> : <Brightness7Icon />}
                   </IconButton>
@@ -153,15 +176,17 @@ function ResponsiveAppBar() {
                     color: "inherit",
                   }}>
                   <ImageListItem>
+                  <Link to="/">
                     <img
-                      src={logo}
+                      src={isDarkMode ? whiteLogo : logo}
                       alt={"logo"}
                       loading="lazy"
                       style={{
                         width: "70px",
                         height: "50px",
                       }}
-                    />
+                      />
+                      </Link>
                   </ImageListItem>
                 </ImageList>
               </Box>

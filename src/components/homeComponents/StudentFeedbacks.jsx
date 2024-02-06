@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 // import "swiper/css";
 import "swiper/css/navigation";
+import { Autoplay, Navigation } from "swiper/modules";
 import StarIcon from "@mui/icons-material/Star";
 // import required modules
-import { Autoplay, Navigation } from "swiper/modules";
 import {
   Avatar,
   Card,

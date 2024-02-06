@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 const SlidingCard = ({ children, animationA, animationB }) => {
   const { inView, ref } = useInView({ triggerOnce: true });
-console.log(children, "from sliding card children");
+// console.log(children, "from sliding card children");
   const slideAnimation = useSpring({
     transform: inView ? `${animationA}` : `${animationB}`,
     transition: "transform 2s ease-in-out",
