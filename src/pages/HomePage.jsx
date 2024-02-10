@@ -29,7 +29,7 @@ const HomePage = () => {
         <Section7 />
         <YouTubeFeeds />
       </Container>
-      <FbMessenger/>
+      <FbMessenger />
     </>
   );
 };

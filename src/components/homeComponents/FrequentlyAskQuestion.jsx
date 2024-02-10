@@ -101,7 +101,7 @@ export default function FrequentlyAskQuestion() {
               }}
               href="tel:+8801760680960">
               {" "}
-              +8801760680960
+              +88-01760680960
             </Link>{" "}
             or
             <Link
@@ -112,11 +112,11 @@ export default function FrequentlyAskQuestion() {
                   color: "tertiaryRed.main",
                 },
               }}
-              href="tel:+861688220123"
+              href="tel:+8619150064373"
               target="_blank"
               rel="noopener noreferrer">
               {" "}
-              +861688220123
+              +86-19150064373
             </Link>
             . We are always ready to help you, even you can reach us on
             <Link
