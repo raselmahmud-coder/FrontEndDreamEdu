@@ -85,7 +85,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={576} />+
+                    <AnimatedNumber value={5076} />+
                   </Typography>
                   <AvTimer
                     sx={{
@@ -120,7 +120,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={226} />+
+                    <AnimatedNumber value={5126} />+
                   </Typography>
                   <Diversity3
                     sx={{
@@ -148,7 +148,7 @@ const Section5 = () => {
                     justifyContent: "space-evenly",
                   }}>
                   <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={126} />+
+                    <AnimatedNumber value={4586} />+
                   </Typography>
                   <School
                     sx={{
@@ -183,7 +183,7 @@ const Section5 = () => {
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <img src={gridImg} height="440" width={"100%"} alt="" />
+          <img src={gridImg} height="440" style={{borderRadius:"8px"}} width={"100%"} alt="dream edu group" />
         </Grid>
       </Grid>
     </>

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  CardMedia,
   Grid,
   List,
   ListItem,
@@ -11,7 +10,7 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
 import { CheckCircleOutline, SwapCalls } from "@mui/icons-material";
-import aboutUsImage from "../../assets/dream edu about us.jpg";
+import founderImg from "../../assets/founder.jpg";
 
 const AboutUsSection1 = () => {
   return (
@@ -89,10 +88,11 @@ const AboutUsSection1 = () => {
           </List>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <CardMedia
-            sx={{ width: "100%", height: "65vh" }}
-            image={aboutUsImage}
-            title="about us"
+          <img
+            src={founderImg}
+            alt="dream edu founder"
+            width={"100%"}
+            style={{ borderRadius: "20% 5px 20% 5px" }}
           />
         </Grid>
       </Grid>

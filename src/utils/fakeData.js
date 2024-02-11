@@ -29,7 +29,7 @@ export const totalPortfolioData = [
     img: "https://themeim.com/demo/eduplan/assets/img/sections/client/people-group.png",
   },
   {
-    quantity: "211",
+    quantity: "5211",
     title: "Total consultants",
     img: "https://themeim.com/demo/eduplan/assets/img/sections/client/customer-care.png",
   },

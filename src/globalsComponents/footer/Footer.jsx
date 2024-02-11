@@ -1,24 +1,22 @@
 import React from "react";
 import {
   Box,
-  Button,
+  CardMedia,
   Container,
   Fab,
   Fade,
   Grid,
-  TextField,
   Typography,
   useScrollTrigger,
 } from "@mui/material";
-import MailLockIcon from "@mui/icons-material/MailLock";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { WhatsApp } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import OfficeAddress from "./OfficeAddress";
+import dreamEduLogo from "../../assets/dreamedu nontransparent logo.jpg"
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -68,7 +66,30 @@ const Footer = () => {
           sx={{
             alignItems: "center",
           }}>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                textAlign: "center",
+              }}>
+              Dream Edu Consultancy
+              <hr />
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}>
+              
+            <CardMedia
+            sx={{ width: "196px", height: "134px", borderRadius:"8px",  }}
+            image={dreamEduLogo}
+            title="dream edu logo"
+          />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography
               variant="h6"
               sx={{
@@ -76,6 +97,7 @@ const Footer = () => {
                 textAlign: "center",
               }}>
               Important Links
+              <hr />
             </Typography>
             <Box
               sx={{
@@ -127,7 +149,7 @@ const Footer = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography
               variant="h6"
               sx={{
@@ -135,6 +157,7 @@ const Footer = () => {
                 textAlign: "center",
               }}>
               Services
+              <hr />
             </Typography>
             <Box
               sx={{
@@ -182,7 +205,7 @@ const Footer = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography
               variant="h6"
               sx={{
@@ -190,6 +213,7 @@ const Footer = () => {
                 textAlign: "center",
               }}>
               Contact Us
+              <hr />
             </Typography>
             <Box
               sx={{
