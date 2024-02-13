@@ -13,21 +13,51 @@ import { AvTimer, Diversity3, School } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
 import SlidingCard from "../../globalsComponents/SlidingCard";
+import { useSelector } from "react-redux";
+import ForwardIcon from '@mui/icons-material/Forward';
 
 const Section5 = () => {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
+
   return (
     <>
       <SlidingCard animationA={"translateY(0)"} animationB={"translateY(100%)"}>
-        <Typography
-          variant="h3"
+        <Box
           sx={{
-            fontWeight: "bold",
-            textAlign: "center",
-            mt: "132px",
-            mb: "40px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}>
-          CORE STRENGTH
-        </Typography>
+          <Typography
+            sx={{
+              mt: { xs: 6, sm: 8, md: 12 },
+              mb: { xs: 4, sm: 6, md: 8 },
+              px: { xs: 1, sm: 3, md: 6 },
+              py: { xs: 1, sm: 3, md: 4 },
+              zIndex: 899,
+              display: "inline-flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
+              color: isDarkMode ? "whiteCustom.main" : "secondary.main",
+              borderColor: isDarkMode ? "accent.main" : "secondary.main",
+              borderRadius: "25% 0 25% 0",
+              border: 1,
+              boxShadow:
+                "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+              fontWeight: "bold",
+            }}
+            variant="h3">
+            Core Strength
+            <Typography
+              component={"span"}
+              sx={{
+                fontSize: { xs: 25, sx: 30, md: 45 },
+              }}>
+              💪
+            </Typography>
+          </Typography>
+        </Box>
       </SlidingCard>
       <Grid
         container
@@ -178,12 +208,19 @@ const Section5 = () => {
                 }}
                 size="large">
                 Get Free Consultation
+                < ForwardIcon/>
               </Button>
             </Link>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <img src={gridImg} height="440" style={{borderRadius:"8px"}} width={"100%"} alt="dream edu group" />
+          <img
+            src={gridImg}
+            height="440"
+            style={{ borderRadius: "8px" }}
+            width={"100%"}
+            alt="dream edu group"
+          />
         </Grid>
       </Grid>
     </>

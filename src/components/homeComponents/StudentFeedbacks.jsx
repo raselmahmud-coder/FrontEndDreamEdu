@@ -24,7 +24,7 @@ import ErrorShow from "../../globalsComponents/ErrorShow";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -87,12 +87,14 @@ export default function StudentFeedbacks() {
             display: "inline-flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: isDarkMode ? "black.main" : "primary.main",
+            backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
             color: isDarkMode ? "whiteCustom.main" : "secondary.main",
             borderColor: isDarkMode ? "accent.main" : "secondary.main",
             borderRadius: "25% 0 25% 0",
             border: 1,
             fontWeight: "bold",
+            boxShadow:
+              "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
           }}
           variant="h3">
           Our Student Feedbacks
@@ -309,7 +311,7 @@ export default function StudentFeedbacks() {
             variant="contained"
             size="large">
             See More
-            <OpenInNewIcon sx={{fontSize:25}}/>
+            <OpenInNewIcon sx={{ fontSize: 25 }} />
           </Button>
         </Link>
       </Box>

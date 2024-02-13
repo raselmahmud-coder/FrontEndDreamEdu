@@ -22,17 +22,19 @@ export default function Section1() {
             gutterBottom
             variant="h2"
             sx={{
-              mt: { xs: -2, sm: -6, md: -8 }, 
-              mb: { xs: 4, sm: 6, md: 8 }, 
-              px: { xs: 1, sm: 3, md: 6 }, 
-              py: { xs: 1, sm: 3, md: 4 }, 
+              mt: { xs: -2, sm: -6, md: -8 },
+              mb: { xs: 4, sm: 6, md: 8 },
+              px: { xs: 1, sm: 3, md: 6 },
+              py: { xs: 1, sm: 3, md: 4 },
               zIndex: 899,
               display: "inline-block",
-              backgroundColor: isDarkMode ? "black.main" : "primary.main",
+              backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
               color: isDarkMode ? "whiteCustom.main" : "secondary.main",
               borderColor: isDarkMode ? "accent.main" : "secondary.main",
               borderRadius: "25% 0 25% 0",
               border: 1,
+              boxShadow:
+                "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
             }}
             component="h2">
             Go Abroad with DreamEdu

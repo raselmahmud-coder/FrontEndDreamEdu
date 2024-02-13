@@ -32,7 +32,7 @@ const App = () => {
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
-        main: '#f0f0f0',
+        main: 'rgb(208 208 208)',
       },
       secondary: {
         main: '#f50057',
@@ -49,6 +49,9 @@ const App = () => {
       whiteCustom: {
         main: '#fff',
       },
+      deepGray: {
+        main: '#272727',
+      },
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);
@@ -59,8 +62,6 @@ const App = () => {
       <ThemeProvider theme={responsiveTheme}>
         <CssBaseline />
         <ResponsiveAppBar
-          mode={isDarkMode}
-          // onClick={() => setIsDarkMode(!isDarkMode)}
         />
         <Suspense fallback={<LazyLoading />}>
           <Routes>

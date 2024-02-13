@@ -16,7 +16,11 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { WhatsApp } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import OfficeAddress from "./OfficeAddress";
-import dreamEduLogo from "../../assets/dreamedu nontransparent logo.jpg"
+import dreamEduLogo from "../../assets/dreamedu nontransparent logo.jpg";
+import { footerMenus, socialContact } from "../../utils/fakeData";
+import { useSelector } from "react-redux";
+import AnimationComponent from "./AnimationComponent";
+import styles from "../../styles/AnimationCustom.module.css";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -50,6 +54,8 @@ function ScrollTop(props) {
 }
 
 const Footer = () => {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
+
   const navigate = useNavigate();
   return (
     <Container maxWidth="xl">
@@ -66,223 +72,189 @@ const Footer = () => {
           sx={{
             alignItems: "center",
           }}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                textAlign: "center",
-              }}>
-              Dream Edu Consultancy
-              <hr />
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              
-            <CardMedia
-            sx={{ width: "196px", height: "134px", borderRadius:"8px",  }}
-            image={dreamEduLogo}
-            title="dream edu logo"
-          />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                textAlign: "center",
-              }}>
-              Important Links
-              <hr />
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                onClick={() => {
-                  navigate("/apply-for-admission");
-                }}
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
-                Apply Now
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                }}>
-                Terms and conditions
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                }}>
-                Privacy policy
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                textAlign: "center",
-              }}>
-              Services
-              <hr />
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                }}>
-                Counselling
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                }}>
-                Admission
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <PlayArrowIcon />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  my: 1,
-                  fontWeight: "bold",
-                }}>
-                Visa processing
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                textAlign: "center",
-              }}>
-              Contact Us
-              <hr />
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <a
-                style={{ display: "flex", alignItems: "center", color:"inherit" }}
-                title="Facebook Page"
-                href="https://facebook.com/DreamEduChina"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FacebookRoundedIcon fontSize={"medium"} />
+          {footerMenus.length > 0 &&
+            footerMenus.map((footer) => (
+              <Grid key={footer.id} item xs={12} sm={6} md={3}>
                 <Typography
-                  variant="subtitle1"
+                  variant="h6"
                   sx={{
-                    my: 1,
+                    display: { xs: "none", sm: "none", md: "block" },
                     fontWeight: "bold",
+                    textAlign: "center",
                   }}>
-                  Facebook{" "}
+                  {footer.footerName}
+                  <hr />
                 </Typography>
-              </a>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <a
-                style={{ display: "flex", alignItems: "center", color:"inherit" }}
-                title="YouTube Channel"
-                href="https://www.youtube.com/@dreameduchina5640"
-                target="_blank"
-                rel="noopener noreferrer">
-                <YouTubeIcon fontSize={"medium"} />
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    my: 1,
-                    fontWeight: "bold",
-                  }}>
-                  YouTube{" "}
-                </Typography>
-              </a>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}>
-              <a
-                style={{ display: "flex", alignItems: "center", color:"inherit" }}
-                title="WhatsApp"
-                href="https://api.whatsapp.com/send/?phone=8619150064373&text&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer">
-                <WhatsApp fontSize={"medium"} />
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    my: 1,
-                    fontWeight: "bold",
-                  }}>
-                  WhatsApp{" "}
-                </Typography>
-              </a>
-            </Box>
-          </Grid>
+              </Grid>
+            ))}
         </Grid>
+        {/* responsive view heading also here */}
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          sx={{
+            alignItems: "center",
+          }}>
+          {footerMenus.length > 0 &&
+            footerMenus.map(({ id, footerName, item1, item2, item3 }) => (
+              <Grid item xs={12} sm={6} md={3} key={id}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    display: { xs: "block", sm: "block", md: "none" },
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}>
+                  {footerName}
+                  <hr />
+                </Typography>
+                {item1 &&
+                item1?.name?.includes("dreamedu nontransparent logo.jpg") ? (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}>
+                    <CardMedia
+                      sx={{
+                        width: "196px",
+                        height: "134px",
+                        borderRadius: "8px",
+                        m: "auto",
+                      }}
+                      image={item1.name}
+                      title="dream edu logo"
+                    />
+                  </Box>
+                ) : (
+                  (item1?.name == "Apply Now" ||
+                    item1?.name == "Counselling") && (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}>
+                      <PlayArrowIcon />
+                      <Typography
+                        component={"a"}
+                        variant="subtitle1"
+                        href={item1.link}
+                        sx={{
+                          my: 1,
+                          color: "inherit",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                        }}>
+                        {item1.name}
+                      </Typography>
+                    </Box>
+                  )
+                )}
+                {item2 && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}>
+                    <PlayArrowIcon />
+                    <Typography
+                      onClick={() => {
+                        navigate("/apply-now");
+                      }}
+                      variant="subtitle1"
+                      sx={{
+                        my: 1,
+                        fontWeight: "bold",
+                        cursor: "pointer",
+                      }}>
+                      {item2}
+                    </Typography>
+                  </Box>
+                )}
+                {item3 && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}>
+                    <PlayArrowIcon />
+                    <Typography
+                      onClick={() => {
+                        navigate("/apply-now");
+                      }}
+                      variant="subtitle1"
+                      sx={{
+                        my: 1,
+                        fontWeight: "bold",
+                        cursor: "pointer",
+                      }}>
+                      {item3}
+                    </Typography>
+                  </Box>
+                )}
+                {footerName === "Contact Us" &&
+                  socialContact.length > 0 &&
+                  socialContact.map(({ title, icon, src, mediaName }) => (
+                    <Box
+                      key={title}
+                      sx={{
+                        mb: 0.7,
+                      }}>
+                      <Box
+                        component={"a"}
+                        className={styles.rainbow}
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          textDecoration: "none",
+                          transition: "background-color 0.9s, color 0.9s",
+                          color: "inherit",
+                          "&:hover": {
+                            color: isDarkMode ? "white" : "#004808",
+                            backgroundColor: isDarkMode
+                              ? "#004808"
+                              : "primary.main",
+                          },
+                        }}
+                        title={title}
+                        href={src}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        {React.createElement(icon, {
+                          fontSize: "medium",
+                          sx: {
+                            mr: 2,
+                            color: isDarkMode
+                              ? "primary.main"
+                              : "tertiaryRed.main",
+                            transition: "color 0.3s",
+                            "&:hover": {
+                              color: isDarkMode
+                                ? "primary.main"
+                                : "secondary.main",
+                            },
+                          },
+                        })}
+                        <Typography
+                          variant="subtitle1"
+                          sx={{
+                            my: 1,
+                            fontWeight: "bold",
+                          }}>
+                          {mediaName}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  ))}
+              </Grid>
+            ))}
+        </Grid>
+        {/* Curtesy footer start */}
         <Typography
           component="h6"
           variant={"body2"}
@@ -294,7 +266,7 @@ const Footer = () => {
           © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights
           reserved. Powered by{" "}
           <a
-            style={{color:"inherit"}}
+            style={{ color: "inherit" }}
             href="https://github.com/raselmahmud-coder"
             target="_blank"
             rel="noopener noreferrer">
