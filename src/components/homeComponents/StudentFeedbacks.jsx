@@ -1,12 +1,4 @@
 import React from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-// import "swiper/css";
-import "swiper/css/navigation";
-import { Autoplay, Navigation } from "swiper/modules";
-import StarIcon from "@mui/icons-material/Star";
 // import required modules
 import {
   Avatar,
@@ -20,11 +12,19 @@ import {
   Button,
   Skeleton,
 } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+// import "swiper/css";
+import "swiper/css/navigation";
+import { Autoplay, Navigation } from "swiper/modules";
+import StarIcon from "@mui/icons-material/Star";
 import styled from "@emotion/styled";
 import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import AutoModeIcon from "@mui/icons-material/AutoMode";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -63,17 +63,47 @@ const labels = {
 
 export default function StudentFeedbacks() {
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
+  const { isDarkMode } = useSelector((state) => state.colorMode);
+
   // render the loading state
   if (isError) {
     return <ErrorShow errorData={"Something went wrong"} />;
   }
   return (
     <>
-      <Typography
-        variant="h3"
-        sx={{ fontWeight: "bold", textAlign: "center", mt: "122px" }}>
-        Our student feedbacks
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <Typography
+          sx={{
+            mt: { xs: 6, sm: 8, md: 12 },
+            mb: { xs: 4, sm: 6, md: 8 },
+            px: { xs: 1, sm: 3, md: 6 },
+            py: { xs: 1, sm: 3, md: 4 },
+            zIndex: 899,
+            display: "inline-flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: isDarkMode ? "black.main" : "primary.main",
+            color: isDarkMode ? "whiteCustom.main" : "secondary.main",
+            borderColor: isDarkMode ? "accent.main" : "secondary.main",
+            borderRadius: "25% 0 25% 0",
+            border: 1,
+            fontWeight: "bold",
+          }}
+          variant="h3">
+          Our Student Feedbacks
+          <AutoModeIcon
+            sx={{
+              fontSize: { xs: "45px", sm: "90px", md: "125px" },
+              ml: { xs: 2, sm: 3, md: 4 },
+            }}
+          />
+        </Typography>
+      </Box>
 
       <Swiper
         slidesPerView={1}
@@ -190,13 +220,18 @@ export default function StudentFeedbacks() {
               </SwiperSlide>
             ))
           : feedbacks.feedback.map((feedback) => (
-            <SwiperSlide key={feedback.id} style={{
-              borderRadius: "4px",
-                // maxHeight:"233px"
-              }}>
-              <Card sx={{
-                  // minHeight:"355px"
+              <SwiperSlide
+                key={feedback.id}
+                style={{
+                  borderRadius: "4px",
+                  // maxHeight:"233px"
                 }}>
+                <Card
+                  sx={
+                    {
+                      // minHeight:"355px"
+                    }
+                  }>
                   <CardActionArea
                     sx={{
                       p: 1,
@@ -274,6 +309,7 @@ export default function StudentFeedbacks() {
             variant="contained"
             size="large">
             See More
+            <OpenInNewIcon sx={{fontSize:25}}/>
           </Button>
         </Link>
       </Box>

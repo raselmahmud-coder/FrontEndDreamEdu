@@ -1,32 +1,18 @@
 import * as React from "react";
-import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Button, CardMedia, Typography } from "@mui/material";
 import headerImg from "../../assets/header-img.png";
 import ellipse1 from "../../assets/Ellipse-01.png";
 import planImg from "../../assets/plane.png";
 import ellipse2 from "../../assets/Ellipse-02.png";
 import { Link } from "react-router-dom";
 import SlidingCard from "../../globalsComponents/SlidingCard";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import { useSelector } from "react-redux";
 
 export default function Section2() {
+  const { isDarkMode } = useSelector((state) => state.colorMode);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -38,11 +24,27 @@ export default function Section2() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid item xs={12} sm={12} md={6}>
-          <Typography variant="h6" gutterBottom>
-            SPECIAL OFFER FOR YOU <span style={{
-              color: "red",
-              fontSize: "35px",
-              }}>🎉</span>
+          <Typography
+            sx={{
+              px: { xs: 1, sm: 3, md: 6 },
+              py: { xs: 1, sm: 3, md: 4 },
+              display: "inline-block",
+              backgroundColor: isDarkMode ? "black.main" : "primary.main",
+              color: isDarkMode ? "whiteCustom.main" : "secondary.main",
+              borderColor: isDarkMode ? "accent.main" : "secondary.main",
+              borderRadius: "25% 0 25% 0",
+              border: 1,
+            }}
+            variant="h6"
+            gutterBottom>
+            SPECIAL OFFER FOR YOU{" "}
+            <span
+              style={{
+                color: "red",
+                fontSize: "35px",
+              }}>
+              🎉
+            </span>
           </Typography>
           <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
             Your{" "}
@@ -55,7 +57,14 @@ export default function Section2() {
             journey start with us!
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
-          DreamEdu offers a comprehensive range of services designed to assist students at every stage of their educational journey
+            At DreamEdu, we are confident in our ability to guide you towards a
+            successful study abroad experience. That's why we offer a Study
+            Abroad Guarantee. If you don't secure admission to at least one of
+            your top 3 chosen universities after completing our comprehensive
+            application package, we will provide you with a full refund of your
+            program fees. This guarantee demonstrates our commitment to your
+            success and gives you peace of mind as you embark on your study
+            abroad journey.
           </Typography>
           <Typography
             component={"div"}
@@ -67,7 +76,7 @@ export default function Section2() {
               display: "flex",
               justifyContent: "space-between",
             }}>
-            <Link to={"/apply-for-admission"}>
+            <Link to={"/apply-now"}>
               <Button
                 sx={{
                   py: 3,
@@ -108,33 +117,34 @@ export default function Section2() {
                 alt="green iguana"
                 image={planImg}
               />
-            <CardMedia
-              sx={{
-                // position: "relative",
-                // top: "-65px",
-                // left: "375px",
-                maxWidth: "100%",
-                maxHeight: "160px",
-              }}
-              component="img"
-              alt="Ellipse"
-              image={ellipse2}
+              <CardMedia
+                sx={{
+                  // position: "relative",
+                  // top: "-65px",
+                  // left: "375px",
+                  maxWidth: "100%",
+                  maxHeight: "160px",
+                }}
+                component="img"
+                alt="Ellipse"
+                image={ellipse2}
               />
-              </SlidingCard>
-              <SlidingCard animationA={"translateY(0)"}
+            </SlidingCard>
+            <SlidingCard
+              animationA={"translateY(0)"}
               animationB={"translateY(100%)"}>
-            <CardMedia
-              sx={{
-                maxWidth: "420px",
-                right: "0px",
-                position: "relative",
-                // maxHeight: "220px",
-              }}
-              component="img"
-              alt="green iguana"
-              image={headerImg}
+              <CardMedia
+                sx={{
+                  maxWidth: "420px",
+                  right: "0px",
+                  position: "relative",
+                  // maxHeight: "220px",
+                }}
+                component="img"
+                alt="green iguana"
+                image={headerImg}
               />
-              </SlidingCard>
+            </SlidingCard>
           </Box>
         </Grid>
       </Grid>

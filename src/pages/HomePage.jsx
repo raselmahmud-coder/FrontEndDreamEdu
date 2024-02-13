@@ -17,7 +17,7 @@ const HomePage = () => {
     <>
       <DynamicPageTitle pageTitle="Home Page" />
       <Container maxWidth="xl" sx={{
-        pt:9
+        pt:12
       }}>
       <BannerCarousel />
         <Section1 />
