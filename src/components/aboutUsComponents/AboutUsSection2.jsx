@@ -12,6 +12,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useGetEmployeeInfoQuery } from "../../redux/feature/employee/EmployeeAPI";
 import LazyLoading from "../../globalsComponents/LazyLoading";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import CelebrationIcon from "@mui/icons-material/Celebration";
 
 const AboutUsSection2 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -37,9 +39,7 @@ const AboutUsSection2 = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               badgeContent={
                 <>
-                  <a
-                    href="#"
-                    target={"_blank"}>
+                  <a href="#" target={"_blank"}>
                     <LinkedIn
                       sx={{
                         fontSize: "3rem",
@@ -57,9 +57,7 @@ const AboutUsSection2 = () => {
                       }}
                     />
                   </a>
-                  <a
-                    href="#"
-                    target={"_blank"}>
+                  <a href="#" target={"_blank"}>
                     <Facebook
                       sx={{
                         position: "absolute",
@@ -116,9 +114,10 @@ const AboutUsSection2 = () => {
       sx={{
         my: 7,
       }}>
-      <Typography variant="h1" sx={{ fontWeight: "bold", textAlign: "center" }}>
-        Meet Experts
-      </Typography>
+      <HeadingH2
+        headingH2Text={"Meet The Experts"}
+        headingH2Icon={CelebrationIcon}
+      />
       <Typography
         variant="h6"
         sx={{

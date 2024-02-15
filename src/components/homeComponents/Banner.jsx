@@ -9,10 +9,11 @@ import "swiper/css/navigation";
 import "../../styles/bannerStyle.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import img1 from "../../assets/001.jpg";
-import img2 from "../../assets/002.jpg";
-import img3 from "../../assets/003.jpg";
-import img4 from "../../assets/004.jpg";
+import img1 from "../../assets/Slider_Design/001 copy.jpg";
+import img2 from "../../assets/Slider_Design/002 copy.jpg";
+import img3 from "../../assets/Slider_Design/003 copy1.jpg";
+import img4 from "../../assets/Slider_Design/004.jpg";
+import img5 from "../../assets/Slider_Design/005.jpg";
 import { Typography } from "@mui/material";
 
 const BannerCarousel = () => {
@@ -40,29 +41,19 @@ const BannerCarousel = () => {
         className="mySwiper">
         <SwiperSlide style={{ position: "relative" }}>
           <img src={img1} alt="" />
-          <Typography variant="h4" style={{ position: "absolute", right: "100px" }}>
-            Study Smart, Go Global
-          </Typography>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img2} alt="" />
-          <Typography variant="h4" style={{ position: "absolute", right: "40px" }}>
-            Your Pathway to Overseas Education
-          </Typography>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img3} alt="" />
-          <Typography variant="h4" style={{ position: "absolute", left: "40px" }}>
-          Chart Your Course to Success
-          </Typography>
         </SwiperSlide>
         <SwiperSlide>
           <img src={img4} alt="" />
-          <Typography variant="h4" style={{ position: "absolute", right: "40px" }}>
-          Seize Opportunities Worldwide
-          </Typography>
         </SwiperSlide>
-        
+        <SwiperSlide>
+          <img src={img5} alt="" />
+        </SwiperSlide>
 
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>

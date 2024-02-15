@@ -3,95 +3,147 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, CardActionArea } from "@mui/material";
 import { serviceOfferData } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 
 export default function Section1() {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
     <>
       <Box sx={{ mb: 8 }} component="section">
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <Typography
-            gutterBottom
-            variant="h2"
-            sx={{
-              mt: { xs: -2, sm: -6, md: -8 },
-              mb: { xs: 4, sm: 6, md: 8 },
-              px: { xs: 1, sm: 3, md: 6 },
-              py: { xs: 1, sm: 3, md: 4 },
-              zIndex: 899,
-              display: "inline-block",
-              backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
-              color: isDarkMode ? "whiteCustom.main" : "secondary.main",
-              borderColor: isDarkMode ? "accent.main" : "secondary.main",
-              borderRadius: "25% 0 25% 0",
-              border: 1,
-              boxShadow:
-                "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-            }}
-            component="h2">
-            Go Abroad with DreamEdu
-          </Typography>
-        </Box>
+        <HeadingH2
+          headingH2Text={"Go Abroad With DreamEdu"}
+          headingH2Icon={AirplaneTicketIcon}
+          marginTop={{ xs: -2, sm: -6, md: -8 }}
+        />
         <Grid container spacing={4}>
           {serviceOfferData.map(({ title, description, img }) => (
             <Grid
+              key={title[0]}
               item
-              key={title}
               xs={12}
               sm={6}
               md={4}
               sx={{
                 perspective: "1000px",
-                transition: "transform 0.4s",
+                transition: "transform 0.8s",
                 "& > div, & > div > div": {
                   transition: "inherit",
                 },
                 "&:hover": {
                   "& > div": {
-                    transform: "rotateY(30deg)",
-                    "& > div:nth-of-type(2)": {
-                      transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
-                    },
-                    "& > div:nth-of-type(3)": {
-                      transform: "translate3d(45px, 50px, 40px)",
-                    },
+                    transform: "rotateY(180deg)",
                   },
                 },
               }}>
-              <Card
-                variant="outlined"
+              <Box
                 sx={{
-                  minHeight: "368px",
-                  backgroundColor: isDarkMode ? "black.main" : "primary.main",
-                  borderColor: isDarkMode ? "accent.main" : "secondary.main",
+                  position: "relative",
+                  width: "100%",
+                  minHeight: "400px",
+                  transition: "transform 1s",
+                  transformStyle: "preserve-3d",
                 }}>
-                <Box
+                {/* Front side content */}
+                <Card
+                  variant="elevation"
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: 9,
+                    borderRadius: 5,
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    WebkitBackfaceVisibility: "hidden",
+                    MozBackfaceVisibility: "hidden",
+                    backfaceVisibility: "hidden",
                   }}>
-                  <img src={img} width={"35%"} alt="" />
-                </Box>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    sx={{ textAlign: "center" }}
-                    component="h2">
-                    {title}
-                  </Typography>
-                  <Typography>{description}</Typography>
-                </CardContent>
-              </Card>
+                  <CardActionArea>
+                    <img
+                      src={img[0]}
+                      style={{
+                        border: 1,
+                        borderStyle: "solid",
+                        borderColor: isDarkMode
+                          ? "tertiaryRed.main"
+                          : "accent.main",
+                        borderRadius: "15px",
+                        height: 85,
+                        width: 85,
+                        padding: "5px",
+                        margin: "0 auto",
+                        display: "flex",
+                      }}
+                      alt={title[0]}
+                    />
+                    <CardContent>
+                      <HeadingH4 HeadingH4Text={title[0]}/>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          textAlign: "justify",
+                          mx: 3,
+                        }}>
+                        {description[0]}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                {/* Back side content */}
+                <Card
+                  variant="elevation"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: 9,
+                    borderRadius: 5,
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    WebkitBackfaceVisibility: "hidden",
+                    MozBackfaceVisibility: "hidden",
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}>
+                  <CardActionArea>
+                    <img
+                      src={img[1]}
+                      style={{
+                        border: 1,
+                        borderStyle: "solid",
+                        borderColor: isDarkMode
+                          ? "tertiaryRed.main"
+                          : "accent.main",
+                        borderRadius: "15px",
+                        height: 85,
+                        width: 85,
+                        padding: "5px",
+                        margin: "0 auto",
+                        display: "flex",
+                      }}
+                      alt={title[1]}
+                    />
+                    <CardContent>
+                      <HeadingH4 HeadingH4Text={title[1]}/>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          textAlign: "justify",
+                          mx: 3,
+                        }}>
+                        {description[1]}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Box>
             </Grid>
           ))}
         </Grid>

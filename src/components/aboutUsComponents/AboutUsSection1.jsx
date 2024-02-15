@@ -11,6 +11,9 @@ import {
 import InboxIcon from "@mui/icons-material/Inbox";
 import { CheckCircleOutline, SwapCalls } from "@mui/icons-material";
 import founderImg from "../../assets/founder.jpg";
+import InfoIcon from "@mui/icons-material/Info";
+import { useSelector } from "react-redux";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 
 const AboutUsSection1 = () => {
   return (
@@ -20,17 +23,14 @@ const AboutUsSection1 = () => {
         spacing={{ xs: 1, md: 2 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{
-          py: 18,
+          pt: 12,
           px: 1,
           justifyContent: "space-between",
           alignItems: "center",
         }}>
         <Grid item xs={12} sm={6} md={6}>
-          <Typography
-            variant="h1"
-            sx={{ fontWeight: "bold", textAlign: "center", mt: "22px" }}>
-            About us
-          </Typography>
+          <HeadingH2 headingH2Text={"About Us"} headingH2Icon={InfoIcon} />
+
           <Typography variant="body1" sx={{}}>
             DreamEdu is a leading education consultancy established in 2018,
             dedicated to guiding and empowering students on their journey

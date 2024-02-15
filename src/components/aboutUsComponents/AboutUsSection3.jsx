@@ -10,14 +10,19 @@ import {
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
 import { totalPortfolioData, whyChooseUsData } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import PsychologyAltIcon from "@mui/icons-material/PsychologyAlt";
+import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 
 const AboutUsSection3 = () => {
-  const {isDarkMode} = useSelector((state) => state.colorMode);
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
     <>
-      <Typography variant="h1" sx={{ fontWeight: "bold", textAlign: "center" }} gutterBottom>
-        Why choose us?
-      </Typography>
+      <HeadingH2
+        headingH2Text={"Why Choose Us"}
+        headingH2Icon={PsychologyAltIcon}
+      />
+
       <Grid
         container
         sx={{ my: 9 }}
@@ -25,7 +30,7 @@ const AboutUsSection3 = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {whyChooseUsData.map((item) => (
           <Grid item xs={12} sm={4} md={4} key={item.title}>
-            <Card sx={{ py: 2, height: 300 }}>
+            <Card sx={{ py: 2, height: 400, borderRadius:3 }}>
               <Box
                 sx={{
                   display: "flex",
@@ -42,7 +47,7 @@ const AboutUsSection3 = () => {
                     },
                   },
                 })}
-                <Typography variant="h4">{item.title}</Typography>
+                <HeadingH4 HeadingH4Text={item.title} />
               </Box>
               <CardContent>
                 <Typography variant="body1" color="text.secondary">

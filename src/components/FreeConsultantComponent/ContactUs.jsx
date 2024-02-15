@@ -15,6 +15,9 @@ import Paper from "@mui/material/Paper";
 import { useAddFreeConsultationMutation } from "../../redux/feature/FreeConsultation/FreeConsultationAPI";
 import PositionedSnackbar from "../../globalsComponents/PositionSnakBar";
 import { useSelector } from "react-redux";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import RingVolumeIcon from "@mui/icons-material/RingVolume";
+import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 
 const ContactUs = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -53,22 +56,9 @@ const ContactUs = () => {
 
   return (
     <>
-      <Typography
-        variant="h2"
-        sx={{
-          textAlign: "center",
-          my: 3,
-        }}>
-        Contact Us
-      </Typography>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "center",
-          my: 2,
-        }}>
-        For free consultation
-      </Typography>
+      <HeadingH2 headingH2Text={"Contact Us"} headingH2Icon={RingVolumeIcon} />
+      
+
       {consultationData?.id && isSuccess && (
         <PositionedSnackbar isOpen={true} />
       )}
@@ -129,14 +119,7 @@ const ContactUs = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <Typography
-            variant="h4"
-            sx={{
-              textAlign: "center",
-              my: 2,
-            }}>
-            Get in touch
-          </Typography>
+          <HeadingH4 HeadingH4Text={"Direct Phone Call Us"} />
           <Box
             sx={{
               display: "flex",

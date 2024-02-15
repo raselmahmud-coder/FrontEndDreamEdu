@@ -26,6 +26,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
 import { useSelector } from "react-redux";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
@@ -144,32 +145,7 @@ const Section4 = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
-        <Typography
-          sx={{
-            mt: { xs: 6, sm: 8, md: 12 },
-            mb: { xs: 3, sm: 4, md: 5 },
-            px: { xs: 1, sm: 3, md: 6 },
-            py: { xs: 1, sm: 3, md: 4 },
-            display: "inline-block",
-            backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
-            color: isDarkMode ? "whiteCustom.main" : "secondary.main",
-            borderColor: isDarkMode ? "accent.main" : "secondary.main",
-            borderRadius: "25% 0 25% 0",
-            border: 1,
-            fontWeight: "bold",
-            boxShadow:
-              "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-          }}
-          variant="h3">
-          Top Destination Universities
-        </Typography>
-      </Box>
+      <HeadingH2 headingH2Text={"Top Destination Universities"} />
       <Typography variant="body1" sx={{ textAlign: "center", mt: "12px" }}>
         <Typography
           component={"span"}

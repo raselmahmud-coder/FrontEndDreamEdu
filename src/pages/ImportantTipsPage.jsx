@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Card,
@@ -15,7 +15,6 @@ import {
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import { Link, useParams } from "react-router-dom";
 import { Grid, Box } from "@mui/material";
-import { client } from "../libs/contentful/client";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../redux/feature/ContentfulLib/contentfulSlice";
 import { Facebook, LinkedIn } from "@mui/icons-material";
@@ -24,6 +23,8 @@ import ShareIcon from "@mui/icons-material/Share";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ErrorShow from "../globalsComponents/ErrorShow";
 import BlogsCardsSkeleton from "../Skeletons/BlogsCardsSkeleton";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import HeadingH2 from "../globalsComponents/Headings/HeadingH2";
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
@@ -60,7 +61,9 @@ const ImportantTipsPage = () => {
   } else if (status === "failed") {
     content = <ErrorShow errorData={error} />;
   } else if (posts?.total === 0) {
-    content = <ErrorShow severity="warning" errorData={"No post is available."} />;
+    content = (
+      <ErrorShow severity="warning" errorData={"No post is available."} />
+    );
   } else if (status === "succeeded") {
     content = posts?.items?.map((post) => {
       const { postTitle, coverImage, author, excerpt, slug, categories } =
@@ -163,15 +166,10 @@ const ImportantTipsPage = () => {
         sx={{
           pt: 9,
         }}>
-        <Typography
-          variant="h2"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            my: 7,
-          }}>
-          Important Posts
-        </Typography>
+        <HeadingH2
+          headingH2Text={"Important Blogs"}
+          headingH2Icon={QuestionAnswerIcon}
+        />
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -179,21 +177,23 @@ const ImportantTipsPage = () => {
           sx={{ p: 2, mb: 8 }}>
           {content}
         </Grid>
-        <StyledEngineProvider injectFirst>
-          <TablePagination
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            component="div"
-            count={100}
-            page={page}
-            onPageChange={handleChangePage}
-            rowsPerPage={postsPerPage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </StyledEngineProvider>
+        {posts?.total > 10 && (
+          <StyledEngineProvider injectFirst>
+            <TablePagination
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              component="div"
+              count={100}
+              page={page}
+              onPageChange={handleChangePage}
+              rowsPerPage={postsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </StyledEngineProvider>
+        )}
       </Container>
     </>
   );

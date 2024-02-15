@@ -11,15 +11,9 @@ import {
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import { WhatsApp } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 import OfficeAddress from "./OfficeAddress";
-import dreamEduLogo from "../../assets/dreamedu nontransparent logo.jpg";
 import { footerMenus, socialContact } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
-import AnimationComponent from "./AnimationComponent";
 import styles from "../../styles/AnimationCustom.module.css";
 
 /*==== Back to top system design == */
@@ -56,7 +50,6 @@ function ScrollTop(props) {
 const Footer = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
-  const navigate = useNavigate();
   return (
     <Container maxWidth="xl">
       <Box
@@ -161,9 +154,6 @@ const Footer = () => {
                     }}>
                     <PlayArrowIcon />
                     <Typography
-                      onClick={() => {
-                        navigate("/apply-now");
-                      }}
                       variant="subtitle1"
                       sx={{
                         my: 1,
@@ -183,9 +173,6 @@ const Footer = () => {
                     }}>
                     <PlayArrowIcon />
                     <Typography
-                      onClick={() => {
-                        navigate("/apply-now");
-                      }}
                       variant="subtitle1"
                       sx={{
                         my: 1,

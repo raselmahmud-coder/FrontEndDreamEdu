@@ -4,47 +4,18 @@ import { Box, Grid, Typography } from "@mui/material";
 import OtherHousesIcon from "@mui/icons-material/OtherHouses";
 import { useSelector } from "react-redux";
 import { officeInfo } from "../../utils/fakeData";
+import HeadingH2 from "../Headings/HeadingH2";
+import HeadingH4 from "../Headings/HeadingH4";
 
 const OfficeAddress = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
-        <Typography
-          sx={{
-            mt: { xs: 6, sm: 8, md: 12 },
-            mb: { xs: 4, sm: 6, md: 8 },
-            px: { xs: 1, sm: 3, md: 6 },
-            py: { xs: 1, sm: 3, md: 4 },
-            zIndex: 899,
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
-            color: isDarkMode ? "whiteCustom.main" : "secondary.main",
-            borderColor: isDarkMode ? "accent.main" : "secondary.main",
-            borderRadius: "25% 0 25% 0",
-            border: 1,
-            fontWeight: "bold",
-            boxShadow:
-              "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-          }}
-          variant="h2">
-          Office Address
-          <OtherHousesIcon
-            sx={{
-              fontSize: { xs: "45px", sm: "60px", md: "75px" },
-              ml: { xs: 2, sm: 2, md: 3 },
-            }}
-          />
-        </Typography>
-      </Box>
+      <HeadingH2
+        headingH2Text={"Our Office Address"}
+        headingH2Icon={OtherHousesIcon}
+      />
       <Grid
         container
         spacing={{ xs: 2, md: 7 }}
@@ -61,20 +32,10 @@ const OfficeAddress = () => {
                 sx={{
                   ml: 1,
                 }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}>
-                  <LocationOnRounded sx={{ fontSize: 40 }} />
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      textAlign: "center",
-                    }}>
-                    {office.locationName}
-                  </Typography>
-                </Box>
+                <HeadingH4
+                  HeadingH4Text={office.locationName}
+                  headingH4Icon={LocationOnRounded}
+                />
                 <Typography
                   variant="body1"
                   sx={{

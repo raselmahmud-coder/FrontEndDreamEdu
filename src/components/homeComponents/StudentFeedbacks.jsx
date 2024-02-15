@@ -25,6 +25,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -71,42 +72,10 @@ export default function StudentFeedbacks() {
   }
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
-        <Typography
-          sx={{
-            mt: { xs: 6, sm: 8, md: 12 },
-            mb: { xs: 4, sm: 6, md: 8 },
-            px: { xs: 1, sm: 3, md: 6 },
-            py: { xs: 1, sm: 3, md: 4 },
-            zIndex: 899,
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
-            color: isDarkMode ? "whiteCustom.main" : "secondary.main",
-            borderColor: isDarkMode ? "accent.main" : "secondary.main",
-            borderRadius: "25% 0 25% 0",
-            border: 1,
-            fontWeight: "bold",
-            boxShadow:
-              "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-          }}
-          variant="h3">
-          Our Student Feedbacks
-          <AutoModeIcon
-            sx={{
-              fontSize: { xs: "45px", sm: "90px", md: "125px" },
-              ml: { xs: 2, sm: 3, md: 4 },
-            }}
-          />
-        </Typography>
-      </Box>
-
+      <HeadingH2
+        headingH2Text={"Our Student Feedbacks"}
+        headingH2Icon={AutoModeIcon}
+      />
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

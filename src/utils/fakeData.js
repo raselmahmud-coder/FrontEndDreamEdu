@@ -5,8 +5,13 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { WhatsApp } from "@mui/icons-material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import dreamEduLogo from "../assets/dreamedu nontransparent logo.jpg";
+import appAssistance from "../assets/Icon/Application Assistance icon.svg";
+import careerGuidance from "../assets/Icon/Career Guidance Icon.svg";
+import educationCounselling from "../assets/Icon/Educational Counselling Icon.svg";
+import scholarshipAssistance from "../assets/Icon/Scholarship Assistance ICON.svg";
+import testPrep from "../assets/Icon/Test Preparation icon.svg";
+import universityPlacement from "../assets/Icon/University Placement icon.svg";
 
-import counselling from "../assets/dream edu home page.svg";
 export const whyChooseUsData = [
   {
     icon: AdsClickIcon,
@@ -51,40 +56,28 @@ export const totalPortfolioData = [
 ];
 export const serviceOfferData = [
   {
-    title: "University Placement",
-    description:
+    title: ["University Placement", "Scholarship Assistance"],
+    description: [
       "With a vast network of global institutions, we aid students in finding the right university that aligns with their aspirations and offers the desired academic programs.",
-    img: counselling,
-  },
-  {
-    title: "Scholarship Assistance",
-    description:
       "We help students find scholarships and financial aid opportunities to make their dream of studying abroad a reality. We conduct pre-departure sessions to help students prepare for their journey abroad and adjust to the new environment.",
-    img: counselling,
+    ],
+    img: [appAssistance, careerGuidance],
   },
   {
-    title: "Application Assistance",
-    description:
+    title: ["Application Assistance", "Educational Counselling"],
+    description: [
       "From crafting compelling personal statements to managing application timelines, we ensure that the application process is smooth and stress-free for our students.",
-    img: counselling,
-  },
-  {
-    title: "Educational Counselling",
-    description:
       "Our expert counselors engage in one-on-one sessions with students to understand their academic goals and interests. Based on this understanding, we provide personalized guidance on course selection, university applications, and scholarship opportunities.",
-    img: counselling,
+    ],
+    img: [educationCounselling, scholarshipAssistance],
   },
   {
-    title: "Test Preparation",
-    description:
+    title: ["Test Preparation", "Career Guidance"],
+    description: [
       "We offer intensive coaching and support for standardized tests such as SAT, ACT, GRE, and IELTS, helping students achieve their best possible scores.",
-    img: counselling,
-  },
-  {
-    title: "Career Guidance",
-    description:
       "Our career counselors assist students in exploring various career paths and understanding the job market trends, enabling them to make well-informed career decisions.",
-    img: counselling,
+    ],
+    img: [testPrep, universityPlacement],
   },
 ];
 export const officeInfo = [
@@ -141,7 +134,7 @@ export const footerMenus = [
   {
     id: 1,
     footerName: "Dream Edu Consultancy",
-    item1: { name: dreamEduLogo, link: "" },
+    item1: { name: dreamEduLogo, link: "/" },
   },
   {
     id: 2,

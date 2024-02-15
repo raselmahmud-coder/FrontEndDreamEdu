@@ -9,13 +9,15 @@ import {
   Grid,
   Typography,
   Rating,
-  Button,
   Skeleton,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import styled from "@emotion/styled";
 import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
+import { useSelector } from "react-redux";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -65,7 +67,7 @@ const SSComp = () => {
         sx={{ p: 2 }}>
         {Array.from(new Array(4)).map((_, index) => (
           <Grid item xs={12} sm={6} md={6} key={index}>
-            <Card >
+            <Card>
               <CardActionArea
                 sx={{
                   p: 1,
@@ -101,7 +103,6 @@ const SSComp = () => {
                       <Rating
                         name="read-only"
                         readOnly
-                       
                         emptyIcon={
                           <StarIcon
                             style={{ opacity: 0.55 }}
@@ -229,21 +230,13 @@ const SSComp = () => {
 
   return (
     <>
-      <Typography
-        variant="h1"
-        sx={{
-          textAlign: "center",
-          my: 5,
-        }}>
-        Our Success story
-      </Typography>
+      <HeadingH2 headingH2Text={"Our Success Story"} headingH2Icon={VerifiedIcon}/>
       {content}
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
-        }}>
-      </Box>
+        }}></Box>
     </>
   );
 };
