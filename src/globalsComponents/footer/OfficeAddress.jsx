@@ -1,11 +1,11 @@
 import React from "react";
-import { LocationOnRounded } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import OtherHousesIcon from "@mui/icons-material/OtherHouses";
 import { useSelector } from "react-redux";
 import { officeInfo } from "../../utils/fakeData";
 import HeadingH2 from "../Headings/HeadingH2";
 import HeadingH4 from "../Headings/HeadingH4";
+import mapIcon from "../../assets/Icon/google-map-icon.svg";
 
 const OfficeAddress = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -32,14 +32,29 @@ const OfficeAddress = () => {
                 sx={{
                   ml: 1,
                 }}>
-                <HeadingH4
-                  HeadingH4Text={office.locationName}
-                  headingH4Icon={LocationOnRounded}
-                />
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                  <img
+                    src={mapIcon}
+                    alt=""
+                    style={{
+                      width: "65px",
+                      height: "65px",
+                    }}
+                  />
+                  <HeadingH4 HeadingH4Text={office.locationName} />
+                </Box>
                 <Typography
                   variant="body1"
                   sx={{
                     my: 2,
+                    px: 3,
+                    borderRadius: "15px",
+                    bgcolor: isDarkMode ? "accent.main" : "primary.main",
                   }}>
                   {office.fullAddress}
                 </Typography>

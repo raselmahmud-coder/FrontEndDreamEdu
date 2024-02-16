@@ -30,7 +30,7 @@ const AboutUsSection3 = () => {
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {whyChooseUsData.map((item) => (
           <Grid item xs={12} sm={4} md={4} key={item.title}>
-            <Card sx={{ py: 2, height: 400, borderRadius:3 }}>
+            <Card sx={{ py: 2, height: 400, borderRadius:3, bgcolor:"#0077b5" }}>
               <Box
                 sx={{
                   display: "flex",
@@ -39,11 +39,14 @@ const AboutUsSection3 = () => {
                 }}>
                 {React.createElement(item.icon, {
                   sx: {
+                    border: "2px solid #25D366",
+                    borderRadius: "25px",
+                    p:1,
                     fontSize: "4rem",
-                    color: isDarkMode ? "primary.main" : "#000",
+                    color: isDarkMode ? "primary.main" : "tertiaryRed.main",
                     transition: "color 0.3s",
                     "&:hover": {
-                      color: "secondary.main",
+                      color: "deepGray.main",
                     },
                   },
                 })}

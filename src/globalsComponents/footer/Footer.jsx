@@ -133,8 +133,8 @@ const Footer = () => {
                       }}>
                       <img
                         style={{
-                          width: "196px",
-                          height: "134px",
+                          width: "100%",
+                          height: "240px",
                           borderRadius: "8px",
                           margin: "auto",
                         }}
@@ -215,9 +215,12 @@ const Footer = () => {
                           fontSize: "medium",
                           sx: {
                             mr: 2,
-                            color: isDarkMode
-                              ? "primary.main"
-                              : "tertiaryRed.main",
+                            color:
+                              mediaName == "Facebook"
+                                ? "#316FF6"
+                                : (mediaName == "YouTube" &&
+                                    " #FF0000") ||
+                                  (mediaName == "WhatsApp" && "#25D366"),
                             transition: "color 0.3s",
                             "&:hover": {
                               color: isDarkMode

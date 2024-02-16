@@ -61,7 +61,7 @@ export const serviceOfferData = [
       "With a vast network of global institutions, we aid students in finding the right university that aligns with their aspirations and offers the desired academic programs.",
       "We help students find scholarships and financial aid opportunities to make their dream of studying abroad a reality. We conduct pre-departure sessions to help students prepare for their journey abroad and adjust to the new environment.",
     ],
-    img: [appAssistance, careerGuidance],
+    img: [universityPlacement, scholarshipAssistance],
   },
   {
     title: ["Application Assistance", "Educational Counselling"],
@@ -69,7 +69,7 @@ export const serviceOfferData = [
       "From crafting compelling personal statements to managing application timelines, we ensure that the application process is smooth and stress-free for our students.",
       "Our expert counselors engage in one-on-one sessions with students to understand their academic goals and interests. Based on this understanding, we provide personalized guidance on course selection, university applications, and scholarship opportunities.",
     ],
-    img: [educationCounselling, scholarshipAssistance],
+    img: [appAssistance, educationCounselling],
   },
   {
     title: ["Test Preparation", "Career Guidance"],
@@ -77,7 +77,7 @@ export const serviceOfferData = [
       "We offer intensive coaching and support for standardized tests such as SAT, ACT, GRE, and IELTS, helping students achieve their best possible scores.",
       "Our career counselors assist students in exploring various career paths and understanding the job market trends, enabling them to make well-informed career decisions.",
     ],
-    img: [testPrep, universityPlacement],
+    img: [testPrep, careerGuidance],
   },
 ];
 export const officeInfo = [

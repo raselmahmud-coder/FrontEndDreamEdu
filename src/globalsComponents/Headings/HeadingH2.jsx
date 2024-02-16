@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const HeadingH2 = ({ headingH2Text, headingH2Icon, marginTop }) => {
+const HeadingH2 = ({ headingH2Text, headingH2Icon, marginTop, color }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
@@ -38,6 +38,7 @@ const HeadingH2 = ({ headingH2Text, headingH2Icon, marginTop }) => {
           {headingH2Icon &&
             React.createElement(headingH2Icon, {
               sx: {
+                color: color ? color : "inherit",
                 fontSize: { xs: "35px", sm: "50px", md: "75px" },
                 ml: { xs: 2, sm: 2, md: 3 },
               },

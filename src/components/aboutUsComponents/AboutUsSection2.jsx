@@ -27,7 +27,7 @@ const AboutUsSection2 = () => {
   } else if (teammember.length) {
     content = teammember.map(({ id, name, description, Picture }) => (
       <Grid item xs={12} sm={4} md={4} key={id}>
-        <Card sx={{ py: 3 }}>
+        <Card sx={{ py: 3, border:"1px solid #25D366" }}>
           <CardContent
             sx={{
               display: "flex",
@@ -45,8 +45,7 @@ const AboutUsSection2 = () => {
                         fontSize: "3rem",
                         zIndex: 122,
                         cursor: "pointer",
-                        color: isDarkMode ? "#004808 " : "white",
-                        backgroundColor: isDarkMode ? "white" : "#004808",
+                        color: "#0077b5",
                         borderRadius: "50%",
                         p: 0.5,
                         transition: "background-color 0.9s, color 0.9s",
@@ -66,8 +65,7 @@ const AboutUsSection2 = () => {
                         fontSize: "3rem",
                         zIndex: 122,
                         cursor: "pointer",
-                        color: isDarkMode ? "#004808 " : "white",
-                        backgroundColor: isDarkMode ? "white" : "#004808",
+                        color: "#316FF6",
                         borderRadius: "50%",
                         p: 0.5,
                         transition: "background-color 0.9s, color 0.9s",

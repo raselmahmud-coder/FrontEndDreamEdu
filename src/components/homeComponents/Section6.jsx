@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import TungstenIcon from '@mui/icons-material/Tungsten';
+import TungstenIcon from "@mui/icons-material/Tungsten";
 
 const dataForSection6 = [
   {
@@ -46,7 +46,10 @@ const Section6 = () => {
 
   return (
     <>
-      <HeadingH2 headingH2Text={"Steps To Get Your Admission"} headingH2Icon={TungstenIcon}/>
+      <HeadingH2
+        headingH2Text={"Steps To Get Your Admission"}
+        headingH2Icon={TungstenIcon}
+      />
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -58,6 +61,7 @@ const Section6 = () => {
           <Grid item xs={12} sm={4} md={3} key={id}>
             <Box
               sx={{
+                bgcolor: "#0077b5",
                 minHeight: "400px",
                 display: "flex",
                 justifyContent: "center",
@@ -65,8 +69,14 @@ const Section6 = () => {
                 alignItems: "center",
                 p: 2,
                 borderRadius: 2,
-                backgroundColor: (theme) =>
-                  theme.palette.mode === "dark" ? "#1f1f1f" : "#f1f1f1",
+                transition:"all 0.7s",
+                "&:hover": {
+                  backgroundColor: (theme) =>
+                    theme.palette.mode === "dark" ? "#1f1f1f" : "#f1f1f1",
+                  transform: "transition 0.6s",
+                },
+                // backgroundColor: (theme) =>
+                //   theme.palette.mode === "dark" ? "#1f1f1f" : "#f1f1f1",
               }}>
               <Badge
                 overlap="circular"
@@ -74,8 +84,8 @@ const Section6 = () => {
                   borderRadius: "50%",
 
                   p: 3,
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === "dark" ? "red" : "#e9ecf0",
+                  // backgroundColor: (theme) =>
+                  //   theme.palette.mode === "dark" ? "red" : "#e9ecf0",
                 }}
                 badgeContent={`Step ${id}`}
                 color="secondary">

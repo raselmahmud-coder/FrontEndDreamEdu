@@ -31,6 +31,7 @@ const YouTubeFeeds = () => {
           <HeadingH2
             headingH2Text={"Latest YouTube Videos"}
             headingH2Icon={YouTubeIcon}
+            color={"#cc0000"}
           />
           <Grid
             container

@@ -70,7 +70,9 @@ const ImportantTipsPage = () => {
         post.fields || {};
       return (
         <Grid item xs={12} sm={6} md={4} key={slug}>
-          <Card>
+          <Card sx={{
+            bgcolor:"linkedin.main",
+          }}>
             <CardMedia
               component="img"
               alt={coverImage.fields.title}

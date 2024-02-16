@@ -35,10 +35,10 @@ const App = () => {
         main: 'rgb(208 208 208)',
       },
       secondary: {
-        main: '#f50057',
+        main: '#25D366',
       },
       tertiaryRed: {
-        main: '#d7132d',
+        main: '#cc0000',
       },
       accent: {
         main: '#004808',
@@ -51,6 +51,9 @@ const App = () => {
       },
       deepGray: {
         main: '#272727',
+      },
+      linkedin: {
+        main: '#0077b5',
       },
     },
   });

@@ -28,6 +28,7 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
           {headingH4Icon &&
             React.createElement(headingH4Icon, {
               sx: {
+                color: "secondary.main",
                 fontSize: { xs: "35px", sm: "45px", md: "55px" },
               },
             })}

@@ -56,7 +56,7 @@ const AboutUsSection1 = () => {
               }}>
               <ListItemButton>
                 <ListItemIcon>
-                  <InboxIcon sx={{ fontSize: "55px", mr: 1 }} />
+                  <CheckCircleOutline sx={{ fontSize: "55px", mr: 1, color:"#25D366" }} />
                 </ListItemIcon>
                 <ListItemText primary="Get life-time free access with one time payment in our courses plan. Easy & simple!" />
               </ListItemButton>
@@ -68,7 +68,7 @@ const AboutUsSection1 = () => {
               }}>
               <ListItemButton>
                 <ListItemIcon>
-                  <CheckCircleOutline sx={{ fontSize: "55px", mr: 1 }} />
+                  <CheckCircleOutline sx={{ fontSize: "55px", mr: 1, color:"#25D366" }} />
                 </ListItemIcon>
                 <ListItemText primary="We find the expert tuotor with huge teaching experience" />
               </ListItemButton>
@@ -80,7 +80,7 @@ const AboutUsSection1 = () => {
               }}>
               <ListItemButton>
                 <ListItemIcon>
-                  <SwapCalls sx={{ fontSize: "55px", mr: 1 }} />
+                  <CheckCircleOutline sx={{ fontSize: "55px", mr: 1, color:"#25D366" }} />
                 </ListItemIcon>
                 <ListItemText primary="We present worldclass courses with practical learning tasks that make students more confident." />
               </ListItemButton>
@@ -92,7 +92,7 @@ const AboutUsSection1 = () => {
             src={founderImg}
             alt="dream edu founder"
             width={"100%"}
-            style={{ borderRadius: "20% 5px 20% 5px" }}
+            style={{ borderRadius: "20% 5px 20% 5px", border:"1px solid #25D366" }}
           />
         </Grid>
       </Grid>

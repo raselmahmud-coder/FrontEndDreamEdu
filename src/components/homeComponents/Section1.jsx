@@ -17,7 +17,7 @@ export default function Section1() {
       <Box sx={{ mb: 8 }} component="section">
         <HeadingH2
           headingH2Text={"Go Abroad With DreamEdu"}
-          headingH2Icon={AirplaneTicketIcon}
+          // headingH2Icon={AirplaneTicketIcon}
           marginTop={{ xs: -2, sm: -6, md: -8 }}
         />
         <Grid container spacing={4}>
@@ -29,6 +29,7 @@ export default function Section1() {
               sm={6}
               md={4}
               sx={{
+               
                 perspective: "1000px",
                 transition: "transform 0.8s",
                 "& > div, & > div > div": {
@@ -44,7 +45,7 @@ export default function Section1() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  minHeight: "55vh",
+                  minHeight: {xs: "500px", sm: "480px", md:"460px"},
                   transition: "transform 1s",
                   transformStyle: "preserve-3d",
                 }}>
@@ -52,6 +53,7 @@ export default function Section1() {
                 <Card
                   variant="elevation"
                   sx={{
+                    bgcolor: "linkedin.main",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -87,7 +89,6 @@ export default function Section1() {
                       <Typography
                         variant="body1"
                         sx={{
-                          textAlign: "justify",
                           mx: 3,
                         }}>
                         {description[0]}
@@ -135,7 +136,6 @@ export default function Section1() {
                       <Typography
                         variant="body1"
                         sx={{
-                          textAlign: "justify",
                           mx: 3,
                         }}>
                         {description[1]}
