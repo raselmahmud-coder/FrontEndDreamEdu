@@ -10,7 +10,7 @@ const ApplyForAdmissionPage = () => {
       <Container
         maxWidth="xl"
         sx={{
-          my: 10,
+          mt: { xs: 12, md: 10 },
         }}>
         <Checkout />
       </Container>

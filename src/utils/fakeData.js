@@ -4,7 +4,7 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { WhatsApp } from "@mui/icons-material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import dreamEduLogo from "../assets/dreamedu nontransparent logo.jpg";
+import dreamEduLogo from "../assets/dream_edu_n_t_logo.jpg";
 import appAssistance from "../assets/Icon/Application Assistance icon.svg";
 import careerGuidance from "../assets/Icon/Career Guidance Icon.svg";
 import educationCounselling from "../assets/Icon/Educational Counselling Icon.svg";

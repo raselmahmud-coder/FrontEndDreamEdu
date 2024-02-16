@@ -55,8 +55,6 @@ const App = () => {
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);
-  const location = useLocation();
-  // console.log(location.pathname, "hello location")
   return (
     <>
       <ThemeProvider theme={responsiveTheme}>

@@ -102,46 +102,45 @@ const Footer = () => {
                   {footerName}
                   <hr />
                 </Typography>
-                {item1 &&
-                item1?.name?.includes("dreamedu nontransparent logo.jpg") ? (
+                {item1?.name.includes("Apply Now") ||
+                item1?.name.includes("Counselling") ? (
                   <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
+                      justifyContent: "center",
                     }}>
-                    <CardMedia
+                    <PlayArrowIcon />
+                    <Typography
+                      component={"a"}
+                      variant="subtitle1"
+                      href={item1.link}
                       sx={{
-                        width: "196px",
-                        height: "134px",
-                        borderRadius: "8px",
-                        m: "auto",
-                      }}
-                      image={item1.name}
-                      title="dream edu logo"
-                    />
+                        my: 1,
+                        color: "inherit",
+                        fontWeight: "bold",
+                        cursor: "pointer",
+                      }}>
+                      {item1.name}
+                    </Typography>
                   </Box>
                 ) : (
-                  (item1?.name == "Apply Now" ||
-                    item1?.name == "Counselling") && (
+                  /\.(jpg|jpeg|png)$/i.test(item1?.name) && (
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "center",
                       }}>
-                      <PlayArrowIcon />
-                      <Typography
-                        component={"a"}
-                        variant="subtitle1"
-                        href={item1.link}
-                        sx={{
-                          my: 1,
-                          color: "inherit",
-                          fontWeight: "bold",
-                          cursor: "pointer",
-                        }}>
-                        {item1.name}
-                      </Typography>
+                      <img
+                        style={{
+                          width: "196px",
+                          height: "134px",
+                          borderRadius: "8px",
+                          margin: "auto",
+                        }}
+                        src={item1.name}
+                        alt="dream edu logo"
+                      />
                     </Box>
                   )
                 )}

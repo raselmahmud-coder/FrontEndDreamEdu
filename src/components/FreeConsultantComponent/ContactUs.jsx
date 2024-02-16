@@ -119,7 +119,7 @@ const ContactUs = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <HeadingH4 HeadingH4Text={"Direct Phone Call Us"} />
+          <HeadingH4 HeadingH4Text={"Direct Phone Call"} />
           <Box
             sx={{
               display: "flex",

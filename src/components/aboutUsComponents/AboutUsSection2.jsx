@@ -125,7 +125,7 @@ const AboutUsSection2 = () => {
           mt: 2,
           mb: 7,
         }}>
-        87% of people learning for professional development report career
+        Most of people learning for professional development report career
         benefits
       </Typography>
       <Grid

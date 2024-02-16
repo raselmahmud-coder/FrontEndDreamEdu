@@ -38,7 +38,7 @@ const HeadingH2 = ({ headingH2Text, headingH2Icon, marginTop }) => {
           {headingH2Icon &&
             React.createElement(headingH2Icon, {
               sx: {
-                fontSize: { xs: "45px", sm: "60px", md: "75px" },
+                fontSize: { xs: "35px", sm: "50px", md: "75px" },
                 ml: { xs: 2, sm: 2, md: 3 },
               },
             })}

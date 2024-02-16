@@ -1,19 +1,15 @@
 import {
   Avatar,
   Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Grid,
-  Skeleton,
   Typography,
 } from "@mui/material";
 import airplane from "../../assets/plane left side.png";
 import mountain from "../../assets/mountant.png";
 import { useGetUniversitiesQuery } from "../../redux/feature/Universities/universitiesAPI";
-import { Link } from "react-router-dom";
 import SlidingCard from "../../globalsComponents/SlidingCard";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import OurPartnersSkeleton from "../../Skeletons/OurPartnersSkeleton";
@@ -27,6 +23,7 @@ import "swiper/css/effect-coverflow";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
@@ -145,20 +142,21 @@ const Section4 = () => {
 
   return (
     <>
-      <HeadingH2 headingH2Text={"Top Destination Universities"} />
-      <Typography variant="body1" sx={{ textAlign: "center", mt: "12px" }}>
+      <HeadingH2 headingH2Text={"Top Destination Universities"} headingH2Icon={AccountBalanceIcon} />
+      <Box sx={{ textAlign: "center", mt: "12px", mx:"auto" }}>
         <Typography
-          component={"span"}
-          variant="body2"
+          component={"h6"}
+          variant="subtitle1"
           sx={{
             bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
             py: 2,
             px: 2,
             borderRadius: 8,
+            display:"inline-block"
           }}>
           We have partnered with a variety of high-quality universities
         </Typography>
-      </Typography>
+      </Box>
       <SlidingCard
         animationA={"translateX(0px)"}
         animationB={"translateX(80%)"}>

@@ -68,10 +68,10 @@ export default function Section2() {
             success and gives you peace of mind as you embark on your study
             abroad journey.
           </Typography>
-          <Typography
-            component={"div"}
+          <Box
             mt={{
               xs: 5,
+              sm: 6,
               md: 7,
             }}
             sx={{
@@ -82,7 +82,7 @@ export default function Section2() {
               <Button
                 sx={{
                   py: 3,
-                  px: 6,
+                  px: { xs: 3, sm: 4, md: 6 },
                 }}
                 variant="contained"
                 size="large">
@@ -93,14 +93,14 @@ export default function Section2() {
               <Button
                 sx={{
                   py: 3,
-                  px: 6,
+                  px: { xs: 3, sm: 4, md: 6 },
                 }}
                 variant="contained"
                 size="large">
                 Learn More
               </Button>
             </Link>
-          </Typography>
+          </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>

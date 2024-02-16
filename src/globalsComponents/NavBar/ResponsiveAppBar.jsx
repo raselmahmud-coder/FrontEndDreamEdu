@@ -77,7 +77,7 @@ function ResponsiveAppBar() {
               // backgroundColor: isDarkMode ? "#000" : "#f9f9f9",
             }
           }>
-          {newsTicker.length > 1 && <NewsTicker news={newsTicker} />}
+          {newsTicker.length > 0 && <NewsTicker news={newsTicker} />}
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <ImageList

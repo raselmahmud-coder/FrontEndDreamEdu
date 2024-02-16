@@ -10,7 +10,7 @@ const SuccessStoryPage = () => {
       <Container
         maxWidth="xl"
         sx={{
-          pt: 9,
+          mt: { xs: 12, md: 10 },
         }}>
         <SSComp />
       </Container>

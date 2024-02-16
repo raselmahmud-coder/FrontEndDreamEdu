@@ -44,7 +44,7 @@ export default function Section1() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  minHeight: "400px",
+                  minHeight: "55vh",
                   transition: "transform 1s",
                   transformStyle: "preserve-3d",
                 }}>

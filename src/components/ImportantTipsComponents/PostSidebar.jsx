@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSidebarPosts } from "../../redux/feature/ContentfulLib/contentfulSlice";
 import ErrorShow from "../../globalsComponents/ErrorShow";
+import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 
 const PostSidebar = ({ postId }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -82,7 +84,7 @@ const PostSidebar = ({ postId }) => {
           onClick={() => navigate(`/study-in-china/${slug}`)}
           key={slug}
           sx={{
-            display: "flex",
+            display: { xs: "grid", md: "flex" },
             justifyContent: "space-between",
             alignItems: "center",
             p: 2,
@@ -92,7 +94,7 @@ const PostSidebar = ({ postId }) => {
               cursor: "pointer",
             },
           }}>
-          <Grid item xs={4} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <CardMedia
               component="img"
               alt={coverImage.fields.title}
@@ -104,12 +106,14 @@ const PostSidebar = ({ postId }) => {
               image={coverImage.fields.file.url}
             />
           </Grid>
-          <Grid item xs={8} sm={6} md={8}>
+          <Grid item xs={12} sm={6} md={8}>
             <CardContent
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}>
+              sx={
+                {
+                  // display: "flex",
+                  // flexDirection: "column",
+                }
+              }>
               <Typography variant="subtitle1">{postTitle}</Typography>
               <Typography variant="body2">{excerpt}</Typography>
               <Button
@@ -135,14 +139,9 @@ const PostSidebar = ({ postId }) => {
   }
   return (
     <>
-      <Typography
-        variant="h3"
-        sx={{
-          textAlign: "center",
-          my: 3,
-        }}>
-        Recent Post
-      </Typography>
+      <HeadingH2
+        headingH2Text={"Recent Posts"}
+      />
       <Card>{content}</Card>
     </>
   );
