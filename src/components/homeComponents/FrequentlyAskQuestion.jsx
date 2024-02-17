@@ -66,7 +66,7 @@ export default function FrequentlyAskQuestion() {
                 fontWeight: "bold",
                 color: "inherit",
                 "&:hover": {
-                  color: "tertiaryRed.main",
+                  color: "redCustom.main",
                 },
               }}
               href="https://facebook.com/DreamEduChina"
@@ -81,7 +81,7 @@ export default function FrequentlyAskQuestion() {
                 fontWeight: "bold",
                 color: "inherit",
                 "&:hover": {
-                  color: "tertiaryRed.main",
+                  color: "redCustom.main",
                 },
               }}
               href="/free-consultation"
@@ -96,7 +96,7 @@ export default function FrequentlyAskQuestion() {
                 fontWeight: "bold",
                 color: "inherit",
                 "&:hover": {
-                  color: "tertiaryRed.main",
+                  color: "redCustom.main",
                 },
               }}
               href="tel:+8801760680960">
@@ -109,7 +109,7 @@ export default function FrequentlyAskQuestion() {
                 fontWeight: "bold",
                 color: "inherit",
                 "&:hover": {
-                  color: "tertiaryRed.main",
+                  color: "redCustom.main",
                 },
               }}
               href="tel:+8619150064373"
@@ -124,7 +124,7 @@ export default function FrequentlyAskQuestion() {
                 fontWeight: "bold",
                 color: "inherit",
                 "&:hover": {
-                  color: "tertiaryRed.main",
+                  color: "redCustom.main",
                 },
               }}
               href="https://api.whatsapp.com/send/?phone=8619150064373&text&type=phone_number&app_absent=0"

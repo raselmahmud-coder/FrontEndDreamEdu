@@ -81,7 +81,7 @@ const PostSidebar = ({ postId }) => {
         sidebarPosts.fields || {};
       return (
         <Box
-          onClick={() => navigate(`/study-in-china/${slug}`)}
+          onClick={() => navigate(`/study-abroad/${slug}`)}
           key={slug}
           sx={{
             display: { xs: "grid", md: "flex" },
@@ -120,7 +120,7 @@ const PostSidebar = ({ postId }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  navigate(`/study-in-china/category/${categories.sys.id}`);
+                  navigate(`/study-abroad/category/${categories.sys.id}`);
                 }}
                 sx={{
                   mt: 1,

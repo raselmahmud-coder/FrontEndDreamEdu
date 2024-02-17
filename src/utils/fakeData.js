@@ -133,7 +133,7 @@ export const socialContact = [
 export const footerMenus = [
   {
     id: 1,
-    footerName: "Dream Edu Consultancy",
+    footerName: "DreamEdu Consultancy",
     item1: { name: dreamEduLogo, link: "/" },
   },
   {

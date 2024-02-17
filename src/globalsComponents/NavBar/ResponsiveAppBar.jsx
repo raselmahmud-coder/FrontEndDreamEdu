@@ -12,7 +12,10 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { GetFilterSpaceNLowerCase } from "../../utils/FilterSpaceNCapital";
+import {
+  GetFilterSpaceNLowerCase,
+  getNoSpaceNLowerCase,
+} from "../../utils/FilterSpaceNCapital";
 import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -23,16 +26,21 @@ import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setModeChange } from "../../redux/feature/userColorMode/userColorModeSlice";
 import { useGetNewsTickerUniversityQuery } from "../../redux/feature/Universities/universitiesAPI";
+import SubMenus from "./SubMenus";
 
 const pages = [
   "Home",
-  "Study in China",
+  "Study Abroad",
+  "Test Preparation",
+  "Our Services",
   "Apply Now",
   "Success Story",
   "About Us",
   "Free Consultation",
 ];
-
+const subPages = {
+  studyabroad: ["Menu1", "Menu two", "Menu Three"],
+};
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger();
   return (
@@ -71,12 +79,7 @@ function ResponsiveAppBar() {
   return (
     <>
       <HideOnScroll>
-        <AppBar
-          sx={
-            {
-              // backgroundColor: isDarkMode ? "#000" : "#f9f9f9",
-            }
-          }>
+        <AppBar>
           {newsTicker.length > 0 && <NewsTicker news={newsTicker} />}
           <Container maxWidth="xl">
             <Toolbar disableGutters>
@@ -199,32 +202,41 @@ function ResponsiveAppBar() {
                   justifyContent: "end",
                 }}>
                 {pages.map((page) => (
-                  <NavLink
-                    onClick={handleCloseNavMenu}
-                    className={({ isActive }) =>
-                      isActive
-                        ? isDarkMode
-                          ? "activeDark"
-                          : "activeLight"
-                        : ""
+                  <>
+                    <NavLink
+                      onClick={handleCloseNavMenu}
+                      className={({ isActive }) =>
+                        isActive
+                          ? isDarkMode
+                            ? "activeDark"
+                            : "activeLight"
+                          : ""
+                      }
+                      style={{
+                        color: isDarkMode ? "#fff" : "#000",
+                        textDecoration: "none",
+                        padding: "8px",
+                        borderRadius: "50% 20% / 10% 40%",
+                        margin: "0px 8px",
+                        display: "block",
+                        fontSize: "1.2rem",
+                      }}
+                      key={page}
+                      to={`/${
+                        GetFilterSpaceNLowerCase(page) == "home"
+                          ? ""
+                          : GetFilterSpaceNLowerCase(page)
+                      }`}>
+                      {page}
+                    </NavLink>
+                    {
+                      // console.log(GetNoSpaceNLowerCase(page, subPages))
+                      // getNoSpaceNLowerCase(page, subPages)
+                      subPages[getNoSpaceNLowerCase(page)] && (
+                        <SubMenus page={page} subPages={subPages[getNoSpaceNLowerCase(page)]} />
+                      )
                     }
-                    style={{
-                      color: isDarkMode ? "#fff" : "#000",
-                      textDecoration: "none",
-                      padding: "8px",
-                      borderRadius: "50% 20% / 10% 40%",
-                      margin: "0px 8px",
-                      display: "block",
-                      fontSize: "1.2rem",
-                    }}
-                    key={page}
-                    to={`/${
-                      GetFilterSpaceNLowerCase(page) == "home"
-                        ? ""
-                        : GetFilterSpaceNLowerCase(page)
-                    }`}>
-                    {page}
-                  </NavLink>
+                  </>
                 ))}
                 <IconButton
                   onClick={() =>

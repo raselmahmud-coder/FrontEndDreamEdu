@@ -11,7 +11,7 @@ const options = {
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (_, children) => (
-      <Typography variant="body1">{children}</Typography>
+      <Typography variant="body1" sx={{lineHeight:2}}>{children}</Typography>
     ),
     [BLOCKS.HEADING_2]: (_, children) => (
       <Typography sx={{ my: 4 }} variant="h3">
@@ -97,7 +97,9 @@ const options = {
 };
 
 const RichText = ({ content }) => {
-  return <Box>{documentToReactComponents(content, options)}</Box>;
+  return (
+    <Box >{documentToReactComponents(content, options)}</Box>
+  );
 };
 
 export default RichText;

@@ -73,7 +73,7 @@ export default function Section1() {
                         border: 1,
                         borderStyle: "solid",
                         borderColor: isDarkMode
-                          ? "tertiaryRed.main"
+                          ? "redCustom.main"
                           : "accent.main",
                         borderRadius: "15px",
                         height: 85,
@@ -120,7 +120,7 @@ export default function Section1() {
                         border: 1,
                         borderStyle: "solid",
                         borderColor: isDarkMode
-                          ? "tertiaryRed.main"
+                          ? "redCustom.main"
                           : "accent.main",
                         borderRadius: "15px",
                         height: 85,

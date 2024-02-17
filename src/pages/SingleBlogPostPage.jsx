@@ -97,7 +97,7 @@ const SingleBlogPostPage = () => {
   } else if (status === "failed") {
     content = <ErrorShow errorData={error.toString()} />;
   } else if (status === "succeeded") {
-    content = <SingleBlogPost blog={posts?.total && posts?.items[0]?.fields} />;
+    content = <SingleBlogPost blog={posts?.total > 0 && posts?.items[0]?.fields} />;
   }
   return (
     <>

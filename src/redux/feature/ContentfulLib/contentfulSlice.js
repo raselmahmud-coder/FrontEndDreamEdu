@@ -9,7 +9,7 @@ const client = contentful.createClient({
 export const fetchPosts = createAsyncThunk(
   "contentful/fetchPosts",
   async ({ slug, categoryId, page = 1, limit = 10 } = {}) => {
-    console.log(categoryId, "from contentfulSlice");
+    // console.log(categoryId, "from contentfulSlice");
     let params = {
       content_type: "blogs",
       "fields.slug": slug || "",

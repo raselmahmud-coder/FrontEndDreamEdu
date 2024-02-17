@@ -43,7 +43,7 @@ const AboutUsSection3 = () => {
                     borderRadius: "25px",
                     p:1,
                     fontSize: "4rem",
-                    color: isDarkMode ? "primary.main" : "tertiaryRed.main",
+                    color: isDarkMode ? "primary.main" : "redCustom.main",
                     transition: "color 0.3s",
                     "&:hover": {
                       color: "deepGray.main",

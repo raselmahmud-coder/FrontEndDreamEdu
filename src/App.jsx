@@ -35,10 +35,10 @@ const App = () => {
         main: 'rgb(208 208 208)',
       },
       secondary: {
-        main: '#25D366',
+        main: '#9E0105',
       },
-      tertiaryRed: {
-        main: '#cc0000',
+      redCustom: {
+        main: '#9E0105',
       },
       accent: {
         main: '#004808',
@@ -68,12 +68,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/study-in-china" element={<ImportantTipsPage />} />
+            <Route path="/study-abroad" element={<ImportantTipsPage />} />
             <Route
-              path="/study-in-china/:id"
+              path="/study-abroad/:id"
               element={<SingleBlogPostPage />}
             />
-            <Route path="/study-in-china/category/:categoryId" element={<ImportantTipsPage />} />
+            <Route path="/study-abroad/category/:categoryId" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
             <Route
               path="/free-consultation"

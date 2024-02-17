@@ -57,8 +57,6 @@ const ContactUs = () => {
   return (
     <>
       <HeadingH2 headingH2Text={"Contact Us"} headingH2Icon={RingVolumeIcon} />
-      
-
       {consultationData?.id && isSuccess && (
         <PositionedSnackbar isOpen={true} />
       )}

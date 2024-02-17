@@ -4,3 +4,9 @@ export function GetFilterSpaceNLowerCase(getWords) {
     return afterFilter;
   }
 }
+export function getNoSpaceNLowerCase(getWords) {
+  if (getWords) {
+    const afterFilter = getWords.toLowerCase().replace(/\s/g, "");
+    return afterFilter;
+  }
+}
