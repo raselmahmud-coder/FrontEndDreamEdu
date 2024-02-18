@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 import HoverMenu from "material-ui-popup-state/HoverMenu";
 import MenuItem from "@mui/material/MenuItem";
 import ChevronRight from "@mui/icons-material/ChevronRight";
-import Button from "@mui/material/Button";
+import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import {
   usePopupState,
   bindHover,
@@ -12,6 +12,7 @@ import {
 } from "material-ui-popup-state/hooks";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getNoSpaceNLowerCase } from "../../utils/FilterSpaceNCapital";
 
 const useCascadingMenuStyles = makeStyles((theme) => ({
   submenu: {
@@ -92,6 +93,67 @@ const SubMenus = ({ page, subPages }) => {
     popupId: "demoMenu",
     variant: "popover",
   });
+  const subMenu1 = {
+    studyinchina: ["Visa Process", "Scholarship"],
+  };
+  const subMenu2 = {
+    visaprocess: ["X1 Visa Process", "X2 Visa Process"],
+    scholarship: [
+      "CSC Scholarship",
+      "Provincial Scholarship",
+      "Belt and Road Scholarship",
+      "The ANSO Scholarship",
+      "Sister City Scholarship",
+      "Municipal Scholarship",
+      "University Scholarship",
+    ],
+  };
+  const subMenu2Links = {
+    x1visaprocess: [
+      `${window.location.origin}/blogs/x1-visa-processing-for-china`,
+    ],
+    x2visaprocess: [
+      `${window.location.origin}/blogs/x1-visa-processing-for-china`,
+    ],
+    cscscholarship: [
+      `${window.location.origin}/blogs/csc-scholarship-for-all-international-student`,
+    ],
+    provincialscholarship: [
+      `${window.location.origin}/blogs/provincial-scholarship`,
+    ],
+    beltandroadscholarship: [
+      `${window.location.origin}/blogs/belt-and-road-scholarship`,
+    ],
+    theansoscholarship: [
+      `${window.location.origin}/blogs/the-anso-scholarship`,
+    ],
+    sistercityscholarship: [
+      `${window.location.origin}/blogs/sister-city-scholarship`,
+    ],
+    municipalscholarship: [
+      `${window.location.origin}/blogs/municipal-scholarship`,
+    ],
+    universityscholarship: [
+      `${window.location.origin}/blogs/university-scholarship`,
+    ],
+  };
+  const subPageLinks = {
+    hskpreparation: [`/blogs/hsk-preparation`],
+    ieltspreparation: [`/blogs/ielts-preparation`],
+    toeflpreparation: [`/blogs/toefl-preparation`],
+    scholarshipassistance: [`/blogs/scholarship-assistance`],
+    studentscreening: [`/blogs/student-screening`],
+    documentationguidance: [`/blogs/documentation-guidance`],
+    interviewassistance: [`/blogs/interview-assistance`],
+    universityapplicationassistance: [
+      `/blogs/university-application-assistance`,
+    ],
+    studentvisaprocess: [`/blogs/student-visa-process`],
+    offerletterconfirmation: [`/blogs/offer-letter-confirmation`],
+    predeparturebriefing: [`/blogs/pre-departure-briefing`],
+    visalodgement: [`/blogs/visa-lodgement`],
+    counseling: [`/blogs/counseling`],
+  };
   return (
     <>
       <NavLink
@@ -103,38 +165,61 @@ const SubMenus = ({ page, subPages }) => {
           padding: "8px",
           borderRadius: "50% 20% / 10% 40%",
           margin: "0px 8px",
-          display: "block",
+          display: "flex",
           fontSize: "1.2rem",
         }}
         {...(true ? bindHover(popupState) : {})}
         {...(true ? bindFocus(popupState) : {})}>
-        {page}⬇️
+        {page}
+        <ArrowDropDownCircleIcon sx={{ ml: 0.6 }} />
       </NavLink>
       <CascadingMenu
         popupState={popupState}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "left" }}>
-        {subPages.map((item) => (
-          <CascadingMenuItem key={item}>{item}</CascadingMenuItem>
-        ))}
-        <CascadingSubmenu
-          popupId="moreChoicesCascadingMenu"
-          title="More Choices">
-          <CascadingMenuItem>Cheesecake</CascadingMenuItem>
-          <CascadingMenuItem>Cheesedeath</CascadingMenuItem>
-          <CascadingSubmenu
-            popupId="evenMoreChoicesCascadingMenu"
-            title="Even More Choices">
-            <CascadingMenuItem>Cake (the band)</CascadingMenuItem>
-            <CascadingMenuItem>Death Metal</CascadingMenuItem>
-          </CascadingSubmenu>
-          <CascadingSubmenu
-            popupId="moreBenignChoices"
-            title="More Benign Choices">
-            <CascadingMenuItem>Salad</CascadingMenuItem>
-            <CascadingMenuItem>Lobotomy</CascadingMenuItem>
-          </CascadingSubmenu>
-        </CascadingSubmenu>
+        {subPages.map(
+          (eachSubP) =>
+            subMenu1[getNoSpaceNLowerCase(eachSubP)] && (
+              <CascadingSubmenu
+                key={eachSubP}
+                popupId="moreChoicesCascadingMenu"
+                title={eachSubP}>
+                {subMenu1[getNoSpaceNLowerCase(eachSubP)].map((eachMenu1) => (
+                  <CascadingSubmenu
+                    key={eachMenu1}
+                    popupId="evenMoreChoicesCascadingMenu"
+                    title={eachMenu1}>
+                    {subMenu2[getNoSpaceNLowerCase(eachMenu1)] &&
+                      subMenu2[getNoSpaceNLowerCase(eachMenu1)].map(
+                        (eachMenu2) => (
+                          <CascadingMenuItem
+                            key={eachMenu2}
+                            component="a"
+                            target="_blank"
+                            href={
+                              subMenu2Links[getNoSpaceNLowerCase(eachMenu2)]
+                            }>
+                            {eachMenu2}
+                          </CascadingMenuItem>
+                        ),
+                      )}
+                  </CascadingSubmenu>
+                ))}
+              </CascadingSubmenu>
+            ),
+        )}
+        {subPages.map(
+          (item) =>
+            !subMenu1[getNoSpaceNLowerCase(item)] && (
+              <CascadingMenuItem
+                component="a"
+                target="_blank"
+                href={subPageLinks[getNoSpaceNLowerCase(item)]}
+                key={item}>
+                {item}
+              </CascadingMenuItem>
+            ),
+        )}
       </CascadingMenu>
     </>
   );

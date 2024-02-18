@@ -46,7 +46,7 @@ const Section7 = () => {
               justifyContent: "center",
               marginTop: 34,
             }}>
-            <Link to="/free-consultation">
+            <Link to="/contact-us">
               <Button
                 variant="contained"
                 sx={{

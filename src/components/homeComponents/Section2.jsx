@@ -89,7 +89,7 @@ export default function Section2() {
                 Apply Now
               </Button>
             </Link>
-            <Link to={"/study-abroad"}>
+            <Link to={"/blogs"}>
               <Button
                 sx={{
                   py: 3,

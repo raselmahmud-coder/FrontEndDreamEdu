@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { styled } from "@mui/system";
 import whatsapp from "../../assets/Icon/whatsapp.svg";
 import messenger from "../../assets/Icon/messenger.svg";
-import phoneIcon from "../../assets/Icon/phone-call.png";
+import phoneIcon from "../../assets/Icon/phone-call.svg";
 import HoverNAnimation from "../HoverNAnimation/HoverNAnimation";
 
 export default function NewsTicker({ news }) {
@@ -110,7 +110,7 @@ export default function NewsTicker({ news }) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              <img style={{ width: 30, height: 30, }} src={phoneIcon} />
+              <img style={{ width: 30, height: 30,}} src={phoneIcon} />
               <Typography
                 component="a"
                 href="tel:+8619150064373"

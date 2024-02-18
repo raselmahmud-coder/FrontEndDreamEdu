@@ -252,8 +252,8 @@ const Footer = () => {
             mb: 1,
             textAlign: "center",
           }}>
-          © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights
-          reserved. Powered by{" "}
+         Since © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights
+          reserved. Designed & Developed by{" "}
           <a
             style={{ color: "inherit" }}
             href="https://github.com/raselmahmud-coder"

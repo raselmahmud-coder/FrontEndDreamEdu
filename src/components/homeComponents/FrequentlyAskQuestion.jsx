@@ -84,7 +84,7 @@ export default function FrequentlyAskQuestion() {
                   color: "redCustom.main",
                 },
               }}
-              href="/free-consultation"
+              href="/contact-us"
               target="_blank"
               rel="noopener noreferrer">
               {" "}

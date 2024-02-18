@@ -32,14 +32,40 @@ const pages = [
   "Home",
   "Study Abroad",
   "Test Preparation",
-  "Our Services",
+  "Services",
   "Apply Now",
+  "Blogs",
   "Success Story",
   "About Us",
-  "Free Consultation",
+  "Contact Us",
 ];
 const subPages = {
-  studyabroad: ["Menu1", "Menu two", "Menu Three"],
+  studyabroad: [
+    "Study in China",
+    "Study in Italy",
+    "Study in UK",
+    "Study in USA",
+    "Study in Canada",
+    "Study in Australia",
+    "Study in New Zealand",
+  ],
+  testpreparation: [
+    "HSK Preparation",
+    "IELTS Preparation",
+    "TOEFL Preparation",
+  ],
+  services: [
+    "Scholarship Assistance",
+    "Student Screening",
+    "Documentation Guidance",
+    "Interview Assistance",
+    "University Application Assistance",
+    "Student Visa Process",
+    "Offer Letter Confirmation",
+    "Pre Departure Briefing",
+    "VISA Lodgement",
+    "Counseling",
+  ],
 };
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger();
@@ -71,7 +97,7 @@ function ResponsiveAppBar() {
   };
   React.useEffect(() => {
     if (getNewUniversities?.NewUniversityAdmission) {
-      getNewUniversities.NewUniversityAdmission.map((university) =>
+      getNewUniversities.NewUniversityAdmission.forEach((university) =>
         setNewsTicker((prevNewsTicker) => [...prevNewsTicker, university]),
       );
     }
@@ -135,8 +161,9 @@ function ResponsiveAppBar() {
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}>
-                  {pages.map((page) => (
+                  {pages.map((page, index) => (
                     <NavLink
+                      key={index}
                       onClick={handleCloseNavMenu}
                       className={({ isActive }) =>
                         isActive
@@ -154,7 +181,6 @@ function ResponsiveAppBar() {
                         display: "block",
                         fontSize: "1.2rem",
                       }}
-                      key={page}
                       to={`/${
                         GetFilterSpaceNLowerCase(page) == "home"
                           ? ""
@@ -201,42 +227,42 @@ function ResponsiveAppBar() {
                   display: { xs: "none", md: "flex" },
                   justifyContent: "end",
                 }}>
-                {pages.map((page) => (
-                  <>
-                    <NavLink
-                      onClick={handleCloseNavMenu}
-                      className={({ isActive }) =>
-                        isActive
-                          ? isDarkMode
-                            ? "activeDark"
-                            : "activeLight"
-                          : ""
-                      }
-                      style={{
-                        color: isDarkMode ? "#fff" : "#000",
-                        textDecoration: "none",
-                        padding: "8px",
-                        borderRadius: "50% 20% / 10% 40%",
-                        margin: "0px 8px",
-                        display: "block",
-                        fontSize: "1.2rem",
-                      }}
-                      key={page}
-                      to={`/${
-                        GetFilterSpaceNLowerCase(page) == "home"
-                          ? ""
-                          : GetFilterSpaceNLowerCase(page)
-                      }`}>
-                      {page}
-                    </NavLink>
-                    {
-                      // console.log(GetNoSpaceNLowerCase(page, subPages))
-                      // getNoSpaceNLowerCase(page, subPages)
-                      subPages[getNoSpaceNLowerCase(page)] && (
-                        <SubMenus page={page} subPages={subPages[getNoSpaceNLowerCase(page)]} />
-                      )
-                    }
-                  </>
+                {pages.map((page, index1) => (
+                  <React.Fragment key={index1}>
+                    {!subPages[getNoSpaceNLowerCase(page)] && (
+                      <NavLink
+                        onClick={handleCloseNavMenu}
+                        className={({ isActive }) =>
+                          isActive
+                            ? isDarkMode
+                              ? "activeDark"
+                              : "activeLight"
+                            : ""
+                        }
+                        style={{
+                          color: isDarkMode ? "#fff" : "#000",
+                          textDecoration: "none",
+                          padding: "8px",
+                          borderRadius: "50% 20% / 10% 40%",
+                          margin: "0px 8px",
+                          display: "block",
+                          fontSize: "1.2rem",
+                        }}
+                        to={`/${
+                          GetFilterSpaceNLowerCase(page) == "home"
+                            ? ""
+                            : GetFilterSpaceNLowerCase(page)
+                        }`}>
+                        {page}
+                      </NavLink>
+                    )}
+                    {subPages[getNoSpaceNLowerCase(page)] && (
+                      <SubMenus
+                        page={page}
+                        subPages={subPages[getNoSpaceNLowerCase(page)]}
+                      />
+                    )}
+                  </React.Fragment>
                 ))}
                 <IconButton
                   onClick={() =>

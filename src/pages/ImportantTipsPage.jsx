@@ -135,7 +135,7 @@ const ImportantTipsPage = () => {
                   />
                 ))}
               </SpeedDial>
-              <Link to={`/study-abroad/${slug}`}>
+              <Link to={`/blogs/${slug}`}>
                 <Button
                   sx={{
                     bgcolor: isDarkMode ? "accent.main" : "primary.main",

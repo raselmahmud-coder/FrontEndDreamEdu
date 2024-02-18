@@ -68,15 +68,15 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/study-abroad" element={<ImportantTipsPage />} />
+            <Route path="/blogs" element={<ImportantTipsPage />} />
             <Route
-              path="/study-abroad/:id"
+              path="/blogs/:id"
               element={<SingleBlogPostPage />}
             />
-            <Route path="/study-abroad/category/:categoryId" element={<ImportantTipsPage />} />
+            <Route path="/blogs/category/:categoryId" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
             <Route
-              path="/free-consultation"
+              path="/contact-us"
               element={<FreeConsultationPage />}
             />
             <Route

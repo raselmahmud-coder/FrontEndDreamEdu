@@ -2,5 +2,6 @@
   background-color: #004808;
 }
 .activeLight {
-  background-color: #d7132d;
+  color: #ffffff !important;
+  background-color: #9e0105;
 }
