@@ -16,7 +16,7 @@ import styled from "@emotion/styled";
 import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import { useSelector } from "react-redux";
-import VerifiedIcon from "@mui/icons-material/Verified";
+import feedbacksIcon from "../../assets/Icon/feedback.svg";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -50,7 +50,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const labels = {
   1: "Useless+",
   2: "Poor",
-  3: "Ok+",
+  3: "Okay+",
   4: "Good+",
   5: "Excellent+",
 };
@@ -230,7 +230,23 @@ const SSComp = () => {
 
   return (
     <>
-      <HeadingH2 headingH2Text={"Our Success Story"} headingH2Icon={VerifiedIcon}/>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mb: 4,
+        }}>
+        <img
+          src={feedbacksIcon}
+          style={{
+            // width: "245px",
+            height: "235px",
+          }}
+          alt="icon"
+        />
+        <HeadingH2 headingH2Text={"Our Success Story"} />
+      </Box>
       {content}
       <Box
         sx={{

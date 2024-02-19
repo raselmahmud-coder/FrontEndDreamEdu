@@ -23,9 +23,10 @@ import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/Student
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AutoModeIcon from "@mui/icons-material/AutoMode";
+import AutoModeIcon from "../../assets/Icon/feedback.svg";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -72,10 +73,25 @@ export default function StudentFeedbacks() {
   }
   return (
     <>
-      <HeadingH2
-        headingH2Text={"Our Student Feedbacks"}
-        headingH2Icon={AutoModeIcon}
-      />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <img
+          src={AutoModeIcon}
+          style={{
+            // width: "245px",
+            height: "235px",
+          }}
+          alt="icon"
+        />
+        <HeadingH2
+          headingH2Text={"Our Student Feedbacks"}
+          // headingH2Icon={AutoModeIcon}
+        />
+      </Box>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -271,17 +287,27 @@ export default function StudentFeedbacks() {
           display: "flex",
           justifyContent: "center",
         }}>
-        <Link to="/success-story">
-          <Button
-            sx={{
-              py: 3,
-              px: 6,
-            }}
-            variant="contained"
-            size="large">
-            See More
-            <OpenInNewIcon sx={{ fontSize: 25 }} />
-          </Button>
+        <Link to={"/success-story"}>
+          <HoverNAnimation>
+            <Button
+              sx={{
+                fontSize: { xs: 14, sm: 25, md: 35 },
+                borderRadius: 15,
+                py: 3,
+                px: { xs: 3, sm: 4, md: 5 },
+                bgcolor: isDarkMode ? "deepGray.main" : "black.main",
+                color: "whiteCustom.main",
+                transition: "all 0.6s",
+                "&:hover": {
+                  bgcolor: "accent.main",
+                },
+              }}
+              variant="contained"
+              size="large">
+              View More{" "}
+              <OpenInNewIcon sx={{ fontSize: { xs: 14, sm: 25, md: 35 } }} />
+            </Button>
+          </HoverNAnimation>
         </Link>
       </Box>
     </>

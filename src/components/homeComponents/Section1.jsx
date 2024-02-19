@@ -7,8 +7,8 @@ import { Box, CardActionArea } from "@mui/material";
 import { serviceOfferData } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
+import goAbroadIcon from "../../assets/Icon/go-abroad.svg"
 
 export default function Section1() {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -17,7 +17,7 @@ export default function Section1() {
       <Box sx={{ mb: 8 }} component="section">
         <HeadingH2
           headingH2Text={"Go Abroad With DreamEdu"}
-          // headingH2Icon={AirplaneTicketIcon}
+          // headingH2Icon={goAbroadIcon}
           marginTop={{ xs: -2, sm: -6, md: -8 }}
         />
         <Grid container spacing={4}>
@@ -45,7 +45,7 @@ export default function Section1() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  minHeight: {xs: "500px", sm: "480px", md:"460px"},
+                  minHeight: {xs: "500px", sm: "490px", md:"480px"},
                   transition: "transform 1s",
                   transformStyle: "preserve-3d",
                 }}>
@@ -53,7 +53,8 @@ export default function Section1() {
                 <Card
                   variant="elevation"
                   sx={{
-                    bgcolor: "linkedin.main",
+                    bgcolor: "redCustom.main",
+                    color:"whiteCustom.main",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -70,14 +71,14 @@ export default function Section1() {
                     <img
                       src={img[0]}
                       style={{
-                        border: 1,
+                        border: "3px",
                         borderStyle: "solid",
                         borderColor: isDarkMode
                           ? "redCustom.main"
                           : "accent.main",
                         borderRadius: "15px",
-                        height: 85,
-                        width: 85,
+                        height: 100,
+                        width: 100,
                         padding: "5px",
                         margin: "0 auto",
                         display: "flex",
@@ -100,6 +101,8 @@ export default function Section1() {
                 <Card
                   variant="elevation"
                   sx={{
+                    bgcolor: "redCustom.main",
+                    color:"whiteCustom.main",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -117,14 +120,14 @@ export default function Section1() {
                     <img
                       src={img[1]}
                       style={{
-                        border: 1,
+                        border: "3px",
                         borderStyle: "solid",
                         borderColor: isDarkMode
                           ? "redCustom.main"
                           : "accent.main",
                         borderRadius: "15px",
-                        height: 85,
-                        width: 85,
+                        height: 100,
+                        width: 100,
                         padding: "5px",
                         margin: "0 auto",
                         display: "flex",

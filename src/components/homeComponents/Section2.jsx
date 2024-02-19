@@ -2,19 +2,20 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Button, CardMedia, Typography } from "@mui/material";
-import headerImg from "../../assets/header-img.png";
-import ellipse1 from "../../assets/Ellipse-01.png";
-import planImg from "../../assets/plane.png";
-import ellipse2 from "../../assets/Ellipse-02.png";
+import headerImg from "../../assets/headerImg.svg";
+import planImg from "../../assets/Icon/9.svg";
+import ellipse2 from "../../assets/Icon/8.svg";
 import { Link } from "react-router-dom";
 import SlidingCard from "../../globalsComponents/SlidingCard";
 import { useSelector } from "react-redux";
+import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 export default function Section2() {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, my: { xs: 8, sm: 10, md: 15 } }}>
       <Grid
         container
         sx={{
@@ -28,12 +29,12 @@ export default function Section2() {
             sx={{
               px: { xs: 1, sm: 3, md: 6 },
               py: { xs: 1, sm: 3, md: 4 },
+              mb: { xs: 2, sm: 3, md: 5 },
               display: "inline-block",
-              backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
-              color: isDarkMode ? "whiteCustom.main" : "secondary.main",
-              borderColor: isDarkMode ? "accent.main" : "secondary.main",
+              backgroundColor: isDarkMode ? "deepGray.main" : "redCustom.main",
+              color: isDarkMode ? "whiteCustom.main" : "whiteCustom.main",
               borderRadius: "25% 0 25% 0",
-              border: 1,
+              border: 2,
               boxShadow:
                 "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
             }}
@@ -42,7 +43,6 @@ export default function Section2() {
             SPECIAL OFFER FOR YOU{" "}
             <span
               style={{
-                color: "red",
                 fontSize: "35px",
               }}>
               🎉
@@ -50,12 +50,15 @@ export default function Section2() {
           </Typography>
           <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
             Your{" "}
-            <span
-              style={{
-                color: "red",
+            <Typography
+              variant="h2"
+              component={"span"}
+              sx={{
+                color: "redCustom.main",
+                fontWeight: "bold",
               }}>
               successful
-            </span>{" "}
+            </Typography>{" "}
             journey start with us!
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
@@ -79,26 +82,52 @@ export default function Section2() {
               justifyContent: "space-between",
             }}>
             <Link to={"/apply-now"}>
-              <Button
-                sx={{
-                  py: 3,
-                  px: { xs: 3, sm: 4, md: 6 },
-                }}
-                variant="contained"
-                size="large">
-                Apply Now
-              </Button>
+              <HoverNAnimation isAnimate={true}>
+                <Button
+                  sx={{
+                    fontSize: { xs: 14, sm: 25, md: 35 },
+                    borderRadius: 15,
+                    py: 3,
+                    px: { xs: 3, sm: 4, md: 5 },
+                    bgcolor: "redCustom.main",
+                    color: "whiteCustom.main",
+                    transition: "all 0.6s",
+                    "&:hover": {
+                      bgcolor: "accent.main",
+                    },
+                  }}
+                  variant="contained"
+                  size="large">
+                  Apply Now{" "}
+                  <DoubleArrowIcon
+                    sx={{ fontSize: { xs: 14, sm: 25, md: 35 } }}
+                  />
+                </Button>
+              </HoverNAnimation>
             </Link>
             <Link to={"/blogs"}>
-              <Button
-                sx={{
-                  py: 3,
-                  px: { xs: 3, sm: 4, md: 6 },
-                }}
-                variant="contained"
-                size="large">
-                Learn More
-              </Button>
+              <HoverNAnimation>
+                <Button
+                  sx={{
+                    fontSize: { xs: 14, sm: 25, md: 35 },
+                    borderRadius: 15,
+                    py: 3,
+                    px: { xs: 3, sm: 4, md: 5 },
+                    bgcolor: isDarkMode ? "deepGray.main" : "black.main",
+                    color: "whiteCustom.main",
+                    transition: "all 0.6s",
+                    "&:hover": {
+                      bgcolor: "accent.main",
+                    },
+                  }}
+                  variant="contained"
+                  size="large">
+                  Learn More{" "}
+                  <DoubleArrowIcon
+                    sx={{ fontSize: { xs: 14, sm: 25, md: 35 } }}
+                  />
+                </Button>
+              </HoverNAnimation>
             </Link>
           </Box>
         </Grid>
@@ -110,21 +139,21 @@ export default function Section2() {
               <CardMedia
                 sx={{
                   position: "relative",
-                  top: "-65px",
-                  left: "375px",
-                  maxWidth: "100%",
-                  maxHeight: "120px",
+                  top: { xs: "-10px", md: "-65px" },
+                  left: { xs: "100px", md: "475px" },
+                  maxWidth: "150px",
+                  maxHeight: "150px",
                 }}
                 component="img"
-                alt="green iguana"
+                alt="plan"
                 image={planImg}
               />
               <CardMedia
                 sx={{
-                  // position: "relative",
+                  position: "relative",
                   // top: "-65px",
-                  // left: "375px",
-                  maxWidth: "100%",
+                  left: { xs: "25px" },
+                  maxWidth: "160px",
                   maxHeight: "160px",
                 }}
                 component="img"
@@ -137,7 +166,7 @@ export default function Section2() {
               animationB={"translateY(100%)"}>
               <CardMedia
                 sx={{
-                  maxWidth: "420px",
+                  maxWidth: "440px",
                   right: "0px",
                   position: "relative",
                   // maxHeight: "220px",
