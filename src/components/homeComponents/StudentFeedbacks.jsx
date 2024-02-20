@@ -78,12 +78,14 @@ export default function StudentFeedbacks() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
         }}>
-        <img
+        <Box
+          component="img"
           src={AutoModeIcon}
-          style={{
+          sx={{
             // width: "245px",
-            height: "235px",
+            height: { xs: "100px", sm: "120px", md: "235px" },
           }}
           alt="icon"
         />

@@ -39,6 +39,7 @@ const OfficeAddress = () => {
                     justifyContent: "center",
                   }}>
                   <img
+                    loading="lazy"
                     src={mapIcon}
                     alt=""
                     style={{

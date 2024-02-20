@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
 import ResponsiveAppBar from "./globalsComponents/NavBar/ResponsiveAppBar";
 import {
   ThemeProvider,
@@ -38,7 +38,7 @@ const App = () => {
         main: '#9E0105',
       },
       redCustom: {
-        main: '#9E0105',
+        main: '#Df0707',
       },
       accent: {
         main: '#004808',

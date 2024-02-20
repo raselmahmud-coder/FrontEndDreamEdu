@@ -27,46 +27,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModeChange } from "../../redux/feature/userColorMode/userColorModeSlice";
 import { useGetNewsTickerUniversityQuery } from "../../redux/feature/Universities/universitiesAPI";
 import SubMenus from "./SubMenus";
+import { pages, subPages } from "../../utils/allDropDownMenus";
 
-const pages = [
-  "Home",
-  "Study Abroad",
-  "Test Preparation",
-  "Services",
-  "Apply Now",
-  "Blogs",
-  "Success Story",
-  "About Us",
-  "Contact Us",
-];
-const subPages = {
-  studyabroad: [
-    "Study in China",
-    "Study in Italy",
-    "Study in UK",
-    "Study in USA",
-    "Study in Canada",
-    "Study in Australia",
-    "Study in New Zealand",
-  ],
-  testpreparation: [
-    "HSK Preparation",
-    "IELTS Preparation",
-    "TOEFL Preparation",
-  ],
-  services: [
-    "Scholarship Assistance",
-    "Student Screening",
-    "Documentation Guidance",
-    "Interview Assistance",
-    "University Application Assistance",
-    "Student Visa Process",
-    "Offer Letter Confirmation",
-    "Pre Departure Briefing",
-    "VISA Lodgement",
-    "Counseling",
-  ],
-};
+
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger();
   return (

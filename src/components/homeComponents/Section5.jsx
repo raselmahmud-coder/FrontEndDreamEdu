@@ -7,27 +7,41 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import AutoModeIcon from "@mui/icons-material/AutoMode";
-import gridImg from "../../assets/front img.jpg";
-import { AvTimer, Diversity3, School } from "@mui/icons-material";
+import { Diversity3 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import AnimatedNumber from "../../globalsComponents/AnimatedNumber";
 import SlidingCard from "../../globalsComponents/SlidingCard";
 import { useSelector } from "react-redux";
 import ForwardIcon from "@mui/icons-material/Forward";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import CreditScoreIcon from "@mui/icons-material/CreditScore";
+import { coreStrength } from "../../utils/fakeData";
+import skillsIcon from "../../assets/Icon/getAdmission.svg";
+import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
 
 const Section5 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
     <>
-      <SlidingCard animationA={"translateY(0)"} animationB={"translateY(100%)"}>
-        <HeadingH2
-          headingH2Text={"Core Strength"}
-          headingH2Icon={CreditScoreIcon}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <img
+          src={skillsIcon}
+          loading="lazy"
+          alt="skill"
+          style={{
+            width: "150px",
+            height: "150px",
+          }}
         />
-      </SlidingCard>
+        <HeadingH2
+          headingH2Text={"DreamEdu's Core Strengths"}
+          // headingH2Icon={CreditScoreIcon}
+        />
+      </Box>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -35,162 +49,90 @@ const Section5 = () => {
         sx={{
           alignItems: "center",
         }}>
-        <Grid item xs={12} sm={6} md={6}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}>
-            <Card
-              variant="outlined"
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "0 0 0 5px",
-                borderColor: "#764AF1",
-                borderRadius: "20px",
-              }}>
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                  }}>
-                  <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={5} />+
-                  </Typography>
-                  <AutoModeIcon
+        {coreStrength.length > 0 &&
+          coreStrength.map(({ id, animateNumber, icon, title }) => (
+            <Grid item xs={12} sm={6} md={6} key={id}>
+              <Card
+                variant="outlined"
+                sx={{
+                  borderStyle: "solid",
+                  borderWidth: "0 5px 0 5px",
+                  borderColor:
+                    (id === 1 && "#004aff") ||
+                    (id === 2 && "#ffaa00") ||
+                    (id === 3 && "#00784e") ||
+                    (id === 4 && "#764AF1"),
+                  bgcolor:
+                    (id === 1 && "#a5bfff") ||
+                    (id === 2 && "#fff0d1") ||
+                    (id === 3 && "#d3fff0") ||
+                    (id === 4 && "#e8dfff"),
+                  borderRadius: "20px",
+                }}>
+                <CardContent>
+                  <Box
                     sx={{
-                      fontSize: "4rem",
-                    }}
-                  />
-                </Box>
-                <Typography variant="h4" gutterBottom>
-                  Years of Experience
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card
-              variant="outlined"
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "0 0 0 5px",
-                borderColor: "#FFC44E",
-                borderRadius: "20px",
-              }}>
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                  }}>
-                  <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={5076} />+
-                  </Typography>
-                  <AvTimer
+                      display: "flex",
+                      justifyContent: "center",
+                    }}>
+                    <Box
+                      component="img"
+                      loading="lazy"
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        // ml:12
+                      }}
+                      src={icon}
+                    />
+                  </Box>
+                  <Typography
+                    variant="h3"
                     sx={{
-                      fontSize: "4rem",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      my: 4,
                     }}
-                  />
-                </Box>
-                <Typography variant="h4" gutterBottom>
-                  Visa Approved
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              mt: 5,
-            }}>
-            <Card
-              variant="outlined"
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "0 0 0 5px",
-                borderColor: "#e9ecf0",
-                borderRadius: "20px",
-              }}>
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                  }}>
-                  <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={5126} />+
+                    gutterBottom>
+                    <AnimatedNumber value={animateNumber} />+ {title}
                   </Typography>
-                  <Diversity3
-                    sx={{
-                      fontSize: "4rem",
-                    }}
-                  />
-                </Box>
-                <Typography variant="h4" gutterBottom>
-                  Get Admission
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card
-              variant="outlined"
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "0 0 0 5px",
-                borderColor: "#3c5b50",
-                borderRadius: "20px",
-              }}>
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                  }}>
-                  <Typography variant="h3" gutterBottom>
-                    <AnimatedNumber value={4586} />+
-                  </Typography>
-                  <School
-                    sx={{
-                      fontSize: "4rem",
-                    }}
-                  />
-                </Box>
-                <Typography variant="h4" gutterBottom>
-                  Get Scholarship
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 34,
-            }}>
-            <Link to="/contact-us">
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            my: { xs: 5, sm: 9, md: 14 },
+          }}>
+          <Link to="/contact-us">
+            <HoverNAnimation isAnimate={true}>
               <Button
                 variant="contained"
                 sx={{
+                  fontSize: { xs: 14, sm: 25, md: 35 },
+                  borderRadius: 15,
                   py: 3,
-                  px: 5,
-                  borderRadius: "50px",
+                  px: { xs: 3, sm: 4, md: 5 },
+                  bgcolor: "redCustom.main",
+                  color: "whiteCustom.main",
+                  transition: "all 0.6s",
+                  "&:hover": {
+                    bgcolor: "accent.main",
+                  },
                 }}
                 size="large">
                 Get Free Consultation
-                <ForwardIcon />
+                <ForwardIcon
+                  sx={{
+                    fontSize: { xs: 14, sm: 25, md: 35 },
+                  }}
+                />
               </Button>
-            </Link>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <img
-            src={gridImg}
-            height="440"
-            style={{ borderRadius: "8px" }}
-            width={"100%"}
-            alt="dream edu group"
-          />
-        </Grid>
+            </HoverNAnimation>
+          </Link>
+        </Box>
       </Grid>
     </>
   );

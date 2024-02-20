@@ -20,16 +20,17 @@ const HeadingH2 = ({
         }}>
         <Typography
           sx={{
-            mt: marginTop ? marginTop : { xs: 6, sm: 8, md: 12 },
+            mt: marginTop ? marginTop : { xs: 1, sm: 3, md: 12 },
             mb: { xs: 4, sm: 6, md: 8 },
             px: { xs: 1, sm: 3, md: 6 },
             py: { xs: 1, sm: 3, md: 4 },
+            fontSize:{xs:"32px", sm:"42px", md: "70px"},
             zIndex: 899,
             display: "inline-flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: isDarkMode ? "deepGray.main" : "black.main",
-            color: isDarkMode ? "whiteCustom.main" : "secondary.main",
+            backgroundColor: isDarkMode ? "deepGray.main" : "redCustom.main",
+            color: isDarkMode ? "secondary.main" : "whiteCustom.main",
             borderColor: isDarkMode ? "accent.main" : "secondary.main",
             borderRadius: "25% 0 25% 0",
             border: 2,
@@ -45,6 +46,7 @@ const HeadingH2 = ({
               src={headingH2Icon}
               width={75}
               height={75}
+              loading="lazy"
               style={{
                 width: "85px",
                 height: "85px",

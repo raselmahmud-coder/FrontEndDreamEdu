@@ -11,6 +11,10 @@ import educationCounselling from "../assets/Icon/Educational Counselling Icon.s
 import scholarshipAssistance from "../assets/Icon/Scholarship Assistance ICON.svg";
 import testPrep from "../assets/Icon/Test Preparation icon.svg";
 import universityPlacement from "../assets/Icon/University Placement icon.svg";
+import experienceIcon from "../assets/Icon/tieBag.svg";
+import visaIcon from "../assets/Icon/visaIcon.svg";
+import scholarshipIcon from "../assets/Icon/11.svg";
+import skillsIcon from "../assets/Icon/skillsIcon.gif";
 
 export const whyChooseUsData = [
   {
@@ -153,5 +157,31 @@ export const footerMenus = [
   {
     id: 4,
     footerName: "Contact Us",
+  },
+];
+export const coreStrength = [
+  {
+    id: 1,
+    icon: experienceIcon,
+    title: "Years of Experience",
+    animateNumber: 5,
+  },
+  {
+    id: 2,
+    icon: visaIcon,
+    title: "Visa Approved",
+    animateNumber: 5076,
+  },
+  {
+    id: 3,
+    icon: skillsIcon,
+    title: "Get Admission",
+    animateNumber: 5126,
+  },
+  {
+    id: 4,
+    icon: scholarshipIcon,
+    title: "Get Scholarship",
+    animateNumber: 4589,
   },
 ];

@@ -1,6 +1,5 @@
-// HoverWrapper.js
 import React from "react";
-import { Box, keyframes } from "@mui/material";
+import { keyframes } from "@mui/material";
 
 const zoomInAndOut = keyframes`
   0% {
@@ -15,22 +14,24 @@ const zoomInAndOut = keyframes`
 `;
 
 const HoverNAnimation = ({ children, isAnimate }) => {
-//   console.log(children?.type, "Hello child");
+  const childProps = children.props;
+  const childSx = childProps.sx || {};
   return (
-    <Box
-      component={children?.type ? children.type : "span"}
-      sx={{
-        transition: "all 0.4s ease-in-out",
-        animation: isAnimate && `${zoomInAndOut} 1s infinite`,
-        "&:hover": {
-          // backgroundColor:"yellow",
-          color: "redCustom.main",
-          transform: "scale(1.2)",
-          animation: `${zoomInAndOut} 1s infinite`,
+    <React.Fragment>
+      {React.cloneElement(children, {
+        sx: {
+          ...childSx,
+          transition: "all 0.4s ease-in-out",
+          animation: isAnimate && `${zoomInAndOut} 1s infinite`,
+          "&:hover": {
+            ...childSx["&:hover"],
+            color: "redCustom.main",
+            transform: "scale(1.2)",
+            animation: `${zoomInAndOut} 1s infinite`,
+          },
         },
-      }}>
-      {children}
-    </Box>
+      })}
+    </React.Fragment>
   );
 };
 

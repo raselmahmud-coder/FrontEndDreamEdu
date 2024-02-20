@@ -23,7 +23,7 @@ import "swiper/css/effect-coverflow";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import partnerUniversitiesIcon from "../../assets/Icon/partner-university.svg";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
@@ -88,10 +88,12 @@ const Section4 = () => {
                 style={{
                   borderRadius: "4px",
                   // maxHeight:"233px"
+                  backgroundColor: "red",
                 }}>
                 <Card
                   sx={{
                     p: 1,
+                    bgcolor: "redCustom.main",
                   }}>
                   <Box
                     sx={{
@@ -112,25 +114,27 @@ const Section4 = () => {
                         justifyContent: "center",
                         alignItems: "center",
                       }}>
-                      <Typography gutterBottom variant="h6">
+                      <Typography
+                        sx={{
+                          color: "whiteCustom.main",
+                          p: 1,
+                          bgcolor: "deepGray.main",
+                          borderRadius: 15,
+                        }}
+                        gutterBottom
+                        variant="h6">
                         {name}
                       </Typography>
                     </Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "whiteCustom.main",
+                      }}
+                      color="text.secondary">
                       {description.slice(0, 200)}...
                     </Typography>
                   </CardContent>
-                  {/* <CardActions
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-              }}>
-              <Link to={`/university/${id}`}>
-                <Button variant="contained" size="large">
-                  See More
-                </Button>
-              </Link>
-            </CardActions> */}
                 </Card>
               </SwiperSlide>
             </Grid>
@@ -142,17 +146,34 @@ const Section4 = () => {
 
   return (
     <>
-      <HeadingH2 headingH2Text={"Top Destination Universities"} headingH2Icon={AccountBalanceIcon} />
-      <Box sx={{ textAlign: "center", mt: "12px", mx:"auto" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          // alignItems: "center",
+          mt: { xs: 5, sm: 8, md: 12 },
+        }}>
+        {/* <img
+          src={partnerUniversitiesIcon}
+          style={{
+            width: "235px",
+            height: "235px",
+          }}
+          alt="icon"
+        /> */}
+        <HeadingH2 headingH2Text={"Top Destination Universities"} />
+      </Box>
+      <Box sx={{ textAlign: "center", mx: "auto" }}>
         <Typography
-          component={"h6"}
-          variant="subtitle1"
+          component={"h5"}
+          variant="h4"
           sx={{
-            bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
-            py: 2,
-            px: 2,
+            bgcolor: isDarkMode ? "deepGray.main" : "redCustom.main",
+            color: "whiteCustom.main",
+            px: 1,
+            py: 1,
             borderRadius: 8,
-            display:"inline-block"
+            display: "inline-block",
           }}>
           We have partnered with a variety of high-quality universities
         </Typography>

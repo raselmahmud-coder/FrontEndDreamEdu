@@ -30,8 +30,8 @@ const YouTubeFeeds = () => {
         <>
           <HeadingH2
             headingH2Text={"Latest YouTube Videos"}
-            headingH2Icon={YouTubeIcon}
-            color={"#cc0000"}
+            // headingH2Icon={YouTubeIcon}
+            // color={"#cc0000"}
           />
           <Grid
             container
@@ -44,6 +44,7 @@ const YouTubeFeeds = () => {
               <Grid item xs={12} sm={6} md={4} key={video.id.videoId}>
                 <iframe
                   //   width="560"
+                  loading="lazy"
                   style={{ width: "100%", height: "315px" }}
                   //   height="315"
                   src={`https://www.youtube.com/embed/${video.id.videoId}`}

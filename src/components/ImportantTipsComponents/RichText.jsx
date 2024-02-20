@@ -82,6 +82,7 @@ const options = {
         const videoID = node.data.target.fields.youTubeVideo.split("/").pop();
         return (
           <iframe
+            loading="lazy"
             width="100%"
             height="500"
             src={`https://www.youtube.com/embed/${videoID}`}

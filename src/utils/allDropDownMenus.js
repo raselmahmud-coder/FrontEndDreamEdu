@@ -1,3 +1,43 @@
+export const pages = [
+  "Home",
+  "Study Abroad",
+  "Test Preparation",
+  "Services",
+  "Apply Now",
+  "Blogs",
+  "Success Story",
+  "About Us",
+  "Contact Us",
+];
+export const subPages = {
+  studyabroad: [
+    "Study in China",
+    "Study in Italy",
+    "Study in UK",
+    "Study in USA",
+    "Study in Canada",
+    "Study in Australia",
+    "Study in New Zealand",
+  ],
+  testpreparation: [
+    "HSK Preparation",
+    "IELTS Preparation",
+    "TOEFL Preparation",
+  ],
+  services: [
+    "Scholarship Assistance",
+    "Student Screening",
+    "Documentation Guidance",
+    "Interview Assistance",
+    "University Application Assistance",
+    "Student Visa Process",
+    "Offer Letter Confirmation",
+    "Pre Departure Briefing",
+    "VISA Lodgement",
+    "Counseling",
+  ],
+};
+
 export const subMenu1 = {
   studyinchina: ["Visa Process", "Scholarship"],
 };

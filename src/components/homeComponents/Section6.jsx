@@ -1,14 +1,11 @@
 import React from "react";
 import { Badge, Box, Grid, Typography } from "@mui/material";
-import {
-  Flag,
-  PublishedWithChanges,
-  School,
-  Whatshot,
-} from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import TungstenIcon from "@mui/icons-material/Tungsten";
+import stepsToAdmission from "../../assets/Icon/stepsAdm.png";
+import progressIcon from "../../assets/Icon/progress.gif";
+import identityIcon from "../../assets/Icon/7.png";
+import selectIcon from "../../assets/Icon/8.png";
 
 const dataForSection6 = [
   {
@@ -16,28 +13,28 @@ const dataForSection6 = [
     title: "Identify your course",
     description:
       "To secure admission in China through our consultancy, follow these streamlined steps. First, identify your desired course to align with your academic and career goals.",
-    icon: <Flag color="action" sx={{ fontSize: 80, p: 0.5 }} />,
+    icon: identityIcon,
   },
   {
     id: 2,
     title: "Select University",
     description:
       "Once you've determined your course, select a reputable university in China that offers the program of your choice and considerable scholarship.",
-    icon: <Whatshot color="action" sx={{ fontSize: 80, p: 0.5 }} />,
+    icon: selectIcon,
   },
   {
     id: 3,
     title: "Admission in progress",
     description:
       "Our expert team will guide you through the admission process, ensuring a smooth application submission. During this phase, we will keep you informed on the progress of your admission.",
-    icon: <PublishedWithChanges color="action" sx={{ fontSize: 80, p: 0.5 }} />,
+    icon: progressIcon,
   },
   {
     id: 4,
     title: "Final result release",
     description:
       "Finally, anticipate the exciting moment when the university releases the final admission results, marking the successful culmination of your journey towards higher education in China. Trust our consultancy to pave the way for your academic success.",
-    icon: <School color="action" sx={{ fontSize: 80, p: 0.5 }} />,
+    icon: stepsToAdmission,
   },
 ];
 
@@ -46,10 +43,17 @@ const Section6 = () => {
 
   return (
     <>
-      <HeadingH2
-        headingH2Text={"Steps To Get Your Admission"}
-        headingH2Icon={TungstenIcon}
-      />
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "end",
+          justifyContent: "center",
+        }}>
+        <HeadingH2
+          headingH2Text={"Steps To Get Your Admission"}
+          // headingH2Icon={stepsToAdmission}
+        />
+      </Box>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -61,18 +65,26 @@ const Section6 = () => {
           <Grid item xs={12} sm={4} md={3} key={id}>
             <Box
               sx={{
-                bgcolor: "#0077b5",
-                minHeight: "400px",
+                bgcolor:
+                  (id === 1 && "#004aff") ||
+                  (id === 2 && "#764AF1") ||
+                  (id === 3 && "#00784e") ||
+                  (id === 4 && "redCustom.main"),
+                color: "whiteCustom.main",
+                minHeight: "450px",
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "column",
                 alignItems: "center",
+                border: 2,
                 p: 2,
                 borderRadius: 2,
-                transition:"all 0.7s",
+                transition: "all 0.7s",
                 "&:hover": {
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === "dark" ? "#1f1f1f" : "#f1f1f1",
+                  color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
+                  backgroundColor: isDarkMode
+                    ? "deepGray.main"
+                    : "#7c0909",
                   transform: "transition 0.6s",
                 },
                 // backgroundColor: (theme) =>
@@ -89,7 +101,18 @@ const Section6 = () => {
                 }}
                 badgeContent={`Step ${id}`}
                 color="secondary">
-                {icon}
+                <Box
+                  loading="lazy"
+                  component={"img"}
+                  src={icon}
+                  sx={{
+                    width: "120px",
+                    height: "120px",
+                    border: 2,
+                    borderRadius: 4,
+                    p:1
+                  }}
+                />
               </Badge>
               <Typography
                 variant="h5"
