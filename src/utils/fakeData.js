@@ -144,15 +144,24 @@ export const footerMenus = [
     id: 2,
     footerName: "Important Links",
     item1: { name: "Apply Now", link: "/apply-now" },
-    item2: "Terms and conditions",
-    item3: "Privacy policy",
+    item2: { name: "Blogs", link: "/blogs" },
+    item3: { name: "About Us", link: "/about-us" },
   },
   {
     id: 3,
-    footerName: "Services",
-    item1: { name: "Counselling", link: "#" },
-    item2: "Admission",
-    item3: "Visa processing",
+    footerName: "Popular Services",
+    item1: {
+      name: "Scholarship Assistance",
+      link: "/blogs/scholarship-assistance",
+    },
+    item2: {
+      name: "Documentation Guidance",
+      link: "/blogs/documentation-guidance",
+    },
+    item3: {
+      name: "Interview Assistance",
+      link: "/blogs/interview-assistance",
+    },
   },
   {
     id: 4,

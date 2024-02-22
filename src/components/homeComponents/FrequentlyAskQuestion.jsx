@@ -56,7 +56,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>How can I contact Dream Edu Consultancy?</Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">How can I contact DreamEdu Consultancy?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -73,7 +73,7 @@ export default function FrequentlyAskQuestion() {
               target="_blank"
               rel="noopener noreferrer">
               {" "}
-              Dream Edu's official Facebook page
+              DreamEdu's official Facebook page
             </Link>
             . Either you can contact with us by filling up the form on{" "}
             <Link
@@ -141,7 +141,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel0"}
         onChange={handleChange("panel0")}>
         <AccordionSummary aria-controls="panel0d-content" id="panel0d-header">
-          <Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
             How do I apply for a student visa to study in China?
           </Typography>
         </AccordionSummary>
@@ -159,7 +159,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
             What are the popular universities in China for international
             students?
           </Typography>
@@ -178,7 +178,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
             Are there scholarships available for international students in
             China?
           </Typography>
@@ -197,7 +197,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}>
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
             What is the cost of living for international students in China?
           </Typography>
         </AccordionSummary>
@@ -216,7 +216,7 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}>
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-          <Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
             Is it necessary to learn Mandarin before studying in China?
           </Typography>
         </AccordionSummary>

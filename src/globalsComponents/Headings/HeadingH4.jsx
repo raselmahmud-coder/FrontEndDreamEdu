@@ -23,7 +23,7 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
             alignItems:"center",
             p: 2,
             borderRadius: "35px",
-            bgcolor: isDarkMode ? "accent.main" : "black.main",
+            bgcolor: isDarkMode ? "accent.main" : "redCustom.main",
           }}>
           {headingH4Icon &&
             React.createElement(headingH4Icon, {

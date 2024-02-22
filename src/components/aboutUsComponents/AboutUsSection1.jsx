@@ -11,7 +11,7 @@ import {
 import InboxIcon from "@mui/icons-material/Inbox";
 import { CheckCircleOutline, SwapCalls } from "@mui/icons-material";
 import founderImg from "../../assets/founder.jpg";
-import InfoIcon from "@mui/icons-material/Info";
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 
@@ -29,7 +29,7 @@ const AboutUsSection1 = () => {
           alignItems: "center",
         }}>
         <Grid item xs={12} sm={6} md={6}>
-          <HeadingH2 headingH2Text={"About Us"} headingH2Icon={InfoIcon} />
+          <HeadingH2 headingH2Text={"About Us"} headingH2Icon={PermContactCalendarIcon} />
 
           <Typography variant="body1" sx={{}}>
             DreamEdu is a leading education consultancy established in 2018,

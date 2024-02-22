@@ -55,7 +55,8 @@ const OfficeAddress = () => {
                     my: 2,
                     px: 3,
                     borderRadius: "15px",
-                    bgcolor: isDarkMode ? "accent.main" : "primary.main",
+                    color: "redCustom.main",
+                    fontWeight:"bold",
                   }}>
                   {office.fullAddress}
                 </Typography>

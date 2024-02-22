@@ -15,6 +15,7 @@ import OfficeAddress from "./OfficeAddress";
 import { footerMenus, socialContact } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import styles from "../../styles/AnimationCustom.module.css";
+import graduateCap from "../../assets/graduateCap.png";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -58,210 +59,243 @@ const Footer = () => {
           mt: 8,
         }}>
         <OfficeAddress />
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+        <Box
           sx={{
-            alignItems: "center",
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${graduateCap})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            blur,
           }}>
-          {footerMenus.length > 0 &&
-            footerMenus.map((footer) => (
-              <Grid key={footer.id} item xs={12} sm={6} md={3}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    display: { xs: "none", sm: "none", md: "block" },
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}>
-                  {footer.footerName}
-                  <hr />
-                </Typography>
-              </Grid>
-            ))}
-        </Grid>
-        {/* responsive view heading also here */}
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-          sx={{
-            alignItems: "center",
-          }}>
-          {footerMenus.length > 0 &&
-            footerMenus.map(({ id, footerName, item1, item2, item3 }) => (
-              <Grid item xs={12} sm={6} md={3} key={id}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    display: { xs: "block", sm: "block", md: "none" },
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}>
-                  {footerName}
-                  <hr />
-                </Typography>
-                {item1?.name.includes("Apply Now") ||
-                item1?.name.includes("Counselling") ? (
-                  <Box
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+            sx={{
+              alignItems: "center",
+            }}>
+            {/* Desktop view footer headings */}
+            {footerMenus.length > 0 &&
+              footerMenus.map((footer) => (
+                <Grid key={footer.id} item xs={12} sm={6} md={3}>
+                  <Typography
+                    variant="h6"
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      display: { xs: "none", sm: "none", md: "block" },
+                      fontWeight: "bold",
+                      color: "redCustom.main",
+                      textAlign: footer.id == 1 && "center",
                     }}>
-                    <PlayArrowIcon />
-                    <Typography
-                      component={"a"}
-                      variant="subtitle1"
-                      href={item1.link}
-                      sx={{
-                        my: 1,
-                        color: "inherit",
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                      }}>
-                      {item1.name}
-                    </Typography>
-                  </Box>
-                ) : (
-                  /\.(jpg|jpeg|png)$/i.test(item1?.name) && (
+                    {footer.footerName}
+                    <hr />
+                  </Typography>
+                </Grid>
+              ))}
+          </Grid>
+
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+            sx={{
+              alignItems: "start",
+            }}>
+            {footerMenus.length > 0 &&
+              footerMenus.map(({ id, footerName, item1, item2, item3 }) => (
+                <Grid item xs={12} sm={6} md={3} key={id}>
+                  {/* This heading for Mobile version */}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      display: { xs: "block", sm: "block", md: "none" },
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      color:"redCustom.main"
+                    }}>
+                    {footerName}
+                    <hr />
+                  </Typography>
+                  {/Apply Now|Scholarship Assistance/.test(item1?.name) ? (
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "start",
+                        color: "redCustom.main",
                       }}>
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "240px",
-                          borderRadius: "8px",
-                          margin: "auto",
-                        }}
-                        src={item1.name}
-                        alt="dream edu logo"
-                      />
-                    </Box>
-                  )
-                )}
-                {item2 && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}>
-                    <PlayArrowIcon />
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        my: 1,
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                      }}>
-                      {item2}
-                    </Typography>
-                  </Box>
-                )}
-                {item3 && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}>
-                    <PlayArrowIcon />
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        my: 1,
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                      }}>
-                      {item3}
-                    </Typography>
-                  </Box>
-                )}
-                {footerName === "Contact Us" &&
-                  socialContact.length > 0 &&
-                  socialContact.map(({ title, icon, src, mediaName }) => (
-                    <Box
-                      key={title}
-                      sx={{
-                        mb: 0.7,
-                      }}>
-                      <Box
+                      <PlayArrowIcon />
+                      <Typography
+                        variant="subtitle1"
+                        href={item1.link}
                         component={"a"}
-                        className={styles.rainbow}
+                        sx={{
+                          my: 1,
+                          color: "inherit",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                          "&:hover": {
+                            transition: "all 0.5s",
+                            color: "whiteCustom.main",
+                          },
+                        }}>
+                        {item1.name}
+                      </Typography>
+                    </Box>
+                  ) : (
+                    /\.(jpg|jpeg|png)$/i.test(item1?.name) && (
+                      <Box
                         sx={{
                           display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          textDecoration: "none",
-                          transition: "background-color 0.9s, color 0.9s",
+                          alignItems: "start",
+                        }}>
+                        <img
+                          loading="lazy"
+                          style={{
+                            width: "80%",
+                            height: "200px",
+                            borderRadius: "8px",
+                            margin: "auto",
+                          }}
+                          src={item1.name}
+                          alt="dream edu logo"
+                        />
+                      </Box>
+                    )
+                  )}
+                  {/Blogs|Documentation Guidance/.test(item2?.name) && (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "start",
+                        color: "redCustom.main",
+                      }}>
+                      <PlayArrowIcon />
+                      <Typography
+                        variant="subtitle1"
+                        href={item2.link}
+                        component={"a"}
+                        sx={{
+                          my: 1,
                           color: "inherit",
+                          fontWeight: "bold",
+                          cursor: "pointer",
                           "&:hover": {
-                            color: isDarkMode ? "white" : "#004808",
-                            backgroundColor: isDarkMode
-                              ? "#004808"
-                              : "primary.main",
+                            transition: "all 0.5s",
+                            color: "whiteCustom.main",
                           },
+                        }}>
+                        {item2.name}
+                      </Typography>
+                    </Box>
+                  )}
+                  {/About Us|Interview Assistance/.test(item3?.name) && (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "start",
+                        color: "redCustom.main",
+                      }}>
+                      <PlayArrowIcon />
+                      <Typography
+                        variant="subtitle1"
+                        href={item3.link}
+                        component={"a"}
+                        sx={{
+                          my: 1,
+                          color: "inherit",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                          "&:hover": {
+                            transition: "all 0.5s",
+                            color: "whiteCustom.main",
+                          },
+                        }}>
+                        {item3.name}
+                      </Typography>
+                    </Box>
+                  )}
+                  {footerName === "Contact Us" &&
+                    socialContact.length > 0 &&
+                    socialContact.map(({ title, icon, src, mediaName }) => (
+                      <Box
+                        key={title}
+                        component={"a"}
+                        className={styles.borderAnimationContainer}
+                        sx={{
+                          display: "flex",
+                          // alignItems: "center",
+                          textDecoration: "none",
+                          color: "inherit",
                         }}
                         title={title}
                         href={src}
                         target="_blank"
                         rel="noopener noreferrer">
-                        {React.createElement(icon, {
-                          fontSize: "medium",
-                          sx: {
-                            mr: 2,
-                            color:
-                              mediaName == "Facebook"
-                                ? "#316FF6"
-                                : (mediaName == "YouTube" &&
-                                    " #FF0000") ||
-                                  (mediaName == "WhatsApp" && "#25D366"),
-                            transition: "color 0.3s",
-                            "&:hover": {
-                              color: isDarkMode
-                                ? "primary.main"
-                                : "secondary.main",
-                            },
-                          },
-                        })}
                         <Typography
+                          className={styles.borderAnimationMain}
                           variant="subtitle1"
                           sx={{
-                            my: 1,
+                            p: 1,
+                            mb: 1,
                             fontWeight: "bold",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            transition: "background-color 0.5s, color 0.5s",
+                            "&:hover": {
+                              color: isDarkMode
+                                ? "whiteCustom.main"
+                                : "redCustom.main",
+                              backgroundColor: isDarkMode
+                                ? "redCustom.main"
+                                : "primary.main",
+                            },
                           }}>
+                          {React.createElement(icon, {
+                            fontSize: "medium",
+                            sx: {
+                              mr: 2,
+                              color:
+                                mediaName == "Facebook"
+                                  ? "#316FF6"
+                                  : (mediaName == "YouTube" && " #FF0000") ||
+                                    (mediaName == "WhatsApp" && "#25D366"),
+                              transition: "color 0.3s",
+                              "&:hover": {
+                                color: isDarkMode
+                                  ? "primary.main"
+                                  : "secondary.main",
+                              },
+                            },
+                          })}
                           {mediaName}
                         </Typography>
                       </Box>
-                    </Box>
-                  ))}
-              </Grid>
-            ))}
-        </Grid>
-        {/* Curtesy footer start */}
-        <Typography
-          component="h6"
-          variant={"body2"}
-          sx={{
-            mt: 5,
-            mb: 1,
-            textAlign: "center",
-          }}>
-         Since © 2018 - {new Date().getFullYear()} Dream Edu Info. All rights
-          reserved. Designed & Developed by{" "}
-          <a
-            style={{ color: "inherit" }}
-            href="https://github.com/raselmahmud-coder"
-            target="_blank"
-            rel="noopener noreferrer">
-            Rasel Mahmud
-          </a>
-        </Typography>
+                    ))}
+                </Grid>
+              ))}
+          </Grid>
+          {/* Curtesy footer start */}
+          <Typography
+            component="h6"
+            variant={"body2"}
+            sx={{
+              mt: 5,
+              pb: 1,
+              textAlign: "center",
+              color: "redCustom.main",
+            }}>
+            Since © 2018 - {new Date().getFullYear()} DreamEdu Consultancy, All
+            Rights Reserved. Designed & Developed by{" "}
+            <a
+              style={{ color: "inherit" }}
+              href="https://github.com/raselmahmud-coder"
+              target="_blank">
+              Rasel Mahmud
+            </a>
+          </Typography>
+        </Box>
         <ScrollTop
           sx={{
             zIndex: 1000,

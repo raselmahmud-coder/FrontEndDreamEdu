@@ -135,7 +135,7 @@ export default function Section2() {
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <SlidingCard
               animationA={"translateX(0)"}
-              animationB={"translateX(-200%)"}>
+              animationB={"translateX(-110%)"}>
               <CardMedia
                 sx={{
                   position: "relative",

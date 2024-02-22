@@ -10,7 +10,7 @@ const YouTubeFeeds = () => {
 
   useEffect(() => {
     const channelId = "UC-0b4o2xGWcM5qhCmvnhZ8g"; // Replace with your YouTube channel ID
-    const maxResults = 3;
+    const maxResults = 6;
     fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${
         import.meta.env.VITE_YOUTUBE_API_KEY
@@ -29,7 +29,7 @@ const YouTubeFeeds = () => {
       {Array.isArray(videos) && (
         <>
           <HeadingH2
-            headingH2Text={"Latest YouTube Videos"}
+            headingH2Text={"Recent Videos on YouTube"}
             // headingH2Icon={YouTubeIcon}
             // color={"#cc0000"}
           />
