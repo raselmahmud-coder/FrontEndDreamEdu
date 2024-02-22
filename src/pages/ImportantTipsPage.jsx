@@ -23,8 +23,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ErrorShow from "../globalsComponents/ErrorShow";
 import BlogsCardsSkeleton from "../Skeletons/BlogsCardsSkeleton";
-import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import blogIcon from "../assets/Icon/blogIcon.png";
 import HeadingH2 from "../globalsComponents/Headings/HeadingH2";
+import HoverNAnimation from "../globalsComponents/HoverNAnimation/HoverNAnimation";
 const actions = [
   { icon: <Facebook />, name: "Facebook" },
   { icon: <LinkedIn />, name: "LinkedIn" },
@@ -69,14 +70,17 @@ const ImportantTipsPage = () => {
       const { postTitle, coverImage, author, excerpt, slug, categories } =
         post.fields || {};
       return (
-        <Grid item xs={12} sm={6} md={4} key={slug}>
-          <Card sx={{
-            bgcolor:"linkedin.main",
-          }}>
+        <Grid item xs={12} sm={6} md={6} key={slug}>
+          <Card
+            sx={{
+              bgcolor: "redCustom.main",
+              minHeight: { xs: "400px", sm: "550px", md: "613px" },
+            }}>
             <CardMedia
+              loading="lazy"
               component="img"
               alt={coverImage.fields.title}
-              height="180"
+              height="280"
               image={coverImage.fields.file.url}
             />
             <Box
@@ -103,11 +107,23 @@ const ImportantTipsPage = () => {
               </Typography>
             </Box>
             <CardContent>
-              <Typography gutterBottom marginY={4} variant="h5" align="center">
+              <Typography
+                gutterBottom
+                sx={{
+                  my: 4,
+                  color: "whiteCustom.main",
+                }}
+                variant="h4"
+                align="center">
                 {postTitle}
               </Typography>
-              <Typography gutterBottom variant="body1">
-                {excerpt.slice(0, 130)}
+              <Typography
+                sx={{
+                  color: "whiteCustom.main",
+                }}
+                gutterBottom
+                variant="body1">
+                {excerpt}
                 <MoreHorizIcon
                   sx={{
                     position: "relative",
@@ -136,23 +152,27 @@ const ImportantTipsPage = () => {
                 ))}
               </SpeedDial>
               <Link to={`/blogs/${slug}`}>
-                <Button
-                  sx={{
-                    bgcolor: isDarkMode ? "accent.main" : "primary.main",
-                    color: isDarkMode ? "whiteCustom.main" : "black.main",
-                    "&:hover": {
-                      bgcolor: isDarkMode ? "whiteCustom.main" : "accent.main",
-                      color: isDarkMode ? "accent.main" : "whiteCustom.main",
-                    },
-                  }}
-                  size="medium">
-                  Learn More{" "}
-                  <DoubleArrowIcon
+                <HoverNAnimation>
+                  <Button
                     sx={{
-                      fontSize: "1.1rem",
+                      bgcolor: isDarkMode ? "accent.main" : "primary.main",
+                      color: isDarkMode ? "whiteCustom.main" : "black.main",
+                      "&:hover": {
+                        bgcolor: isDarkMode
+                          ? "whiteCustom.main"
+                          : "accent.main",
+                        color: isDarkMode ? "accent.main" : "whiteCustom.main",
+                      },
                     }}
-                  />{" "}
-                </Button>
+                    size="medium">
+                    See More{" "}
+                    <DoubleArrowIcon
+                      sx={{
+                        fontSize: "1.1rem",
+                      }}
+                    />{" "}
+                  </Button>
+                </HoverNAnimation>
               </Link>
             </CardActions>
           </Card>
@@ -168,10 +188,7 @@ const ImportantTipsPage = () => {
         sx={{
           mt: { xs: 12, md: 10 },
         }}>
-        <HeadingH2
-          headingH2Text={"Important Blogs"}
-          headingH2Icon={QuestionAnswerIcon}
-        />
+        <HeadingH2 headingH2Text={"Important Blogs"} headingH2Icon={blogIcon} />
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}

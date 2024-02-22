@@ -172,19 +172,14 @@ const SSComp = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                   }}>
-                  <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "right",
-                    }}
-                    variant="dot">
-                    <Avatar
-                      sx={{ width: 90, height: 90 }}
+                  
+                    <img
+                      style={{ width: "50%", height: 390 }}
+                      loading="lazy"
                       alt={feedback.name}
                       src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
                     />
-                  </StyledBadge>
+                  
                   <Box>
                     <Rating
                       name="read-only"

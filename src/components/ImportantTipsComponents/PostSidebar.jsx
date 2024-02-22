@@ -114,8 +114,13 @@ const PostSidebar = ({ postId }) => {
                   // flexDirection: "column",
                 }
               }>
-              <Typography variant="subtitle1">{postTitle}</Typography>
-              <Typography variant="body2">{excerpt}</Typography>
+              <Typography variant="h6" sx={{ color: "redCustom.main" }}>
+                {postTitle}
+              </Typography>
+              <Typography variant="body2" sx={{ color: "redCustom.main" }}>
+                {excerpt}...
+                <span style={{ fontWeight: "bold" }}>See More</span>
+              </Typography>
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -126,7 +131,11 @@ const PostSidebar = ({ postId }) => {
                   mt: 1,
                   textTransform: "capitalize",
                   bgcolor: isDarkMode ? "accent.main" : "primary.main",
-                  color: isDarkMode ? "white" : "black",
+                  color: "redCustom.main",
+                  "&:hover": {
+                    transition: "all 0.5s",
+                    bgcolor:"accent.main"
+                  }
                 }}
                 variant="button">
                 Category: #{categories.fields.categories}
@@ -139,9 +148,7 @@ const PostSidebar = ({ postId }) => {
   }
   return (
     <>
-      <HeadingH2
-        headingH2Text={"Recent Posts"}
-      />
+      <HeadingH2 headingH2Text={"Recent Posts"} variantCustom={"h3"} />
       <Card>{content}</Card>
     </>
   );

@@ -7,6 +7,7 @@ const HeadingH2 = ({
   headingH2Icon = undefined,
   marginTop,
   color,
+  variantCustom,
 }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
@@ -24,7 +25,7 @@ const HeadingH2 = ({
             mb: { xs: 4, sm: 6, md: 8 },
             px: { xs: 1, sm: 3, md: 6 },
             py: { xs: 1, sm: 3, md: 4 },
-            fontSize:{xs:"32px", sm:"42px", md: "70px"},
+            // fontSize: { xs: "32px", sm: "42px", md: "70px" },
             zIndex: 899,
             display: "inline-flex",
             justifyContent: "center",
@@ -38,8 +39,7 @@ const HeadingH2 = ({
             boxShadow:
               "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
           }}
-          variant="h2"
-          component={"h2"}>
+          variant={variantCustom ? variantCustom : "h2"}>
           {headingH2Text}
           {headingH2Icon && typeof headingH2Icon === "string" ? (
             <img

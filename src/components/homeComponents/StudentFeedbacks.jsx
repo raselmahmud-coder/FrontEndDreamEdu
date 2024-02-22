@@ -21,10 +21,11 @@ import StarIcon from "@mui/icons-material/Star";
 import styled from "@emotion/styled";
 import { useGetFeedbacksQuery } from "../../redux/feature/Studentfeedbak/StudentFeedbackAPI";
 import ErrorShow from "../../globalsComponents/ErrorShow";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AutoModeIcon from "../../assets/Icon/feedback.svg";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -66,7 +67,7 @@ const labels = {
 export default function StudentFeedbacks() {
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
   const { isDarkMode } = useSelector((state) => state.colorMode);
-
+  const navigate = useNavigate();
   // render the loading state
   if (isError) {
     return <ErrorShow errorData={"Something went wrong"} />;
@@ -99,7 +100,6 @@ export default function StudentFeedbacks() {
         spaceBetween={30}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
         }}
         breakpoints={{
           640: {
@@ -115,10 +115,10 @@ export default function StudentFeedbacks() {
             spaceBetween: 50,
           },
         }}
-        autoHeight={true}
+        // autoHeight={true}
         style={{
           zIndex: 0,
-          height: "30vh",
+          // height: "40vh",
           margin: "30px 0px",
         }}
         navigation={true}
@@ -208,19 +208,19 @@ export default function StudentFeedbacks() {
                 </Card>
               </SwiperSlide>
             ))
-          : feedbacks.feedback.map((feedback) => (
+          : feedbacks.feedback.slice(0, 11).map((feedback) => (
               <SwiperSlide
                 key={feedback.id}
                 style={{
                   borderRadius: "4px",
-                  // maxHeight:"233px"
+                  // maxHeight:"433px"
                 }}>
                 <Card
-                  sx={
-                    {
-                      // minHeight:"355px"
-                    }
-                  }>
+                  sx={{
+                    backgroundColor: "redCustom.main",
+                    color: "whiteCustom.main",
+                    minHeight: "365px",
+                  }}>
                   <CardActionArea
                     sx={{
                       p: 1,
@@ -239,7 +239,8 @@ export default function StudentFeedbacks() {
                         }}
                         variant="dot">
                         <Avatar
-                          sx={{ width: 90, height: 90 }}
+                          sx={{ width: 90, height: 100 }}
+                          loading="lazy"
                           alt={feedback.name}
                           src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
                         />
@@ -268,15 +269,56 @@ export default function StudentFeedbacks() {
                           justifyContent: "space-between",
                           alignItems: "center",
                         }}>
-                        <Typography gutterBottom variant="subtitle1">
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          sx={{
+                            fontWeight: "bold",
+                          }}>
                           {feedback.name}
                         </Typography>
-                        <Typography gutterBottom variant="subtitle1">
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          sx={{
+                            fontWeight: "bold",
+                          }}>
                           {feedback.country}
                         </Typography>
                       </Box>
-                      <Typography variant="body2" color="text.secondary">
-                        {feedback.description.slice(0, 100)}...
+                      <Typography variant="body1">
+                        <FormatQuoteIcon
+                          sx={{
+                            fontSize: { xs: "25px", sm: "35px", md: "35px" },
+                            rotate: "180deg",
+                          }}
+                        />
+                        {feedback.description.slice(0, 140)}...
+                        <Box
+                          component={"span"}
+                          onClick={() => navigate("/success-story")}
+                          sx={{
+                            fontWeight: "bold",
+                            "&:hover": {
+                              transition: "all 0.3s",
+                              color: "deepGray.main",
+                            },
+                          }}>
+                          See More
+                        </Box>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "end",
+                            alignItems: "start",
+                            marginTop: "-20px",
+                          }}>
+                          <FormatQuoteIcon
+                            sx={{
+                              fontSize: { xs: "25px", sm: "35px", md: "35px" },
+                            }}
+                          />
+                        </Box>
                       </Typography>
                     </CardContent>
                   </CardActionArea>
