@@ -1,19 +1,21 @@
 import React from "react";
 import { keyframes } from "@mui/material";
 
-const zoomInAndOut = keyframes`
+function zoomInAndOut(scale = undefined) {
+  return keyframes`
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: ${scale ? scale : "scale(1.2)"};
   }
   100% {
     transform: scale(1);
   }
-`;
+  `;
+}
 
-const HoverNAnimation = ({ children, isAnimate }) => {
+const HoverNAnimation = ({ children, isAnimate, scale }) => {
   const childProps = children.props;
   const childSx = childProps.sx || {};
   return (
@@ -21,13 +23,13 @@ const HoverNAnimation = ({ children, isAnimate }) => {
       {React.cloneElement(children, {
         sx: {
           ...childSx,
-          transition: "all 0.4s ease-in-out",
-          animation: isAnimate && `${zoomInAndOut} 1s infinite`,
+          transition: "all 0.5s ease-in-out",
+          animation: isAnimate && `${zoomInAndOut(scale)} 1s infinite`,
           "&:hover": {
             ...childSx["&:hover"],
             color: "redCustom.main",
-            transform: "scale(1.2)",
-            animation: `${zoomInAndOut} 1s infinite`,
+            transform: scale ? scale : "scale(1.2)",
+            animation: `${zoomInAndOut(scale)} 1s infinite`,
           },
         },
       })}

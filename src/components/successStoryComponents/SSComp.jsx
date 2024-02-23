@@ -161,7 +161,11 @@ const SSComp = () => {
         sx={{ p: 2 }}>
         {feedbacks.feedback.map((feedback) => (
           <Grid item xs={12} sm={6} md={6} key={feedback.id}>
-            <Card>
+            <Card
+              sx={{
+                bgcolor: "redCustom.main",
+                color: "whiteCustom.main",
+              }}>
               <CardActionArea
                 sx={{
                   p: 1,
@@ -172,15 +176,17 @@ const SSComp = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                   }}>
-                  
-                    <img
-                      style={{ width: "50%", height: 390 }}
-                      loading="lazy"
-                      alt={feedback.name}
-                      src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
-                    />
-                  
-                  <Box>
+                  <img
+                    style={{ width: "48%", height: 400 }}
+                    loading="lazy"
+                    alt={feedback.name}
+                    src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
+                  />
+
+                  <Box
+                    sx={{
+                      fontSize: "35px",
+                    }}>
                     <Rating
                       name="read-only"
                       readOnly
@@ -204,14 +210,14 @@ const SSComp = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                     }}>
-                    <Typography gutterBottom variant="subtitle1">
+                    <Typography gutterBottom variant="h4">
                       {feedback.name}
                     </Typography>
-                    <Typography gutterBottom variant="subtitle1">
+                    <Typography gutterBottom variant="h4">
                       {feedback.country}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body1">
                     {feedback.description}
                   </Typography>
                 </CardContent>
