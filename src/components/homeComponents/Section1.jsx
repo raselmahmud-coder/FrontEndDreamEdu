@@ -101,7 +101,7 @@ export default function Section1() {
                 <Card
                   variant="elevation"
                   sx={{
-                    bgcolor: "redCustom.main",
+                    bgcolor: "deepGray.main",
                     color:"whiteCustom.main",
                     display: "flex",
                     alignItems: "center",

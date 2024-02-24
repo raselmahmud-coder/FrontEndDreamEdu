@@ -6,6 +6,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Grid,
   IconButton,
   Toolbar,
   useMediaQuery,
@@ -129,34 +130,46 @@ const DocumentImageGallery = () => {
     <>
       <HeadingH2 headingH2Text={"Recently Released Admission Notice"} />
 
-      <ImageList cols={isDesktop ? 3 : isTablet ? 2 : 1}>
-        {itemData.map((item) => (
-          <HoverNAnimation key={item.title} scale={"scale(1.05)"}>
-            <ImageListItem
-              sx={{
-                border: "2px solid red",
-                borderRadius: 9,
-                m: 1,
-              }}
-              onClick={() => handleImageClick(item)}>
+      <Grid
+        container
+        spacing={{ xs: 1, md: 2 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        // sx={{
+        //   pt: 12,
+        //   px: 1,
+        //   justifyContent: "space-between",
+        //   alignItems: "center",
+        // }}
+      >
+        {itemData.map((item, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <HoverNAnimation scale={"scale(1.05)"}>
               <Box
-                component="img"
                 sx={{
+                  border: "2px solid red",
                   borderRadius: 9,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease",
+                  m: 1,
                 }}
-                src={`${item.img}`}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          </HoverNAnimation>
+                onClick={() => handleImageClick(item)}>
+                <Box
+                  component="img"
+                  sx={{
+                    borderRadius: 9,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease",
+                  }}
+                  src={`${item.img}`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </Box>
+            </HoverNAnimation>
+          </Grid>
         ))}
-      </ImageList>
+      </Grid>
 
       {/* Full-screen image dialog */}
 

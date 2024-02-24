@@ -306,12 +306,13 @@ export default function StudentFeedbacks() {
                           }}>
                           See More
                         </Box>
+                      </Typography>
                         <Box
                           sx={{
                             display: "flex",
                             justifyContent: "end",
                             alignItems: "start",
-                            marginTop: "-20px",
+                            marginTop: {xs:"-10px", sm:"-15px", md:"-20px"},
                           }}>
                           <FormatQuoteIcon
                             sx={{
@@ -319,7 +320,6 @@ export default function StudentFeedbacks() {
                             }}
                           />
                         </Box>
-                      </Typography>
                     </CardContent>
                   </CardActionArea>
                 </Card>

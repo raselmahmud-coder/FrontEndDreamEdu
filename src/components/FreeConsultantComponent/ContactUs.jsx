@@ -127,8 +127,9 @@ const ContactUs = () => {
             <PhoneForwardedIcon
               sx={{
                 fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "secondary.main",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
                 border: 1,
+                p: 0.5,
                 borderRadius: "50%",
                 mr: 2,
               }}
@@ -137,6 +138,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
               }}>
               Phone Number Bangladesh Office: +8801760680960
             </Typography>
@@ -150,8 +152,9 @@ const ContactUs = () => {
             <PhoneForwardedIcon
               sx={{
                 fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "secondary.main",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
                 border: 1,
+                p: 0.5,
                 borderRadius: "50%",
                 mr: 2,
               }}
@@ -160,6 +163,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
               }}>
               Phone Number China Office: +8619150064373
             </Typography>
@@ -173,8 +177,9 @@ const ContactUs = () => {
             <DraftsIcon
               sx={{
                 fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "secondary.main",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
                 border: 1,
+                p: 0.5,
                 borderRadius: "50%",
                 mr: 2,
               }}
@@ -183,6 +188,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
+                color: isDarkMode ? "accent.main" : "redCustom.main",
               }}>
               Email Us: official@dreameduinfo.com
             </Typography>

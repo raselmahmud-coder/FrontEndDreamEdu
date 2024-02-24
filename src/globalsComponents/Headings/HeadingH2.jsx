@@ -6,6 +6,7 @@ const HeadingH2 = ({
   headingH2Text,
   headingH2Icon = undefined,
   marginTop,
+  marginBottom,
   color,
   variantCustom,
 }) => {
@@ -22,7 +23,7 @@ const HeadingH2 = ({
         <Typography
           sx={{
             mt: marginTop ? marginTop : { xs: 1, sm: 3, md: 12 },
-            mb: { xs: 4, sm: 6, md: 8 },
+            mb: marginBottom ? marginBottom : { xs: 4, sm: 6, md: 8 },
             px: { xs: 1, sm: 3, md: 6 },
             py: { xs: 1, sm: 3, md: 4 },
             // fontSize: { xs: "32px", sm: "42px", md: "70px" },

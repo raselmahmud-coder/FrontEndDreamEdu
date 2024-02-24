@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { useGetEmployeeInfoQuery } from "../../redux/feature/employee/EmployeeAPI";
 import LazyLoading from "../../globalsComponents/LazyLoading";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import CelebrationIcon from "@mui/icons-material/Celebration";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
 
 const AboutUsSection2 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -27,7 +27,17 @@ const AboutUsSection2 = () => {
   } else if (teammember.length) {
     content = teammember.map(({ id, name, description, Picture }) => (
       <Grid item xs={12} sm={4} md={4} key={id}>
-        <Card sx={{ py: 3, border:"1px solid #25D366" }}>
+        <Card
+          sx={{
+            py: 3,
+            border: "2px solid #Df0707",
+            color: "redCustom.main",
+            transition: "all 0.5s",
+            "&:hover": {
+              color: "whiteCustom.main",
+              backgroundColor: isDarkMode ? "#004808" : "redCustom.main",
+            },
+          }}>
           <CardContent
             sx={{
               display: "flex",
@@ -68,7 +78,7 @@ const AboutUsSection2 = () => {
                         color: "#316FF6",
                         borderRadius: "50%",
                         p: 0.5,
-                        transition: "background-color 0.9s, color 0.9s",
+                        transition: "background-color 0.4s, color 0.4s",
                         "&:hover": {
                           color: isDarkMode ? "white" : "#004808",
                           backgroundColor: isDarkMode ? "#004808" : "white",
@@ -92,6 +102,7 @@ const AboutUsSection2 = () => {
             variant="h4"
             sx={{
               textAlign: "center",
+              fontWeight: "bold",
             }}>
             {name}
           </Typography>
@@ -99,6 +110,7 @@ const AboutUsSection2 = () => {
             variant="h6"
             sx={{
               textAlign: "center",
+              fontWeight: "bold",
             }}>
             {description}
           </Typography>
@@ -114,18 +126,8 @@ const AboutUsSection2 = () => {
       }}>
       <HeadingH2
         headingH2Text={"Meet The Experts"}
-        headingH2Icon={CelebrationIcon}
+        headingH2Icon={Diversity3Icon}
       />
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "center",
-          mt: 2,
-          mb: 7,
-        }}>
-        Most of people learning for professional development report career
-        benefits
-      </Typography>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}

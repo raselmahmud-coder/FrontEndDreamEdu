@@ -1,4 +1,4 @@
-import AdsClickIcon from "@mui/icons-material/AdsClick";
+import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
@@ -18,7 +18,7 @@ import skillsIcon from "../assets/Icon/skillsIcon.gif";
 
 export const whyChooseUsData = [
   {
-    icon: AdsClickIcon,
+    icon: CrisisAlertIcon,
     title: "Mission and Values",
     description:
       "At DreamEdu, our mission is to facilitate access to quality education and empower students to make informed decisions. We believe in fostering a nurturing environment where students can explore their interests, identify their strengths, and overcome challenges with confidence.",
