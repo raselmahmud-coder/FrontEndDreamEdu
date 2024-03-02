@@ -2,6 +2,7 @@ import React from "react";
 import {
   Badge,
   Box,
+  Container,
   Grid,
   List,
   ListItem,
@@ -14,6 +15,7 @@ import stepsToAdmission from "../../assets/Icon/stepsAdm.png";
 import progressIcon from "../../assets/Icon/progress.gif";
 import identityIcon from "../../assets/Icon/7.png";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import bgGradient from "../../assets/backgrounds/liquid-cheese.svg";
 
 const dataForSection6 = [
   {
@@ -55,113 +57,119 @@ const DreamEduMethodology = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "end",
-          justifyContent: "center",
-        }}>
-        <HeadingH2
-          headingH2Text={"DreamEdu's Comprehensive Methodology"}
-          // headingH2Icon={stepsToAdmission}
-        />
-      </Box>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{
-          alignItems: "center",
-        }}>
-        {dataForSection6.map(({ id, title, list1, list2, list3, icon }) => (
-          <Grid item xs={12} sm={6} md={4} key={id}>
-            <Box
-              sx={{
-                bgcolor:
-                  (id === 1 && "#0038c1") ||
-                  (id === 2 && "#Bc471f") ||
-                  (id === 3 && "#075E54"),
-                color: "whiteCustom.main",
-                minHeight: "645px",
-                // border: 2,
-                p: 2,
-                borderRadius: 3,
-                "&:hover": {
-                  transition: "all 0.7s",
-                  color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
-                  backgroundColor: isDarkMode
-                    ? "deepGray.main"
-                    : "redCustom.main",
-                },
-              }}>
+    <Box
+      sx={{
+        background: isDarkMode ? "" : `url(${bgGradient})`,
+        backgroundSize: "cover",
+      }}>
+      <Container maxWidth="xl">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "end",
+            justifyContent: "center",
+          }}>
+          <HeadingH2
+            headingH2Text={"DreamEdu's Comprehensive Methodology"}
+            // headingH2Icon={stepsToAdmission}
+          />
+        </Box>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          sx={{
+            alignItems: "center",
+          }}>
+          {dataForSection6.map(({ id, title, list1, list2, list3, icon }) => (
+            <Grid item xs={12} sm={6} md={4} key={id}>
               <Box
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center",
+                  bgcolor:
+                    (id === 1 && "#0038c1") ||
+                    (id === 2 && "#Bc471f") ||
+                    (id === 3 && "#075E54"),
+                  color: "whiteCustom.main",
+                  minHeight: "685px",
+                  // border: 2,
+                  p: 2,
+                  borderRadius: 3,
+                  "&:hover": {
+                    transition: "all 0.7s",
+                    color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
+                    backgroundColor: isDarkMode
+                      ? "deepGray.main"
+                      : "redCustom.main",
+                  },
                 }}>
-                <Badge
-                  overlap="circular"
+                <Box
                   sx={{
-                    borderRadius: "50%",
-                    p: 3,
-                  }}
-                  color="secondary">
-                  <Box
-                    loading="lazy"
-                    component={"img"}
-                    src={icon}
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}>
+                  <Badge
+                    overlap="circular"
                     sx={{
-                      width: "120px",
-                      height: "120px",
-                      border: 2,
-                      borderRadius: 4,
-                      p: 1,
+                      borderRadius: "50%",
+                      p: 3,
                     }}
-                  />
-                </Badge>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    mt: "32px",
-                    mb: "10px",
-                  }}>
-                  {title}
-                </Typography>
+                    color="secondary">
+                    <Box
+                      loading="lazy"
+                      component={"img"}
+                      src={icon}
+                      sx={{
+                        width: "120px",
+                        height: "120px",
+                        border: 2,
+                        borderRadius: 4,
+                        p: 1,
+                      }}
+                    />
+                  </Badge>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      mt: "32px",
+                      mb: "10px",
+                    }}>
+                    {title}
+                  </Typography>
+                </Box>
+                <List
+                  sx={
+                    {
+                      // display: "flex",
+                      // justifyContent: "start",
+                    }
+                  }>
+                  <ListItem disablePadding>
+                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <ListItemText primary={list1} />
+                  </ListItem>
+                  <ListItem
+                    disablePadding
+                    sx={{
+                      my: 2,
+                    }}>
+                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <ListItemText primary={list2} />
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <ListItemText primary={list3} />
+                  </ListItem>
+                </List>
               </Box>
-              <List
-                sx={
-                  {
-                    // display: "flex",
-                    // justifyContent: "start",
-                  }
-                }>
-                <ListItem disablePadding>
-                  <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
-                  <ListItemText primary={list1} />
-                </ListItem>
-                <ListItem
-                  disablePadding
-                  sx={{
-                    my: 2,
-                  }}>
-                  <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
-                  <ListItemText primary={list2} />
-                </ListItem>
-                <ListItem disablePadding>
-                  <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
-                  <ListItemText primary={list3} />
-                </ListItem>
-              </List>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 

@@ -14,16 +14,16 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
           alignItems: "center",
         }}>
         <Typography
-          variant="h4"
-          component={"h4"}
+          variant="h5"
           sx={{
             textAlign: "center",
             my: 3,
             display: "inline-flex",
             alignItems:"center",
             p: 2,
+            border:2,
             borderRadius: "35px",
-            bgcolor: isDarkMode ? "accent.main" : "redCustom.main",
+            // bgcolor: isDarkMode ? "accent.main" : "redCustom.main",
           }}>
           {headingH4Icon &&
             React.createElement(headingH4Icon, {

@@ -10,6 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./globalsComponents/footer/Footer";
 import LazyLoading from "./globalsComponents/LazyLoading";
 import { useSelector } from "react-redux";
+import EventsPage from "./pages/EventsPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
@@ -27,33 +28,43 @@ const UniversityDetailPage = lazy(() =>
 const App = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
-
   const darkTheme = createTheme({
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
-        main: 'rgb(208 208 208)',
+        main: "rgb(208 208 208)", //kind of silver
       },
       secondary: {
-        main: '#9E0105',
+        main: "#9E0105",
       },
       redCustom: {
-        main: '#Df0707',
+        main: "#Df0707",
       },
       accent: {
-        main: '#004808',
+        main: "#787878",
       },
       black: {
-        main: '#000',
+        main: "#000",
       },
       whiteCustom: {
-        main: '#fff',
+        main: "#fff",
       },
       deepGray: {
-        main: '#272727',
+        main: "#272727",
       },
-      linkedin: {
-        main: '#0077b5',
+      btnHover: {
+        main: "#0A7CFF",
+      },
+      linkHover: {
+        main: "#0000EE",
+      },
+    },
+    typography: {
+      fontFamily: ["Montserrat", "sans-serif"].join(","),
+      subtitle1: {
+        "@media (max-width: 400px)": {
+          fontSize: 12,
+        },
       },
     },
   });
@@ -62,27 +73,21 @@ const App = () => {
     <>
       <ThemeProvider theme={responsiveTheme}>
         <CssBaseline />
-        <ResponsiveAppBar
-        />
+        <ResponsiveAppBar />
         <Suspense fallback={<LazyLoading />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="/blogs" element={<ImportantTipsPage />} />
+            <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
             <Route
-              path="/blogs/:id"
-              element={<SingleBlogPostPage />}
+              path="/blogs/category/:categoryId"
+              element={<ImportantTipsPage />}
             />
-            <Route path="/blogs/category/:categoryId" element={<ImportantTipsPage />} />
             <Route path="/success-story" element={<SuccessStoryPage />} />
-            <Route
-              path="/contact-us"
-              element={<FreeConsultationPage />}
-            />
-            <Route
-              path="/apply-now"
-              element={<ApplyForAdmissionPage />}
-            />
+            <Route path="/contact-us" element={<FreeConsultationPage />} />
+            <Route path="/apply-now" element={<ApplyForAdmissionPage />} />
             <Route path="/university/:id" element={<UniversityDetailPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

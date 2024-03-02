@@ -19,6 +19,7 @@ import {
   subMenu2Links,
   subPageLinks,
 } from "../../utils/allDropDownMenus";
+import "./navBar.css";
 
 const useCascadingMenuStyles = makeStyles((theme) => ({
   submenu: {
@@ -62,8 +63,8 @@ function CascadingSubmenu({ title, popupId, ...props }) {
   return (
     <React.Fragment>
       <MenuItem {...bindHover(popupState)} {...bindFocus(popupState)}>
-        <span className={classes.title}>{title}</span>
-        <ChevronRight className={classes.moreArrow} />
+        <span className={`${classes.title} navBarFont`}>{title}</span>
+        <ChevronRight className={`${classes.moreArrow} navBarFont`} />
       </MenuItem>
       <CascadingMenu
         {...props}
@@ -104,22 +105,30 @@ const SubMenus = ({ page, subPages }) => {
     <>
       <NavLink
         to={"#"}
+        className={`navBarFont
+         ${({ isActive }) =>
+           isActive ? (isDarkMode ? "activeDark" : "activeLight") : "nonActive"}
+          `}
         style={{
           //   color: isDarkMode ? "#fff" : "#000",
           color: "inherit",
           textDecoration: "none",
           padding: "8px",
-          borderRadius: "50% 20% / 10% 40%",
+          borderRadius: "5px",
           margin: "0px 8px",
           display: "flex",
-          fontSize: "1.2rem",
+          textTransform: "uppercase",
         }}
         {...(true ? bindHover(popupState) : {})}
         {...(true ? bindFocus(popupState) : {})}>
         {page}
-        <ArrowDropDownCircleIcon sx={{ ml: 0.6 }} />
+        <ArrowDropDownCircleIcon className="navBarFont" sx={{ ml: 0.6 }} />
       </NavLink>
       <CascadingMenu
+        className={`navBarFont`}
+        style={{
+          textTransform: "uppercase",
+        }}
         popupState={popupState}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "left" }}>
@@ -127,11 +136,19 @@ const SubMenus = ({ page, subPages }) => {
           (eachSubP) =>
             subMenu1[getNoSpaceNLowerCase(eachSubP)] && (
               <CascadingSubmenu
+                className={`navBarFont`}
+                style={{
+                  textTransform: "uppercase",
+                }}
                 key={eachSubP}
                 popupId="moreChoicesCascadingMenu"
                 title={eachSubP}>
                 {subMenu1[getNoSpaceNLowerCase(eachSubP)].map((eachMenu1) => (
                   <CascadingSubmenu
+                    className={`navBarFont`}
+                    style={{
+                      textTransform: "uppercase",
+                    }}
                     key={eachMenu1}
                     popupId="evenMoreChoicesCascadingMenu"
                     title={eachMenu1}>
@@ -139,6 +156,10 @@ const SubMenus = ({ page, subPages }) => {
                       subMenu2[getNoSpaceNLowerCase(eachMenu1)].map(
                         (eachMenu2) => (
                           <CascadingMenuItem
+                            className={`navBarFont`}
+                            style={{
+                              textTransform: "uppercase",
+                            }}
                             key={eachMenu2}
                             component="a"
                             target="_blank"
@@ -158,6 +179,10 @@ const SubMenus = ({ page, subPages }) => {
           (item) =>
             !subMenu1[getNoSpaceNLowerCase(item)] && (
               <CascadingMenuItem
+                className={`navBarFont`}
+                style={{
+                  textTransform: "uppercase",
+                }}
                 component="a"
                 target="_blank"
                 href={subPageLinks[getNoSpaceNLowerCase(item)]}

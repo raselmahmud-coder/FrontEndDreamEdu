@@ -3,9 +3,8 @@ export const pages = [
   "Study Abroad",
   "Test Preparation",
   "Services",
+  "Discover",
   "Apply Now",
-  "Blogs",
-  "Success Story",
   "About Us",
   "Contact Us",
 ];
@@ -24,6 +23,7 @@ export const subPages = {
     "IELTS Preparation",
     "TOEFL Preparation",
   ],
+  discover: ["Blogs", "Success Story", "Events", "Gallery"],
   services: [
     "Scholarship Assistance",
     "Student Screening",
@@ -54,31 +54,15 @@ export const subMenu2 = {
   ],
 };
 export const subMenu2Links = {
-  x1visaprocess: [
-    `${window.location.origin}/blogs/x1-visa-processing-for-china`,
-  ],
-  x2visaprocess: [
-    `${window.location.origin}/blogs/x1-visa-processing-for-china`,
-  ],
-  cscscholarship: [
-    `${window.location.origin}/blogs/csc-scholarship-for-all-international-student`,
-  ],
-  provincialscholarship: [
-    `${window.location.origin}/blogs/provincial-scholarship`,
-  ],
-  beltandroadscholarship: [
-    `${window.location.origin}/blogs/belt-and-road-scholarship`,
-  ],
-  theansoscholarship: [`${window.location.origin}/blogs/the-anso-scholarship`],
-  sistercityscholarship: [
-    `${window.location.origin}/blogs/sister-city-scholarship`,
-  ],
-  municipalscholarship: [
-    `${window.location.origin}/blogs/municipal-scholarship`,
-  ],
-  universityscholarship: [
-    `${window.location.origin}/blogs/university-scholarship`,
-  ],
+  x1visaprocess: [`/blogs/x1-visa-processing-for-china`],
+  x2visaprocess: [`/blogs/x2-visa-processing-for-china`],
+  cscscholarship: [`/blogs/csc-scholarship-for-all-international-student`],
+  provincialscholarship: [`/blogs/provincial-scholarship`],
+  beltandroadscholarship: [`/blogs/belt-and-road-scholarship`],
+  theansoscholarship: [`/blogs/the-anso-scholarship`],
+  sistercityscholarship: [`/blogs/sister-city-scholarship`],
+  municipalscholarship: [`/blogs/municipal-scholarship`],
+  universityscholarship: [`/blogs/university-scholarship`],
 };
 export const subPageLinks = {
   hskpreparation: [`/blogs/hsk-preparation`],
@@ -94,4 +78,8 @@ export const subPageLinks = {
   predeparturebriefing: [`/blogs/pre-departure-briefing`],
   visalodgement: [`/blogs/visa-lodgement`],
   counseling: [`/blogs/counseling`],
+  blogs: [`/blogs`],
+  successstory: [`/success-story`],
+  events: [`/events`],
+  gallery: [`/gallery`],
 };

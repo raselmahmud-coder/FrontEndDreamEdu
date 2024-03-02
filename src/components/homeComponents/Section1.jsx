@@ -3,33 +3,43 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { Box, CardActionArea } from "@mui/material";
+import { Box, Button, CardActionArea, Container } from "@mui/material";
 import { serviceOfferData } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
-import goAbroadIcon from "../../assets/Icon/go-abroad.svg"
+import bgGradient from "../../assets/backgrounds/bgWhiteVector.svg";
+import { Link } from "react-router-dom";
+import ForwardIcon from "@mui/icons-material/Forward";
 
 export default function Section1() {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
-    <>
-      <Box sx={{ mb: 8 }} component="section">
+    <Box
+      sx={{
+        background: isDarkMode ? "" : `url(${bgGradient})`,
+        backgroundSize: "cover",
+      }}>
+      <Container
+        maxWidth={"xl"}
+        sx={{
+          pb: 8,
+        }}
+        component="section">
         <HeadingH2
-          headingH2Text={"Go Abroad With DreamEdu"}
-          // headingH2Icon={goAbroadIcon}
-          marginTop={{ xs: -2, sm: -6, md: -8 }}
+          headingH2Text={"Our Services"}
+          marginTop={{ xs: -2, sm: -5, md: -6 }}
+          marginBottom={{ xs: 2, sm: 3, md: 3 }}
         />
         <Grid container spacing={4}>
           {serviceOfferData.map(({ title, description, img }) => (
             <Grid
-              key={title[0]}
+              key={title}
               item
               xs={12}
               sm={6}
               md={4}
               sx={{
-               
                 perspective: "1000px",
                 transition: "transform 0.8s",
                 "& > div, & > div > div": {
@@ -45,7 +55,7 @@ export default function Section1() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  minHeight: {xs: "500px", sm: "490px", md:"480px"},
+                  minHeight: { xs: "500px", sm: "490px", md: "480px" },
                   transition: "transform 1s",
                   transformStyle: "preserve-3d",
                 }}>
@@ -53,8 +63,8 @@ export default function Section1() {
                 <Card
                   variant="elevation"
                   sx={{
-                    bgcolor: "redCustom.main",
-                    color:"whiteCustom.main",
+                    bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+                    color: isDarkMode ? "whiteCustom.main" : "black.main",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -69,7 +79,7 @@ export default function Section1() {
                   }}>
                   <CardActionArea>
                     <img
-                      src={img[0]}
+                      src={img}
                       style={{
                         border: "3px",
                         borderStyle: "solid",
@@ -83,16 +93,16 @@ export default function Section1() {
                         margin: "0 auto",
                         display: "flex",
                       }}
-                      alt={title[0]}
+                      alt={title}
                     />
                     <CardContent>
-                      <HeadingH4 HeadingH4Text={title[0]}/>
+                      <HeadingH4 HeadingH4Text={title} />
                       <Typography
                         variant="body1"
                         sx={{
                           mx: 3,
                         }}>
-                        {description[0]}
+                        {description}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -102,7 +112,7 @@ export default function Section1() {
                   variant="elevation"
                   sx={{
                     bgcolor: "deepGray.main",
-                    color:"whiteCustom.main",
+                    color: "whiteCustom.main",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -116,41 +126,42 @@ export default function Section1() {
                     backfaceVisibility: "hidden",
                     transform: "rotateY(180deg)",
                   }}>
-                  <CardActionArea>
-                    <img
-                      src={img[1]}
+                  <CardContent>
+                    <Link
                       style={{
-                        border: "3px",
-                        borderStyle: "solid",
-                        borderColor: isDarkMode
-                          ? "redCustom.main"
-                          : "accent.main",
-                        borderRadius: "15px",
-                        height: 100,
-                        width: 100,
-                        padding: "5px",
-                        margin: "0 auto",
-                        display: "flex",
+                        display: "block",
+                        textAlign: "center",
                       }}
-                      alt={title[1]}
-                    />
-                    <CardContent>
-                      <HeadingH4 HeadingH4Text={title[1]}/>
-                      <Typography
-                        variant="body1"
+                      to={"/apply-now"}>
+                      <Button
                         sx={{
-                          mx: 3,
-                        }}>
-                        {description[1]}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
+                          fontSize: { xs: 12, sm: 20, md: 30 },
+                          borderRadius: 15,
+                          py: 2,
+                          px: { xs: 3, sm: 4, md: 5 },
+                          bgcolor: "redCustom.main",
+                          color: "#fff",
+                          transition: "all 0.6s ease",
+                          "&:hover": {
+                            bgcolor: "btnHover.main",
+                            transform: "scale(1.2)",
+                          },
+                        }}
+                        variant="contained"
+                        size="medium">
+                        Apply Now{" "}
+                        <ForwardIcon
+                          sx={{ fontSize: { xs: 12, sm: 20, md: 30 } }}
+                        />
+                      </Button>
+                    </Link>
+                  </CardContent>
                 </Card>
               </Box>
             </Grid>
           ))}
         </Grid>
-      </Box>
-    </>
+      </Container>
+    </Box>
   );
 }

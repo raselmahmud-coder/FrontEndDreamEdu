@@ -15,7 +15,7 @@ import OfficeAddress from "./OfficeAddress";
 import { footerMenus, socialContact } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import styles from "../../styles/AnimationCustom.module.css";
-import graduateCap from "../../assets/graduateCap.png";
+import graduateCap from "../../assets//backgrounds/Buildings.gif";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -52,21 +52,20 @@ const Footer = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
+      <Box
+        sx={{
+          backgroundImage: `url(${graduateCap})`,
+          backgroundSize: "cover",
+          // backgroundRepeat: "no-repeat",
+          // backgroundPosition: "center",
+        }}>
     <Container maxWidth="xl">
       <Box
         component="section"
         sx={{
           mt: 8,
         }}>
-        <OfficeAddress />
-        <Box
-          sx={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${graduateCap})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            blur,
-          }}>
+        {/* <OfficeAddress /> */}
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
@@ -309,8 +308,8 @@ const Footer = () => {
             <KeyboardArrowUp sx={{ fontSize: "40px" }} color="#1666c0" />
           </Fab>
         </ScrollTop>
-      </Box>
     </Container>
+      </Box>
   );
 };
 

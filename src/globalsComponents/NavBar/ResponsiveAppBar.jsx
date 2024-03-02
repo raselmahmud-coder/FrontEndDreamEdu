@@ -5,8 +5,6 @@ import {
   Toolbar,
   Menu,
   Container,
-  ImageList,
-  ImageListItem,
   IconButton,
   Slide,
   useScrollTrigger,
@@ -19,8 +17,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import logo from "../../assets/logo.png";
-import whiteLogo from "../../assets/logo2.png";
+import logo from "../../assets/DREAMEDULOGO-01.png";
+import whiteLogo from "../../assets/logoWhiteMode.png";
 import NewsTicker from "../NewsTicker/NewsTicker";
 import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,14 +27,20 @@ import { useGetNewsTickerUniversityQuery } from "../../redux/feature/Universitie
 import SubMenus from "./SubMenus";
 import { pages, subPages } from "../../utils/allDropDownMenus";
 
+function ElevationScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
 
-function HideOnScroll({ children }) {
-  const trigger = useScrollTrigger();
-  return (
-    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
-      {children}
-    </Slide>
-  );
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
 }
 
 function ResponsiveAppBar() {
@@ -65,37 +69,43 @@ function ResponsiveAppBar() {
       );
     }
   }, [getNewUniversities]);
+  const trigger = useScrollTrigger();
+  function HideOnScroll({ children }) {
+    return (
+      <Slide appear={false} direction="down" in={!trigger} timeout={500}>
+        {children}
+      </Slide>
+    );
+  }
   return (
     <>
-      <HideOnScroll>
-        <AppBar>
-          {newsTicker.length > 0 && <NewsTicker news={newsTicker} />}
+      <AppBar>
+        {newsTicker.length > 0 && !trigger && (
+          <HideOnScroll>
+            <Box sx={{ bgcolor: "inherit" }}>
+              <NewsTicker news={newsTicker} />
+            </Box>
+          </HideOnScroll>
+        )}
+        <ElevationScroll>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <ImageList
+              <Box
                 sx={{
-                  mr: 2,
                   display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
                 }}>
-                <ImageListItem>
-                  <Link to="/">
-                    <img
-                      src={isDarkMode ? whiteLogo : logo}
-                      alt={"logo"}
-                      loading="lazy"
-                      style={{
-                        // width: "130px",
-                        height: "9vh",
-                      }}
-                    />
-                  </Link>
-                </ImageListItem>
-              </ImageList>
+                <Link to="/">
+                  <img
+                    src={isDarkMode ? whiteLogo : logo}
+                    alt={"logo"}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "65px",
+                    }}
+                  />
+                </Link>
+              </Box>
               {/* for mobile device code start here */}
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                 <IconButton
@@ -124,33 +134,43 @@ function ResponsiveAppBar() {
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}>
-                  {pages.map((page, index) => (
-                    <NavLink
-                      key={index}
-                      onClick={handleCloseNavMenu}
-                      className={({ isActive }) =>
-                        isActive
-                          ? isDarkMode
-                            ? "activeDark"
-                            : "activeLight"
-                          : ""
-                      }
-                      style={{
-                        color: isDarkMode ? "#fff" : "#000",
-                        textDecoration: "none",
-                        padding: "8px",
-                        borderRadius: "50% 20% / 10% 40%",
-                        margin: "0px 8px",
-                        display: "block",
-                        fontSize: "1.2rem",
-                      }}
-                      to={`/${
-                        GetFilterSpaceNLowerCase(page) == "home"
-                          ? ""
-                          : GetFilterSpaceNLowerCase(page)
-                      }`}>
-                      {page}
-                    </NavLink>
+                  {pages.map((page, index1) => (
+                    <Box key={index1}>
+                      {!subPages[getNoSpaceNLowerCase(page)] && (
+                        <NavLink
+                          onClick={handleCloseNavMenu}
+                          className={`navBarFont
+                          ${({ isActive }) =>
+                            isActive
+                              ? isDarkMode
+                                ? "activeDark"
+                                : "activeLight"
+                              : "nonActive"}
+                          `}
+                          style={{
+                            color: isDarkMode ? "#fff" : "#000",
+                            textDecoration: "none",
+                            padding: "8px",
+                            borderRadius: "5px",
+                            margin: "0px 8px",
+                            display: "block",
+                            textTransform: "uppercase",
+                          }}
+                          to={`/${
+                            GetFilterSpaceNLowerCase(page) == "home"
+                              ? ""
+                              : GetFilterSpaceNLowerCase(page)
+                          }`}>
+                          {page}
+                        </NavLink>
+                      )}
+                      {subPages[getNoSpaceNLowerCase(page)] && (
+                        <SubMenus
+                          page={page}
+                          subPages={subPages[getNoSpaceNLowerCase(page)]}
+                        />
+                      )}
+                    </Box>
                   ))}
                   <IconButton
                     sx={{ ml: 1 }}
@@ -163,24 +183,17 @@ function ResponsiveAppBar() {
                 </Menu>
               </Box>
               <Box sx={{ flexGrow: 0.5, display: { xs: "flex", md: "none" } }}>
-                <ImageList
-                  sx={{
-                    color: "inherit",
-                  }}>
-                  <ImageListItem>
-                    <Link to="/">
-                      <img
-                        src={isDarkMode ? whiteLogo : logo}
-                        alt={"logo"}
-                        loading="lazy"
-                        style={{
-                          width: "70px",
-                          height: "50px",
-                        }}
-                      />
-                    </Link>
-                  </ImageListItem>
-                </ImageList>
+                <Link to="/">
+                  <img
+                    src={isDarkMode ? whiteLogo : logo}
+                    alt={"logo"}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "65px",
+                    }}
+                  />
+                </Link>
               </Box>
               {/* ========= for desktop view ==========*/}
               <Box
@@ -200,16 +213,18 @@ function ResponsiveAppBar() {
                             ? isDarkMode
                               ? "activeDark"
                               : "activeLight"
-                            : ""
+                            : "nonActive"
                         }
                         style={{
                           color: isDarkMode ? "#fff" : "#000",
                           textDecoration: "none",
                           padding: "8px",
-                          borderRadius: "50% 20% / 10% 40%",
+                          borderRadius: "5px",
                           margin: "0px 8px",
                           display: "block",
-                          fontSize: "1.2rem",
+                          fontSize: "0.9rem",
+                          fontWeight: "600",
+                          textTransform: "uppercase",
                         }}
                         to={`/${
                           GetFilterSpaceNLowerCase(page) == "home"
@@ -237,8 +252,8 @@ function ResponsiveAppBar() {
               </Box>
             </Toolbar>
           </Container>
-        </AppBar>
-      </HideOnScroll>
+        </ElevationScroll>
+      </AppBar>
       <Toolbar id="back-to-top-anchor" />
     </>
   );

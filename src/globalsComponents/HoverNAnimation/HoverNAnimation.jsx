@@ -27,7 +27,7 @@ const HoverNAnimation = ({ children, isAnimate, scale }) => {
           animation: isAnimate && `${zoomInAndOut(scale)} 1s infinite`,
           "&:hover": {
             ...childSx["&:hover"],
-            color: "redCustom.main",
+            color: "linkHover.main",
             transform: scale ? scale : "scale(1.2)",
             animation: `${zoomInAndOut(scale)} 1s infinite`,
           },

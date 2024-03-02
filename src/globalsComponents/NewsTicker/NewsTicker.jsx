@@ -10,6 +10,7 @@ import { styled } from "@mui/system";
 import whatsapp from "../../assets/Icon/whatsapp.svg";
 import messenger from "../../assets/Icon/messenger.svg";
 import phoneIcon from "../../assets/Icon/phone-call.svg";
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import HoverNAnimation from "../HoverNAnimation/HoverNAnimation";
 
 export default function NewsTicker({ news }) {
@@ -20,6 +21,8 @@ export default function NewsTicker({ news }) {
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
+    background: isDarkMode ? "linear-gradient(to top, #272727, #787878)" :"linear-gradient(to top, #D0D0D0, #Df0707)",
+    color: "#fff",
   });
 
   const FlexItem = styled("div")(({ order }) => ({
@@ -54,14 +57,21 @@ export default function NewsTicker({ news }) {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
+  /* function HideOnScroll({ children }) {
+  const trigger = useScrollTrigger();
+  return (
+    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
+      {children}
+    </Slide>
+  );
+} */
   return (
     <>
       <FlexContainer>
         <FlexItem order={3}>
           <IconButton
             sx={{
-              mr:2
+              mr: 2,
             }}
             aria-label="close"
             color="inherit"
@@ -69,7 +79,7 @@ export default function NewsTicker({ news }) {
             onClick={() => {
               setOpen(false);
             }}>
-            <CloseIcon fontSize="inherit" />
+            <CloseIcon fontSize="subtitle1" />
           </IconButton>
         </FlexItem>
         <FlexItem order={2}>
@@ -83,7 +93,7 @@ export default function NewsTicker({ news }) {
               <animated.div style={props} className="news-ticker">
                 <Typography
                   onClick={() => window.open(item.universityLink, "_blank")}
-                  variant="subtitle1"
+                  variant={"subtitle1"}
                   sx={{
                     px: 2,
                     backgroundColor: "redCustom.main",
@@ -93,7 +103,7 @@ export default function NewsTicker({ news }) {
                       transition: "all 0.5s",
                       cursor: "pointer",
                       bgcolor: "deepGray.main",
-                      transform: "scale(1.1)",
+                      transform: "scale(1.05)",
                     },
                   }}>
                   {item.name}
@@ -110,17 +120,20 @@ export default function NewsTicker({ news }) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              <img style={{ width: 30, height: 30,}} src={phoneIcon} />
+              <PhoneCallbackIcon/>
+              {/* <img style={{ width: 30, height: 30 }} src={phoneIcon} /> */}
               <Typography
+                variant="subtitle1"
                 component="a"
                 href="tel:+8619150064373"
                 sx={{
                   mr: 3,
-                  ml:1,
+                  ml: 1,
                   display: "flex",
                   justifyContent: "center",
                   color: "inherit",
                   alignItems: "center",
+                  textDecoration:"none",
                 }}>
                 +8619150064373
               </Typography>
@@ -140,12 +153,12 @@ export default function NewsTicker({ news }) {
                 color: "inherit",
                 alignItems: "center",
                 "&:hover": {
-                  bgcolor: "redCustom.main",
+                  bgcolor: "linkHover.main",
                   p: 0.5,
                   borderRadius: 9,
                 },
               }}>
-              <img src={whatsapp} style={{ width: 30, height: 30 }} />
+              <Box component={"img"} src={whatsapp} sx={{ width: {xs:15, sm:25, md:30}, height: {xs:15, sm:25, md:30} }} />
             </Box>
           </HoverNAnimation>
         </FlexItem>
@@ -161,12 +174,12 @@ export default function NewsTicker({ news }) {
                 color: "#316FF6",
                 alignItems: "center",
                 "&:hover": {
-                  bgcolor: "redCustom.main",
+                  bgcolor: "linkHover.main",
                   p: 0.5,
                   borderRadius: 9,
                 },
               }}>
-              <img src={messenger} style={{ width: 30, height: 30 }} />
+               <Box component={"img"} src={messenger} sx={{ width: {xs:15, sm:25, md:30}, height: {xs:15, sm:25, md:30} }} />
             </Box>
           </HoverNAnimation>
         </FlexItem>

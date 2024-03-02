@@ -24,23 +24,23 @@ const HeadingH2 = ({
           sx={{
             mt: marginTop ? marginTop : { xs: 1, sm: 3, md: 12 },
             mb: marginBottom ? marginBottom : { xs: 4, sm: 6, md: 8 },
-            px: { xs: 1, sm: 3, md: 6 },
-            py: { xs: 1, sm: 3, md: 4 },
+            px: { xs: 1, sm: 3, md: 4 },
+            py: { xs: 1, sm: 3, md: 3 },
             // fontSize: { xs: "32px", sm: "42px", md: "70px" },
             zIndex: 899,
             display: "inline-flex",
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: isDarkMode ? "deepGray.main" : "redCustom.main",
-            color: isDarkMode ? "secondary.main" : "whiteCustom.main",
+            color: isDarkMode ? "whiteCustom.main" : "primary.main",
             borderColor: isDarkMode ? "accent.main" : "secondary.main",
-            borderRadius: "25% 0 25% 0",
+            borderRadius: "15px",
             border: 2,
             fontWeight: "bold",
             boxShadow:
               "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
           }}
-          variant={variantCustom ? variantCustom : "h2"}>
+          variant={variantCustom ? variantCustom : "h4"}>
           {headingH2Text}
           {headingH2Icon && typeof headingH2Icon === "string" ? (
             <img

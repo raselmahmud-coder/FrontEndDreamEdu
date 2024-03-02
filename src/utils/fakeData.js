@@ -1,4 +1,4 @@
-import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
+import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
@@ -60,28 +60,41 @@ export const totalPortfolioData = [
 ];
 export const serviceOfferData = [
   {
-    title: ["University Placement", "Scholarship Assistance"],
+    title: "University Placement",
     description: [
       "With a vast network of global institutions, we aid students in finding the right university that aligns with their aspirations and offers the desired academic programs.",
+    ],
+    img: universityPlacement,
+  },
+  {
+    title: "Scholarship Assistance",
+    description:
       "We help students find scholarships and financial aid opportunities to make their dream of studying abroad a reality. We conduct pre-departure sessions to help students prepare for their journey abroad and adjust to the new environment.",
-    ],
-    img: [universityPlacement, scholarshipAssistance],
+    img: scholarshipAssistance,
   },
   {
-    title: ["Application Assistance", "Educational Counselling"],
-    description: [
+    title: "Application Assistance",
+    description:
       "From crafting compelling personal statements to managing application timelines, we ensure that the application process is smooth and stress-free for our students.",
-      "Our expert counselors engage in one-on-one sessions with students to understand their academic goals and interests. Based on this understanding, we provide personalized guidance on course selection, university applications, and scholarship opportunities.",
-    ],
-    img: [appAssistance, educationCounselling],
+    img: appAssistance,
   },
   {
-    title: ["Test Preparation", "Career Guidance"],
-    description: [
+    title: "Educational Counselling",
+    description:
+      "Our expert counselors engage in one-on-one sessions with students to understand their academic goals and interests. Based on this understanding, we provide personalized guidance on course selection, university applications, and scholarship opportunities.",
+    img: educationCounselling,
+  },
+  {
+    title: "Test Preparation",
+    description:
       "We offer intensive coaching and support for standardized tests such as SAT, ACT, GRE, and IELTS, helping students achieve their best possible scores.",
+    img: testPrep,
+  },
+  {
+    title: "Career Guidance",
+    description:
       "Our career counselors assist students in exploring various career paths and understanding the job market trends, enabling them to make well-informed career decisions.",
-    ],
-    img: [testPrep, careerGuidance],
+    img: careerGuidance,
   },
 ];
 export const officeInfo = [

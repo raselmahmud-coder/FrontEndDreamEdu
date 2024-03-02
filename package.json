@@ -13,7 +13,7 @@
     "@contentful/rich-text-react-renderer": "^15.19.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/titillium-web": "^5.0.2",
+    "@fontsource/montserrat": "^5.0.16",
     "@mui/icons-material": "^5.13.7",
     "@mui/joy": "^5.0.0-alpha.88",
     "@mui/material": "^5.14.2",

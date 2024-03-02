@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@mui/material";
-import BannerCarousel from "../components/homeComponents/Banner";
+import BannerCarousel from "../components/homeComponents/BannerCarousel";
 import Section1 from "../components/homeComponents/Section1";
 import Section2 from "../components/homeComponents/Section2";
 import StudentFeedbacks from "../components/homeComponents/StudentFeedbacks";
@@ -17,20 +17,22 @@ const HomePage = () => {
   return (
     <>
       <DynamicPageTitle pageTitle="Home Page" />
-      <Container maxWidth="xl" sx={{
-          mt: { xs: 18, md: 14 },
+      <Container
+        maxWidth="xl"
+        sx={{
+          mt: { xs: 14, sm: 7, md: 8 },
         }}>
-      <BannerCarousel />
-        <Section1 />
-        <DreamEduMethodology/>
-        <Section2 />
-        <StudentFeedbacks />
-        <Section4 />
-        <Section5 />
-        <Section6 />
-        <Section7 />
-        <YouTubeFeeds />
+        <BannerCarousel />
       </Container>
+      <Section1 />
+      <DreamEduMethodology />
+      <Section2 />
+      <StudentFeedbacks />
+      <Section4 />
+      <Section5 />
+      <Section6 />
+      <Section7 />
+      <YouTubeFeeds />
       <FbMessenger />
     </>
   );

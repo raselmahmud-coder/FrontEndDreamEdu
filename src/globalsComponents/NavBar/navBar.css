@@ -1,7 +1,22 @@
 .activeDark {
-  background-color: #004808;
+  background-color: #858585;
 }
 .activeLight {
   color: #ffffff !important;
-  background-color: #Df0707;
+  background-color: #df0707;
+}
+.nonActive:hover {
+  transition: all 0.5s;
+  color: #ffffff !important;
+  background-color: #df0707;
+}
+.navBarFont {
+  font-size: "0.9rem";
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .navBarFont {
+    font-weight: 300 !important;
+    font-size: 9px !important;
+  }
 }
