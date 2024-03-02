@@ -66,6 +66,11 @@ const App = () => {
           fontSize: 12,
         },
       },
+      body1: {
+        "@media (max-width: 400px)": {
+          fontSize: 12,
+        },
+      },
     },
   });
   const responsiveTheme = responsiveFontSizes(darkTheme);

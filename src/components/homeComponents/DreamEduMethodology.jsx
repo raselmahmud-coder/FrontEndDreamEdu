@@ -62,18 +62,22 @@ const DreamEduMethodology = () => {
         background: isDarkMode ? "" : `url(${bgGradient})`,
         backgroundSize: "cover",
       }}>
-      <Container maxWidth="xl">
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "end",
-            justifyContent: "center",
-          }}>
-          <HeadingH2
-            headingH2Text={"DreamEdu's Comprehensive Methodology"}
-            // headingH2Icon={stepsToAdmission}
-          />
-        </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "end",
+          justifyContent: "center",
+        }}>
+        <HeadingH2
+          headingH2Text={"Our Methodology"}
+          marginTop={{ xs: -3, sm: -5, md: -6 }}
+        />
+      </Box>
+      <Container
+        maxWidth="xl"
+        sx={{
+          pb: { xs: 6, sm: 8, md: 16 },
+        }}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -85,21 +89,17 @@ const DreamEduMethodology = () => {
             <Grid item xs={12} sm={6} md={4} key={id}>
               <Box
                 sx={{
-                  bgcolor:
-                    (id === 1 && "#0038c1") ||
-                    (id === 2 && "#Bc471f") ||
-                    (id === 3 && "#075E54"),
+                  bgcolor: "#Bc471f",
                   color: "whiteCustom.main",
-                  minHeight: "685px",
+                  minHeight: "682px",
                   // border: 2,
                   p: 2,
                   borderRadius: 3,
                   "&:hover": {
                     transition: "all 0.7s",
-                    color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
-                    backgroundColor: isDarkMode
-                      ? "deepGray.main"
-                      : "redCustom.main",
+                    color: "whiteCustom.main",
+                    transform: "scale(1.03)",
+                    backgroundColor: isDarkMode ? "deepGray.main" : "#8f3516",
                   },
                 }}>
                 <Box
@@ -148,7 +148,12 @@ const DreamEduMethodology = () => {
                     }
                   }>
                   <ListItem disablePadding>
-                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <TaskAltIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                      }}
+                    />
                     <ListItemText primary={list1} />
                   </ListItem>
                   <ListItem
@@ -156,11 +161,21 @@ const DreamEduMethodology = () => {
                     sx={{
                       my: 2,
                     }}>
-                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <TaskAltIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                      }}
+                    />
                     <ListItemText primary={list2} />
                   </ListItem>
                   <ListItem disablePadding>
-                    <TaskAltIcon sx={{ mr: 1, fontSize: "45px" }} />
+                    <TaskAltIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                      }}
+                    />
                     <ListItemText primary={list3} />
                   </ListItem>
                 </List>

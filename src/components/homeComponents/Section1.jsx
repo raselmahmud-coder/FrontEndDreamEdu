@@ -23,7 +23,7 @@ export default function Section1() {
       <Container
         maxWidth={"xl"}
         sx={{
-          pb: 8,
+          pb: {xs: 6, sm: 8, md:16},
         }}
         component="section">
         <HeadingH2
@@ -101,6 +101,7 @@ export default function Section1() {
                         variant="body1"
                         sx={{
                           mx: 3,
+                          textAlign:"justify"
                         }}>
                         {description}
                       </Typography>
