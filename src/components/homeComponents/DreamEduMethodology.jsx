@@ -62,22 +62,22 @@ const DreamEduMethodology = () => {
         background: isDarkMode ? "" : `url(${bgGradient})`,
         backgroundSize: "cover",
       }}>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "end",
-          justifyContent: "center",
-        }}>
-        <HeadingH2
-          headingH2Text={"Our Methodology"}
-          marginTop={{ xs: -3, sm: -5, md: -6 }}
-        />
-      </Box>
       <Container
         maxWidth="xl"
         sx={{
           pb: { xs: 6, sm: 8, md: 16 },
         }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "end",
+              justifyContent: "center",
+            }}>
+            <HeadingH2
+              headingH2Text={"Our Methodology"}
+              marginTop={{ xs: -3, sm: -5, md: -6 }}
+            />
+          </Box>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}

@@ -32,7 +32,10 @@ const App = () => {
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
-        main: "rgb(208 208 208)", //kind of silver
+        main: "rgb(208 208 208)", //type of silver
+      },
+      silverPro: {
+        main: "#C0C0C0", 
       },
       secondary: {
         main: "#9E0105",
@@ -56,10 +59,10 @@ const App = () => {
         main: "#272727",
       },
       btnHover: {
-        main: "#0A7CFF",
+        main: "#0A7CFF",//type of blue
       },
       linkHover: {
-        main: "#0000EE",
+        main: "#0000EE",//type of blue dip
       },
     },
     typography: {
@@ -67,6 +70,16 @@ const App = () => {
       h2: {
         "@media (max-width: 400px)": {
           fontSize: 22,
+        },
+      },
+      h4: {
+        "@media (max-width: 400px)": {
+          fontSize: 20,
+        },
+      },
+      h5: {
+        "@media (max-width: 400px)": {
+          fontSize: 18,
         },
       },
       subtitle1: {
