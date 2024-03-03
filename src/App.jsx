@@ -43,6 +43,9 @@ const App = () => {
       accent: {
         main: "#787878",
       },
+      success: {
+        main: "#5cb85c",
+      },
       black: {
         main: "#000",
       },
@@ -61,6 +64,11 @@ const App = () => {
     },
     typography: {
       fontFamily: ["Montserrat", "sans-serif"].join(","),
+      h2: {
+        "@media (max-width: 400px)": {
+          fontSize: 22,
+        },
+      },
       subtitle1: {
         "@media (max-width: 400px)": {
           fontSize: 12,
