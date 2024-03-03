@@ -4,11 +4,11 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Container,
   Grid,
   Typography,
 } from "@mui/material";
 import airplane from "../../assets/plane left side.png";
-import mountain from "../../assets/mountant.png";
 import { useGetUniversitiesQuery } from "../../redux/feature/Universities/universitiesAPI";
 import SlidingCard from "../../globalsComponents/SlidingCard";
 import ErrorShow from "../../globalsComponents/ErrorShow";
@@ -23,7 +23,8 @@ import "swiper/css/effect-coverflow";
 import { Autoplay, Navigation, EffectCoverflow } from "swiper/modules";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import partnerUniversitiesIcon from "../../assets/Icon/partner-university.svg";
+import bgGradient from "../../assets/backgrounds/wave.svg";
+import customStyles from "../../styles/studentFeedback.module.css";
 
 const Section4 = () => {
   const { data: getUniversities, isLoading, error } = useGetUniversitiesQuery();
@@ -51,11 +52,10 @@ const Section4 = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        // slidesPerView={1}
-        spaceBetween={30}
         autoplay={{
-          delay: 2500,
+          delay: 2200,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         breakpoints={{
           640: {
@@ -64,80 +64,79 @@ const Section4 = () => {
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 40,
+            spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
+            slidesPerView: 4,
+            spaceBetween: 0,
           },
         }}
         autoHeight={true}
         style={{
-          zIndex: 0,
-          height: "40vh",
-          margin: "30px 0px",
+          // zIndex: 0,
+          minHeight: "480px",
+          padding: "30px 0px",
         }}
         navigation={true}
+        loop={true}
         modules={[Autoplay, Navigation, EffectCoverflow]}
         className="mySwiper">
         {getUniversities?.universitys.map(({ id, name, description, logo }) => {
           return (
-            <Grid item xs={12} sm={4} md={4} key={id}>
-              <SwiperSlide
-                key={id}
-                style={{
-                  borderRadius: "4px",
-                  // maxHeight:"233px"
-                  backgroundColor: "red",
+            <SwiperSlide
+              key={id}
+              className={customStyles.studentFeedback}
+              style={{
+                borderRadius: "5px",
+                // maxHeight:"233px"
+              }}>
+              <Card
+                sx={{
+                  p: 2,
+                  bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
                 }}>
-                <Card
+                <Box
                   sx={{
-                    p: 1,
-                    bgcolor: "redCustom.main",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}>
+                  <Avatar
+                    sx={{ width: 150, height: 150 }}
+                    alt={name}
+                    src={`https://dreameduapiv1.dreameduinfo.com${logo}`}
+                  />
+                </Box>
+                <CardContent>
                   <Box
                     sx={{
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                     }}>
-                    <Avatar
-                      sx={{ width: 150, height: 150 }}
-                      alt={name}
-                      src={`https://dreameduapiv1.dreameduinfo.com${logo}`}
-                    />
-                  </Box>
-                  <CardContent>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}>
-                      <Typography
-                        sx={{
-                          color: "whiteCustom.main",
-                          p: 1,
-                          bgcolor: "deepGray.main",
-                          borderRadius: 15,
-                        }}
-                        gutterBottom
-                        variant="h6">
-                        {name}
-                      </Typography>
-                    </Box>
                     <Typography
-                      variant="body2"
                       sx={{
-                        color: "whiteCustom.main",
+                        color: "redCustom.main",
+                        p: 1,
+                        bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+                        borderRadius: 15,
                       }}
-                      color="text.secondary">
-                      {description.slice(0, 200)}...
+                      gutterBottom
+                      variant="h6">
+                      {name}
                     </Typography>
-                  </CardContent>
-                </Card>
-              </SwiperSlide>
-            </Grid>
+                  </Box>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "whiteCustom.main",
+                      textAlign: "justify",
+                    }}>
+                    {description.slice(0, 200)}...
+                  </Typography>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
           );
         })}
       </Swiper>
@@ -145,68 +144,62 @@ const Section4 = () => {
   }
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          // alignItems: "center",
-          mt: { xs: 5, sm: 8, md: 12 },
+    <Box
+      sx={{
+        position: "relative",
+        background: isDarkMode ? "" : `url(${bgGradient})`,
+        backgroundSize: "cover",
+        // backgroundRepeat: "no-repeat",
+        // width:"100%"
+      }}>
+      <Container maxWidth="xl" sx={{
+          pb: { xs: 6, sm: 8, md: 16 },
         }}>
-        {/* <img
-          src={partnerUniversitiesIcon}
-          style={{
-            width: "235px",
-            height: "235px",
-          }}
-          alt="icon"
-        /> */}
-        <HeadingH2 headingH2Text={"Top Destination Universities"} />
-      </Box>
-      <Box sx={{ textAlign: "center", mx: "auto" }}>
-        <Typography
-          component={"h5"}
-          variant="h4"
+        <SlidingCard
+          delay={0}
+          animationA={"translateX(0px)"}
+          animationB={"translateX(100%)"}>
+          <CardMedia
+            sx={{
+              position: "absolute",
+              width: { xs: 120, sm: 200, md: 240 },
+              height: { xs: 60, sm: 100, md: 140 },
+              mt: { xs: -9, sm: -3, md: -4 },
+              overflow: "hidden",
+            }}
+            image={airplane}
+            title="airplane"
+          />
+        </SlidingCard>
+        <Box
           sx={{
-            bgcolor: isDarkMode ? "deepGray.main" : "redCustom.main",
-            color: "whiteCustom.main",
-            px: 1,
-            py: 1,
-            borderRadius: 8,
-            display: "inline-block",
+            display: "flex",
+            justifyContent: "center",
           }}>
-          We have partnered with a variety of high-quality universities
-        </Typography>
-      </Box>
-      <SlidingCard
-        animationA={"translateX(0px)"}
-        animationB={"translateX(80%)"}>
-        <CardMedia
-          sx={{
-            width: 240,
-            height: 140,
-            mx: "auto",
-            mt: "12px",
-            overflow: "hidden",
-          }}
-          image={airplane}
-          title="green"
-        />
-      </SlidingCard>
-      <img
-        width="100%"
-        height="100px"
-        src={mountain}
-        alt={"title"}
-        loading="lazy"
-      />
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}>
+          <HeadingH2
+            marginBottom={{ xs: 3, sm: 3, md: 3 }}
+            headingH2Text={"Top Universities"}
+          />
+        </Box>
+        <Box sx={{ textAlign: "center", mx: "auto" }}>
+          <Typography
+            variant="h5"
+            sx={{
+              bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+              color: isDarkMode ? "primary.main" : "redCustom.main",
+              fontWeight: "500",
+              px: 2,
+              py: 1,
+              mb: { xs: 3, sm: 4, md: 5 },
+              borderRadius: 8,
+              display: "inline-block",
+            }}>
+            We have partnered with a variety of high-quality Universities
+          </Typography>
+        </Box>
         {content}
-      </Grid>
-    </>
+      </Container>
+    </Box>
   );
 };
 

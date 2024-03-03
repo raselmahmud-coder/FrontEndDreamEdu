@@ -12,7 +12,6 @@ import YouTubeFeeds from "../components/homeComponents/YouTubeFeeds";
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import FbMessenger from "../components/chatingWidgets/FbMessenger";
 import DreamEduMethodology from "../components/homeComponents/DreamEduMethodology";
-
 const HomePage = () => {
   return (
     <>

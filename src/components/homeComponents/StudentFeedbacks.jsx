@@ -29,7 +29,8 @@ import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
 import bgGradient from "../../assets/backgrounds/page-turner.svg";
-import countWords from "../../utils/countWords";
+import customStyles from "../../styles/studentFeedback.module.css"
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -214,8 +215,9 @@ export default function StudentFeedbacks() {
                 feedbacks.feedback.map((feedback) => (
                   <SwiperSlide
                     key={feedback.id}
+                    className={customStyles.studentFeedback}
                     style={{
-                      borderRadius: "4px",
+                      borderRadius: "5px",
                     }}>
                     <Card
                       sx={{
@@ -223,7 +225,7 @@ export default function StudentFeedbacks() {
                           ? "deepGray.main"
                           : "silverPro.main",
                         color: isDarkMode ? "whiteCustom.main" : "black.main",
-                        minHeight: "450px",
+                        minHeight: "460px",
                         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
                       }}>
                       <CardActionArea
@@ -244,7 +246,7 @@ export default function StudentFeedbacks() {
                             }}
                             variant="dot">
                             <Avatar
-                              sx={{ width: 110, height: 120 }}
+                              sx={{ width: 130, height: 140 }}
                               loading="lazy"
                               alt={feedback.name}
                               src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
@@ -305,6 +307,7 @@ export default function StudentFeedbacks() {
                               variant="subtitle1"
                               sx={{
                                 fontWeight: "bold",
+                                color: "btnHover.main",
                               }}>
                               {feedback.country}
                             </Typography>
@@ -328,13 +331,14 @@ export default function StudentFeedbacks() {
                               variant="subtitle1"
                               sx={{
                                 fontWeight: "bold",
+                                color: "btnHover.main",
                               }}>
                               {feedback.major}
                             </Typography>
                           </Box>
                           <FormatQuoteIcon
                             sx={{
-                              color: "redCustom.main",
+                              color: "success.main",
                               fontSize: {
                                 xs: "25px",
                                 sm: "35px",
@@ -347,7 +351,12 @@ export default function StudentFeedbacks() {
                           />
                           <Typography
                             variant="body1"
-                            sx={{ textAlign: "justify" }}>
+                            sx={{
+                              textAlign: "justify",
+                              bgcolor: "primary.main",
+                              p: 1,
+                              borderRadius: 3,
+                            }}>
                             {feedback.description.substring(0, 200)}...
                             <Box
                               component={"span"}
@@ -370,7 +379,7 @@ export default function StudentFeedbacks() {
                             }}>
                             <FormatQuoteIcon
                               sx={{
-                                color: "redCustom.main",
+                                color: "success.main",
                                 fontSize: {
                                   xs: "25px",
                                   sm: "35px",

@@ -35,7 +35,7 @@ const App = () => {
         main: "rgb(208 208 208)", //type of silver
       },
       silverPro: {
-        main: "#C0C0C0", 
+        main: "#C0C0C0", //type of silver Pro
       },
       secondary: {
         main: "#9E0105",
@@ -80,6 +80,11 @@ const App = () => {
       h5: {
         "@media (max-width: 400px)": {
           fontSize: 18,
+        },
+      },
+      h6: {
+        "@media (max-width: 400px)": {
+          fontSize: 16,
         },
       },
       subtitle1: {
