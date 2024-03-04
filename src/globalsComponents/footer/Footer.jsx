@@ -14,6 +14,7 @@ import { footerMenus, socialContact } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import styles from "../../styles/AnimationCustom.module.css";
 import graduateCap from "../../assets//backgrounds/Buildings.gif";
+import whiteLogo from "../../assets/logo2.png";
 
 /*==== Back to top system design == */
 function ScrollTop(props) {
@@ -52,7 +53,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${graduateCap})`,
+        backgroundImage: isDarkMode ? "" : `url(${graduateCap})`,
         backgroundSize: "cover",
         // backgroundRepeat: "no-repeat",
         // backgroundPosition: "center",
@@ -79,7 +80,7 @@ const Footer = () => {
                     sx={{
                       display: { xs: "none", sm: "none", md: "block" },
                       fontWeight: "bold",
-                      color:isDarkMode ? "whiteCustom.main": "deepGray.main",
+                      color: isDarkMode ? "whiteCustom.main" : "deepGray.main",
                       textAlign: footer.id == 1 && "center",
                     }}>
                     {footer.footerName}
@@ -106,7 +107,7 @@ const Footer = () => {
                       display: { xs: "block", sm: "block", md: "none" },
                       fontWeight: "bold",
                       textAlign: "center",
-                      color:isDarkMode ? "whiteCustom.main": "deepGray.main",
+                      color: isDarkMode ? "whiteCustom.main" : "deepGray.main",
                     }}>
                     {footerName}
                     <hr />
@@ -154,7 +155,7 @@ const Footer = () => {
                             borderRadius: "8px",
                             margin: "auto",
                           }}
-                          src={item1.name}
+                          src={isDarkMode ? whiteLogo : item1.name}
                           alt="dream edu logo"
                         />
                       </Box>

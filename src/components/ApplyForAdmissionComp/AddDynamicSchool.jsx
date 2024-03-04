@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import moment from "moment";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 function AddDynamicSchool() {
   const dispatch = useDispatch();
@@ -27,8 +28,16 @@ function AddDynamicSchool() {
       }));
       setFields(initialFields);
     } else {
-      // Initialize with one empty field if Redux data is not available
+      // Initialize with two empty field if Redux data is not available
       setFields([
+        {
+          institute: "",
+          schoolStartDate: null,
+          schoolEndDate: null,
+          fieldOfStudy: "",
+          educationLevel: "",
+          gpa: "",
+        },
         {
           institute: "",
           schoolStartDate: null,
@@ -52,6 +61,56 @@ function AddDynamicSchool() {
     };
     setFields([...fields, newField]);
   };
+  const deleteFields = () => {
+    setFields([
+      {
+        institute: "",
+        schoolStartDate: null,
+        schoolEndDate: null,
+        fieldOfStudy: "",
+        educationLevel: "",
+        gpa: "",
+      },
+      {
+        institute: "",
+        schoolStartDate: null,
+        schoolEndDate: null,
+        fieldOfStudy: "",
+        educationLevel: "",
+        gpa: "",
+      },
+    ]);
+  /*   setFields([
+      {
+        institute: fields[0]?.institute ? fields[0].institute : "",
+        schoolStartDate: fields[0]?.schoolStartDate
+          ? fields[0].schoolStartDate
+          : null,
+        schoolEndDate: fields[0]?.schoolEndDate
+          ? fields[0].schoolEndDate
+          : null,
+        educationLevel: fields[0]?.educationLevel
+          ? fields[0].educationLevel
+          : "",
+        gpa: fields[0]?.gpa ? fields[0].gpa : "",
+      },
+      {
+        institute: fields[1]?.institute ? fields[1].institute : "",
+        schoolStartDate: fields[1]?.schoolStartDate
+          ? fields[1].schoolStartDate
+          : null,
+        schoolEndDate: fields[1]?.schoolEndDate
+          ? fields[1].schoolEndDate
+          : null,
+        educationLevel: fields[1]?.educationLevel
+          ? fields[1].educationLevel
+          : "",
+        gpa: fields[1]?.gpa ? fields[1].gpa : "",
+      },
+      
+    ]); */
+
+  };
 
   const handleFieldChange = (index, fieldName, value) => {
     const newFields = [...fields];
@@ -73,7 +132,7 @@ function AddDynamicSchool() {
   };
   return (
     <>
-      {fields.length < 3 && (
+      {fields.length < 3 ? (
         <Button
           onClick={addFields}
           variant="contained"
@@ -81,6 +140,16 @@ function AddDynamicSchool() {
             textTransform: "capitalize",
           }}>
           Add More University/Collage
+        </Button>
+      ) : (
+        <Button
+          onClick={deleteFields}
+          variant="contained"
+          sx={{
+            textTransform: "capitalize",
+          }}>
+          <DeleteForeverIcon />
+          Delete University/Collage
         </Button>
       )}
       {fields.map((field, index) => {

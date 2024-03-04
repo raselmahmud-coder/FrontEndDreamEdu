@@ -25,8 +25,6 @@ export default function Initialization() {
   const [dateValue, setDateValue] = React.useState([
     {
       dateOfBirth: "",
-      fatherDateOfBirth: "",
-      motherDateOfBirth: "",
       passportExpiry: "",
     },
   ]);
@@ -535,7 +533,7 @@ export default function Initialization() {
           />
         </Grid>
 
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={12} sm={3} md={4}>
           <TextField
             required
             id="fatherName"
@@ -556,38 +554,8 @@ export default function Initialization() {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={3}>
-          <LocalizationProvider
-            dateAdapter={AdapterMoment}
-            adapterLocale={"en-gb"}>
-            <DatePicker
-              id="fatherDateOfBirth"
-              name="fatherDateOfBirth"
-              value={
-                dateValue.fatherDateOfBirth
-                  ? moment(dateValue.fatherDateOfBirth, "DD/MM/YYYY")
-                  : moment(step1.fatherDateOfBirth, "DD/MM/YYYY")
-              }
-              sx={{
-                width: "100%",
-              }}
-              onChange={(newValue) => {
-                updateDateOfBirth("fatherDateOfBirth", newValue);
-                dispatch(
-                  admissionProfileCreate1({
-                    ...step1,
-                    fatherDateOfBirth: newValue.format("DD/MM/YYYY"),
-                  }),
-                );
-              }}
-              disableFuture
-              shouldDisableYear={isInCurrentYear}
-              slotProps={{ textField: { required: true } }}
-              label="father's Date Of Birth"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={6} sm={3}>
+
+        <Grid item xs={6} sm={3} md={4}>
           <TextField
             required
             id="fatherOccupation"
@@ -608,7 +576,7 @@ export default function Initialization() {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} md={4}>
           <TextField
             required
             id="fatherPhone"
@@ -630,7 +598,7 @@ export default function Initialization() {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={12} sm={3} md={4}>
           <TextField
             required
             id="motherName"
@@ -651,38 +619,7 @@ export default function Initialization() {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={3}>
-          <LocalizationProvider
-            dateAdapter={AdapterMoment}
-            adapterLocale={"en-gb"}>
-            <DatePicker
-              id="motherDateOfBirth"
-              name="motherDateOfBirth"
-              value={
-                dateValue.motherDateOfBirth
-                  ? moment(dateValue.motherDateOfBirth, "DD/MM/YYYY")
-                  : moment(step1.motherDateOfBirth, "DD/MM/YYYY")
-              }
-              sx={{
-                width: "100%",
-              }}
-              onChange={(newValue) => {
-                updateDateOfBirth("motherDateOfBirth", newValue);
-                dispatch(
-                  admissionProfileCreate1({
-                    ...step1,
-                    motherDateOfBirth: newValue.format("DD/MM/YYYY"),
-                  }),
-                );
-              }}
-              disableFuture
-              shouldDisableYear={isInCurrentYear}
-              slotProps={{ textField: { required: true } }}
-              label="Mother's Date Of Birth"
-            />
-          </LocalizationProvider>
-        </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} md={4}>
           <TextField
             required
             id="motherOccupation"
@@ -703,7 +640,7 @@ export default function Initialization() {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} md={4}>
           <TextField
             required
             id="motherPhone"

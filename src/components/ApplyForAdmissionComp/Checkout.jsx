@@ -29,7 +29,8 @@ function getStepContent(step) {
   switch (step) {
     case 0:
       // return <Documents />;
-      return <Initialization />;
+      // return <Initialization />;
+      return <EducationBackground />;
     case 1:
       return <EducationBackground />;
     case 2:
@@ -233,7 +234,7 @@ export default function Checkout() {
         sx={{ my: { xs: 1, sm: 1, md: 2 }, p: { xs: 1, sm: 2, md: 3 } }}>
         <HeadingH2
           headingH2Text={"Fill Out Your Application"}
-          headingH2Icon={AutoStoriesIcon}
+          // headingH2Icon={AutoStoriesIcon}
         />
         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
           {steps.map((label) => (

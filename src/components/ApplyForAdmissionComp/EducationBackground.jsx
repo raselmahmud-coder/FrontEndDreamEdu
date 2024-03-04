@@ -80,7 +80,7 @@ export default function EducationBackground() {
             fullWidth
             autoComplete="Desire University"
             variant="standard"
-            placeholder="Type here and press Enter"
+            placeholder="Type here and then press Enter (Max 3 University)"
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
@@ -111,7 +111,7 @@ export default function EducationBackground() {
             fullWidth
             autoComplete="Desire Major"
             variant="standard"
-            placeholder="Type here and press Enter"
+            placeholder="Type here and then press Enter (Max 3 Major)"
             // onChange={(e) => handleAddField(e.target.value, "itSMajor")}
             onKeyDown={(e) => {
               if (e.key === "Enter") {

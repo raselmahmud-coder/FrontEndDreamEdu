@@ -74,17 +74,17 @@ const App = () => {
       },
       h4: {
         "@media (max-width: 400px)": {
-          fontSize: 20,
+          fontSize: 18,
         },
       },
       h5: {
         "@media (max-width: 400px)": {
-          fontSize: 18,
+          fontSize: 16,
         },
       },
       h6: {
         "@media (max-width: 400px)": {
-          fontSize: 16,
+          fontSize: 14,
         },
       },
       subtitle1: {
