@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import OtherHousesIcon from "@mui/icons-material/OtherHouses";
 import { useSelector } from "react-redux";
 import { officeInfo } from "../../utils/fakeData";
@@ -12,66 +12,87 @@ const OfficeAddress = () => {
 
   return (
     <>
-      <HeadingH2
-        headingH2Text={"Our Office Address"}
-        headingH2Icon={OtherHousesIcon}
-      />
-      <Grid
-        container
-        spacing={{ xs: 2, md: 7 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+      <Container
+        maxWidth="xl"
         sx={{
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: 7,
+          pb: { xs: 6, sm: 7, md: 8 },
         }}>
-        {officeInfo.length > 0 &&
-          officeInfo.map((office) => (
-            <Grid item xs={12} sm={6} md={6} key={office.locationName}>
-              <Box
-                sx={{
-                  ml: 1,
-                }}>
+        <HeadingH2
+          marginTop={{ xs: 1, sm: -5, md: -6 }}
+          headingH2Text={"Our Office Address"}
+          headingH2Icon={OtherHousesIcon}
+        />
+        <Grid
+          container
+          spacing={{ xs: 2, md: 4 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          sx={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 7,
+          }}>
+          {officeInfo.length > 0 &&
+            officeInfo.map(({ locationName, phone, fullAddress, mapSrc }) => (
+              <Grid item xs={12} sm={6} md={4} key={locationName}>
                 <Box
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    minHeight: "445px",
+                    borderRadius:5,
+                    bgcolor:isDarkMode ? "deepGray.main":"silverPro.main"
                   }}>
-                  <img
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}>
+                    <Box
+                      component={"img"}
+                      loading="lazy"
+                      src={mapIcon}
+                      alt=""
+                      sx={{
+                        width: { xs: "35px", sm: "42px", md: "45px" },
+                        height: { xs: "35px", sm: "42px", md: "45px" },
+                      }}
+                    />
+                    <HeadingH4 HeadingH4Text={locationName} />
+                  </Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      my: 2,
+                      px: 3,
+                      color: "redCustom.main",
+                      fontWeight: "bold",
+                    }}>
+                    Address:➡️ {fullAddress}
+                  </Typography>
+                  
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        my: 2,
+                        px: 3,
+                        color: "redCustom.main",
+                        fontWeight: "bold",
+                      }}>
+                      Phone Number:📞 {phone}
+                    </Typography>
+                  
+                  <iframe
+                    src={mapSrc}
+                    width="90%"
+                    height="auto"
+                    style={{border:"1px solid #fff", borderRadius: "5px",margin:"0px auto", display:"block" }}
+                    allowFullScreen=""
                     loading="lazy"
-                    src={mapIcon}
-                    alt=""
-                    style={{
-                      width: "65px",
-                      height: "65px",
-                    }}
-                  />
-                  <HeadingH4 HeadingH4Text={office.locationName} />
+                    referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </Box>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    my: 2,
-                    px: 3,
-                    borderRadius: "15px",
-                    color: "redCustom.main",
-                    fontWeight:"bold",
-                  }}>
-                  {office.fullAddress}
-                </Typography>
-                <iframe
-                  src={office.mapSrc}
-                  width="100%"
-                  height="300"
-                  style={{ border: "0" }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"></iframe>
-              </Box>
-            </Grid>
-          ))}
-      </Grid>
+              </Grid>
+            ))}
+        </Grid>
+      </Container>
     </>
   );
 };

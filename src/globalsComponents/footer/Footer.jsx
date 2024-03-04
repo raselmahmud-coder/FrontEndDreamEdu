@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  CardMedia,
   Container,
   Fab,
   Fade,
@@ -11,7 +10,6 @@ import {
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import OfficeAddress from "./OfficeAddress";
 import { footerMenus, socialContact } from "../../utils/fakeData";
 import { useSelector } from "react-redux";
 import styles from "../../styles/AnimationCustom.module.css";
@@ -52,20 +50,19 @@ const Footer = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
-      <Box
-        sx={{
-          backgroundImage: `url(${graduateCap})`,
-          backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-          // backgroundPosition: "center",
-        }}>
-    <Container maxWidth="xl">
-      <Box
-        component="section"
-        sx={{
-          mt: 8,
-        }}>
-        {/* <OfficeAddress /> */}
+    <Box
+      sx={{
+        backgroundImage: `url(${graduateCap})`,
+        backgroundSize: "cover",
+        // backgroundRepeat: "no-repeat",
+        // backgroundPosition: "center",
+      }}>
+      <Container maxWidth="xl">
+        <Box
+          component="section"
+          sx={{
+            mt: 8,
+          }}>
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
@@ -82,7 +79,7 @@ const Footer = () => {
                     sx={{
                       display: { xs: "none", sm: "none", md: "block" },
                       fontWeight: "bold",
-                      color: "redCustom.main",
+                      color:isDarkMode ? "whiteCustom.main": "deepGray.main",
                       textAlign: footer.id == 1 && "center",
                     }}>
                     {footer.footerName}
@@ -109,7 +106,7 @@ const Footer = () => {
                       display: { xs: "block", sm: "block", md: "none" },
                       fontWeight: "bold",
                       textAlign: "center",
-                      color:"redCustom.main"
+                      color:isDarkMode ? "whiteCustom.main": "deepGray.main",
                     }}>
                     {footerName}
                     <hr />
@@ -128,13 +125,15 @@ const Footer = () => {
                         href={item1.link}
                         component={"a"}
                         sx={{
+                          textDecoration: "none",
                           my: 1,
                           color: "inherit",
                           fontWeight: "bold",
                           cursor: "pointer",
                           "&:hover": {
+                            transform: "scale(1.05)",
                             transition: "all 0.5s",
-                            color: "whiteCustom.main",
+                            color: "linkHover.main",
                           },
                         }}>
                         {item1.name}
@@ -150,8 +149,8 @@ const Footer = () => {
                         <img
                           loading="lazy"
                           style={{
-                            width: "80%",
-                            height: "200px",
+                            width: "60%",
+                            height: "140px",
                             borderRadius: "8px",
                             margin: "auto",
                           }}
@@ -175,13 +174,15 @@ const Footer = () => {
                         href={item2.link}
                         component={"a"}
                         sx={{
+                          textDecoration: "none",
                           my: 1,
                           color: "inherit",
                           fontWeight: "bold",
                           cursor: "pointer",
                           "&:hover": {
+                            transform: "scale(1.05)",
                             transition: "all 0.5s",
-                            color: "whiteCustom.main",
+                            color: "linkHover.main",
                           },
                         }}>
                         {item2.name}
@@ -202,13 +203,15 @@ const Footer = () => {
                         href={item3.link}
                         component={"a"}
                         sx={{
+                          textDecoration: "none",
                           my: 1,
                           color: "inherit",
                           fontWeight: "bold",
                           cursor: "pointer",
                           "&:hover": {
+                            transform: "scale(1.05)",
                             transition: "all 0.5s",
-                            color: "whiteCustom.main",
+                            color: "linkHover.main",
                           },
                         }}>
                         {item3.name}
@@ -243,8 +246,9 @@ const Footer = () => {
                             alignItems: "center",
                             transition: "background-color 0.5s, color 0.5s",
                             "&:hover": {
+                              transform: "scale(1.05)",
                               color: isDarkMode
-                                ? "whiteCustom.main"
+                                ? "whilinkHover.main"
                                 : "redCustom.main",
                               backgroundColor: isDarkMode
                                 ? "redCustom.main"
@@ -262,8 +266,9 @@ const Footer = () => {
                                     (mediaName == "WhatsApp" && "#25D366"),
                               transition: "color 0.3s",
                               "&:hover": {
+                                transform: "scale(1.05)",
                                 color: isDarkMode
-                                  ? "primary.main"
+                                  ? "prilinkHover.main"
                                   : "secondary.main",
                               },
                             },
@@ -277,7 +282,6 @@ const Footer = () => {
           </Grid>
           {/* Curtesy footer start */}
           <Typography
-            component="h6"
             variant={"body2"}
             sx={{
               mt: 5,
@@ -308,8 +312,8 @@ const Footer = () => {
             <KeyboardArrowUp sx={{ fontSize: "40px" }} color="#1666c0" />
           </Fab>
         </ScrollTop>
-    </Container>
-      </Box>
+      </Container>
+    </Box>
   );
 };
 

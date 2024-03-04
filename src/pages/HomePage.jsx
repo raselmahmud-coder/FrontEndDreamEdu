@@ -12,6 +12,7 @@ import YouTubeFeeds from "../components/homeComponents/YouTubeFeeds";
 import DynamicPageTitle from "../globalsComponents/DynamicPageTitle";
 import FbMessenger from "../components/chatingWidgets/FbMessenger";
 import DreamEduMethodology from "../components/homeComponents/DreamEduMethodology";
+import OfficeAddress from "../globalsComponents/footer/OfficeAddress";
 const HomePage = () => {
   return (
     <>
@@ -32,6 +33,7 @@ const HomePage = () => {
       <Section6 />
       <Section7 />
       <YouTubeFeeds />
+      <OfficeAddress />
       <FbMessenger />
     </>
   );

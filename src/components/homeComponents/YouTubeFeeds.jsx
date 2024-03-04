@@ -40,7 +40,7 @@ const YouTubeFeeds = () => {
               sx={{
                 pb: { xs: 6, sm: 8, md: 16 },
               }}>
-              <HeadingH2 headingH2Text={"Latest Videos"} />
+              <HeadingH2 marginTop={{ xs: -2, sm: -5, md: -5 }} headingH2Text={"Latest Videos"} />
               <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}

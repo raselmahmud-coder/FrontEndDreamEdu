@@ -56,7 +56,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">How can I contact DreamEdu Consultancy?</Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">How can I contact DreamEdu Consultancy?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="body1">
@@ -141,7 +144,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel0"}
         onChange={handleChange("panel0")}>
         <AccordionSummary aria-controls="panel0d-content" id="panel0d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">
             How do I apply for a student visa to study in China?
           </Typography>
         </AccordionSummary>
@@ -159,7 +165,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">
             What are the popular universities in China for international
             students?
           </Typography>
@@ -178,7 +187,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">
             Are there scholarships available for international students in
             China?
           </Typography>
@@ -197,7 +209,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}>
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">
             What is the cost of living for international students in China?
           </Typography>
         </AccordionSummary>
@@ -216,7 +231,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}>
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+            transition:"all 0.5s",
+            transform:"scale(1.03)",
+          } }} variant="h6">
             Is it necessary to learn Mandarin before studying in China?
           </Typography>
         </AccordionSummary>

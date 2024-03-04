@@ -34,8 +34,8 @@
   background:
 /* Background colors don’t work with `background-origin`, so use a gradient. */ linear-gradient(
         to bottom,
-        oklch(0.1 0.2 240 / 0.95),
-        oklch(0.1 0.2 240 / 0.95)
+        oklch(1 0 0),
+        oklch(0.87 0 0)
       )
       padding-box,
     /* ends at inner border edges */
@@ -53,8 +53,9 @@
   animation-play-state: running;
   /*   } */
   &:hover {
-
-    color: #ffffff !important;
+    transition: all 0.5s;
+    transform: scale(1.05);
+    color: #0000ee !important;
   }
 }
 
@@ -63,6 +64,4 @@
   box-shadow: 3px 1px 6px 2px rgb(0 0 0);
   color: #df0707;
   padding: 1rem;
-  
-
 }

@@ -23,7 +23,7 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
             p: 2,
             border:2,
             borderRadius: "35px",
-            // bgcolor: isDarkMode ? "accent.main" : "redCustom.main",
+            bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
           }}>
           {headingH4Icon &&
             React.createElement(headingH4Icon, {

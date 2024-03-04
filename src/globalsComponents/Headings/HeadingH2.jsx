@@ -61,7 +61,7 @@ const HeadingH2 = ({
             React.createElement(headingH2Icon, {
               sx: {
                 color: color ? color : "inherit",
-                fontSize: { xs: "35px", sm: "50px", md: "75px" },
+                fontSize: { xs: "18px", sm: "30px", md: "45px" },
                 ml: { xs: 2, sm: 2, md: 3 },
               },
             })

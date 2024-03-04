@@ -4,7 +4,7 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { WhatsApp } from "@mui/icons-material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import dreamEduLogo from "../assets/dream_edu_n_t_logo.jpg";
+import dreamEduLogo from "../assets/logo.png";
 import appAssistance from "../assets/Icon/Application Assistance icon.svg";
 import careerGuidance from "../assets/Icon/Career Guidance Icon.svg";
 import educationCounselling from "../assets/Icon/Educational Counselling Icon.svg";
@@ -106,6 +106,7 @@ export const officeInfo = [
     locationName: "China Office",
     fullAddress:
       "933 Dongli Int. Plaza, Chenghua District, Chengdu, Sichuan, China",
+    phone: "+8619150064373",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.5505664779594!2d104.0926130747909!3d30.702918974598596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36efda9c8f2fd491%3A0xbffec556c8c61204!2sDongli%20International%20Plaza!5e0!3m2!1sen!2ssg!4v1696594146757!5m2!1sen!2ssg",
   },
@@ -113,22 +114,46 @@ export const officeInfo = [
     locationName: "Dhaka, Bangladesh Office",
     fullAddress: `House 191 (2nd floor), Block - D, Road - 8, EHL Mohanagar Project
       R/A, Dhaka - 1219, Bangladesh`,
+    phone: "+8801760680960",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29211.981807669024!2d90.41281649999999!3d23.7652842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x29d57af324a737db%3A0xe20d43dbb90f786e!2sDreamEdu%20Consultancy!5e0!3m2!1sen!2s!4v1703606464041!5m2!1sen!2s",
   },
   {
     locationName: "Morocco Office",
     fullAddress: `Ex-Foucauld , 17 Rue el oraibi Jilali , Casablanca Morocco 20250`,
+    phone: "",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3171352959625!2d-7.617773988284896!3d33.597075073220594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d28315a03ba7%3A0x3d5276c9b2f30476!2s17%20Rue%20el%20Oraibi%20Jilali%2C%20Casablanca%2020250%2C%20Morocco!5e0!3m2!1sen!2s!4v1707669308339!5m2!1sen!2s",
   },
   {
-    locationName: "Chattogram, Bangladesh Office",
+    locationName: "Chattogram, BD Office",
     fullAddress: `Mim Corporation, Y.B Chowdhury Vhobon Chok Super Mor, 2no Lal
       Chand Road, Beside Chawkbazar Police Station, Chawkbazar
       Chattogram`,
+    phone: "",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14759.862604915843!2d91.81871860851543!3d22.35492578724342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd89e1a92c4b9%3A0xa6819d9009884ddb!2sChawk%20Bazar%2C%20Chattogram%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1707669517802!5m2!1sen!2s",
+  },
+  {
+    locationName: "Tajikistan Office",
+    fullAddress: `Shohtemur Street 42, Dushanbe, Tajikistan`,
+    phone: "",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.0328484536976!2d68.78811681191286!3d38.579091371676085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b5d15f10e8b045%3A0x71277ae6eacd46e1!2sShohtemur%20Street%2042%2C%20Dushanbe%20734012%2C%20Tajikistan!5e0!3m2!1sen!2sjp!4v1709568442709!5m2!1sen!2sjp",
+  },
+  {
+    locationName: "Uzbekistan Office",
+    fullAddress: `House 17|35, Qoratosh, Tashkent 100011, Uzbekistan`,
+    phone: "",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.6066879431164!2d69.23376551203127!3d41.31741917118922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b00530aa24f%3A0x408a6cc3e37451b4!2sQoratosh!5e0!3m2!1sen!2sjp!4v1709569000565!5m2!1sen!2sjp",
+  },
+  {
+    locationName: "Pakistan Office",
+    fullAddress: `Office No 25, 1st floor, Civic Center, Executive Block, Gulberg Greens, Islamabad, Pakistan`,
+    phone: "",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6646.136416785866!2d73.14025725953901!3d33.603534669079885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfec764d94cca7%3A0x683d9ebf046fa73c!2sExecutive%20Block%20Koral%20Town%2C%20Islamabad%2C%20Islamabad%20Capital%20Territory%2C%20Pakistan!5e0!3m2!1sen!2sjp!4v1709568803619!5m2!1sen!2sjp",
   },
 ];
 export const socialContact = [
