@@ -56,10 +56,10 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">How can I contact DreamEdu Consultancy?</Typography>
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">How can I contact DreamEdu Consultancy?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             Without hesitation feel free to message on{" "}
             <Link
               sx={{
@@ -141,12 +141,12 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel0"}
         onChange={handleChange("panel0")}>
         <AccordionSummary aria-controls="panel0d-content" id="panel0d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
             How do I apply for a student visa to study in China?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             To apply for a student visa (X visa) for China, you typically need
             to first receive an acceptance letter from a Chinese university.
             Once you have the letter, you can submit your visa application to
@@ -159,13 +159,13 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
             What are the popular universities in China for international
             students?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             China has many reputable universities for international students.
             Some popular choices include Peking University, Tsinghua University,
             Fudan University, Zhejiang University, and Shanghai Jiao Tong
@@ -178,13 +178,13 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
             Are there scholarships available for international students in
             China?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             Yes, China offers various scholarships to international students,
             such as the Chinese Government Scholarship, Confucius Institute
             Scholarship, and scholarships provided by inidual universities.
@@ -197,12 +197,12 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}>
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
             What is the cost of living for international students in China?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             The cost of living in China for international students can vary
             depending on the city and lifestyle. Generally, it is more
             affordable than in many Western countries. Expenses include
@@ -216,12 +216,12 @@ export default function FrequentlyAskQuestion() {
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}>
         <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h5">
+          <Typography sx={{color: "redCustom.main", fontWeight: "bold" }} variant="h6">
             Is it necessary to learn Mandarin before studying in China?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="body1">
             While many universities offer programs in English, learning Mandarin
             can enhance your overall experience and communication with locals.
             It's not always a strict requirement, but having basic Mandarin

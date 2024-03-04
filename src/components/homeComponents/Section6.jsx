@@ -2,7 +2,6 @@ import React from "react";
 import { Badge, Box, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
-import bgGradient from "../../assets/backgrounds/wave1.svg";
 import { stepsToGetAdmission } from "../../utils/fakeData";
 
 const Section6 = () => {
@@ -12,8 +11,6 @@ const Section6 = () => {
     <>
       <Box
         sx={{
-          position: "relative",
-          background: isDarkMode ? "" : `url(${bgGradient})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundImage: "linear-gradient(#fffff, #cfcfcf)",

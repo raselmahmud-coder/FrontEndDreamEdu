@@ -40,7 +40,7 @@ const Section5 = () => {
               justifyContent: "center",
             }}>
             <HeadingH2
-              marginTop={{ xs: 1, sm: 3, md: -6 }}
+              marginTop={{ xs: -12, sm: 3, md: -6 }}
               headingH2Text={"Our Core Strengths"}
             />
           </Box>
@@ -124,7 +124,7 @@ const Section5 = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "end",
+              justifyContent: {xs:"center",sm: "end",md:"end"},
               my: { xs: 5, sm: 9, md: 14 },
             }}>
             <Link to="/contact-us">
