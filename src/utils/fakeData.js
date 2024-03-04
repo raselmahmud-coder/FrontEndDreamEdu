@@ -15,6 +15,10 @@ import experienceIcon from "../assets/Icon/tieBag.svg";
 import visaIcon from "../assets/Icon/visaIcon.svg";
 import scholarshipIcon from "../assets/Icon/11.svg";
 import skillsIcon from "../assets/Icon/skillsIcon.gif";
+import stepsToAdmission from "../assets/Icon/stepsAdm.png";
+import progressIcon from "../assets/Icon/progress.gif";
+import identityIcon from "../assets/Icon/7.png";
+import selectIcon from "../assets/Icon/8.png";
 
 export const whyChooseUsData = [
   {
@@ -186,24 +190,62 @@ export const coreStrength = [
     id: 1,
     icon: experienceIcon,
     title: "Years of Experience",
+    description:
+      "DreamEdu, your passport to global education, boasts 5+ years of expertise. Explore tailored study abroad journeys with our seasoned guidance, ensuring academic success and unforgettable experiences.",
     animateNumber: 5,
   },
   {
     id: 2,
     icon: visaIcon,
     title: "Visa Approved",
+    description:
+      "DreamEdu, where dreams take flight! With an impressive 5076+ visa approvals, trust us to navigate your study abroad journey seamlessly. Your success, our visa expertise!",
     animateNumber: 5076,
   },
   {
     id: 3,
     icon: skillsIcon,
     title: "Get Admission",
+    description:
+      "Experience the DreamEdu advantage! Join 5126+ success stories with our expert guidance to secure admissions worldwide. Your educational journey begins with us, where dreams become reality.",
     animateNumber: 5126,
   },
   {
     id: 4,
     icon: scholarshipIcon,
     title: "Get Scholarship",
+    description:
+      "DreamEdu - Transforming dreams into funded realities! Join 4589+ scholars who have thrived with our expertise. Unlock the doors to quality education abroad with our dedicated scholarship support.",
     animateNumber: 4589,
+  },
+];
+export const stepsToGetAdmission = [
+  {
+    id: 1,
+    title: "Identify your course",
+    description:
+      "To secure admission in China through our consultancy, follow these streamlined steps. First, identify your desired course to align with your academic and career goals.",
+    icon: identityIcon,
+  },
+  {
+    id: 2,
+    title: "Select University",
+    description:
+      "Once you've determined your course, select a reputable university in China that offers the program of your choice and considerable scholarship.",
+    icon: selectIcon,
+  },
+  {
+    id: 3,
+    title: "Admission in progress",
+    description:
+      "Our expert team will guide you through the admission process, ensuring a smooth application submission. During this phase, we will keep you informed on the progress of your admission.",
+    icon: progressIcon,
+  },
+  {
+    id: 4,
+    title: "Final result release",
+    description:
+      "Finally, anticipate the exciting moment when the university releases the final admission results, marking the successful culmination of your journey towards higher education in China. Trust our consultancy to pave the way for your academic success.",
+    icon: stepsToAdmission,
   },
 ];

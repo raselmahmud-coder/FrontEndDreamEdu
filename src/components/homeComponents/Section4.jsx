@@ -74,7 +74,7 @@ const Section4 = () => {
         autoHeight={true}
         style={{
           // zIndex: 0,
-          minHeight: "480px",
+          minHeight: "520px",
           padding: "30px 0px",
         }}
         navigation={true}
@@ -88,12 +88,14 @@ const Section4 = () => {
               className={customStyles.studentFeedback}
               style={{
                 borderRadius: "5px",
+                border:"1px solid #Df0707",
                 // maxHeight:"233px"
               }}>
               <Card
                 sx={{
                   p: 2,
                   bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
+                  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
                 }}>
                 <Box
                   sx={{
@@ -150,7 +152,6 @@ const Section4 = () => {
         background: isDarkMode ? "" : `url(${bgGradient})`,
         backgroundSize: "cover",
         // backgroundRepeat: "no-repeat",
-        // width:"100%"
       }}>
       <Container maxWidth="xl" sx={{
           pb: { xs: 6, sm: 8, md: 16 },
