@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate2 } from "../../redux/feature/applyForAdmission/userAdmissionProfileSlice";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import moment from "moment";
 

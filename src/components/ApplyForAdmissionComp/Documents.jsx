@@ -1,13 +1,10 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import { Box, Button, Chip, Stack } from "@mui/material";
+import { Box, Button, Chip } from "@mui/material";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate3 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate3 } from "../../redux/feature/applyForAdmission/userAdmissionProfileSlice";
 import validateAndRenameFile from "../../utils/fileValidationNRename";
 import SnackBar from "../../globalsComponents/AlertShowing/SnackBar";
 
@@ -105,65 +102,10 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
+        
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Others/Extra-curricular*
-          </Typography>
-          {othersFile && (
-            <Chip
-              sx={{
-                mb: "5px",
-              }}
-              size="small"
-              label="File Uploaded"
-              variant="outlined"
-              onDelete={() => handleDelete("othersFile")}
-            />
-          )}
-          <Box>
-            <Button variant="contained" component="label">
-              <DriveFileMoveIcon
-                sx={{
-                  fontSize: "30px",
-                }}
-              />
-              Upload File
-              <input
-                // required={othersFile ? false : true}
-                type="file"
-                onChange={(e) => {
-                  const selectedFile = validateAndRenameFile(
-                    e.target.files[0],
-                    "othersFile",
-                  );
-                  if (selectedFile[0]) {
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                      const fileData = {
-                        name: selectedFile[1].name,
-                        dataURL: event.target.result,
-                      };
-                      dispatch(
-                        admissionProfileCreate3({
-                          ...step3,
-                          othersFile: fileData.dataURL,
-                        }),
-                      );
-                    };
-                    reader.readAsDataURL(selectedFile[1]);
-                  } else {
-                    setShowError(selectedFile[1]);
-                  }
-                }}
-                hidden
-                accept=".jpg, .jpeg, .png, .pdf"
-              />
-            </Button>
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="subtitle1" gutterBottom>
-            Photo 48/33 mm (White background)*
+          Photo (48*33mm, White Background)*
           </Typography>
           {photo && (
             <Chip
@@ -217,64 +159,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        {["Language", "Bachelor", "Diploma"].includes(program) && (
-          <Grid item xs={12} md={6}>
-            <Typography variant="subtitle1" gutterBottom>
-              Secondary school certificate (SSC) & transcript*
-            </Typography>
-            {ssc && (
-              <Chip
-                sx={{
-                  mb: "5px",
-                }}
-                size="small"
-                label="File Uploaded"
-                variant="outlined"
-                onDelete={() => handleDelete("ssc")}
-              />
-            )}
-            <Box>
-              <Button variant="contained" component="label">
-                <DriveFileMoveIcon
-                  sx={{
-                    fontSize: "30px",
-                  }}
-                />
-                Upload File
-                <input
-                  onChange={(e) => {
-                    const selectedFile = validateAndRenameFile(
-                      e.target.files[0],
-                      "ssc",
-                    );
-                    if (selectedFile[0]) {
-                      const reader = new FileReader();
-                      reader.onload = (event) => {
-                        const fileData = {
-                          name: selectedFile[1].name,
-                          dataURL: event.target.result,
-                        };
-                        dispatch(
-                          admissionProfileCreate3({
-                            ...step3,
-                            ssc: fileData.dataURL,
-                          }),
-                        );
-                      };
-                      reader.readAsDataURL(selectedFile[1]);
-                    } else {
-                      setShowError(selectedFile[1]);
-                    }
-                  }}
-                  required={ssc ? false : true}
-                  type="file"
-                  hidden
-                  accept=".jpg, .jpeg, .png, .pdf"
-                />
-              </Button>
-            </Box>
-          </Grid>
-        )}
+        
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
             Police clearance certificate*
@@ -333,7 +218,7 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Bank statement (last 6 months)*
+          Bank Statements (20,000 CNY or 3000 USD)*
           </Typography>
           {bankStatement && (
             <Chip
@@ -445,7 +330,7 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            IELTS/Any other English proficiency certificate*
+            IELTS/Any English proficiency certificate*
           </Typography>
           {englishProficiencyTest && (
             <Chip
@@ -499,6 +384,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
+       
         {["Bachelor", "Masters"].includes(program) && (
           <>
             <Grid item xs={12} md={6}>
@@ -558,6 +444,64 @@ export default function Documents() {
               </Box>
             </Grid>
           </>
+        )}
+        {["Language", "Bachelor", "Diploma"].includes(program) && (
+          <Grid item xs={12} md={6}>
+            <Typography variant="subtitle1" gutterBottom>
+              Secondary school certificate (SSC) & transcript*
+            </Typography>
+            {ssc && (
+              <Chip
+                sx={{
+                  mb: "5px",
+                }}
+                size="small"
+                label="File Uploaded"
+                variant="outlined"
+                onDelete={() => handleDelete("ssc")}
+              />
+            )}
+            <Box>
+              <Button variant="contained" component="label">
+                <DriveFileMoveIcon
+                  sx={{
+                    fontSize: "30px",
+                  }}
+                />
+                Upload File
+                <input
+                  onChange={(e) => {
+                    const selectedFile = validateAndRenameFile(
+                      e.target.files[0],
+                      "ssc",
+                    );
+                    if (selectedFile[0]) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        const fileData = {
+                          name: selectedFile[1].name,
+                          dataURL: event.target.result,
+                        };
+                        dispatch(
+                          admissionProfileCreate3({
+                            ...step3,
+                            ssc: fileData.dataURL,
+                          }),
+                        );
+                      };
+                      reader.readAsDataURL(selectedFile[1]);
+                    } else {
+                      setShowError(selectedFile[1]);
+                    }
+                  }}
+                  required={ssc ? false : true}
+                  type="file"
+                  hidden
+                  accept=".jpg, .jpeg, .png, .pdf"
+                />
+              </Button>
+            </Box>
+          </Grid>
         )}
         {["Masters", "Phd"].includes(program) && (
           <>
@@ -735,6 +679,62 @@ export default function Documents() {
             </Grid>
           </>
         )}
+         <Grid item xs={12} md={6}>
+          <Typography variant="subtitle1" gutterBottom>
+          Others (Extra-curricular) 
+          </Typography>
+          {othersFile && (
+            <Chip
+              sx={{
+                mb: "5px",
+              }}
+              size="small"
+              label="File Uploaded"
+              variant="outlined"
+              onDelete={() => handleDelete("othersFile")}
+            />
+          )}
+          <Box>
+            <Button variant="contained" component="label">
+              <DriveFileMoveIcon
+                sx={{
+                  fontSize: "30px",
+                }}
+              />
+              Upload File
+              <input
+                // required={othersFile ? false : true}
+                type="file"
+                onChange={(e) => {
+                  const selectedFile = validateAndRenameFile(
+                    e.target.files[0],
+                    "othersFile",
+                  );
+                  if (selectedFile[0]) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const fileData = {
+                        name: selectedFile[1].name,
+                        dataURL: event.target.result,
+                      };
+                      dispatch(
+                        admissionProfileCreate3({
+                          ...step3,
+                          othersFile: fileData.dataURL,
+                        }),
+                      );
+                    };
+                    reader.readAsDataURL(selectedFile[1]);
+                  } else {
+                    setShowError(selectedFile[1]);
+                  }
+                }}
+                hidden
+                accept=".jpg, .jpeg, .png, .pdf"
+              />
+            </Button>
+          </Box>
+        </Grid>
       </Grid>
     </React.Fragment>
   );

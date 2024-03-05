@@ -4,7 +4,7 @@ export const applyForAdmissionDocs = APISlice.injectEndpoints({
   endpoints: (builder) => ({
     addApplicantProfile: builder.mutation({
       query: (body) =>{
-      console.log(body, "hello body");
+      // console.log(body, "hello body");
       return(
         {
         url: "/api/apply/",

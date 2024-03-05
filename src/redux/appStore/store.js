@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userModeSlice from "../feature/userColorMode/userColorModeSlice";
-import userAdmissionProfileSlice from "../feature/userAdmissionProfile/userAdmissionProfileSlice";
 import { APISlice } from "../feature/API/APISlice";
 import contentfulSlice from "../feature/ContentfulLib/contentfulSlice";
+import userAdmissionProfileSlice from "../feature/applyForAdmission/userAdmissionProfileSlice";
 
 export const store = configureStore({
   reducer: {

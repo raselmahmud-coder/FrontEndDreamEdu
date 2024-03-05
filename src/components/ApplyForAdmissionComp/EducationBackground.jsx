@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate2 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate2 } from "../../redux/feature/applyForAdmission/userAdmissionProfileSlice";
 import AddDynamicSchool from "./AddDynamicSchool";
 import CancelIcon from "@mui/icons-material/Cancel";
 import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";

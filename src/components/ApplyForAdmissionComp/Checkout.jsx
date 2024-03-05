@@ -1,24 +1,18 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import {
-  Paper,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Paper, Stepper, Step, StepLabel, Button } from "@mui/material";
 import Initialization from "./Initialization";
 import Documents from "./Documents";
 import Review from "./Review";
 import { useSelector } from "react-redux";
 import { useAddApplicantProfileMutation } from "../../redux/feature/applyForAdmission/applyForAdmissionDocsAPI";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import base64ToBlob from "../../utils/base64ToBlob";
 import EducationBackground from "./EducationBackground";
 import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
-import LazyLoading from "../../globalsComponents/LazyLoading";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "../../hooks/useAlert";
+import DefaultComponent from "./DefaultComponent";
 const steps = [
   "Your Basic Information",
   "Education Background",
@@ -28,9 +22,10 @@ const steps = [
 function getStepContent(step) {
   switch (step) {
     case 0:
+      // return <Review />;
       // return <Documents />;
-      // return <Initialization />;
-      return <EducationBackground />;
+      return <Initialization />;
+    // return <EducationBackground />;
     case 1:
       return <EducationBackground />;
     case 2:
@@ -43,9 +38,11 @@ function getStepContent(step) {
 }
 
 export default function Checkout() {
+  const showAlertCustom = useAlert();
   const [showAlert, setShowAlert] = React.useState("");
   const [activeStep, setActiveStep] = React.useState(0);
-  const [addApplicantProfile, { isError, isLoading, error, data }] =
+  const navigate = useNavigate();
+  const [addApplicantProfile, { isError, isLoading, isSuccess }] =
     useAddApplicantProfileMutation();
   const { step1, step2, step3 } = useSelector((state) => state.admission);
 
@@ -71,11 +68,9 @@ export default function Checkout() {
     phone,
     email,
     fatherName,
-    fatherDateOfBirth,
     fatherOccupation,
     fatherPhone,
     motherName,
-    motherDateOfBirth,
     motherOccupation,
     motherPhone,
   } = step1;
@@ -152,11 +147,9 @@ export default function Checkout() {
           phone: phone,
           email: email,
           fathersName: fatherName,
-          fathersBirthdate: fatherDateOfBirth,
           fathersOccupation: fatherOccupation,
           fathersPhone: fatherPhone,
           mothersName: motherName,
-          mothersBirthdate: motherDateOfBirth,
           mothersOccupation: motherOccupation,
           mothersPhone: motherPhone,
           DesireUniversityName: desireUniversity.join(", "),
@@ -213,11 +206,6 @@ export default function Checkout() {
     };
     sendData();
   }, [activeStep]);
-  if (isLoading) return <LazyLoading />;
-  if (isError) return console.log(error, "error");
-  /*   if (data) {
-    console.log(data, "data");
-  } */
 
   // console.log("Error Response:", showError);
   return (
@@ -232,10 +220,7 @@ export default function Checkout() {
       <Paper
         variant="outlined"
         sx={{ my: { xs: 1, sm: 1, md: 2 }, p: { xs: 1, sm: 2, md: 3 } }}>
-        <HeadingH2
-          headingH2Text={"Fill Out Your Application"}
-          // headingH2Icon={AutoStoriesIcon}
-        />
+        <HeadingH2 headingH2Text={"Fill Out Your Application"} />
         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
           {steps.map((label) => (
             <Step key={label}>
@@ -244,45 +229,34 @@ export default function Checkout() {
           ))}
         </Stepper>
         {activeStep === steps.length ? (
-          <Box
-            sx={{
-              flexDirection: "column",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-            <Typography variant="h5" gutterBottom>
-              Your profile is successfully submitted📩
-            </Typography>
-            <Typography variant="subtitle1">
-              Please check your email for further instructions.
-            </Typography>
-          </Box>
+          <DefaultComponent
+            isError={isError}
+            isLoading={isLoading}
+            isSuccess={isSuccess}
+          />
         ) : (
-          <React.Fragment>
-            <form onSubmit={(e) => e.preventDefault()} ref={initFormRef}>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button
-                    variant="contained"
-                    onClick={handleBack}
-                    sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
+          <form onSubmit={(e) => e.preventDefault()} ref={initFormRef}>
+            {getStepContent(activeStep)}
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              {activeStep !== 0 && (
                 <Button
-                  type="submit"
                   variant="contained"
-                  onClick={handleNext}
+                  onClick={handleBack}
                   sx={{ mt: 3, ml: 1 }}>
-                  {activeStep === steps.length - 1
-                    ? "Submit your profile"
-                    : "Next"}
+                  Back
                 </Button>
-              </Box>
-            </form>
-          </React.Fragment>
+              )}
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={handleNext}
+                sx={{ mt: 3, ml: 1 }}>
+                {activeStep === steps.length - 1
+                  ? "Submit your profile"
+                  : "Next"}
+              </Button>
+            </Box>
+          </form>
         )}
       </Paper>
     </React.Fragment>

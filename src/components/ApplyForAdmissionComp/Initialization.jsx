@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
-import { admissionProfileCreate1 } from "../../redux/feature/userAdmissionProfile/userAdmissionProfileSlice";
+import { admissionProfileCreate1 } from "../../redux/feature/applyForAdmission/userAdmissionProfileSlice";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { DatePicker } from "@mui/x-date-pickers";

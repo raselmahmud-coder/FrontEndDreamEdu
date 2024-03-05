@@ -11,6 +11,7 @@ import Footer from "./globalsComponents/footer/Footer";
 import LazyLoading from "./globalsComponents/LazyLoading";
 import { useSelector } from "react-redux";
 import EventsPage from "./pages/EventsPage";
+import { AlertProvider } from "./hooks/useAlert";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
@@ -59,10 +60,10 @@ const App = () => {
         main: "#272727",
       },
       btnHover: {
-        main: "#0A7CFF",//type of blue
+        main: "#0A7CFF", //type of blue
       },
       linkHover: {
-        main: "#0000EE",//type of blue dip
+        main: "#0000EE", //type of blue dip
       },
     },
     typography: {
@@ -110,24 +111,29 @@ const App = () => {
       <ThemeProvider theme={responsiveTheme}>
         <CssBaseline />
         <ResponsiveAppBar />
-        <Suspense fallback={<LazyLoading />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/blogs" element={<ImportantTipsPage />} />
-            <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
-            <Route
-              path="/blogs/category/:categoryId"
-              element={<ImportantTipsPage />}
-            />
-            <Route path="/success-story" element={<SuccessStoryPage />} />
-            <Route path="/contact-us" element={<FreeConsultationPage />} />
-            <Route path="/apply-now" element={<ApplyForAdmissionPage />} />
-            <Route path="/university/:id" element={<UniversityDetailPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
+        <AlertProvider>
+          <Suspense fallback={<LazyLoading />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/blogs" element={<ImportantTipsPage />} />
+              <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
+              <Route
+                path="/blogs/category/:categoryId"
+                element={<ImportantTipsPage />}
+              />
+              <Route path="/success-story" element={<SuccessStoryPage />} />
+              <Route path="/contact-us" element={<FreeConsultationPage />} />
+              <Route path="/apply-now" element={<ApplyForAdmissionPage />} />
+              <Route
+                path="/university/:id"
+                element={<UniversityDetailPage />}
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </AlertProvider>
         <Footer />
       </ThemeProvider>
     </>
