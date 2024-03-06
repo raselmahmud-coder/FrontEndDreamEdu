@@ -10,10 +10,10 @@ export default function AboutUsPage() {
   return (
     <>
       <DynamicPageTitle pageTitle="About Us Page" />
-      <Container maxWidth="xl">
         <AboutUsSection1 />
-        <AboutUsSection3 />
+      <Container maxWidth="xl">
         <AboutUsSection2 />
+        <AboutUsSection3 />
         <OfficeAddress/>
       </Container>
     </>

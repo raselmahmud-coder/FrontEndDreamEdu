@@ -26,15 +26,6 @@ const ContactUs = () => {
     { isError, isLoading, data: consultationData, isSuccess },
   ] = useAddFreeConsultationMutation();
 
-  const style = {
-    my: 2,
-    color: isDarkMode ? "white" : "black",
-
-    "& .MuiInputLabel-root": {
-      color: isDarkMode ? "white" : "black",
-    },
-  };
-
   const handleConsultationForm = async (even) => {
     even.preventDefault();
     const name = even.target[0].value;
@@ -58,7 +49,14 @@ const ContactUs = () => {
     <>
       <HeadingH2 headingH2Text={"Contact Us"} headingH2Icon={RingVolumeIcon} />
       {consultationData?.id && isSuccess && (
-        <PositionedSnackbar isOpen={true} />
+        <PositionedSnackbar severity={"success"} isOpen={true} />
+      )}
+      {isError && (
+        <PositionedSnackbar
+          severity={"warning"}
+          message={"There is an error, try again later"}
+          isOpen={true}
+        />
       )}
       <Grid
         container
@@ -126,8 +124,8 @@ const ContactUs = () => {
             }}>
             <PhoneForwardedIcon
               sx={{
-                fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                fontSize: "2.5rem",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -138,7 +136,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
               }}>
               Phone Number Bangladesh Office: +8801760680960
             </Typography>
@@ -151,8 +149,8 @@ const ContactUs = () => {
             }}>
             <PhoneForwardedIcon
               sx={{
-                fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                fontSize: "2.5rem",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -163,7 +161,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
               }}>
               Phone Number China Office: +8619150064373
             </Typography>
@@ -176,8 +174,8 @@ const ContactUs = () => {
             }}>
             <DraftsIcon
               sx={{
-                fontSize: "3rem",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                fontSize: "2.5rem",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -188,14 +186,13 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "accent.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
               }}>
               Email Us: official@dreameduinfo.com
             </Typography>
           </Box>
         </Grid>
       </Grid>
-      {/* <PositionedSnackbar/> */}
     </>
   );
 };

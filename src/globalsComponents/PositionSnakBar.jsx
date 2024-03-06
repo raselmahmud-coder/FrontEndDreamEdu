@@ -4,7 +4,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { Alert, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function PositionedSnackbar({ isOpen }) {
+export default function PositionedSnackbar({ severity, message, isOpen }) {
   const [state, setState] = React.useState({
     open: isOpen ? isOpen : false,
     vertical: "top",
@@ -36,8 +36,10 @@ export default function PositionedSnackbar({ isOpen }) {
         key={vertical + horizontal}
         autoHideDuration={2000}
         action={action}>
-        <Alert severity="success">
-          Your information submitted! Please check your email
+        <Alert severity={severity ? severity : "success"}>
+          {message
+            ? message
+            : "Your information submitted! Please check your email"}
         </Alert>
       </Snackbar>
     </Box>

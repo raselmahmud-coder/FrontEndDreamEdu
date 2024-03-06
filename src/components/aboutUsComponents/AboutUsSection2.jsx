@@ -5,6 +5,7 @@ import {
   Box,
   Card,
   CardContent,
+  Divider,
   Grid,
   Typography,
 } from "@mui/material";
@@ -14,6 +15,7 @@ import { useGetEmployeeInfoQuery } from "../../redux/feature/employee/EmployeeAP
 import LazyLoading from "../../globalsComponents/LazyLoading";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
+import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 
 const AboutUsSection2 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -30,12 +32,14 @@ const AboutUsSection2 = () => {
         <Card
           sx={{
             py: 3,
-            border: "2px solid #Df0707",
-            color: "redCustom.main",
+            border: "1px solid #Df0707",
+            backgroundColor: isDarkMode ? "deepGray.main" : "primary.main",
+            color: isDarkMode ? "whiteCustom.main": "black.main",
             transition: "all 0.5s",
             "&:hover": {
+              transform: "scale(1.07)",
               color: "whiteCustom.main",
-              backgroundColor: isDarkMode ? "#004808" : "redCustom.main",
+              backgroundColor: "silverPro.main",
             },
           }}>
           <CardContent
@@ -52,16 +56,18 @@ const AboutUsSection2 = () => {
                   <a href="#" target={"_blank"}>
                     <LinkedIn
                       sx={{
-                        fontSize: "3rem",
+                        fontSize: "2.5rem",
                         zIndex: 122,
                         cursor: "pointer",
                         color: "#0077b5",
                         borderRadius: "50%",
                         p: 0.5,
-                        transition: "background-color 0.9s, color 0.9s",
+                        transition: "all 0.5s",
                         "&:hover": {
-                          color: isDarkMode ? "white" : "#004808",
-                          backgroundColor: isDarkMode ? "#004808" : "white",
+                          transform: "scale(1.1)",
+                          backgroundColor: isDarkMode
+                            ? "deepGray.main"
+                            : "whiteCustom.main",
                         },
                       }}
                     />
@@ -72,16 +78,18 @@ const AboutUsSection2 = () => {
                         position: "absolute",
                         bottom: -12,
                         left: -205,
-                        fontSize: "3rem",
+                        fontSize: "2.5rem",
                         zIndex: 122,
                         cursor: "pointer",
                         color: "#316FF6",
                         borderRadius: "50%",
                         p: 0.5,
-                        transition: "background-color 0.4s, color 0.4s",
+                        transition: "all 0.5s",
                         "&:hover": {
-                          color: isDarkMode ? "white" : "#004808",
-                          backgroundColor: isDarkMode ? "#004808" : "white",
+                          transform: "scale(1.1)",
+                          backgroundColor: isDarkMode
+                            ? "deepGray.main"
+                            : "whiteCustom.main",
                         },
                       }}
                     />
@@ -92,14 +100,14 @@ const AboutUsSection2 = () => {
                 alt={name}
                 src={`https://dreameduapiv1.dreameduinfo.com${Picture}`}
                 sx={{
-                  width: 300,
-                  height: 300,
+                  width: 250,
+                  height: 250,
                 }}
               />
             </Badge>
           </CardContent>
           <Typography
-            variant="h4"
+            variant="h6"
             sx={{
               textAlign: "center",
               fontWeight: "bold",
@@ -107,10 +115,9 @@ const AboutUsSection2 = () => {
             {name}
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             sx={{
               textAlign: "center",
-              fontWeight: "bold",
             }}>
             {description}
           </Typography>
@@ -119,18 +126,70 @@ const AboutUsSection2 = () => {
     ));
   }
   return (
-    <Box
-      component={"section"}
-      sx={{
-        my: 7,
-      }}>
+    <Box component={"section"}>
       <HeadingH2
-        headingH2Text={"Meet The Experts"}
+        headingH2Text={"MEET OUR TEAM"}
         headingH2Icon={Diversity3Icon}
+      />
+      <Typography
+        variant="h5"
+        textAlign={"center"}
+        sx={{
+          fontWeight: "600",
+        }}>
+        ADVISORY
+      </Typography>
+      <Divider
+        sx={{
+          mt: 2,
+          mb: 3,
+        }}
       />
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}>
+        {content}
+      </Grid>
+      <Typography
+        variant="h5"
+        textAlign={"center"}
+        sx={{
+          fontWeight: "600",
+          mt: { xs: 10, sm: 13, md: 13 },
+        }}>
+        OPERATIONS
+      </Typography>
+      <Divider
+        sx={{
+          mt: 2,
+          mb: 3,
+        }}
+      />
+      <Grid
+        container
+        spacing={{ xs: 2, md: 7 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}>
+        {content}
+      </Grid>
+      <Typography
+        variant="h5"
+        textAlign={"center"}
+        sx={{
+          fontWeight: "600",
+          mt: { xs: 10, sm: 13, md: 13 },
+        }}>
+        BRANCH MANAGERS
+      </Typography>
+      <Divider
+        sx={{
+          mt: 2,
+          mb: 3,
+        }}
+      />
+      <Grid
+        container
+        spacing={{ xs: 2, md: 7 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {content}
       </Grid>

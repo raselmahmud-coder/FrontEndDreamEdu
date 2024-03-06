@@ -18,7 +18,7 @@ const OfficeAddress = () => {
           pb: { xs: 6, sm: 7, md: 8 },
         }}>
         <HeadingH2
-          marginTop={{ xs: 1, sm: -5, md: -6 }}
+          marginTop={{ xs: 4, sm: 5, md: 6 }}
           headingH2Text={"Our Office Address"}
           headingH2Icon={OtherHousesIcon}
         />
@@ -37,8 +37,8 @@ const OfficeAddress = () => {
                 <Box
                   sx={{
                     minHeight: "445px",
-                    borderRadius:5,
-                    bgcolor:isDarkMode ? "deepGray.main":"silverPro.main"
+                    borderRadius: 5,
+                    bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
                   }}>
                   <Box
                     sx={{
@@ -63,28 +63,31 @@ const OfficeAddress = () => {
                     sx={{
                       my: 2,
                       px: 3,
-                      color: "redCustom.main",
-                      fontWeight: "bold",
+                      color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
                     }}>
                     Address:➡️ {fullAddress}
                   </Typography>
-                  
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        my: 2,
-                        px: 3,
-                        color: "redCustom.main",
-                        fontWeight: "bold",
-                      }}>
-                      Phone Number:📞 {phone}
-                    </Typography>
-                  
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      my: 2,
+                      px: 3,
+                      color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                    }}>
+                    Phone Number:📞 {phone}
+                  </Typography>
+
                   <iframe
                     src={mapSrc}
                     width="90%"
                     height="auto"
-                    style={{border:"1px solid #fff", borderRadius: "5px",margin:"0px auto", display:"block" }}
+                    style={{
+                      border: "1px solid #fff",
+                      borderRadius: "5px",
+                      margin: "0px auto",
+                      display: "block",
+                    }}
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"></iframe>

@@ -35,13 +35,12 @@ const AboutUsSection3 = () => {
                 py: 2,
                 height: 400,
                 borderRadius: 3,
-                bgcolor:
-                  (ind === 0 && "#a5bfff") ||
-                  (ind === 1 && "#fff0d1") ||
-                  (ind === 2 && "#d3fff0"),
-                  "&:hover": {
-                  transition: "all 0.5s",
-                  bgcolor: "deepGray.main",
+                bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
+                transition: "all 0.5s",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
                 },
               }}>
               <Box
@@ -62,7 +61,9 @@ const AboutUsSection3 = () => {
                 <HeadingH4 HeadingH4Text={item.title} />
               </Box>
               <CardContent>
-                <Typography variant="body1" color="redCustom.main">
+                <Typography
+                  variant="body1"
+                  sx={{ textAlign: "justify", px: 3 }}>
                   {item.description}
                 </Typography>
               </CardContent>
@@ -83,16 +84,20 @@ const AboutUsSection3 = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-around",
-                bgcolor: "redCustom.main",
-                color: "whiteCustom.main",
+                bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+                color: "black.main",
                 transition: "background-color 0.5s, color 0.5s",
-                "&:hover": {
-                  backgroundColor: isDarkMode ? "#004808" : "redCustom.main",
-                },
               }}>
               <Avatar sx={{ width: 65, height: 65 }} src={item.img} />
-              <Box>
-                <Typography variant="h3">
+              <Box
+                sx={{
+                  color: isDarkMode ? "whiteCustom.main" : "black.main",
+                }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                  }}>
                   <AnimatedNumber value={Number(item.quantity)} />
                 </Typography>
                 <Typography variant="h5">{item.title}</Typography>

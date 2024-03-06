@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
+const HeadingH4 = ({children, HeadingH4Text, headingH4Icon,marginY }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   return (
@@ -16,8 +16,10 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
         <Typography
           variant="h5"
           sx={{
+            fontWeight: "500",
+            lineHeight:"1",
             textAlign: "center",
-            my: 3,
+            my: marginY ? marginY : 3,
             display: "inline-flex",
             alignItems:"center",
             p: 2,
@@ -34,6 +36,7 @@ const HeadingH4 = ({ HeadingH4Text, headingH4Icon }) => {
             })}
           {HeadingH4Text}
         </Typography>
+          {children}
       </Box>
     </>
   );
