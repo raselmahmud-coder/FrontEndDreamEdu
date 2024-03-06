@@ -56,6 +56,7 @@ const labels = {
 };
 const SSComp = () => {
   const { data: feedbacks, isLoading, isError } = useGetFeedbacksQuery();
+  const { isDarkMode } = useSelector((state) => state.colorMode);
   // render the loading state
   let content;
   if (isLoading) {
@@ -156,65 +157,90 @@ const SSComp = () => {
     content = (
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 6, sm: 8, md: 12 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2 }}>
+        sx={{ p: { md: 2 } }}>
         {feedbacks.feedback.map((feedback) => (
           <Grid item xs={12} sm={6} md={6} key={feedback.id}>
             <Card
               sx={{
-                bgcolor: "redCustom.main",
-                color: "whiteCustom.main",
+                bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
+                minHeight: { md: "780px" },
+                transition: "all 0.5s",
+                cursor: "default",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  backgroundColor: "accent.main",
+                },
               }}>
               <CardActionArea
                 sx={{
                   p: 1,
+                  cursor: "default",
                 }}>
                 <Box
                   sx={{
+                    cursor: "default",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
                   }}>
                   <img
-                    style={{ width: "48%", height: 400 }}
+                    style={{ width: "48%", height: "auto" }}
                     loading="lazy"
                     alt={feedback.name}
                     src={`https://dreameduapiv1.dreameduinfo.com${feedback.Picture}`}
                   />
-
                   <Box
                     sx={{
-                      fontSize: "35px",
+                      fontSize: "30px",
                     }}>
                     <Rating
+                      sx={{
+                        fontSize: { xs: "22px", sm: "35px", md: "38px" },
+                      }}
                       name="read-only"
                       readOnly
                       value={feedback.rating}
-                      emptyIcon={
-                        <StarIcon
-                          style={{ opacity: 0.55 }}
-                          fontSize="inherit"
-                        />
-                      }
+                      emptyIcon={<StarIcon style={{ opacity: 0.55 }} />}
                     />
                     {feedback.rating && (
-                      <Box sx={{ mt: 1 }}>{labels[feedback.rating]}</Box>
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          mt: 1,
+                        }}>
+                        {labels[feedback.rating]}
+                      </Typography>
                     )}
                   </Box>
                 </Box>
-                <CardContent>
+                <CardContent sx={{ cursor: "default" }}>
                   <Box
                     sx={{
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
                     }}>
-                    <Typography gutterBottom variant="h4">
+                    <Typography gutterBottom variant="h5">
                       {feedback.name}
                     </Typography>
-                    <Typography gutterBottom variant="h4">
+                    <Typography gutterBottom variant="h5">
                       {feedback.country}
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}>
+                    <Typography gutterBottom variant="h5">
+                      {feedback.university}
+                    </Typography>
+                    <Typography gutterBottom variant="h5">
+                      {feedback.major}
                     </Typography>
                   </Box>
                   <Typography variant="body1">
@@ -238,22 +264,18 @@ const SSComp = () => {
           alignItems: "center",
           mb: 4,
         }}>
-        <img
+        <Box
+          component={"img"}
           src={feedbacksIcon}
-          style={{
-            // width: "245px",
-            height: "235px",
+          sx={{
+            width: { xs: "90px", sm: "200px", md: "235px" },
+            height: { xs: "120px", sm: "200px", md: "235px" },
           }}
           alt="icon"
         />
         <HeadingH2 headingH2Text={"Our Success Story"} />
       </Box>
       {content}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}></Box>
     </>
   );
 };

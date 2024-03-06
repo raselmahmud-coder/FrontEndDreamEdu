@@ -12,10 +12,11 @@ import LazyLoading from "./globalsComponents/LazyLoading";
 import { useSelector } from "react-redux";
 import EventsPage from "./pages/EventsPage";
 import { AlertProvider } from "./hooks/useAlert";
+import GalleryPage from "./pages/GalleryPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
-const ImportantTipsPage = lazy(() => import("./pages/ImportantTipsPage"));
+const ImportantTipsPage = lazy(() => import("./pages/BlogsPage"));
 const SuccessStoryPage = lazy(() => import("./pages/SuccessStoryPage"));
 const SingleBlogPostPage = lazy(() => import("./pages/SingleBlogPostPage"));
 const ApplyForAdmissionPage = lazy(() =>
@@ -39,7 +40,7 @@ const App = () => {
         main: "#C0C0C0", //type of silver Pro
       },
       secondary: {
-        main: "#9E0105",
+        main: "#9E0105",//type of deep silver
       },
       redCustom: {
         main: "#Df0707",
@@ -73,6 +74,11 @@ const App = () => {
           fontSize: 22,
         },
       },
+      h3: {
+        "@media (max-width: 400px)": {
+          fontSize: 19,
+        },
+      },
       h4: {
         "@media (max-width: 400px)": {
           fontSize: 18,
@@ -95,12 +101,12 @@ const App = () => {
       },
       body1: {
         "@media (max-width: 400px)": {
-          fontSize: 12,
+          fontSize: 11,
         },
       },
       body2: {
         "@media (max-width: 400px)": {
-          fontSize: 10,
+          fontSize: 8,
         },
       },
     },
@@ -117,6 +123,7 @@ const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/blogs" element={<ImportantTipsPage />} />
               <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
               <Route

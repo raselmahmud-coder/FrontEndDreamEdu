@@ -128,37 +128,32 @@ const DocumentImageGallery = () => {
   }
   return (
     <>
-      <HeadingH2 headingH2Text={"Recently Released Admission Notice"} />
+      <HeadingH2 marginTop={{ xs:8, sm: 12, md: 12 }} headingH2Text={"Recent Admission Notice"} />
 
       <Grid
         container
-        spacing={{ xs: 1, md: 2 }}
+        spacing={{ xs: 4, sm:5, md: 5 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        // sx={{
-        //   pt: 12,
-        //   px: 1,
-        //   justifyContent: "space-between",
-        //   alignItems: "center",
-        // }}
       >
         {itemData.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <HoverNAnimation scale={"scale(1.05)"}>
               <Box
                 sx={{
-                  border: "2px solid red",
-                  borderRadius: 9,
+                  border: "1px solid",
+                  borderRadius: 3,
                   m: 1,
+                  cursor: "pointer",
+                  minHeight:{md:"720px"}
                 }}
                 onClick={() => handleImageClick(item)}>
                 <Box
                   component="img"
                   sx={{
-                    borderRadius: 9,
+                    borderRadius: 3,
                     width: "100%",
-                    height: "100%",
+                    height: "auto",
                     objectFit: "cover",
-                    cursor: "pointer",
                     transition: "transform 0.3s ease",
                   }}
                   src={`${item.img}`}

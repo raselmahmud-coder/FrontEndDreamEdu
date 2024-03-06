@@ -7,16 +7,27 @@ import {
   Skeleton,
   Avatar,
   Button,
+  CardActions,
+  SpeedDial,
+  SpeedDialAction,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSidebarPosts } from "../../redux/feature/ContentfulLib/contentfulSlice";
 import ErrorShow from "../../globalsComponents/ErrorShow";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
+import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
+import { Facebook, LinkedIn } from "@mui/icons-material";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import ShareIcon from "@mui/icons-material/Share";
 
+const actions = [
+  { icon: <Facebook />, name: "Facebook" },
+  { icon: <LinkedIn />, name: "LinkedIn" },
+];
 const PostSidebar = ({ postId }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   // console.log(postId, "hello post id");
@@ -77,79 +88,145 @@ const PostSidebar = ({ postId }) => {
     content = <ErrorShow errorData={error} />;
   } else if (status === "succeeded") {
     content = sidebarPosts?.map((sidebarPosts) => {
-      const { slug, postTitle, coverImage, excerpt, categories } =
+      const { slug, postTitle, coverImage, excerpt, categories, author } =
         sidebarPosts.fields || {};
       return (
-        <Box
-          onClick={() => navigate(`/blogs/${slug}`)}
-          key={slug}
-          sx={{
-            display: { xs: "grid", md: "flex" },
-            justifyContent: "space-between",
-            alignItems: "center",
-            p: 2,
-            transition: "background-color 0.9s",
-            "&:hover": {
-              backgroundColor: isDarkMode ? "#004808" : "#e8e8e8",
-              cursor: "pointer",
-            },
-          }}>
-          <Grid item xs={12} sm={6} md={4}>
+        <Grid item key={slug}>
+          <Card
+            sx={{
+              border: "1px solid",
+              bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+              transition: "all 0.5s",
+              "&:hover": {
+                transform: "scale(1.03)",
+                backgroundColor: "silverPro.main",
+              },
+            }}>
             <CardMedia
+              loading="lazy"
               component="img"
               alt={coverImage.fields.title}
-              sx={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "15px",
-              }}
+              sx={{ width: "100%", height: "auto" }}
               image={coverImage.fields.file.url}
             />
-          </Grid>
-          <Grid item xs={12} sm={6} md={8}>
-            <CardContent
-              sx={
-                {
-                  // display: "flex",
-                  // flexDirection: "column",
-                }
-              }>
-              <Typography variant="h6" sx={{ color: "redCustom.main" }}>
-                {postTitle}
-              </Typography>
-              <Typography variant="body2" sx={{ color: "redCustom.main" }}>
-                {excerpt}...
-                <span style={{ fontWeight: "bold" }}>See More</span>
-              </Typography>
-              <Button
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                mt: 2,
+              }}>
+              <Typography
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   navigate(`/blogs/category/${categories.sys.id}`);
                 }}
+                variant="subtitle1"
                 sx={{
-                  mt: 1,
-                  textTransform: "capitalize",
-                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
-                  color: "redCustom.main",
+                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  px: { xs: 1, sm: 2, md: 2 },
+                  borderRadius: "25px",
+                  cursor: "pointer",
+                  transition: "all 0.5s",
                   "&:hover": {
-                    transition: "all 0.5s",
-                    bgcolor:"accent.main"
-                  }
-                }}
-                variant="button">
+                    transform: "scale(1.05)",
+                    backgroundColor: "accent.main",
+                    color: "linkHover.main",
+                  },
+                }}>
                 Category: #{categories.fields.categories}
-              </Button>
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  px: { xs: 1, sm: 2, md: 2 },
+                  borderRadius: "25px",
+                }}>
+                Author: {author.fields.authorName || "DreamEdu"}
+              </Typography>
+            </Box>
+            <CardContent>
+              <Typography
+                gutterBottom={true}
+                sx={{
+                  textAlign: "justify",
+                  color: isDarkMode ? "whiteCustom.main" : "black.main",
+                }}
+                variant="h5"
+                align="center">
+                {postTitle}
+              </Typography>
+              <Typography
+                sx={{
+                  color: isDarkMode ? "whiteCustom.main" : "black.main",
+                }}
+                gutterBottom={true}
+                variant="body2">
+                {excerpt.slice(0, 80)}...
+              </Typography>
             </CardContent>
-          </Grid>
-        </Box>
+            <CardActions
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "end",
+              }}>
+              <SpeedDial
+                title="Share the post"
+                ariaLabel="SpeedDial"
+                direction="right"
+                sx={{ position: "relative" }}
+                icon={<ShareIcon />}>
+                {actions.map((action) => (
+                  <SpeedDialAction
+                    key={action.name}
+                    icon={action.icon}
+                    tooltipTitle={action.name}
+                  />
+                ))}
+              </SpeedDial>
+              <Link to={`/blogs/${slug}`}>
+                <HoverNAnimation>
+                  <Button
+                    sx={{
+                      bgcolor: isDarkMode ? "accent.main" : "btnHover.main",
+                      color: isDarkMode ? "whiteCustom.main" : "black.main",
+                      fontSize: { xs: "0.6rem", sm: "1rem", md: "1.1rem" },
+                      "&:hover": {
+                        transition: "all 0.4s",
+                        bgcolor: isDarkMode
+                          ? "whiteCustom.main"
+                          : "accent.main",
+                        color: isDarkMode ? "accent.main" : "whiteCustom.main",
+                      },
+                    }}
+                    size={"medium"}>
+                    See More{" "}
+                    <DoubleArrowIcon
+                      sx={{
+                        fontSize: "1.1rem",
+                      }}
+                    />
+                  </Button>
+                </HoverNAnimation>
+              </Link>
+            </CardActions>
+          </Card>
+        </Grid>
       );
     });
   }
   return (
     <>
       <HeadingH2 headingH2Text={"Recent Posts"} variantCustom={"h3"} />
-      <Card>{content}</Card>
+      <Grid
+        container
+        spacing={5}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        sx={{ px: { md: 4 } }}>
+        {content}
+      </Grid>
     </>
   );
 };

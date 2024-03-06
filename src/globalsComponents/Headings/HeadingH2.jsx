@@ -44,15 +44,14 @@ const HeadingH2 = ({
           variant={variantCustom ? variantCustom : "h4"}>
           {headingH2Text}
           {headingH2Icon && typeof headingH2Icon === "string" ? (
-            <img
+            <Box
+              component={"img"}
               src={headingH2Icon}
-              width={75}
-              height={75}
               loading="lazy"
-              style={{
-                width: "85px",
-                height: "85px",
-                marginLeft: "4px",
+              sx={{
+                width: { xs: "25px", sm: "35px", md: "45px" },
+                height: { xs: "25px", sm: "35px", md: "45px" },
+                ml: "4px",
               }}
               alt="Local Icon"
             />

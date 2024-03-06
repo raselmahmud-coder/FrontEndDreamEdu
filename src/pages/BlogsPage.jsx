@@ -20,7 +20,6 @@ import { fetchPosts } from "../redux/feature/ContentfulLib/contentfulSlice";
 import { Facebook, LinkedIn } from "@mui/icons-material";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import ShareIcon from "@mui/icons-material/Share";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ErrorShow from "../globalsComponents/ErrorShow";
 import BlogsCardsSkeleton from "../Skeletons/BlogsCardsSkeleton";
 import blogIcon from "../assets/Icon/blogIcon.png";
@@ -31,7 +30,7 @@ const actions = [
   { icon: <LinkedIn />, name: "LinkedIn" },
 ];
 
-const ImportantTipsPage = () => {
+const BlogsPage = () => {
   const { categoryId } = useParams();
   const { isDarkMode } = useSelector((state) => state.colorMode);
   const dispatch = useDispatch();
@@ -41,11 +40,16 @@ const ImportantTipsPage = () => {
   }, [categoryId]);
   // console.log(categoryId, " hello impo post");
   const [page, setPage] = React.useState(0);
-  const [postsPerPage, setPostsPerPage] = React.useState(10);
+  const [postsPerPage, setPostsPerPage] = React.useState(9);
 
   useEffect(() => {
     if (!categoryId) {
-      dispatch(fetchPosts({ page: page + 1, limit: postsPerPage }));
+      dispatch(
+        fetchPosts({
+          page: page + 1,
+          limit: postsPerPage,
+        }),
+      );
     }
   }, [postsPerPage, page]);
   const handleChangePage = (event, newPage) => {
@@ -70,76 +74,79 @@ const ImportantTipsPage = () => {
       const { postTitle, coverImage, author, excerpt, slug, categories } =
         post.fields || {};
       return (
-        <Grid item xs={12} sm={6} md={6} key={slug}>
+        <Grid item xs={12} sm={6} md={4} key={slug}>
           <Card
             sx={{
-              bgcolor: "redCustom.main",
-              minHeight: { xs: "400px", sm: "550px", md: "613px" },
+              border:"1px solid",
+              bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
+              minHeight: { xs: "435px", sm: "570px", md: "570px" },
+              "&:hover": {
+                transition: "all 0.5s",
+                transform: "scale(1.05)",
+                backgroundColor: "silverPro.main"
+              }
             }}>
             <CardMedia
               loading="lazy"
               component="img"
               alt={coverImage.fields.title}
-              height="280"
+              sx={{ width: "100%", height: "auto" }}
               image={coverImage.fields.file.url}
             />
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-around",
-                mt: 1,
+                mt: 2,
               }}>
               <Typography
+                variant="subtitle1"
                 sx={{
-                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
-                  p: 1,
-                  borderRadius: "15px",
+                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  px: { xs: 1, sm: 2, md: 2 },
+                  borderRadius: "25px",
                 }}>
                 Category: {categories.fields.categories}
               </Typography>
               <Typography
+                variant="subtitle1"
                 sx={{
-                  bgcolor: isDarkMode ? "accent.main" : "primary.main",
-                  p: 1,
-                  borderRadius: "15px",
+                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  px: { xs: 1, sm: 2, md: 2 },
+                  borderRadius: "25px",
                 }}>
                 Author: {author.fields.authorName || "DreamEdu"}
               </Typography>
             </Box>
             <CardContent>
               <Typography
-                gutterBottom
+                gutterBottom={true}
                 sx={{
-                  my: 4,
-                  color: "whiteCustom.main",
+                  textAlign: "justify",
+                  color: isDarkMode ? "whiteCustom.main" : "black.main",
                 }}
-                variant="h4"
+                variant="h5"
                 align="center">
                 {postTitle}
               </Typography>
               <Typography
                 sx={{
-                  color: "whiteCustom.main",
+                  color: isDarkMode ? "whiteCustom.main" : "black.main",
                 }}
-                gutterBottom
-                variant="body1">
-                {excerpt}
-                <MoreHorizIcon
-                  sx={{
-                    position: "relative",
-                    top: "11px",
-                  }}
-                />
+                gutterBottom={true}
+                variant="body2">
+                {excerpt.slice(0, 100)}...
               </Typography>
             </CardContent>
             <CardActions
               sx={{
                 display: "flex",
                 justifyContent: "space-around",
+                alignItems: "end",
               }}>
               <SpeedDial
-                title="Share it"
-                ariaLabel="SpeedDial openIcon example"
+                title="Share the post"
+                ariaLabel="SpeedDial"
                 direction="right"
                 sx={{ position: "relative" }}
                 icon={<ShareIcon />}>
@@ -155,16 +162,18 @@ const ImportantTipsPage = () => {
                 <HoverNAnimation>
                   <Button
                     sx={{
-                      bgcolor: isDarkMode ? "accent.main" : "primary.main",
+                      bgcolor: isDarkMode ? "accent.main" : "btnHover.main",
                       color: isDarkMode ? "whiteCustom.main" : "black.main",
+                      fontSize: { xs: "0.7rem", sm: "1rem", md: "1.1rem" },
                       "&:hover": {
+                        transition: "all 0.4s",
                         bgcolor: isDarkMode
                           ? "whiteCustom.main"
                           : "accent.main",
                         color: isDarkMode ? "accent.main" : "whiteCustom.main",
                       },
                     }}
-                    size="medium">
+                    size={"medium"}>
                     See More{" "}
                     <DoubleArrowIcon
                       sx={{
@@ -182,7 +191,7 @@ const ImportantTipsPage = () => {
   }
   return (
     <>
-      <DynamicPageTitle pageTitle="Important Tips Page" />
+      <DynamicPageTitle pageTitle="Blogs Page" />
       <Container
         maxWidth="xl"
         sx={{
@@ -191,31 +200,37 @@ const ImportantTipsPage = () => {
         <HeadingH2 headingH2Text={"Important Blogs"} headingH2Icon={blogIcon} />
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
+          spacing={{ xs: 4, sm: 5, md: 7 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           sx={{ p: 2, mb: 8 }}>
           {content}
         </Grid>
-        {posts?.total > 10 && (
-          <StyledEngineProvider injectFirst>
-            <TablePagination
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              component="div"
-              count={100}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={postsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          </StyledEngineProvider>
-        )}
+
+        <StyledEngineProvider injectFirst>
+          <TablePagination
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            component="div"
+            count={100}
+            page={page}
+            onPageChange={handleChangePage}
+            labelRowsPerPage={"Blogs ➡️"}
+            rowsPerPageOptions={[
+              { label: "9 Per page", value: 9 },
+              { label: "25 Per page", value: 25 },
+              { label: "50 Per page", value: 50 },
+              { label: "100 Per page", value: 100 },
+            ]}
+            rowsPerPage={postsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </StyledEngineProvider>
       </Container>
     </>
   );
 };
 
-export default ImportantTipsPage;
+export default BlogsPage;

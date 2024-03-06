@@ -9,7 +9,7 @@ const SingleBlogPost = (props) => {
   return (
     <>
       <>
-        <Typography variant="h2" sx={{ my: 4, fontWeight: "bold" }}>
+        <Typography variant="h3" sx={{ mt: 4,mb:2 }}>
           {postTitle}
         </Typography>
         <RichText content={bodyContent} />
