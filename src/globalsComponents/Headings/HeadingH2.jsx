@@ -33,7 +33,7 @@ const HeadingH2 = ({
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: isDarkMode ? "deepGray.main" : "redCustom.main",
-            color: isDarkMode ? "primary.main" : "whiteCustom.main",
+            color: "whiteCustom.main",
             borderColor: isDarkMode ? "accent.main" : "secondary.main",
             borderRadius: "15px",
             border: 2,

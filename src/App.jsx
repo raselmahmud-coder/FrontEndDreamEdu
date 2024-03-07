@@ -39,14 +39,14 @@ const App = () => {
       silverPro: {
         main: "#C0C0C0", //type of silver Pro
       },
+      accent: {
+        main: "#EEEEEE", //type of Gallery silver
+      },
       secondary: {
-        main: "#9E0105",//type of deep silver
+        main: "#9E0105",
       },
       redCustom: {
         main: "#Df0707",
-      },
-      accent: {
-        main: "#787878",
       },
       success: {
         main: "#5cb85c",

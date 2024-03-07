@@ -164,11 +164,12 @@ const SSComp = () => {
           <Grid item xs={12} sm={6} md={6} key={feedback.id}>
             <Card
               sx={{
-                bgcolor: isDarkMode ? "deepGray.main" : "silverPro.main",
+                bgcolor: isDarkMode ? "deepGray.main" : "accent.main",
                 color: isDarkMode ? "whiteCustom.main" : "black.main",
                 minHeight: { md: "780px" },
                 transition: "all 0.5s",
                 cursor: "default",
+                boxShadow: 9,
                 "&:hover": {
                   transform: "scale(1.05)",
                   backgroundColor: "accent.main",

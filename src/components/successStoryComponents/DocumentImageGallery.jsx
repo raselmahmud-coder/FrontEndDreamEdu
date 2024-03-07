@@ -1,6 +1,4 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import {
   Box,
   Dialog,
@@ -9,8 +7,6 @@ import {
   Grid,
   IconButton,
   Toolbar,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import img1 from "../../assets/documents/ (1).jpeg";
@@ -115,26 +111,18 @@ const DocumentImageGallery = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  const isTablet = useMediaQuery(theme.breakpoints.up("sm"));
-  const isMobile = useMediaQuery(theme.breakpoints.up("xs"));
 
-  let cols = 1;
-  if (isDesktop) {
-    cols = 3;
-  } else if (isTablet) {
-    cols = 2;
-  }
   return (
     <>
-      <HeadingH2 marginTop={{ xs:8, sm: 12, md: 12 }} headingH2Text={"Recent Admission Notice"} />
+      <HeadingH2
+        marginTop={{ xs: 8, sm: 12, md: 12 }}
+        headingH2Text={"Recent Admission Notice"}
+      />
 
       <Grid
         container
-        spacing={{ xs: 4, sm:5, md: 5 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
+        spacing={{ xs: 4, sm: 5, md: 5 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}>
         {itemData.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <HoverNAnimation scale={"scale(1.05)"}>
@@ -142,9 +130,11 @@ const DocumentImageGallery = () => {
                 sx={{
                   border: "1px solid",
                   borderRadius: 3,
+                  boxShadow: 10,
+                  bgcolor:"accent.main",
                   m: 1,
                   cursor: "pointer",
-                  minHeight:{md:"720px"}
+                  minHeight: { md: "720px" },
                 }}
                 onClick={() => handleImageClick(item)}>
                 <Box

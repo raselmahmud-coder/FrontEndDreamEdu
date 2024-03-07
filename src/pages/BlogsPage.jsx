@@ -77,14 +77,15 @@ const BlogsPage = () => {
         <Grid item xs={12} sm={6} md={4} key={slug}>
           <Card
             sx={{
-              border:"1px solid",
+              border: "1px solid",
               bgcolor: isDarkMode ? "deepGray.main" : "primary.main",
               minHeight: { xs: "435px", sm: "570px", md: "570px" },
+              boxShadow: 10,
               "&:hover": {
                 transition: "all 0.5s",
                 transform: "scale(1.05)",
-                backgroundColor: "silverPro.main"
-              }
+                backgroundColor: "silverPro.main",
+              },
             }}>
             <CardMedia
               loading="lazy"
