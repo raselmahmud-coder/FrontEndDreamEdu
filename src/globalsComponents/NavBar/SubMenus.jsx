@@ -122,7 +122,7 @@ const SubMenus = ({ page, subPages }) => {
         {...(true ? bindHover(popupState) : {})}
         {...(true ? bindFocus(popupState) : {})}>
         {page}
-        <ArrowDropDownCircleIcon className="navBarFont" sx={{ ml: 0.6 }} />
+        <ArrowDropDownCircleIcon sx={{ ml: 0.6, fontSize: {xs:"0.8rem", md: "1.2rem" } }} />
       </NavLink>
       <CascadingMenu
         className={`navBarFont`}

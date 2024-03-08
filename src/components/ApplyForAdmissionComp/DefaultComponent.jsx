@@ -12,10 +12,10 @@ const DefaultComponent = ({ isError, isLoading, isSuccess }) => {
   useEffect(() => {
     if (isError) {
       setReadyToShow("");
-      setReadyToShow("This is a error message");
+      setReadyToShow("There is an error");
     } else if (isSuccess) {
       setReadyToShow("");
-      setReadyToShow("This is a success message");
+      setReadyToShow("You have successfully submitted");
       dispatch(reset());
       setTimeout(() => {
         navigate("/");

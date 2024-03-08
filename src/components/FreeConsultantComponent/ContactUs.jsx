@@ -69,8 +69,8 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
               id="standard-basic"
               label="Name"
               fullWidth
@@ -80,8 +80,8 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
               id="standard-basic"
               label="Email"
               fullWidth
@@ -91,8 +91,8 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
               id="standard-basic"
               label="Phone"
               fullWidth
@@ -102,8 +102,8 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
+                color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              color={`${isDarkMode ? "whiteCustom" : "accent"}`}
               id="standard-basic"
               label="Your Message"
               variant="standard"
@@ -125,7 +125,7 @@ const ContactUs = () => {
             <PhoneForwardedIcon
               sx={{
                 fontSize: "2.5rem",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -136,7 +136,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
               }}>
               Phone Number Bangladesh Office: +8801760680960
             </Typography>
@@ -150,7 +150,7 @@ const ContactUs = () => {
             <PhoneForwardedIcon
               sx={{
                 fontSize: "2.5rem",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -161,7 +161,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
               }}>
               Phone Number China Office: +8619150064373
             </Typography>
@@ -175,7 +175,7 @@ const ContactUs = () => {
             <DraftsIcon
               sx={{
                 fontSize: "2.5rem",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
                 border: 1,
                 p: 0.5,
                 borderRadius: "50%",
@@ -186,7 +186,7 @@ const ContactUs = () => {
               variant="subtitle1"
               sx={{
                 fontWeight: "bold",
-                color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
+                color: isDarkMode ? "whiteCustom.main" : "redCustom",
               }}>
               Email Us: official@dreameduinfo.com
             </Typography>

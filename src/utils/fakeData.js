@@ -274,3 +274,29 @@ export const stepsToGetAdmission = [
     icon: stepsToAdmission,
   },
 ];
+export const Degrees = [
+  {
+    value: "Select here a program",
+    label: "Select here a program",
+  },
+  {
+    value: "Bachelor",
+    label: "Bachelor",
+  },
+  {
+    value: "Chinese Language",
+    label: "Chinese Language",
+  },
+  {
+    value: "Diploma",
+    label: "Diploma",
+  },
+  {
+    value: "Masters",
+    label: "Masters",
+  },
+  {
+    value: "PhD",
+    label: "PhD",
+  },
+];

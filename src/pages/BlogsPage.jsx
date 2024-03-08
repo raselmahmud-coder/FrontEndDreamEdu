@@ -84,7 +84,7 @@ const BlogsPage = () => {
               "&:hover": {
                 transition: "all 0.5s",
                 transform: "scale(1.05)",
-                backgroundColor: "silverPro.main",
+                backgroundColor:isDarkMode ? "black.main": "silverPro.main",
               },
             }}>
             <CardMedia
@@ -103,7 +103,7 @@ const BlogsPage = () => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  bgcolor: isDarkMode ? "deepGray.main" : "whiteCustom.main",
                   px: { xs: 1, sm: 2, md: 2 },
                   borderRadius: "25px",
                 }}>
@@ -112,7 +112,7 @@ const BlogsPage = () => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  bgcolor: isDarkMode ? "accent.main" : "whiteCustom.main",
+                  bgcolor: isDarkMode ? "deepGray.main" : "whiteCustom.main",
                   px: { xs: 1, sm: 2, md: 2 },
                   borderRadius: "25px",
                 }}>
@@ -163,7 +163,7 @@ const BlogsPage = () => {
                 <HoverNAnimation>
                   <Button
                     sx={{
-                      bgcolor: isDarkMode ? "accent.main" : "btnHover.main",
+                      bgcolor: isDarkMode ? "deepGray.main" : "btnHover.main",
                       color: isDarkMode ? "whiteCustom.main" : "black.main",
                       fontSize: { xs: "0.7rem", sm: "1rem", md: "1.1rem" },
                       "&:hover": {

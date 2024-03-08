@@ -172,7 +172,7 @@ const SSComp = () => {
                 boxShadow: 9,
                 "&:hover": {
                   transform: "scale(1.05)",
-                  backgroundColor: "accent.main",
+                  backgroundColor:isDarkMode ? "black.main": "accent.main",
                 },
               }}>
               <CardActionArea

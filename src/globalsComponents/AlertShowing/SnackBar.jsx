@@ -21,7 +21,7 @@ export default function SnackBar({ setShowError, message="Default parameter" }) 
         sx={{ bgcolor: "silverPro.main", color:"redCustom.main" }}
         size="medium"
         onClick={handleClose}>
-        Close it
+        Close
       </Button>
       <IconButton
         size="medium"

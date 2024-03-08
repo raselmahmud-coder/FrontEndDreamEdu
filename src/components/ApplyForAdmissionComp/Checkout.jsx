@@ -11,7 +11,6 @@ import EducationBackground from "./EducationBackground";
 import AlertDialog from "../../globalsComponents/AlertShowing/AlertDialog";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "../../hooks/useAlert";
 import DefaultComponent from "./DefaultComponent";
 const steps = [
   "Your Basic Information",
@@ -38,7 +37,6 @@ function getStepContent(step) {
 }
 
 export default function Checkout() {
-  const showAlertCustom = useAlert();
   const [showAlert, setShowAlert] = React.useState("");
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();

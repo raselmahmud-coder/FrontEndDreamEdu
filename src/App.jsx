@@ -11,8 +11,8 @@ import Footer from "./globalsComponents/footer/Footer";
 import LazyLoading from "./globalsComponents/LazyLoading";
 import { useSelector } from "react-redux";
 import EventsPage from "./pages/EventsPage";
-import { AlertProvider } from "./hooks/useAlert";
 import GalleryPage from "./pages/GalleryPage";
+import EventSinglePage from "./components/EventsComponents/EventSinglePage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
@@ -22,10 +22,7 @@ const SingleBlogPostPage = lazy(() => import("./pages/SingleBlogPostPage"));
 const ApplyForAdmissionPage = lazy(() =>
   import("./pages/ApplyForAdmissionPage"),
 );
-const FreeConsultationPage = lazy(() => import("./pages/FreeConsultationPage"));
-const UniversityDetailPage = lazy(() =>
-  import("./pages/detailsPages/UniversityDetailPage"),
-);
+const ContactUsPage = lazy(() => import("./pages/ContactUsPage"));
 
 const App = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -117,12 +114,12 @@ const App = () => {
       <ThemeProvider theme={responsiveTheme}>
         <CssBaseline />
         <ResponsiveAppBar />
-        <AlertProvider>
           <Suspense fallback={<LazyLoading />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/event/:id" element={<EventSinglePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/blogs" element={<ImportantTipsPage />} />
               <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
@@ -131,16 +128,11 @@ const App = () => {
                 element={<ImportantTipsPage />}
               />
               <Route path="/success-story" element={<SuccessStoryPage />} />
-              <Route path="/contact-us" element={<FreeConsultationPage />} />
+              <Route path="/contact-us" element={<ContactUsPage />} />
               <Route path="/apply-now" element={<ApplyForAdmissionPage />} />
-              <Route
-                path="/university/:id"
-                element={<UniversityDetailPage />}
-              />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
-        </AlertProvider>
         <Footer />
       </ThemeProvider>
     </>

@@ -1,11 +1,21 @@
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, Skeleton, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import React from "react";
 
-const BlogsCardsSkeleton = () => {
+const BlogsCardsSkeleton = ({totalItem=3, sm = 4, md = 4 }) => {
   return (
     <>
-      {Array.from(new Array(3)).map((_, index) => (
-        <Grid item xs={12} sm={4} md={4} key={index}>
+      {Array.from(new Array(totalItem)).map((_, index) => (
+        <Grid item xs={12} sm={sm} md={md} key={index}>
           <Card
             sx={{
               p: 1,
