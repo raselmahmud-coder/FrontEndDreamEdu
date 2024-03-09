@@ -11,8 +11,8 @@ import Footer from "./globalsComponents/footer/Footer";
 import LazyLoading from "./globalsComponents/LazyLoading";
 import { useSelector } from "react-redux";
 import EventsPage from "./pages/EventsPage";
-import GalleryPage from "./pages/GalleryPage";
 import EventSinglePage from "./components/EventsComponents/EventSinglePage";
+import PhotoGalleryPage from "./pages/PhotoGalleryPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const NotFoundPage = lazy(() => import("./globalsComponents/NotFoundPage"));
@@ -120,7 +120,7 @@ const App = () => {
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/event/:id" element={<EventSinglePage />} />
-              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/gallery" element={<PhotoGalleryPage />} />
               <Route path="/blogs" element={<ImportantTipsPage />} />
               <Route path="/blogs/:id" element={<SingleBlogPostPage />} />
               <Route

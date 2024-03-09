@@ -6,100 +6,18 @@ import {
   DialogTitle,
   Grid,
   IconButton,
+  ImageList,
+  ImageListItem,
   Toolbar,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import img1 from "../../assets/documents/ (1).jpeg";
-import img2 from "../../assets/documents/ (1).jpg";
-import img3 from "../../assets/documents/ (2).jpg";
-import img4 from "../../assets/documents/ (3).jpg";
-import img5 from "../../assets/documents/ (4).jpg";
-import img6 from "../../assets/documents/ (5).jpg";
-import img7 from "../../assets/documents/ (6).jpg";
-import img8 from "../../assets/documents/ (7).jpg";
-import img9 from "../../assets/documents/ (8).jpg";
-import img10 from "../../assets/documents/ (9).jpg";
-import img11 from "../../assets/documents/ (10).jpg";
-import img12 from "../../assets/documents/ (11).jpg";
-import img13 from "../../assets/documents/ (12).jpg";
-import img14 from "../../assets/documents/ (13).jpg";
-import img15 from "../../assets/documents/ (14).jpg";
-import img16 from "../../assets/documents/ (15).jpg";
-import img17 from "../../assets/documents/ (16).jpg";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
+import { documentGalleryData } from "../../utils/galleryData";
 
 const DocumentImageGallery = () => {
-  const itemData = [
-    {
-      img: img1,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img2,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img3,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img4,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img5,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img6,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img7,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img8,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img9,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img10,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img11,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img12,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img13,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img14,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img15,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img16,
-      title: "ADMISSION NOTICE",
-    },
-    {
-      img: img17,
-      title: "ADMISSION NOTICE",
-    },
-  ];
   const [open, setOpen] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(null);
 
@@ -111,19 +29,48 @@ const DocumentImageGallery = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <HeadingH2
         marginTop={{ xs: 8, sm: 12, md: 12 }}
         headingH2Text={"Recent Admission Notice"}
       />
-
-      <Grid
+      <ImageList
+        sx={{ overflow: "hidden" }}
+        gap={44}
+        cols={isSmallScreen ? 1 : 4}
+        rowHeight={"auto"}>
+        {documentGalleryData.map((item) => (
+          <ImageListItem
+            sx={{
+              border: "1px solid",
+              borderRadius: 1,
+              boxShadow: "7px 9px 6px 2px #C0C0C0",
+              cursor: "pointer",
+              "&:hover": {
+                transition: "all 0.5s",
+                transform: "scale(1.05)",
+              },
+            }}
+            key={item.img}
+            onClick={() => handleImageClick(item)}>
+            <img
+              style={{ borderRadius: "5px" }}
+              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+              alt={item.title}
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      {/* <Grid
         container
         spacing={{ xs: 4, sm: 5, md: 5 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
-        {itemData.map((item, index) => (
+        {documentGalleryData.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <HoverNAnimation scale={"scale(1.05)"}>
               <Box
@@ -131,7 +78,7 @@ const DocumentImageGallery = () => {
                   border: "1px solid",
                   borderRadius: 3,
                   boxShadow: 10,
-                  bgcolor:"accent.main",
+                  bgcolor: "accent.main",
                   m: 1,
                   cursor: "pointer",
                   minHeight: { md: "720px" },
@@ -154,11 +101,11 @@ const DocumentImageGallery = () => {
             </HoverNAnimation>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
 
       {/* Full-screen image dialog */}
 
-      <Dialog open={open} onClose={handleClose} maxWidth="lg">
+      <Dialog open={open} onClose={handleClose} fullWidth>
         <Toolbar>
           <IconButton
             edge="start"
