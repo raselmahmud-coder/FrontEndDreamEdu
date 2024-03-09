@@ -4,7 +4,10 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function SnackBar({ setShowError, message="Default parameter" }) {
+export default function SnackBar({
+  setShowError,
+  message = "Default parameter",
+}) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = (event, reason) => {
@@ -18,12 +21,13 @@ export default function SnackBar({ setShowError, message="Default parameter" }) 
   const action = (
     <React.Fragment>
       <Button
-        sx={{ bgcolor: "silverPro.main", color:"redCustom.main" }}
+        sx={{ bgcolor: "silverPro.main", color: "redCustom.main" }}
         size="medium"
         onClick={handleClose}>
         Close
       </Button>
       <IconButton
+        sx={{ backgroundColor: "#5cb85c", color: "whiteCustom.main" }}
         size="medium"
         aria-label="close"
         color="inherit"
@@ -36,6 +40,7 @@ export default function SnackBar({ setShowError, message="Default parameter" }) 
   return (
     <>
       <Snackbar
+        sx={{ backgroundColor: "#5cb85c", color: "whiteCustom.main" }}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={open}
         autoHideDuration={5000}

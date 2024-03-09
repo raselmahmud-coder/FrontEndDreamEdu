@@ -126,7 +126,7 @@ const AboutUsSection1 = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <HeadingH4 HeadingH4Text={"Engr. Md Sakayot Hosen"} />
+            <HeadingH4 HeadingH4Text={"ENGR. MD SAKAYOT HOSEN"} />
             <Typography
               variant="h6"
               sx={{ mb: 2, color: "redCustom.main", textAlign: "center" }}>

@@ -58,7 +58,7 @@ const Section5 = () => {
                     <Card
                       variant="outlined"
                       sx={{
-                        minHeight: "360px",
+                        minHeight: {md:"360px"},
                         borderStyle: "solid",
                         borderWidth: "0 5px 0 5px",
                         borderColor:
@@ -109,7 +109,7 @@ const Section5 = () => {
                         <Typography
                           variant="body1"
                           sx={{
-                            px: 7,
+                            px: {md:7},
                             color: "whiteCustom.main",
                             textAlign: "justify",
                           }}>

@@ -91,7 +91,7 @@ const DreamEduMethodology = () => {
                 sx={{
                   bgcolor: "#Bc471f",
                   color: "whiteCustom.main",
-                  minHeight: "682px",
+                  minHeight: {md:"682px"},
                   // border: 2,
                   p: 2,
                   borderRadius: 3,

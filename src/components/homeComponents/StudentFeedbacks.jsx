@@ -225,7 +225,7 @@ export default function StudentFeedbacks() {
                           ? "deepGray.main"
                           : "silverPro.main",
                         color: isDarkMode ? "whiteCustom.main" : "black.main",
-                        minHeight: "460px",
+                        minHeight: {md:"560px"},
                         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
                       }}>
                       <CardActionArea

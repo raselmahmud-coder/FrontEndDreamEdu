@@ -210,7 +210,7 @@ const SSComp = () => {
                       <Typography
                         variant="h4"
                         sx={{
-                          mt: 1,
+                          mt: 3,
                         }}>
                         {labels[feedback.rating]}
                       </Typography>
@@ -224,7 +224,7 @@ const SSComp = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                     }}>
-                    <Typography gutterBottom variant="h5">
+                    <Typography gutterBottom  variant="h5">
                       {feedback.name}
                     </Typography>
                     <Typography gutterBottom variant="h5">
@@ -236,6 +236,7 @@ const SSComp = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
+                      my:3
                     }}>
                     <Typography gutterBottom variant="h5">
                       {feedback.university}
@@ -244,7 +245,7 @@ const SSComp = () => {
                       {feedback.major}
                     </Typography>
                   </Box>
-                  <Typography variant="body1">
+                  <Typography variant="body1" sx={{textAlign:"justify"}}>
                     {feedback.description}
                   </Typography>
                 </CardContent>

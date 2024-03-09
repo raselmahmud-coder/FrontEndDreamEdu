@@ -31,7 +31,7 @@ const Section6 = () => {
           </Box>
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
             sx={{
               alignItems: "center",
@@ -42,7 +42,7 @@ const Section6 = () => {
                   sx={{
                     bgcolor: isDarkMode ? "deepGray.main" : "#F9f9ff",
                     color: isDarkMode ? "whiteCustom.main" : "black.main",
-                    minHeight: "480px",
+                    minHeight: {md:"480px"},
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "column",
@@ -53,7 +53,7 @@ const Section6 = () => {
                     "&:hover": {
                       transition: "all 0.7s",
                       color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
-                      backgroundColor: isDarkMode ? "deepGray.main" : "#7c0909",
+                      backgroundColor: isDarkMode ? "deepGray.main" : "silverPro.main",
                       transform: "scale(1.04)",
                     },
                   }}>

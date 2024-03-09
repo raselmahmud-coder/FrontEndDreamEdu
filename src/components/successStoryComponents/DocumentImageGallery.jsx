@@ -58,7 +58,7 @@ const DocumentImageGallery = () => {
             onClick={() => handleImageClick(item)}>
             <img
               style={{ borderRadius: "5px" }}
-              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              // srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
               src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
               alt={item.title}
               loading="lazy"
