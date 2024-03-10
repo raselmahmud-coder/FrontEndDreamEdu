@@ -7,17 +7,20 @@ import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 import bgGradient from "../../assets/backgrounds/bgWhiteVector.svg";
+import bgGradient1 from "../../assets/backgrounds/wave3.svg";
 
 const AboutUsSection1 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
     <Box
-      sx={{
-        position: "relative",
-        background: isDarkMode ? "" : `url(${bgGradient})`,
-        // backgroundSize: "cover",
-        // backgroundRepeat: "no-repeat",
-      }}>
+      sx={
+        {
+          // background: isDarkMode ? "" : `url(${bgGradient})`,
+          // position: "relative",
+          // backgroundSize: "cover",
+          // backgroundRepeat: "no-repeat",
+        }
+      }>
       <Container maxWidth="xl" sx={{ pb: { xs: 4, sm: 6, md: 8 } }}>
         <HeadingH2
           marginTop={22}
@@ -34,6 +37,10 @@ const AboutUsSection1 = () => {
             px: 1,
             justifyContent: "space-between",
             alignItems: "center",
+            background: isDarkMode ? "" : `url(${bgGradient1})`,
+            // position: "relative",
+            // backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
           }}>
           <Grid item xs={12} sm={6} md={6}>
             <HeadingH4 marginY={0} HeadingH4Text={"ENGR. MD SHAHRIAR ISLAM"} />
@@ -94,6 +101,7 @@ const AboutUsSection1 = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
             <img
+              loading="lazy"
               src={founderImg}
               alt="dream edu founder"
               width={"100%"}
@@ -113,9 +121,14 @@ const AboutUsSection1 = () => {
             px: 1,
             justifyContent: "space-between",
             alignItems: "center",
+            background: isDarkMode ? "" : `url(${bgGradient})`,
+            position: "relative",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
           }}>
           <Grid item xs={12} sm={6} md={6}>
             <img
+              loading="lazy"
               src={coFounderImg}
               alt="dream edu co-founder"
               width={"100%"}

@@ -61,10 +61,10 @@ export default function Section2() {
                 }}
               />
             </Typography>
-            <Typography variant="h2" gutterBottom sx={{ fontWeight: "bold" }}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
               Your{" "}
               <Typography
-                variant="h2"
+                variant="h4"
                 component={"span"}
                 sx={{
                   color: "success.main",

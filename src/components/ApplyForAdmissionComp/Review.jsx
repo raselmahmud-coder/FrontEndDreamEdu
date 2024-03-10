@@ -80,10 +80,16 @@ export default function Review() {
                       variant="body1">
                       {key.toString()}➡️
                     </Typography>
-                    <Box component={"img"} sx={{
-                      width: "100px",
-                      height:"80px"
-                    }} src={value} alt={key} />
+                    <Box
+                      component={"img"}
+                      sx={{
+                        width: "100px",
+                        height: "80px",
+                      }}
+                      loading="lazy"
+                      src={value}
+                      alt={key}
+                    />
                   </Box>
                 </Grid>
               );
@@ -112,7 +118,7 @@ export default function Review() {
                   </Box>
                 </Grid>
               );
-            } 
+            }
           }
         })}
       </Grid>

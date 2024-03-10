@@ -10,7 +10,7 @@ import { styled } from "@mui/system";
 import whatsapp from "../../assets/Icon/whatsapp.svg";
 import messenger from "../../assets/Icon/messenger.svg";
 import phoneIcon from "../../assets/Icon/phone-call.svg";
-import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+import PhoneCallbackIcon from "@mui/icons-material/PhoneCallback";
 import HoverNAnimation from "../HoverNAnimation/HoverNAnimation";
 
 export default function NewsTicker({ news }) {
@@ -21,7 +21,9 @@ export default function NewsTicker({ news }) {
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
-    background: isDarkMode ? "linear-gradient(to top, #272727, #787878)" :"linear-gradient(to top, #D0D0D0, #Df0707)",
+    background: isDarkMode
+      ? "linear-gradient(to top, #272727, #787878)"
+      : "linear-gradient(to top, #D0D0D0, #Df0707)",
     color: "#fff",
   });
 
@@ -120,7 +122,7 @@ export default function NewsTicker({ news }) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              <PhoneCallbackIcon/>
+              <PhoneCallbackIcon />
               {/* <img style={{ width: 30, height: 30 }} src={phoneIcon} /> */}
               <Typography
                 variant="subtitle1"
@@ -133,7 +135,7 @@ export default function NewsTicker({ news }) {
                   justifyContent: "center",
                   color: "inherit",
                   alignItems: "center",
-                  textDecoration:"none",
+                  textDecoration: "none",
                 }}>
                 +8619150064373
               </Typography>
@@ -158,7 +160,15 @@ export default function NewsTicker({ news }) {
                   borderRadius: 9,
                 },
               }}>
-              <Box component={"img"} src={whatsapp} sx={{ width: {xs:15, sm:25, md:30}, height: {xs:15, sm:25, md:30} }} />
+              <Box
+                component={"img"}
+                loading="lazy"
+                src={whatsapp}
+                sx={{
+                  width: { xs: 15, sm: 25, md: 30 },
+                  height: { xs: 15, sm: 25, md: 30 },
+                }}
+              />
             </Box>
           </HoverNAnimation>
         </FlexItem>
@@ -179,7 +189,15 @@ export default function NewsTicker({ news }) {
                   borderRadius: 9,
                 },
               }}>
-               <Box component={"img"} src={messenger} sx={{ width: {xs:15, sm:25, md:30}, height: {xs:15, sm:25, md:30} }} />
+              <Box
+                component={"img"}
+                loading="lazy"
+                src={messenger}
+                sx={{
+                  width: { xs: 15, sm: 25, md: 30 },
+                  height: { xs: 15, sm: 25, md: 30 },
+                }}
+              />
             </Box>
           </HoverNAnimation>
         </FlexItem>

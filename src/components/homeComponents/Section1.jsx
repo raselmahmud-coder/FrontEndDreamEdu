@@ -79,6 +79,7 @@ export default function Section1() {
                   }}>
                   <CardActionArea>
                     <img
+                      loading="lazy"
                       src={img}
                       style={{
                         border: "3px",

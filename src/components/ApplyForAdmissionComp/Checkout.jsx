@@ -218,7 +218,7 @@ export default function Checkout() {
       <Paper
         variant="outlined"
         sx={{ my: { xs: 1, sm: 1, md: 2 }, p: { xs: 1, sm: 2, md: 3 } }}>
-        <HeadingH2 headingH2Text={"Fill Out Your Application"} />
+        <HeadingH2 headingH2Text={"Fill up the form"} />
         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
           {steps.map((label) => (
             <Step key={label}>
