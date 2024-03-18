@@ -23,12 +23,12 @@ export default function Section1() {
       <Container
         maxWidth={"xl"}
         sx={{
-          pb: {xs: 6, sm: 8, md:16},
+          pb: { xs: 6, sm: 8, md: 16 },
         }}
         component="section">
         <HeadingH2
           headingH2Text={"Our Services"}
-          marginTop={{ xs: -2, sm: -5, md: -6 }}
+          marginTop={{ xs: -2, sm: -3, md: -3 }}
           marginBottom={{ xs: 2, sm: 3, md: 3 }}
         />
         <Grid container spacing={4}>
@@ -55,7 +55,7 @@ export default function Section1() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  minHeight: { xs: "500px", sm: "490px", md: "480px" },
+                  minHeight: { xs: "400px", sm: "390px", md: "380px" },
                   transition: "transform 1s",
                   transformStyle: "preserve-3d",
                 }}>
@@ -78,18 +78,19 @@ export default function Section1() {
                     backfaceVisibility: "hidden",
                   }}>
                   <CardActionArea>
-                    <img
+                    <Box
+                      component="img"
                       loading="lazy"
                       src={img}
-                      style={{
+                      sx={{
                         border: "3px",
                         borderStyle: "solid",
                         borderColor: isDarkMode
                           ? "redCustom.main"
                           : "accent.main",
                         borderRadius: "15px",
-                        height: 100,
-                        width: 100,
+                        height:70,
+                        width: 70,
                         padding: "5px",
                         margin: "0 auto",
                         display: "flex",
@@ -102,7 +103,7 @@ export default function Section1() {
                         variant="body1"
                         sx={{
                           mx: 3,
-                          textAlign:"justify"
+                          textAlign: "justify",
                         }}>
                         {description}
                       </Typography>
@@ -137,10 +138,9 @@ export default function Section1() {
                       to={"/apply-now"}>
                       <Button
                         sx={{
-                          fontSize: { xs: 12, sm: 20, md: 30 },
                           borderRadius: 15,
-                          py: 2,
-                          px: { xs: 3, sm: 4, md: 5 },
+                          py: 0.5,
+                          px: { xs: 2, sm: 2, md: 2.5 },
                           bgcolor: "redCustom.main",
                           color: "#fff",
                           transition: "all 0.6s ease",

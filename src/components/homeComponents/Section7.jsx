@@ -33,7 +33,7 @@ const Section7 = () => {
               // alignItems: "center",
             }}>
             <Grid item xs={12} sm={6} md={6}>
-              <HeadingH2 marginTop={{ xs: 1, sm: 3, md: -8 }} headingH2Text={"Mostly Asked Query"} />
+              <HeadingH2 marginTop={{ xs: 1, md: -6 }} headingH2Text={"Frequently Asked Question"} />
               <Typography
                 variant="h4"
                 sx={{
@@ -62,10 +62,9 @@ const Section7 = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        fontSize: { xs: 11, sm: 15, md: 22 },
                         borderRadius: 15,
-                        py: 2,
-                        px: { xs: 2, sm: 3, md: 4 },
+                        py: 0.5,
+                        px: { xs: 2, sm: 2, md: 2.5 },
                         bgcolor: "btnHover.main",
                         color: "whiteCustom.main",
                         transition: "all 0.6s",
@@ -77,7 +76,7 @@ const Section7 = () => {
                       Ask Your Question
                       <HelpOutlineIcon
                         sx={{
-                          fontSize: { xs: 14, sm: 25, md: 35 },
+                          fontSize: { xs: 14, sm: 16, md: 18 },
                         }}
                       />
                     </Button>

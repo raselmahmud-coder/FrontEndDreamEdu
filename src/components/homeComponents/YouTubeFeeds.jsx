@@ -4,14 +4,12 @@ import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import bgGradient from "../../assets/backgrounds/wave1.svg";
 
-
-const YouTubeFeeds = () => {
+const YouTubeFeeds = ({ maxResults = 6 }) => {
   const [videos, setVideos] = useState([]);
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
   useEffect(() => {
     const channelId = "UC-0b4o2xGWcM5qhCmvnhZ8g";
-    const maxResults = 6;
     fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${
         import.meta.env.VITE_YOUTUBE_API_KEY
@@ -38,9 +36,15 @@ const YouTubeFeeds = () => {
             <Container
               maxWidth="xl"
               sx={{
+                mt: maxResults > 10 && { xs: 16, md: 16 },
                 pb: { xs: 6, sm: 8, md: 16 },
               }}>
-              <HeadingH2 marginTop={{ xs: -2, sm: -5, md: -5 }} headingH2Text={"Latest Videos"} />
+              {maxResults < 10 && (
+                <HeadingH2
+                  marginTop={{ xs: -2, sm: -3, md: -3 }}
+                  headingH2Text={"Latest Videos"}
+                />
+              )}
               <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}

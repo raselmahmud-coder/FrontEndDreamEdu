@@ -55,8 +55,8 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel1d-content" id="panel1d-header">
+          <Typography sx={{ color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",
           } }} variant="h6">How can I contact DreamEdu Consultancy?</Typography>
@@ -143,7 +143,7 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel0"}
         onChange={handleChange("panel0")}>
-        <AccordionSummary aria-controls="panel0d-content" id="panel0d-header">
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel0d-content" id="panel0d-header">
           <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",
@@ -164,7 +164,7 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel2d-content" id="panel2d-header">
           <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",
@@ -186,7 +186,7 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel3d-content" id="panel3d-header">
           <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",
@@ -208,7 +208,7 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel4"}
         onChange={handleChange("panel4")}>
-        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel4d-content" id="panel4d-header">
           <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",
@@ -230,7 +230,7 @@ export default function FrequentlyAskQuestion() {
       <Accordion
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}>
-        <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
+        <AccordionSummary sx={{borderBottom:1,}} aria-controls="panel5d-content" id="panel5d-header">
           <Typography sx={{color: "redCustom.main", fontWeight: "bold", "&:hover":{
             transition:"all 0.5s",
             transform:"scale(1.03)",

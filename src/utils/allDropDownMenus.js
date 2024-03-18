@@ -23,7 +23,7 @@ export const subPages = {
     "IELTS Preparation",
     "TOEFL Preparation",
   ],
-  discover: ["Blogs", "Success Story", "Events", "Gallery"],
+  discover: ["Blogs", "Success Story", "Events", "Gallery", "All Videos"],
   services: [
     "Scholarship Assistance",
     "Student Screening",
@@ -82,4 +82,5 @@ export const subPageLinks = {
   successstory: [`/success-story`],
   events: [`/events`],
   gallery: [`/gallery`],
+  allvideos: [`/all-videos`],
 };

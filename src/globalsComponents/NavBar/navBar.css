@@ -8,7 +8,7 @@
 .nonActive:hover {
   transition: all 0.5s;
   color: #ffffff !important;
-  background-color: #df0707;
+  background-color: #df0707 !important;
 }
 .navBarFont {
   font-size: 0.9rem;

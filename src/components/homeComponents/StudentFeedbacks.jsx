@@ -29,8 +29,7 @@ import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HoverNAnimation from "../../globalsComponents/HoverNAnimation/HoverNAnimation";
 import bgGradient from "../../assets/backgrounds/page-turner.svg";
-import customStyles from "../../styles/studentFeedback.module.css"
-
+import customStyles from "../../styles/studentFeedback.module.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -225,7 +224,7 @@ export default function StudentFeedbacks() {
                           ? "deepGray.main"
                           : "silverPro.main",
                         color: isDarkMode ? "whiteCustom.main" : "black.main",
-                        minHeight: {md:"560px"},
+                        minHeight: { md: "440px" },
                         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.7)",
                       }}>
                       <CardActionArea
@@ -403,15 +402,15 @@ export default function StudentFeedbacks() {
               <HoverNAnimation>
                 <Button
                   sx={{
-                    fontSize: { xs: 11, sm: 15, md: 22 },
                     borderRadius: 15,
-                    py: 2,
-                    px: { xs: 2, sm: 3, md: 4 },
-                    bgcolor: "btnHover.main",
-                    color: "whiteCustom.main",
-                    transition: "all 0.6s",
+                    py: 0.5,
+                    px: { xs: 2, sm: 2, md: 2.5 },
+                    bgcolor: "redCustom.main",
+                    color: "#fff",
+                    transition: "all 0.6s ease",
                     "&:hover": {
-                      bgcolor: "accent.main",
+                      bgcolor: "btnHover.main",
+                      transform: "scale(1.2)",
                     },
                   }}
                   variant="contained"

@@ -62,7 +62,7 @@ function CascadingSubmenu({ title, popupId, ...props }) {
   });
   return (
     <React.Fragment>
-      <MenuItem {...bindHover(popupState)} {...bindFocus(popupState)}>
+      <MenuItem className={`nonActive`} {...bindHover(popupState)} {...bindFocus(popupState)}>
         <span className={`${classes.title} navBarFont`}>{title}</span>
         <ChevronRight className={`${classes.moreArrow} navBarFont`} />
       </MenuItem>
@@ -105,10 +105,7 @@ const SubMenus = ({ page, subPages }) => {
     <>
       <NavLink
         to={"#"}
-        className={`navBarFont
-         ${({ isActive }) =>
-           isActive ? (isDarkMode ? "activeDark" : "activeLight") : "nonActive"}
-          `}
+        className={`navBarFont nonActive`}
         style={{
           //   color: isDarkMode ? "#fff" : "#000",
           color: "inherit",
@@ -156,7 +153,7 @@ const SubMenus = ({ page, subPages }) => {
                       subMenu2[getNoSpaceNLowerCase(eachMenu1)].map(
                         (eachMenu2) => (
                           <CascadingMenuItem
-                            className={`navBarFont`}
+                            className={`navBarFont nonActive`}
                             style={{
                               textTransform: "uppercase",
                             }}
@@ -179,7 +176,7 @@ const SubMenus = ({ page, subPages }) => {
           (item) =>
             !subMenu1[getNoSpaceNLowerCase(item)] && (
               <CascadingMenuItem
-                className={`navBarFont`}
+                className={`navBarFont nonActive`}
                 style={{
                   textTransform: "uppercase",
                 }}

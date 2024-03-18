@@ -40,13 +40,13 @@ const Section5 = () => {
               justifyContent: "center",
             }}>
             <HeadingH2
-              marginTop={{ xs: -12, sm: 3, md: -6 }}
+              marginTop={{ xs: -12, sm: 3, md: -3 }}
               headingH2Text={"Our Core Strengths"}
             />
           </Box>
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 2, md: 18 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
             sx={{
               alignItems: "center",
@@ -58,7 +58,7 @@ const Section5 = () => {
                     <Card
                       variant="outlined"
                       sx={{
-                        minHeight: {md:"360px"},
+                        minHeight: {md:"260px"},
                         borderStyle: "solid",
                         borderWidth: "0 5px 0 5px",
                         borderColor:
@@ -85,10 +85,9 @@ const Section5 = () => {
                           <Box
                             component="img"
                             loading="lazy"
-                            style={{
-                              width: "100px",
-                              height: "100px",
-                              // ml:12
+                            sx={{
+                              width: 70,
+                              height: 70,
                             }}
                             src={icon}
                           />
@@ -98,7 +97,7 @@ const Section5 = () => {
                           sx={{
                             textAlign: "center",
                             fontWeight: "bold",
-                            my: 4,
+                            my: 2,
                             color: isDarkMode
                               ? "whiteCustom.main"
                               : "redCustom.main",
@@ -107,7 +106,7 @@ const Section5 = () => {
                           <AnimatedNumber value={animateNumber} />+ {title}
                         </Typography>
                         <Typography
-                          variant="body1"
+                          variant="subtitle2"
                           sx={{
                             px: {md:7},
                             color: "whiteCustom.main",
@@ -132,15 +131,15 @@ const Section5 = () => {
                 <Button
                   variant="contained"
                   sx={{
-                    fontSize: { xs: 11, sm: 15, md: 22 },
                     borderRadius: 15,
-                    py: 2,
-                    px: { xs: 2, sm: 3, md: 4 },
-                    bgcolor: "btnHover.main",
-                    color: "whiteCustom.main",
-                    transition: "all 0.6s",
+                    py: 0.5,
+                    px: { xs: 2, sm: 2, md: 2.5 },
+                    bgcolor: "redCustom.main",
+                    color: "#fff",
+                    transition: "all 0.6s ease",
                     "&:hover": {
-                      bgcolor: "accent.main",
+                      bgcolor: "btnHover.main",
+                      transform: "scale(1.2)",
                     },
                   }}
                   size="large">

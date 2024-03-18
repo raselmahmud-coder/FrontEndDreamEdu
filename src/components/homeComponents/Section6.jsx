@@ -42,14 +42,15 @@ const Section6 = () => {
                   sx={{
                     bgcolor: isDarkMode ? "deepGray.main" : "#F9f9ff",
                     color: isDarkMode ? "whiteCustom.main" : "black.main",
-                    minHeight: {md:"480px"},
+                    minHeight: {md:"360px"},
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "column",
                     alignItems: "center",
-                    border: 2,
+                    border: 1.5,
                     p: 2,
                     borderRadius: 2,
+                    boxShadow: 10,
                     "&:hover": {
                       transition: "all 0.7s",
                       color: isDarkMode ? "redCustom.main" : "whiteCustom.main",
@@ -70,11 +71,11 @@ const Section6 = () => {
                       component={"img"}
                       src={icon}
                       sx={{
-                        width: "120px",
-                        height: "120px",
+                        width: 70,
+                        height: 70,
                         border: 2,
                         borderRadius: 4,
-                        p: 1,
+                        p: 0.5,
                       }}
                     />
                   </Badge>
@@ -83,7 +84,6 @@ const Section6 = () => {
                     sx={{
                       fontWeight: "bold",
                       textAlign: "center",
-                      mt: "32px",
                       mb: "10px",
                     }}>
                     {title}

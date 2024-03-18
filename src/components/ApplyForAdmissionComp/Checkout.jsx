@@ -219,9 +219,36 @@ export default function Checkout() {
         variant="outlined"
         sx={{ my: { xs: 1, sm: 1, md: 2 }, p: { xs: 1, sm: 2, md: 3 } }}>
         <HeadingH2 headingH2Text={"Fill up the form"} />
-        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+        <Stepper
+          activeStep={activeStep}
+          sx={{
+            pt: 3,
+            pb: 5,
+            "& .MuiStepLabel-labelContainer": { color: "secondary.main" },
+            "& .MuiStepLabel-root .Mui-completed": {
+              color: "green", // circle color (COMPLETED)
+            },
+            "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
+              {
+                color: "white", // Just text label (COMPLETED)
+              },
+            "& .MuiStepLabel-root .Mui-active": {
+              color: "secondary.main", // circle color (ACTIVE)
+            },
+            "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
+              {
+                color: "yellow", // Just text label (ACTIVE)
+              },
+            "& .MuiStepLabel-root .Mui-active .MuiStepIcon-text": {
+              fill: "white", // circle's number (ACTIVE)
+            },
+          }}>
           {steps.map((label) => (
-            <Step key={label}>
+            <Step
+              key={label}
+              sx={{
+               
+              }}>
               <StepLabel>{label}</StepLabel>
             </Step>
           ))}

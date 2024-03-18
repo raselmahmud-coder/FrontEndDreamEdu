@@ -37,7 +37,7 @@ export default function Section2() {
               sx={{
                 textAlign: "center",
                 px: { xs: 1, sm: 3, md: 4 },
-                py: { xs: 1, sm: 3, md: 3 },
+                py: 1,
                 mb: { xs: 4, sm: 5, md: 5 },
                 mt: { xs: -6, },
                 display: { xs: "block", sm: "inline-flex", md: "inline-flex" },
@@ -101,15 +101,15 @@ export default function Section2() {
                 <HoverNAnimation isAnimate={true}>
                   <Button
                     sx={{
-                      fontSize: { xs: 11, sm: 15, md: 22 },
                       borderRadius: 15,
-                      py: 2,
-                      px: { xs: 2, sm: 3, md: 4 },
-                      bgcolor: "btnHover.main",
-                      color: "whiteCustom.main",
-                      transition: "all 0.6s",
+                      py: 0.5,
+                      px: { xs: 2, sm: 2, md: 2.5 },
+                      bgcolor: "redCustom.main",
+                      color: "#fff",
+                      transition: "all 0.6s ease",
                       "&:hover": {
-                        bgcolor: "accent.main",
+                        bgcolor: "btnHover.main",
+                        transform: "scale(1.2)",
                       },
                     }}
                     variant="contained"
@@ -125,15 +125,15 @@ export default function Section2() {
                 <HoverNAnimation>
                   <Button
                     sx={{
-                      fontSize: { xs: 11, sm: 15, md: 22 },
                       borderRadius: 15,
-                      py: 2,
-                      px: { xs: 2, sm: 3, md: 4 },
-                      bgcolor: isDarkMode ? "deepGray.main" : "black.main",
-                      color: "whiteCustom.main",
-                      transition: "all 0.6s",
+                      py: 0.5,
+                      px: { xs: 2, sm: 2, md: 2.5 },
+                      bgcolor: "redCustom.main",
+                      color: "#fff",
+                      transition: "all 0.6s ease",
                       "&:hover": {
-                        bgcolor: "accent.main",
+                        bgcolor: "btnHover.main",
+                        transform: "scale(1.2)",
                       },
                     }}
                     variant="contained"

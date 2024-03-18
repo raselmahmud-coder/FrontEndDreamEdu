@@ -60,7 +60,7 @@ const ContactUs = () => {
       )}
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 4, md: 16 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2, mb: 15 }}>
         <Grid item xs={12} sm={6} md={6}>
@@ -115,7 +115,7 @@ const ContactUs = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          <HeadingH4 HeadingH4Text={"Direct Phone Call"} />
+          <HeadingH4 alignX={"start"} HeadingH4Text={"Direct Phone Call"} />
           <Box
             sx={{
               display: "flex",

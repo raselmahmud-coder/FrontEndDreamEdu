@@ -75,12 +75,12 @@ const DreamEduMethodology = () => {
             }}>
             <HeadingH2
               headingH2Text={"Our Methodology"}
-              marginTop={{ xs: -3, sm: -5, md: -6 }}
+              marginTop={{ xs: -2, sm: -3, md: -3 }}
             />
           </Box>
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
+          spacing={{ xs: 3, md: 6 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           sx={{
             alignItems: "center",
@@ -91,7 +91,7 @@ const DreamEduMethodology = () => {
                 sx={{
                   bgcolor: "#Bc471f",
                   color: "whiteCustom.main",
-                  minHeight: {md:"682px"},
+                  minHeight: {md:"448px"},
                   // border: 2,
                   p: 2,
                   borderRadius: 3,
@@ -121,8 +121,8 @@ const DreamEduMethodology = () => {
                       component={"img"}
                       src={icon}
                       sx={{
-                        width: "120px",
-                        height: "120px",
+                        width: "70px",
+                        height: "70px",
                         border: 2,
                         borderRadius: 4,
                         p: 1,
@@ -130,12 +130,10 @@ const DreamEduMethodology = () => {
                     />
                   </Badge>
                   <Typography
-                    variant="h5"
+                    variant="h6"
                     sx={{
                       fontWeight: "bold",
                       textAlign: "center",
-                      mt: "32px",
-                      mb: "10px",
                     }}>
                     {title}
                   </Typography>
@@ -151,7 +149,7 @@ const DreamEduMethodology = () => {
                     <TaskAltIcon
                       sx={{
                         mr: 1,
-                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                        fontSize: { xs: "12px", sm: "20px", md: "25px" },
                       }}
                     />
                     <ListItemText primary={list1} />
@@ -164,7 +162,7 @@ const DreamEduMethodology = () => {
                     <TaskAltIcon
                       sx={{
                         mr: 1,
-                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                        fontSize: { xs: "12px", sm: "20px", md: "25px" },
                       }}
                     />
                     <ListItemText primary={list2} />
@@ -173,7 +171,7 @@ const DreamEduMethodology = () => {
                     <TaskAltIcon
                       sx={{
                         mr: 1,
-                        fontSize: { xs: "20px", sm: "40px", md: "45px" },
+                        fontSize: { xs: "12px", sm: "20px", md: "25px" },
                       }}
                     />
                     <ListItemText primary={list3} />

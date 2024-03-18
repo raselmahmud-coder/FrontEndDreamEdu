@@ -24,13 +24,9 @@ const OfficeAddress = () => {
         />
         <Grid
           container
-          spacing={{ xs: 2, md: 4 }}
+          spacing={{ xs: 2, md: 6 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
-          sx={{
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: 7,
-          }}>
+         >
           {officeInfo.length > 0 &&
             officeInfo.map(({ locationName, phone, fullAddress, mapSrc }) => (
               <Grid item xs={12} sm={6} md={4} key={locationName}>
@@ -52,16 +48,15 @@ const OfficeAddress = () => {
                       src={mapIcon}
                       alt=""
                       sx={{
-                        width: { xs: "35px", sm: "42px", md: "45px" },
-                        height: { xs: "35px", sm: "42px", md: "45px" },
+                        width: { xs: "25px", sm: "32px", md: "35px" },
+                        height: { xs: "25px", sm: "32px", md: "35px" },
                       }}
                     />
                     <HeadingH4 HeadingH4Text={locationName} />
                   </Box>
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
-                      my: 2,
                       px: 3,
                       color: isDarkMode ? "whiteCustom.main" : "redCustom.main",
                     }}>
@@ -69,7 +64,7 @@ const OfficeAddress = () => {
                   </Typography>
 
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
                       my: 2,
                       px: 3,
