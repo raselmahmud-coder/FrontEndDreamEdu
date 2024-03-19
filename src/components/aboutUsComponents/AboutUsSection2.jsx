@@ -28,6 +28,8 @@ const AboutUsSection2 = () => {
   return (
     <Box component={"section"}>
       <HeadingH2
+        marginTop={{ xs: 1, sm: 3, md: 4 }}
+        marginBottom={{ xs: 1, sm: 0, md: 0 }}
         headingH2Text={"MEET OUR TEAM"}
         headingH2Icon={Diversity3Icon}
       />

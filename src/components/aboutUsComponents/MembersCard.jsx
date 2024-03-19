@@ -46,7 +46,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const MembersCard = ({ positionTitle, team, isLoading, isError }) => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
-  console.log(team, "Hello team");
+  // console.log(team, "Hello team");
   let content;
   if (isLoading) {
     content = <OurPartnersSkeleton />;

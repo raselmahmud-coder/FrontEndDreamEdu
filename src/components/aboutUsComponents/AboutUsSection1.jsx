@@ -8,6 +8,7 @@ import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import HeadingH4 from "../../globalsComponents/Headings/HeadingH4";
 import bgGradient from "../../assets/backgrounds/bgWhiteVector.svg";
 import bgGradient1 from "../../assets/backgrounds/wave3.svg";
+import "./ribbon.css";
 
 const AboutUsSection1 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
@@ -33,23 +34,37 @@ const AboutUsSection1 = () => {
           spacing={{ xs: 1, sm: 4, md: 6 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           sx={{
-            pt: 12,
+            pt: 10,
+            pb: 12,
             px: 1,
             justifyContent: "space-between",
             alignItems: "center",
             background: isDarkMode ? "" : `url(${bgGradient1})`,
             // position: "relative",
             // backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
+            // backgroundRepeat: "no-repeat",
           }}>
           <Grid item xs={12} sm={6} md={6}>
-            <HeadingH4 marginY={0} HeadingH4Text={"ENGR. MD SHAHRIAR ISLAM"} />
             <Typography
-              variant="h6"
-              sx={{ textAlign: "center", color: "redCustom.main", mb: 2 }}>
-              Founder of DreamEdu Consultancy
+              variant="h5"
+              sx={{
+                backgroundColor: isDarkMode ? "success.main" : "#8fbe00",
+                textAlign: "center",
+                color: "whiteCustom.main",
+                pt: 3,
+              }}
+              className="ribbon">
+              ENGR. MD SHAHRIAR ISLAM
+              <Typography
+                component={"span"}
+                variant="h6"
+                sx={{ textAlign: "center", mb: 1, display: "block" }}>
+                Founder of DreamEdu Consultancy
+              </Typography>
             </Typography>
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ textAlign: "justify", lineHeight: 2 }}>
               Md Shahriar Islam, the founder of DreamEdu Consultancy, hails from
               Bangladesh. He holds a diploma in engineering from his home
               country and a bachelor's degree in Mechanical Engineering from
@@ -67,8 +82,23 @@ const AboutUsSection1 = () => {
               participation in the Chinese Skills Competition for International
               Students (2020) and the Chinese Classic Competition (2018).
             </Typography>
-            <HeadingH4 marginY={6} HeadingH4Text={"MESSAGE FROM FOUNDER"} />
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            <Typography
+              variant="h5"
+              sx={{
+                backgroundColor: isDarkMode ? "success.main" : "#8fbe00",
+                textAlign: "center",
+                color: "whiteCustom.main",
+                pt: 3,
+                pb: 1,
+                mt: 5,
+                mb: 2,
+              }}
+              className="messageRibbon">
+              MESSAGE FROM FOUNDER
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{ textAlign: "justify", lineHeight: 2 }}>
               My journey began in 2018 when I got a scholarship to pursue my
               bachelor's degree in China. I was greatly inspired by the dynamic
               culture, state-of-the-art facilities, and wide range of
@@ -84,7 +114,7 @@ const AboutUsSection1 = () => {
               comprehensive support and guidance to aspiring students.
               <br />
               <br />
-              DreamEdu Consultancy’s journey began in 2021. Driven by a passion
+              DreamEdu Consultancy's journey began in 2021. Driven by a passion
               for promoting Chinese culture worldwide, I established the
               DreamEdu Foundation just one year later. We believe that everyone
               should have the opportunity to learn Chinese language and culture.
@@ -117,7 +147,8 @@ const AboutUsSection1 = () => {
           spacing={{ xs: 1, sm: 4, md: 6 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           sx={{
-            pt: 12,
+            pt: 2,
+            pb: 4,
             px: 1,
             justifyContent: "space-between",
             alignItems: "center",
@@ -139,13 +170,27 @@ const AboutUsSection1 = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <HeadingH4 HeadingH4Text={"ENGR. MD SAKAYOT HOSEN"} />
             <Typography
-              variant="h6"
-              sx={{ mb: 2, color: "redCustom.main", textAlign: "center" }}>
-              Co-Founder of DreamEdu Consultancy
+              variant="h5"
+              sx={{
+                backgroundColor: isDarkMode ? "success.main" : "#8fbe00",
+                textAlign: "center",
+                color: "whiteCustom.main",
+                pt: 3,
+              }}
+              className="ribbon">
+              ENGR. MD SAKAYOT HOSEN
+              <Typography
+                component={"span"}
+                variant="h6"
+                sx={{ textAlign: "center", mb: 1, display: "block" }}>
+                Co-Founder of DreamEdu Consultancy
+              </Typography>
             </Typography>
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+
+            <Typography
+              variant="subtitle2"
+              sx={{ textAlign: "justify", lineHeight: 2 }}>
               Engr. Md Sakayot Hosen, a native of Bangladesh, has a remarkable
               educational and professional background. He completed his diploma
               course at BIIT, Bugra in 2016, and went on to finish a foundation
@@ -158,8 +203,23 @@ const AboutUsSection1 = () => {
               Shahriar Islam and currently holds the position of Co-Founder at
               DreamEdu Consultancy.
             </Typography>
-            <HeadingH4 HeadingH4Text={"MESSAGE FROM CO-FOUNDER"} />
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            <Typography
+              variant="h5"
+              sx={{
+                backgroundColor: isDarkMode ? "success.main" : "#8fbe00",
+                textAlign: "center",
+                color: "whiteCustom.main",
+                pt: 3,
+                pb: 1,
+                mt: 5,
+                mb: 2,
+              }}
+              className="messageRibbon">
+              MESSAGE FROM CO-FOUNDER
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{ textAlign: "justify", lineHeight: 2 }}>
               Looking into the future of education, China offers a diverse range
               of academic opportunities, high-quality research facilities, and a
               rich cultural experience, including tuition and accommodation

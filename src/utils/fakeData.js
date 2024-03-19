@@ -159,8 +159,13 @@ export const officeInfo = [
     locationName: "Sri Lanka Office",
     fullAddress: `Office No. 96/C, Mawathgama, Homagama, Colombo, Sri Lanka `,
     phone: "+94-761426678",
-    mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.396066853949!2d80.01089611083947!3d6.843030519338604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2522153d9ca0f%3A0xa2fdc65ab2bcc1cc!2s96%20Mawathgama%20Rd%2C%20Homagama%2C%20Sri%20Lanka!5e0!3m2!1sen!2s!4v1710780146148!5m2!1sen!2s`
-      ,
+    mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.396066853949!2d80.01089611083947!3d6.843030519338604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2522153d9ca0f%3A0xa2fdc65ab2bcc1cc!2s96%20Mawathgama%20Rd%2C%20Homagama%2C%20Sri%20Lanka!5e0!3m2!1sen!2s!4v1710780146148!5m2!1sen!2s`,
+  },
+  {
+    locationName: "Africa Office",
+    fullAddress: `Ridgeway Campus Box 50110, Lusaka, Zambia`,
+    phone: "+260-964395295",
+    mapSrc: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3846.0426249570537!2d28.308956611050707!3d-15.428250613984698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19408cc58c78904b%3A0x9a66a0d39ab60b8!2sUNZA%2C%20Ridgeway%20Campus!5e0!3m2!1sen!2s!4v1710806519814!5m2!1sen!2s`,
   },
 ];
 export const socialContact = [

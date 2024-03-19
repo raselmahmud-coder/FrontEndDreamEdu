@@ -102,10 +102,10 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-          Photo (48*33mm, White Background)*
+            Photo (48*33mm, White Background)*
           </Typography>
           {photo && (
             <Chip
@@ -159,10 +159,10 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Police clearance certificate*
+            Police clearance certificate
           </Typography>
           {nonCriminalCertificate && (
             <Chip
@@ -208,7 +208,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required={nonCriminalCertificate ? false : true}
+                // required={nonCriminalCertificate ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -218,7 +218,7 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-          Bank Statements (20,000 CNY or 3000 USD)*
+            Bank Statements (20,000 CNY or 3000 USD)
           </Typography>
           {bankStatement && (
             <Chip
@@ -264,7 +264,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required={bankStatement ? false : true}
+                // required={bankStatement ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -274,7 +274,7 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            Study plan (800 - 1000 words)*
+            Study plan (800 - 1000 words)
           </Typography>
           {studyPlan && (
             <Chip
@@ -320,7 +320,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required={studyPlan ? false : true}
+                // required={studyPlan ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -330,7 +330,7 @@ export default function Documents() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-            IELTS/Any English proficiency certificate*
+            Languages Proficiency Certificate (IELTS, HSK or others)
           </Typography>
           {englishProficiencyTest && (
             <Chip
@@ -376,7 +376,7 @@ export default function Documents() {
                     setShowError(selectedFile[1]);
                   }
                 }}
-                required={englishProficiencyTest ? false : true}
+                // required={englishProficiencyTest ? false : true}
                 type="file"
                 hidden
                 accept=".jpg, .jpeg, .png, .pdf"
@@ -384,7 +384,7 @@ export default function Documents() {
             </Button>
           </Box>
         </Grid>
-       
+
         {["Bachelor", "Masters"].includes(program) && (
           <>
             <Grid item xs={12} md={6}>
@@ -563,7 +563,7 @@ export default function Documents() {
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" gutterBottom>
-                Two Recommendation Letters*
+                Two Recommendation Letters
               </Typography>
               {recommendationLetters && (
                 <Chip
@@ -609,7 +609,7 @@ export default function Documents() {
                         setShowError(selectedFile[1]);
                       }
                     }}
-                    required={recommendationLetters ? false : true}
+                    // required={recommendationLetters ? false : true}
                     type="file"
                     hidden
                     accept=".jpg, .jpeg, .png, .pdf"
@@ -679,9 +679,9 @@ export default function Documents() {
             </Grid>
           </>
         )}
-         <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="subtitle1" gutterBottom>
-          Others (Extra-curricular) 
+            Others (Extra-curricular)
           </Typography>
           {othersFile && (
             <Chip

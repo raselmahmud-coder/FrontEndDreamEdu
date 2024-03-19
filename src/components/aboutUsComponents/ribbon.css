@@ -1,0 +1,53 @@
+/* HTML: <div class="ribbon">Your text content</div> */
+
+.ribbon {
+  --d: 0.9em; /* the depth */
+
+  /* position: absolute;
+  top: 50%; */
+  /* translate: 0 -50%; */
+  inset-inline: calc(-1 * var(--d));
+  padding-block: var(--d);
+  line-height: 1.8;
+  clip-path: polygon(
+    100% var(--d),
+    var(--d) var(--d),
+    var(--d) 0,
+    0 var(--d),
+    0 calc(100% - var(--d)),
+    calc(100% - var(--d)) calc(100% - var(--d)),
+    calc(100% - var(--d)) 100%,
+    100% calc(100% - var(--d))
+  );
+  border-image: conic-gradient(#0008 0 0) 50% / var(--d);
+  /* background-color: inherit; */ /* the main color */
+}
+
+.messageRibbon {
+  --s: 1.8em; /* the ribbon size */
+  --d: 0.8em; /* the depth */
+  --c: 0.8em; /* the cutout part */
+
+  padding: var(--d) var(--c) 0 calc(var(--s) + 0.5em);
+  line-height: 1.8;
+  background: conic-gradient(
+    from 45deg at left var(--s) top var(--d),
+    #0008 12.5%,
+    #0000 0 37.5%,
+    #0004 0
+  );
+  clip-path: polygon(
+    calc(100% - var(--c)) var(--d),
+    calc(var(--s) + var(--d)) var(--d),
+    calc(var(--s) + var(--d)) 0,
+    0 0,
+    var(--c) calc(50% - var(--d) / 2),
+    0 calc(100% - var(--d)),
+    var(--s) calc(100% - var(--d)),
+    var(--s) 100%,
+    calc(100% - var(--c)) 100%,
+    100% calc(50% + var(--d) / 2)
+  );
+  background-color: #f07818; /* the main color */
+  width: fit-content;
+}

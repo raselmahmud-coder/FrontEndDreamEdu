@@ -67,6 +67,7 @@ export const darkTheme = (isDarkMode) =>
       },
       h5: {
         fontSize: 17,
+        fontWeight:700,
         "@media (max-width: 400px)": {
           fontSize: 14,
         },
@@ -78,6 +79,12 @@ export const darkTheme = (isDarkMode) =>
         },
       },
       subtitle1: {
+        fontSize: 14.5,
+        "@media (max-width: 400px)": {
+          fontSize: 12,
+        },
+      },
+      subtitle2: {
         fontSize: 13.5,
         "@media (max-width: 400px)": {
           fontSize: 12,
