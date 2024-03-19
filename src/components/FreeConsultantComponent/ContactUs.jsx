@@ -47,7 +47,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <HeadingH2 headingH2Text={"Contact Us"} headingH2Icon={RingVolumeIcon} />
+      <HeadingH2 headingH2Text={"Contact Us"} headingH2Icon={RingVolumeIcon} marginTop={{ xs: 5 }} />
       {consultationData?.id && isSuccess && (
         <PositionedSnackbar severity={"success"} isOpen={true} />
       )}
@@ -62,7 +62,7 @@ const ContactUs = () => {
         container
         spacing={{ xs: 4, md: 16 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ p: 2, mb: 15 }}>
+        sx={{ p: 2, mb: {md:7} }}>
         <Grid item xs={12} sm={6} md={6}>
           <Box component="form" onSubmit={handleConsultationForm}>
             <TextField

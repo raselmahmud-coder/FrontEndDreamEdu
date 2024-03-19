@@ -13,15 +13,7 @@ import "./ribbon.css";
 const AboutUsSection1 = () => {
   const { isDarkMode } = useSelector((state) => state.colorMode);
   return (
-    <Box
-      sx={
-        {
-          // background: isDarkMode ? "" : `url(${bgGradient})`,
-          // position: "relative",
-          // backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-        }
-      }>
+    <Box>
       <Container maxWidth="xl" sx={{ pb: { xs: 4, sm: 6, md: 8 } }}>
         <HeadingH2
           marginTop={22}
@@ -44,7 +36,7 @@ const AboutUsSection1 = () => {
             // backgroundSize: "cover",
             // backgroundRepeat: "no-repeat",
           }}>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} sm={6} md={6} order={{ xs: 2, sm: 1 }}>
             <Typography
               variant="h5"
               sx={{
@@ -129,7 +121,7 @@ const AboutUsSection1 = () => {
               that would otherwise be out of reach.
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} sm={6} md={6} order={{xs:1, sm:2}}>
             <img
               loading="lazy"
               src={founderImg}
@@ -157,7 +149,7 @@ const AboutUsSection1 = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} sm={6} md={6} >
             <img
               loading="lazy"
               src={coFounderImg}

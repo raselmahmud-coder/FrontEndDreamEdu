@@ -46,7 +46,7 @@ const Section5 = () => {
           </Box>
           <Grid
             container
-            spacing={{ xs: 2, md: 18 }}
+            spacing={{ xs: 2, md: 10 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
             sx={{
               alignItems: "center",

@@ -51,7 +51,7 @@ const App = () => {
             <Route path="/gallery" element={<PhotoGalleryPage />} />
             <Route
               path="/all-videos"
-              element={<YouTubeFeeds maxResults={100} />}
+              element={<YouTubeFeeds title={"All Videos"} maxResults={100} />}
             />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:id" element={<SingleBlogPostPage />} />

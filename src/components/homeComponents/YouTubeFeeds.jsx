@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import HeadingH2 from "../../globalsComponents/Headings/HeadingH2";
 import bgGradient from "../../assets/backgrounds/wave1.svg";
 
-const YouTubeFeeds = ({ maxResults = 6 }) => {
+const YouTubeFeeds = ({ title, maxResults = 6 }) => {
   const [videos, setVideos] = useState([]);
   const { isDarkMode } = useSelector((state) => state.colorMode);
 
@@ -39,7 +39,12 @@ const YouTubeFeeds = ({ maxResults = 6 }) => {
                 mt: maxResults > 10 && { xs: 16, md: 16 },
                 pb: { xs: 6, sm: 8, md: 16 },
               }}>
-              {maxResults < 10 && (
+              {title ? (
+                <HeadingH2
+                  marginTop={{ xs: 4, sm: 1, md: 0 }}
+                  headingH2Text={title}
+                />
+              ) : (
                 <HeadingH2
                   marginTop={{ xs: -2, sm: -3, md: -3 }}
                   headingH2Text={"Latest Videos"}

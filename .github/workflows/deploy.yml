@@ -1,0 +1,34 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [ master ]  # Change 'main' to your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'  # Use the Node.js version you're compatible with
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Project
+      run: npm run build
+
+    - name: Deploy to cPanel
+      uses: jakejarvis/deploy-to-cpanel@v1
+      env:
+        DEPLOY_REPO_URL: 'https://github.com/raselmahmud-coder/FrontEndDreamEdu'
+        DEPLOY_SERVER: '172.96.141.80'
+        DEPLOY_SSH_KEY: '~/.ssh/ci_cd'  # Update this with the path to your SSH key
+        DEPLOY_DIRECTORY: '/home/pphewedg/public_html'  # Update this with the target directory on the server
+
+      with:
+        ssh-private-key: ${{ secrets.CI_CD_PRIVATE_KEY_PATH }}
