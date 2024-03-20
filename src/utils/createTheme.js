@@ -67,37 +67,42 @@ export const darkTheme = (isDarkMode) =>
       },
       h5: {
         fontSize: 17,
-        fontWeight:700,
+        fontWeight: 700,
         "@media (max-width: 400px)": {
           fontSize: 14,
         },
       },
       h6: {
         fontSize: 16,
+        fontWeight: 650,
         "@media (max-width: 400px)": {
           fontSize: 13,
         },
       },
       subtitle1: {
-        fontSize: 14.5,
+        fontSize: 15,
+        fontWeight: 600,
         "@media (max-width: 400px)": {
           fontSize: 12,
         },
       },
       subtitle2: {
-        fontSize: 13.5,
+        fontSize: 14.5,
+        fontWeight: 500,
         "@media (max-width: 400px)": {
           fontSize: 12,
         },
       },
       body1: {
-        fontSize: 12.5,
+        fontSize: 14,
+        fontWeight: 400,
+        lineHeight: 1.5,
         "@media (max-width: 400px)": {
           fontSize: 11,
         },
       },
       body2: {
-        fontSize: 11.5,
+        fontSize: 12.5,
         "@media (max-width: 400px)": {
           fontSize: 8,
         },

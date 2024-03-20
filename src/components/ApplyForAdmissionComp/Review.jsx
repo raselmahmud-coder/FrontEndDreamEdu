@@ -10,7 +10,7 @@ export default function Review() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h5" sx={{ textAlign: "center" }} gutterBottom>
         Profile summary
       </Typography>
       <Grid container spacing={8}>

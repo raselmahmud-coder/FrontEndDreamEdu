@@ -67,11 +67,11 @@ export default function Initialization() {
                 );
               }}
               label="Select Your Program">
-              <MenuItem value={"Language"}>Chinese Language</MenuItem>
+              <MenuItem value={"Chinese language"}>Chinese Language</MenuItem>
               <MenuItem value={"Diploma"}>Diploma</MenuItem>
               <MenuItem value={"Bachelor"}>Bachelor</MenuItem>
               <MenuItem value={"Masters"}>Masters</MenuItem>
-              <MenuItem value={"Phd"}>Ph.D.</MenuItem>
+              <MenuItem value={"Ph.D"}>Ph.D.</MenuItem>
             </Select>
           </FormControl>
         </Grid>
